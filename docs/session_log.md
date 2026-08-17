@@ -102,3 +102,49 @@ used for date-verification in `inputs_frozen/entities.py`.
   - Precision audit: 12 PASS, 10 FAIL, 28 NOT_AUDITED
 - **Blocker status unchanged:** spot-check still cannot run. Next
   action is obtaining the two files from Viveka.
+
+## 2026-08-17 — Baseline reproduction fix (28/33 exact match confirmed)
+
+- **Corrected exclusion rule.** Viveka supplied the exact rule, verified
+  against Sections 4.5 (Table 1) and 5.4 of the paper:
+
+      TESTABLE 33 = all 50 entities MINUS:
+        10 precision-audit FAIL (Section 4.5, Table 1):
+            DBRX, Kimi, Ideogram, Lovable, Gemini (Google model),
+            Dream Machine, Liquid AI, Mamba, Operator, vLLM
+        7 no-onset entities (Section 5.4):
+            OpenAI o1, OpenAI o3, DeepSeek, DeepSeek-R1,
+            Manus, World Labs, Bolt.new
+
+  The `self_ref_openai` flag in `entities.py` is **NOT** part of this
+  baseline. GPT-4, GPT-4o, and Sora are included in the 33. The flag
+  exists for a separate robustness analysis (self-recognition confound)
+  but must not be conflated with the 33-entity baseline.
+
+- **Name-mismatch discovery.** The perception CSV (`pt_pilot_results.csv`)
+  uses parenthetical disambiguators (e.g. `Cursor (the AI code editor)`)
+  while the citation CSV (`ct_results_v1_frozen.csv`) uses short names
+  (e.g. `Cursor`). 14 of 50 entities are affected. Previous code that
+  joined directly on entity name silently dropped these 14, producing
+  only 26 testable entities instead of 33. Fixed by building a canonical
+  name bridge that strips parentheticals.
+
+- **Confirmed reproduction:** `scripts/reproduce_baseline.py` now
+  reproduces the paper's result exactly:
+    - Floor=3: 28/33, median lead 83 days, p = 6.62 × 10⁻⁵ ✓
+    - Floor=5: 28/33, median lead 83 days, p = 6.62 × 10⁻⁵ ✓
+  Both match the paper's reported values. The per-entity detail shows
+  5 entities with negative lead (ramp after onset): Apple Intelligence,
+  Cursor, Grok, Humane Ai Pin, Safe Superintelligence.
+
+- **Impact on weighting pipeline.** The existing `precedence_test_weighted.py`
+  uses the `self_ref_openai` flag as an exclusion, which is wrong for
+  baseline reproduction. For the weighting analysis, the baseline check
+  should use the paper's exact rule (10 FAIL + 7 no-onset). The
+  `self_ref_openai` exclusion is a valid additional robustness variant
+  but must be clearly labeled as such, not as the baseline.
+
+- **Name bridge also needed in `precedence_test_weighted.py` and
+  `sensitivity_analysis.py`** — these scripts join PT and CT entity names
+  and will silently drop the 14 mismatched entities without the bridge.
+  Must be fixed before any real weighting run.
