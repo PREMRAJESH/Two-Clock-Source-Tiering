@@ -1,0 +1,251 @@
+entity,birth_date,url,offset_days,target_date,snapshot_timestamp,S_t,title,h1,meta_description,json_ld,schema_org_type,open_graph,social_links,content_depth,word_count,status,snapshot_url
+ElevenLabs,2023-01-23,https://elevenlabs.io,0,2023-01-23,20230119213943,4,1,0,1,0,0,1,1,0,53,ok,https://web.archive.org/web/20230119213943id_/https://elevenlabs.io
+ElevenLabs,2023-01-23,https://elevenlabs.io,30,2023-02-22,20230119213943,4,1,0,1,0,0,1,1,0,53,ok,https://web.archive.org/web/20230119213943id_/https://elevenlabs.io
+ElevenLabs,2023-01-23,https://elevenlabs.io,60,2023-03-24,20230119213943,4,1,0,1,0,0,1,1,0,53,ok,https://web.archive.org/web/20230119213943id_/https://elevenlabs.io
+ElevenLabs,2023-01-23,https://elevenlabs.io,90,2023-04-23,20230716122833,1,1,0,0,0,0,0,0,0,8,ok,https://web.archive.org/web/20230716122833id_/https://elevenlabs.io
+ElevenLabs,2023-01-23,https://elevenlabs.io,180,2023-07-22,20230722230315,1,1,0,0,0,0,0,0,0,8,ok,https://web.archive.org/web/20230722230315id_/https://elevenlabs.io
+Cursor,2023-03-01,https://www.cursor.com,0,2023-03-01,20230322181134,3,1,1,1,0,0,0,0,0,27,ok,https://web.archive.org/web/20230322181134id_/https://www.cursor.com
+Cursor,2023-03-01,https://www.cursor.com,30,2023-03-31,20230331183813,3,1,1,1,0,0,0,0,0,27,ok,https://web.archive.org/web/20230331183813id_/https://www.cursor.com
+Cursor,2023-03-01,https://www.cursor.com,60,2023-04-30,20230422125531,3,1,1,1,0,0,0,0,0,27,ok,https://web.archive.org/web/20230422125531id_/https://www.cursor.com
+Cursor,2023-03-01,https://www.cursor.com,90,2023-05-30,20230516183321,3,1,1,1,0,0,0,0,0,27,ok,https://web.archive.org/web/20230516183321id_/https://www.cursor.com
+Cursor,2023-03-01,https://www.cursor.com,180,2023-08-28,20230722081740,3,1,1,1,0,0,0,0,0,27,ok,https://web.archive.org/web/20230722081740id_/https://www.cursor.com
+GPT-4,2023-03-14,https://openai.com/gpt-4,0,2023-03-14,20230602183635,5,1,1,0,0,0,1,1,1,1168,ok,https://web.archive.org/web/20230602183635id_/https://openai.com/gpt-4
+GPT-4,2023-03-14,https://openai.com/gpt-4,30,2023-04-13,20230602183635,5,1,1,0,0,0,1,1,1,1168,ok,https://web.archive.org/web/20230602183635id_/https://openai.com/gpt-4
+GPT-4,2023-03-14,https://openai.com/gpt-4,60,2023-05-13,,,,,,,,,,,,no_snapshot,
+GPT-4,2023-03-14,https://openai.com/gpt-4,90,2023-06-12,,,,,,,,,,,,no_snapshot,
+GPT-4,2023-03-14,https://openai.com/gpt-4,180,2023-09-10,20230909125328,5,1,1,0,0,0,1,1,1,1174,ok,https://web.archive.org/web/20230909125328id_/https://openai.com/gpt-4
+Mistral AI,2023-04-28,https://mistral.ai,0,2023-04-28,20230505202708,2,1,1,0,0,0,0,0,0,49,ok,https://web.archive.org/web/20230505202708id_/https://mistral.ai
+Mistral AI,2023-04-28,https://mistral.ai,30,2023-05-28,20230525103737,2,1,1,0,0,0,0,0,0,49,ok,https://web.archive.org/web/20230525103737id_/https://mistral.ai
+Mistral AI,2023-04-28,https://mistral.ai,60,2023-06-27,20230626163848,2,1,1,0,0,0,0,0,0,49,ok,https://web.archive.org/web/20230626163848id_/https://mistral.ai
+Mistral AI,2023-04-28,https://mistral.ai,90,2023-07-27,20230726231316,2,1,1,0,0,0,0,0,0,49,ok,https://web.archive.org/web/20230726231316id_/https://mistral.ai
+Mistral AI,2023-04-28,https://mistral.ai,180,2023-10-25,,,,,,,,,,,,no_snapshot,
+Apple Vision Pro,2023-06-05,https://www.apple.com/apple-vision-pro/,0,2023-06-05,20230605234119,7,1,1,1,1,1,1,0,1,2984,ok,https://web.archive.org/web/20230605234119id_/https://www.apple.com/apple-vision-pro/
+Apple Vision Pro,2023-06-05,https://www.apple.com/apple-vision-pro/,30,2023-07-05,20230705224450,7,1,1,1,1,1,1,0,1,2993,ok,https://web.archive.org/web/20230705224450id_/https://www.apple.com/apple-vision-pro/
+Apple Vision Pro,2023-06-05,https://www.apple.com/apple-vision-pro/,60,2023-08-04,20230804225340,7,1,1,1,1,1,1,0,1,3048,ok,https://web.archive.org/web/20230804225340id_/https://www.apple.com/apple-vision-pro/
+Apple Vision Pro,2023-06-05,https://www.apple.com/apple-vision-pro/,90,2023-09-03,,,,,,,,,,,,no_snapshot,
+Apple Vision Pro,2023-06-05,https://www.apple.com/apple-vision-pro/,180,2023-12-02,20231202184131,7,1,1,1,1,1,1,0,1,3181,ok,https://web.archive.org/web/20231202184131id_/https://www.apple.com/apple-vision-pro/
+vLLM,2023-06-20,https://github.com/vllm-project/vllm,0,2023-06-20,20230621033539,7,1,1,1,0,1,1,1,1,875,ok,https://web.archive.org/web/20230621033539id_/https://github.com/vllm-project/vllm
+vLLM,2023-06-20,https://github.com/vllm-project/vllm,30,2023-07-20,,,,,,,,,,,,no_snapshot,
+vLLM,2023-06-20,https://github.com/vllm-project/vllm,60,2023-08-19,20230825012740,7,1,1,1,0,1,1,1,1,1287,ok,https://web.archive.org/web/20230825012740id_/https://github.com/vllm-project/vllm
+vLLM,2023-06-20,https://github.com/vllm-project/vllm,90,2023-09-18,,,,,,,,,,,,no_snapshot,
+vLLM,2023-06-20,https://github.com/vllm-project/vllm,180,2023-12-17,20231217125446,7,1,1,1,0,1,1,1,1,1556,ok,https://web.archive.org/web/20231217125446id_/https://github.com/vllm-project/vllm
+Ollama,2023-07-01,https://ollama.com,0,2023-07-01,,,,,,,,,,,,no_snapshot,
+Ollama,2023-07-01,https://ollama.com,30,2023-07-31,20240210140350,6,1,0,1,1,1,1,1,0,46,ok,https://web.archive.org/web/20240210140350id_/https://ollama.com
+Ollama,2023-07-01,https://ollama.com,60,2023-08-30,20240210140350,6,1,0,1,1,1,1,1,0,46,ok,https://web.archive.org/web/20240210140350id_/https://ollama.com
+Ollama,2023-07-01,https://ollama.com,90,2023-09-29,20240210140350,6,1,0,1,1,1,1,1,0,46,ok,https://web.archive.org/web/20240210140350id_/https://ollama.com
+Ollama,2023-07-01,https://ollama.com,180,2023-12-28,20240210140350,6,1,0,1,1,1,1,1,0,46,ok,https://web.archive.org/web/20240210140350id_/https://ollama.com
+Threads,2023-07-05,https://www.threads.net,0,2023-07-05,20230706000753,3,1,0,1,0,0,1,0,0,1,ok,https://web.archive.org/web/20230706000753id_/https://www.threads.net
+Threads,2023-07-05,https://www.threads.net,30,2023-08-04,20230805000920,3,1,0,1,0,0,1,0,0,4,ok,https://web.archive.org/web/20230805000920id_/https://www.threads.net
+Threads,2023-07-05,https://www.threads.net,60,2023-09-03,,,,,,,,,,,,no_snapshot,
+Threads,2023-07-05,https://www.threads.net,90,2023-10-03,20231004051850,1,0,0,0,0,0,0,0,1,6076,ok,https://web.archive.org/web/20231004051850id_/https://www.threads.net
+Threads,2023-07-05,https://www.threads.net,180,2024-01-01,,,,,,,,,,,,no_snapshot,
+xAI,2023-07-12,https://x.ai,0,2023-07-12,20230713011556,6,1,1,1,0,0,1,1,1,268,ok,https://web.archive.org/web/20230713011556id_/https://x.ai
+xAI,2023-07-12,https://x.ai,30,2023-08-11,,,,,,,,,,,,no_snapshot,
+xAI,2023-07-12,https://x.ai,60,2023-09-10,20230911002456,6,1,1,1,0,0,1,1,1,263,ok,https://web.archive.org/web/20230911002456id_/https://x.ai
+xAI,2023-07-12,https://x.ai,90,2023-10-10,20231011051159,6,1,1,1,0,0,1,1,1,263,ok,https://web.archive.org/web/20231011051159id_/https://x.ai
+xAI,2023-07-12,https://x.ai,180,2024-01-08,20240108212916,6,1,1,1,0,0,1,1,1,1677,ok,https://web.archive.org/web/20240108212916id_/https://x.ai
+NotebookLM,2023-07-12,https://notebooklm.google,0,2023-07-12,20230727150931,0,0,0,0,0,0,0,0,0,40,ok,https://web.archive.org/web/20230727150931id_/https://notebooklm.google
+NotebookLM,2023-07-12,https://notebooklm.google,30,2023-08-11,20230818025354,0,0,0,0,0,0,0,0,0,40,ok,https://web.archive.org/web/20230818025354id_/https://notebooklm.google
+NotebookLM,2023-07-12,https://notebooklm.google,60,2023-09-10,20230912214654,0,0,0,0,0,0,0,0,0,40,ok,https://web.archive.org/web/20230912214654id_/https://notebooklm.google
+NotebookLM,2023-07-12,https://notebooklm.google,90,2023-10-10,20231014024303,0,0,0,0,0,0,0,0,0,40,ok,https://web.archive.org/web/20231014024303id_/https://notebooklm.google
+NotebookLM,2023-07-12,https://notebooklm.google,180,2024-01-08,20240108142054,3,1,1,0,0,0,0,0,1,239,ok,https://web.archive.org/web/20240108142054id_/https://notebooklm.google
+DeepSeek,2023-07-17,https://www.deepseek.com,0,2023-07-17,,,,,,,,,,,,no_snapshot,
+DeepSeek,2023-07-17,https://www.deepseek.com,30,2023-08-16,20231107151928,2,1,0,1,0,0,0,0,0,14,ok,https://web.archive.org/web/20231107151928id_/https://www.deepseek.com
+DeepSeek,2023-07-17,https://www.deepseek.com,60,2023-09-15,20231107151928,2,1,0,1,0,0,0,0,0,14,ok,https://web.archive.org/web/20231107151928id_/https://www.deepseek.com
+DeepSeek,2023-07-17,https://www.deepseek.com,90,2023-10-15,20231107151928,2,1,0,1,0,0,0,0,0,14,ok,https://web.archive.org/web/20231107151928id_/https://www.deepseek.com
+DeepSeek,2023-07-17,https://www.deepseek.com,180,2024-01-13,20240113134135,3,1,0,1,0,0,1,0,0,8,ok,https://web.archive.org/web/20240113134135id_/https://www.deepseek.com
+Llama 2,2023-07-18,https://ai.meta.com/llama/,0,2023-07-18,20230719000511,5,1,0,1,0,0,1,1,1,375,ok,https://web.archive.org/web/20230719000511id_/https://ai.meta.com/llama/
+Llama 2,2023-07-18,https://ai.meta.com/llama/,30,2023-08-17,20230817151018,5,1,0,1,0,0,1,1,1,1196,ok,https://web.archive.org/web/20230817151018id_/https://ai.meta.com/llama/
+Llama 2,2023-07-18,https://ai.meta.com/llama/,60,2023-09-16,20230916170435,5,1,0,1,0,0,1,1,1,1240,ok,https://web.archive.org/web/20230916170435id_/https://ai.meta.com/llama/
+Llama 2,2023-07-18,https://ai.meta.com/llama/,90,2023-10-16,20231017071742,5,1,0,1,0,0,1,1,1,1236,ok,https://web.archive.org/web/20231017071742id_/https://ai.meta.com/llama/
+Llama 2,2023-07-18,https://ai.meta.com/llama/,180,2024-01-14,20240114060020,5,1,0,1,0,0,1,1,1,1283,ok,https://web.archive.org/web/20240114060020id_/https://ai.meta.com/llama/
+Sakana AI,2023-08-01,https://sakana.ai,0,2023-08-01,20230817170943,3,1,1,0,0,0,1,0,0,36,ok,https://web.archive.org/web/20230817170943id_/https://sakana.ai
+Sakana AI,2023-08-01,https://sakana.ai,30,2023-08-31,20230821044148,3,1,1,0,0,0,1,0,0,36,ok,https://web.archive.org/web/20230821044148id_/https://sakana.ai
+Sakana AI,2023-08-01,https://sakana.ai,60,2023-09-30,20230930232300,3,1,1,0,0,0,1,0,0,36,ok,https://web.archive.org/web/20230930232300id_/https://sakana.ai
+Sakana AI,2023-08-01,https://sakana.ai,90,2023-10-30,,,,,,,,,,,,no_snapshot,
+Sakana AI,2023-08-01,https://sakana.ai,180,2024-01-28,20240117132702,3,1,1,0,0,0,1,0,0,43,ok,https://web.archive.org/web/20240117132702id_/https://sakana.ai
+Qwen,2023-08-03,https://qwenlm.github.io,0,2023-08-03,20240130032216,6,1,0,1,1,1,1,0,1,525,ok,https://web.archive.org/web/20240130032216id_/https://qwenlm.github.io
+Qwen,2023-08-03,https://qwenlm.github.io,30,2023-09-02,20240130032216,6,1,0,1,1,1,1,0,1,525,ok,https://web.archive.org/web/20240130032216id_/https://qwenlm.github.io
+Qwen,2023-08-03,https://qwenlm.github.io,60,2023-10-02,20240130032216,6,1,0,1,1,1,1,0,1,525,ok,https://web.archive.org/web/20240130032216id_/https://qwenlm.github.io
+Qwen,2023-08-03,https://qwenlm.github.io,90,2023-11-01,20240130032216,6,1,0,1,1,1,1,0,1,525,ok,https://web.archive.org/web/20240130032216id_/https://qwenlm.github.io
+Qwen,2023-08-03,https://qwenlm.github.io,180,2024-01-30,20240130032216,6,1,0,1,1,1,1,0,1,525,ok,https://web.archive.org/web/20240130032216id_/https://qwenlm.github.io
+Ideogram,2023-08-22,https://ideogram.ai,0,2023-08-22,20230823145956,2,1,0,1,0,0,0,0,0,1,ok,https://web.archive.org/web/20230823145956id_/https://ideogram.ai
+Ideogram,2023-08-22,https://ideogram.ai,30,2023-09-21,20230922054119,3,1,0,1,0,0,1,0,0,6,ok,https://web.archive.org/web/20230922054119id_/https://ideogram.ai
+Ideogram,2023-08-22,https://ideogram.ai,60,2023-10-21,,,,,,,,,,,,no_snapshot,
+Ideogram,2023-08-22,https://ideogram.ai,90,2023-11-20,20231118170136,3,1,0,1,0,0,1,0,0,5,ok,https://web.archive.org/web/20231118170136id_/https://ideogram.ai
+Ideogram,2023-08-22,https://ideogram.ai,180,2024-02-18,,,,,,,,,,,,no_snapshot,
+Kimi,2023-10-09,https://kimi.moonshot.cn,0,2023-10-09,20231209014333,2,1,0,1,0,0,0,0,0,10,ok,https://web.archive.org/web/20231209014333id_/https://kimi.moonshot.cn
+Kimi,2023-10-09,https://kimi.moonshot.cn,30,2023-11-08,20231209014333,2,1,0,1,0,0,0,0,0,10,ok,https://web.archive.org/web/20231209014333id_/https://kimi.moonshot.cn
+Kimi,2023-10-09,https://kimi.moonshot.cn,60,2023-12-08,,,,,,,,,,,,no_snapshot,
+Kimi,2023-10-09,https://kimi.moonshot.cn,90,2024-01-07,20240118134234,2,1,0,1,0,0,0,0,0,10,ok,https://web.archive.org/web/20240118134234id_/https://kimi.moonshot.cn
+Kimi,2023-10-09,https://kimi.moonshot.cn,180,2024-04-06,20240407011600,2,1,0,1,0,0,0,0,0,10,ok,https://web.archive.org/web/20240407011600id_/https://kimi.moonshot.cn
+Grok,2023-11-04,https://x.ai/grok,0,2023-11-04,20241208021015,2,0,1,0,0,0,0,1,0,20,ok,https://web.archive.org/web/20241208021015id_/https://x.ai/grok
+Grok,2023-11-04,https://x.ai/grok,30,2023-12-04,20241208021015,2,0,1,0,0,0,0,1,0,20,ok,https://web.archive.org/web/20241208021015id_/https://x.ai/grok
+Grok,2023-11-04,https://x.ai/grok,60,2024-01-03,,,,,,,,,,,,no_snapshot,
+Grok,2023-11-04,https://x.ai/grok,90,2024-02-02,20241208021015,2,0,1,0,0,0,0,1,0,20,ok,https://web.archive.org/web/20241208021015id_/https://x.ai/grok
+Grok,2023-11-04,https://x.ai/grok,180,2024-05-02,20241208021015,2,0,1,0,0,0,0,1,0,20,ok,https://web.archive.org/web/20241208021015id_/https://x.ai/grok
+Humane Ai Pin,2023-11-09,https://hu.ma.ne,0,2023-11-09,,,,,,,,,,,,no_snapshot,
+Humane Ai Pin,2023-11-09,https://hu.ma.ne,30,2023-12-09,,,,,,,,,,,,no_snapshot,
+Humane Ai Pin,2023-11-09,https://hu.ma.ne,60,2024-01-08,20240109083047,3,1,0,0,0,0,1,1,0,147,ok,https://web.archive.org/web/20240109083047id_/https://hu.ma.ne
+Humane Ai Pin,2023-11-09,https://hu.ma.ne,90,2024-02-07,,,,,,,,,,,,no_snapshot,
+Humane Ai Pin,2023-11-09,https://hu.ma.ne,180,2024-05-07,,,,,,,,,,,,no_snapshot,
+Mamba,2023-12-01,https://github.com/state-spaces/mamba,0,2023-12-01,20231204182903,7,1,1,1,0,1,1,1,1,1310,ok,https://web.archive.org/web/20231204182903id_/https://github.com/state-spaces/mamba
+Mamba,2023-12-01,https://github.com/state-spaces/mamba,30,2023-12-31,20240101212951,7,1,1,1,0,1,1,1,1,1823,ok,https://web.archive.org/web/20240101212951id_/https://github.com/state-spaces/mamba
+Mamba,2023-12-01,https://github.com/state-spaces/mamba,60,2024-01-30,20240127221842,7,1,1,1,0,1,1,1,1,372,ok,https://web.archive.org/web/20240127221842id_/https://github.com/state-spaces/mamba
+Mamba,2023-12-01,https://github.com/state-spaces/mamba,90,2024-02-29,20240227151640,7,1,1,1,0,1,1,1,1,1574,ok,https://web.archive.org/web/20240227151640id_/https://github.com/state-spaces/mamba
+Mamba,2023-12-01,https://github.com/state-spaces/mamba,180,2024-05-29,20240601095450,7,1,1,1,0,1,1,1,1,1621,ok,https://web.archive.org/web/20240601095450id_/https://github.com/state-spaces/mamba
+Gemini (Google model),2023-12-06,https://deepmind.google/technologies/gemini/,0,2023-12-06,20231206210020,7,1,1,1,0,1,1,1,1,1238,ok,https://web.archive.org/web/20231206210020id_/https://deepmind.google/technologies/gemini/
+Gemini (Google model),2023-12-06,https://deepmind.google/technologies/gemini/,30,2024-01-05,20240107130646,7,1,1,1,0,1,1,1,1,1272,ok,https://web.archive.org/web/20240107130646id_/https://deepmind.google/technologies/gemini/
+Gemini (Google model),2023-12-06,https://deepmind.google/technologies/gemini/,60,2024-02-04,,,,,,,,,,,,no_snapshot,
+Gemini (Google model),2023-12-06,https://deepmind.google/technologies/gemini/,90,2024-03-05,,,,,,,,,,,,no_snapshot,
+Gemini (Google model),2023-12-06,https://deepmind.google/technologies/gemini/,180,2024-06-03,20240605001614,6,1,1,1,0,0,1,1,1,1862,ok,https://web.archive.org/web/20240605001614id_/https://deepmind.google/technologies/gemini/
+Liquid AI,2023-12-06,https://www.liquid.ai,0,2023-12-06,20231207045345,6,1,1,1,0,0,1,1,1,166,ok,https://web.archive.org/web/20231207045345id_/https://www.liquid.ai
+Liquid AI,2023-12-06,https://www.liquid.ai,30,2024-01-05,,,,,,,,,,,,no_snapshot,
+Liquid AI,2023-12-06,https://www.liquid.ai,60,2024-02-04,20240303160246,6,1,1,1,0,0,1,1,1,168,ok,https://web.archive.org/web/20240303160246id_/https://www.liquid.ai
+Liquid AI,2023-12-06,https://www.liquid.ai,90,2024-03-05,20240303160246,6,1,1,1,0,0,1,1,1,168,ok,https://web.archive.org/web/20240303160246id_/https://www.liquid.ai
+Liquid AI,2023-12-06,https://www.liquid.ai,180,2024-06-03,20240614160114,6,1,1,1,0,0,1,1,1,247,ok,https://web.archive.org/web/20240614160114id_/https://www.liquid.ai
+Mixtral 8x7B,2023-12-08,https://mistral.ai/news/mixtral-of-experts/,0,2023-12-08,20231211075956,6,1,1,1,0,0,1,1,1,821,ok,https://web.archive.org/web/20231211075956id_/https://mistral.ai/news/mixtral-of-experts/
+Mixtral 8x7B,2023-12-08,https://mistral.ai/news/mixtral-of-experts/,30,2024-01-07,20240108002930,6,1,1,1,0,0,1,1,1,812,ok,https://web.archive.org/web/20240108002930id_/https://mistral.ai/news/mixtral-of-experts/
+Mixtral 8x7B,2023-12-08,https://mistral.ai/news/mixtral-of-experts/,60,2024-02-06,,,,,,,,,,,,no_snapshot,
+Mixtral 8x7B,2023-12-08,https://mistral.ai/news/mixtral-of-experts/,90,2024-03-07,20240307172230,6,1,1,1,0,0,1,1,1,727,ok,https://web.archive.org/web/20240307172230id_/https://mistral.ai/news/mixtral-of-experts/
+Mixtral 8x7B,2023-12-08,https://mistral.ai/news/mixtral-of-experts/,180,2024-06-05,,,,,,,,,,,,no_snapshot,
+Suno,2023-12-20,https://suno.com,0,2023-12-20,20231208031842,1,1,0,0,0,0,0,0,0,3,ok,https://web.archive.org/web/20231208031842id_/https://suno.com
+Suno,2023-12-20,https://suno.com,30,2024-01-19,20231208031842,1,1,0,0,0,0,0,0,0,3,ok,https://web.archive.org/web/20231208031842id_/https://suno.com
+Suno,2023-12-20,https://suno.com,60,2024-02-18,20240409224219,3,1,0,1,0,0,0,1,0,47,ok,https://web.archive.org/web/20240409224219id_/https://suno.com
+Suno,2023-12-20,https://suno.com,90,2024-03-19,20240409224219,3,1,0,1,0,0,0,1,0,47,ok,https://web.archive.org/web/20240409224219id_/https://suno.com
+Suno,2023-12-20,https://suno.com,180,2024-06-17,,,,,,,,,,,,no_snapshot,
+Rabbit R1,2024-01-09,https://www.rabbit.tech,0,2024-01-09,,,,,,,,,,,,no_snapshot,
+Rabbit R1,2024-01-09,https://www.rabbit.tech,30,2024-02-08,,,,,,,,,,,,no_snapshot,
+Rabbit R1,2024-01-09,https://www.rabbit.tech,60,2024-03-09,20240309145117,6,1,1,1,0,0,1,1,1,695,ok,https://web.archive.org/web/20240309145117id_/https://www.rabbit.tech
+Rabbit R1,2024-01-09,https://www.rabbit.tech,90,2024-04-08,20240409054955,8,1,1,1,1,1,1,1,1,708,ok,https://web.archive.org/web/20240409054955id_/https://www.rabbit.tech
+Rabbit R1,2024-01-09,https://www.rabbit.tech,180,2024-07-07,20240708184418,6,1,0,1,1,1,1,1,0,39,ok,https://web.archive.org/web/20240708184418id_/https://www.rabbit.tech
+AlphaGeometry,2024-01-17,https://github.com/google-deepmind/alphageometry,0,2024-01-17,,,,,,,,,,,,no_snapshot,
+AlphaGeometry,2024-01-17,https://github.com/google-deepmind/alphageometry,30,2024-02-16,20240219082646,7,1,1,1,0,1,1,1,1,2840,ok,https://web.archive.org/web/20240219082646id_/https://github.com/google-deepmind/alphageometry
+AlphaGeometry,2024-01-17,https://github.com/google-deepmind/alphageometry,60,2024-03-17,20240324123320,7,1,1,1,0,1,1,1,1,2840,ok,https://web.archive.org/web/20240324123320id_/https://github.com/google-deepmind/alphageometry
+AlphaGeometry,2024-01-17,https://github.com/google-deepmind/alphageometry,90,2024-04-16,20240324123320,7,1,1,1,0,1,1,1,1,2840,ok,https://web.archive.org/web/20240324123320id_/https://github.com/google-deepmind/alphageometry
+AlphaGeometry,2024-01-17,https://github.com/google-deepmind/alphageometry,180,2024-07-15,20240627130104,7,1,1,1,0,1,1,1,1,2898,ok,https://web.archive.org/web/20240627130104id_/https://github.com/google-deepmind/alphageometry
+Gemini 1.5 Pro,2024-02-15,https://deepmind.google/technologies/gemini/pro/,0,2024-02-15,20240515002458,6,1,1,1,0,0,1,1,1,1315,ok,https://web.archive.org/web/20240515002458id_/https://deepmind.google/technologies/gemini/pro/
+Gemini 1.5 Pro,2024-02-15,https://deepmind.google/technologies/gemini/pro/,30,2024-03-16,20240515002458,6,1,1,1,0,0,1,1,1,1315,ok,https://web.archive.org/web/20240515002458id_/https://deepmind.google/technologies/gemini/pro/
+Gemini 1.5 Pro,2024-02-15,https://deepmind.google/technologies/gemini/pro/,60,2024-04-15,20240515002458,6,1,1,1,0,0,1,1,1,1315,ok,https://web.archive.org/web/20240515002458id_/https://deepmind.google/technologies/gemini/pro/
+Gemini 1.5 Pro,2024-02-15,https://deepmind.google/technologies/gemini/pro/,90,2024-05-15,20240515230627,6,1,1,1,0,0,1,1,1,1315,ok,https://web.archive.org/web/20240515230627id_/https://deepmind.google/technologies/gemini/pro/
+Gemini 1.5 Pro,2024-02-15,https://deepmind.google/technologies/gemini/pro/,180,2024-08-13,,,,,,,,,,,,no_snapshot,
+Sora,2024-02-15,https://openai.com/sora,0,2024-02-15,,,,,,,,,,,,no_snapshot,
+Sora,2024-02-15,https://openai.com/sora,30,2024-03-16,20240316210026,5,1,1,0,0,0,1,1,1,5703,ok,https://web.archive.org/web/20240316210026id_/https://openai.com/sora
+Sora,2024-02-15,https://openai.com/sora,60,2024-04-15,20240415203125,5,1,1,0,0,0,1,1,1,5703,ok,https://web.archive.org/web/20240415203125id_/https://openai.com/sora
+Sora,2024-02-15,https://openai.com/sora,90,2024-05-15,20240501204537,5,1,1,0,0,0,1,1,1,5703,ok,https://web.archive.org/web/20240501204537id_/https://openai.com/sora
+Sora,2024-02-15,https://openai.com/sora,180,2024-08-13,20241119004807,2,1,0,0,0,0,0,1,0,129,ok,https://web.archive.org/web/20241119004807id_/https://openai.com/sora
+Stable Diffusion 3,2024-02-22,https://stability.ai/news/stable-diffusion-3,0,2024-02-22,20240222233640,8,1,1,1,1,1,1,1,1,525,ok,https://web.archive.org/web/20240222233640id_/https://stability.ai/news/stable-diffusion-3
+Stable Diffusion 3,2024-02-22,https://stability.ai/news/stable-diffusion-3,30,2024-03-23,20240323211824,8,1,1,1,1,1,1,1,1,541,ok,https://web.archive.org/web/20240323211824id_/https://stability.ai/news/stable-diffusion-3
+Stable Diffusion 3,2024-02-22,https://stability.ai/news/stable-diffusion-3,60,2024-04-22,20240414132241,8,1,1,1,1,1,1,1,1,541,ok,https://web.archive.org/web/20240414132241id_/https://stability.ai/news/stable-diffusion-3
+Stable Diffusion 3,2024-02-22,https://stability.ai/news/stable-diffusion-3,90,2024-05-22,20240524023528,8,1,1,1,1,1,1,1,1,565,ok,https://web.archive.org/web/20240524023528id_/https://stability.ai/news/stable-diffusion-3
+Stable Diffusion 3,2024-02-22,https://stability.ai/news/stable-diffusion-3,180,2024-08-20,20240819165606,8,1,1,1,1,1,1,1,1,562,ok,https://web.archive.org/web/20240819165606id_/https://stability.ai/news/stable-diffusion-3
+Claude 3,2024-03-04,https://www.anthropic.com/news/claude-3-family,0,2024-03-04,,,,,,,,,,,,no_snapshot,
+Claude 3,2024-03-04,https://www.anthropic.com/news/claude-3-family,30,2024-04-03,20240403231621,6,1,1,1,0,0,1,1,1,1751,ok,https://web.archive.org/web/20240403231621id_/https://www.anthropic.com/news/claude-3-family
+Claude 3,2024-03-04,https://www.anthropic.com/news/claude-3-family,60,2024-05-03,,,,,,,,,,,,no_snapshot,
+Claude 3,2024-03-04,https://www.anthropic.com/news/claude-3-family,90,2024-06-02,20240602191728,6,1,1,1,0,0,1,1,1,1749,ok,https://web.archive.org/web/20240602191728id_/https://www.anthropic.com/news/claude-3-family
+Claude 3,2024-03-04,https://www.anthropic.com/news/claude-3-family,180,2024-08-31,20240903211713,6,1,1,1,0,0,1,1,1,1754,ok,https://web.archive.org/web/20240903211713id_/https://www.anthropic.com/news/claude-3-family
+Devin AI,2024-03-12,https://www.cognition-labs.com,0,2024-03-12,20240312211023,2,1,0,0,0,0,0,1,0,77,ok,https://web.archive.org/web/20240312211023id_/https://www.cognition-labs.com
+Devin AI,2024-03-12,https://www.cognition-labs.com,30,2024-04-11,,,,,,,,,,,,no_snapshot,
+Devin AI,2024-03-12,https://www.cognition-labs.com,60,2024-05-11,20240506054203,2,1,0,0,0,0,0,1,0,92,ok,https://web.archive.org/web/20240506054203id_/https://www.cognition-labs.com
+Devin AI,2024-03-12,https://www.cognition-labs.com,90,2024-06-10,,,,,,,,,,,,no_snapshot,
+Devin AI,2024-03-12,https://www.cognition-labs.com,180,2024-09-08,20240506054203,2,1,0,0,0,0,0,1,0,92,ok,https://web.archive.org/web/20240506054203id_/https://www.cognition-labs.com
+DBRX,2024-03-27,https://www.databricks.com/blog/introducing-dbrx-new-state-art-open-llm,0,2024-03-27,20240328000458,5,1,1,0,0,0,1,1,1,4905,ok,https://web.archive.org/web/20240328000458id_/https://www.databricks.com/blog/introducing-dbrx-new-state-art-open-llm
+DBRX,2024-03-27,https://www.databricks.com/blog/introducing-dbrx-new-state-art-open-llm,30,2024-04-26,,,,,,,,,,,,no_snapshot,
+DBRX,2024-03-27,https://www.databricks.com/blog/introducing-dbrx-new-state-art-open-llm,60,2024-05-26,20240527220818,5,1,1,0,0,0,1,1,1,4911,ok,https://web.archive.org/web/20240527220818id_/https://www.databricks.com/blog/introducing-dbrx-new-state-art-open-llm
+DBRX,2024-03-27,https://www.databricks.com/blog/introducing-dbrx-new-state-art-open-llm,90,2024-06-25,20240627051508,5,1,1,0,0,0,1,1,1,4911,ok,https://web.archive.org/web/20240627051508id_/https://www.databricks.com/blog/introducing-dbrx-new-state-art-open-llm
+DBRX,2024-03-27,https://www.databricks.com/blog/introducing-dbrx-new-state-art-open-llm,180,2024-09-23,20240922232045,5,1,1,0,0,0,1,1,1,4914,ok,https://web.archive.org/web/20240922232045id_/https://www.databricks.com/blog/introducing-dbrx-new-state-art-open-llm
+Command R+,2024-04-04,https://cohere.com/blog/command-r-plus,0,2024-04-04,,,,,,,,,,,,no_snapshot,
+Command R+,2024-04-04,https://cohere.com/blog/command-r-plus,30,2024-05-04,,,,,,,,,,,,no_snapshot,
+Command R+,2024-04-04,https://cohere.com/blog/command-r-plus,60,2024-06-03,,,,,,,,,,,,no_snapshot,
+Command R+,2024-04-04,https://cohere.com/blog/command-r-plus,90,2024-07-03,,,,,,,,,,,,no_snapshot,
+Command R+,2024-04-04,https://cohere.com/blog/command-r-plus,180,2024-10-01,,,,,,,,,,,,no_snapshot,
+Udio,2024-04-10,https://www.udio.com,0,2024-04-10,20240410220948,3,1,0,1,0,0,1,0,0,4,ok,https://web.archive.org/web/20240410220948id_/https://www.udio.com
+Udio,2024-04-10,https://www.udio.com,30,2024-05-10,20240510222740,3,1,0,1,0,0,1,0,0,6,ok,https://web.archive.org/web/20240510222740id_/https://www.udio.com
+Udio,2024-04-10,https://www.udio.com,60,2024-06-09,,,,,,,,,,,,no_snapshot,
+Udio,2024-04-10,https://www.udio.com,90,2024-07-09,20240710013806,3,1,0,1,0,0,1,0,0,6,ok,https://web.archive.org/web/20240710013806id_/https://www.udio.com
+Udio,2024-04-10,https://www.udio.com,180,2024-10-07,20241008092304,3,1,0,1,0,0,1,0,0,6,ok,https://web.archive.org/web/20241008092304id_/https://www.udio.com
+Llama 3,2024-04-18,https://ai.meta.com/blog/meta-llama-3/,0,2024-04-18,20240419000829,5,1,0,1,0,0,1,1,1,3028,ok,https://web.archive.org/web/20240419000829id_/https://ai.meta.com/blog/meta-llama-3/
+Llama 3,2024-04-18,https://ai.meta.com/blog/meta-llama-3/,30,2024-05-18,20240518150246,5,1,0,1,0,0,1,1,1,3028,ok,https://web.archive.org/web/20240518150246id_/https://ai.meta.com/blog/meta-llama-3/
+Llama 3,2024-04-18,https://ai.meta.com/blog/meta-llama-3/,60,2024-06-17,20240618003709,5,1,0,1,0,0,1,1,1,3028,ok,https://web.archive.org/web/20240618003709id_/https://ai.meta.com/blog/meta-llama-3/
+Llama 3,2024-04-18,https://ai.meta.com/blog/meta-llama-3/,90,2024-07-17,20240717131109,5,1,0,1,0,0,1,1,1,3028,ok,https://web.archive.org/web/20240717131109id_/https://ai.meta.com/blog/meta-llama-3/
+Llama 3,2024-04-18,https://ai.meta.com/blog/meta-llama-3/,180,2024-10-15,20241009144508,5,1,0,1,0,0,1,1,1,3029,ok,https://web.archive.org/web/20241009144508id_/https://ai.meta.com/blog/meta-llama-3/
+Phi-3,2024-04-23,https://azure.microsoft.com/en-us/blog/introducing-phi-3-redefining-whats-possible-with-slms/,0,2024-04-23,20240423204115,8,1,1,1,1,1,1,1,1,6221,ok,https://web.archive.org/web/20240423204115id_/https://azure.microsoft.com/en-us/blog/introducing-phi-3-redefining-whats-possible-with-slms/
+Phi-3,2024-04-23,https://azure.microsoft.com/en-us/blog/introducing-phi-3-redefining-whats-possible-with-slms/,30,2024-05-23,20240524145444,8,1,1,1,1,1,1,1,1,6303,ok,https://web.archive.org/web/20240524145444id_/https://azure.microsoft.com/en-us/blog/introducing-phi-3-redefining-whats-possible-with-slms/
+Phi-3,2024-04-23,https://azure.microsoft.com/en-us/blog/introducing-phi-3-redefining-whats-possible-with-slms/,60,2024-06-22,20240621000615,8,1,1,1,1,1,1,1,1,2288,ok,https://web.archive.org/web/20240621000615id_/https://azure.microsoft.com/en-us/blog/introducing-phi-3-redefining-whats-possible-with-slms/
+Phi-3,2024-04-23,https://azure.microsoft.com/en-us/blog/introducing-phi-3-redefining-whats-possible-with-slms/,90,2024-07-22,20240723110700,8,1,1,1,1,1,1,1,1,2221,ok,https://web.archive.org/web/20240723110700id_/https://azure.microsoft.com/en-us/blog/introducing-phi-3-redefining-whats-possible-with-slms/
+Phi-3,2024-04-23,https://azure.microsoft.com/en-us/blog/introducing-phi-3-redefining-whats-possible-with-slms/,180,2024-10-20,,,,,,,,,,,,no_snapshot,
+AlphaFold 3,2024-05-08,https://deepmind.google/technologies/alphafold/,0,2024-05-08,20240508232632,6,1,1,1,0,0,1,1,1,1639,ok,https://web.archive.org/web/20240508232632id_/https://deepmind.google/technologies/alphafold/
+AlphaFold 3,2024-05-08,https://deepmind.google/technologies/alphafold/,30,2024-06-07,20240609081624,6,1,1,1,0,0,1,1,1,1737,ok,https://web.archive.org/web/20240609081624id_/https://deepmind.google/technologies/alphafold/
+AlphaFold 3,2024-05-08,https://deepmind.google/technologies/alphafold/,60,2024-07-07,20240708000805,6,1,1,1,0,0,1,1,1,2001,ok,https://web.archive.org/web/20240708000805id_/https://deepmind.google/technologies/alphafold/
+AlphaFold 3,2024-05-08,https://deepmind.google/technologies/alphafold/,90,2024-08-06,20240806231756,6,1,1,1,0,0,1,1,1,2034,ok,https://web.archive.org/web/20240806231756id_/https://deepmind.google/technologies/alphafold/
+AlphaFold 3,2024-05-08,https://deepmind.google/technologies/alphafold/,180,2024-11-04,,,,,,,,,,,,no_snapshot,
+GPT-4o,2024-05-13,https://openai.com/index/hello-gpt-4o/,0,2024-05-13,20240513235319,6,1,1,1,0,0,1,1,1,2206,ok,https://web.archive.org/web/20240513235319id_/https://openai.com/index/hello-gpt-4o/
+GPT-4o,2024-05-13,https://openai.com/index/hello-gpt-4o/,30,2024-06-12,20240613001705,6,1,1,1,0,0,1,1,1,2091,ok,https://web.archive.org/web/20240613001705id_/https://openai.com/index/hello-gpt-4o/
+GPT-4o,2024-05-13,https://openai.com/index/hello-gpt-4o/,60,2024-07-12,,,,,,,,,,,,no_snapshot,
+GPT-4o,2024-05-13,https://openai.com/index/hello-gpt-4o/,90,2024-08-11,,,,,,,,,,,,no_snapshot,
+GPT-4o,2024-05-13,https://openai.com/index/hello-gpt-4o/,180,2024-11-09,,,,,,,,,,,,no_snapshot,
+Apple Intelligence,2024-06-10,https://www.apple.com/apple-intelligence/,0,2024-06-10,,,,,,,,,,,,no_snapshot,
+Apple Intelligence,2024-06-10,https://www.apple.com/apple-intelligence/,30,2024-07-10,,,,,,,,,,,,no_snapshot,
+Apple Intelligence,2024-06-10,https://www.apple.com/apple-intelligence/,60,2024-08-09,20240810012506,7,1,1,1,1,1,1,0,1,1860,ok,https://web.archive.org/web/20240810012506id_/https://www.apple.com/apple-intelligence/
+Apple Intelligence,2024-06-10,https://www.apple.com/apple-intelligence/,90,2024-09-08,20240909063804,7,1,1,1,1,1,1,0,1,1900,ok,https://web.archive.org/web/20240909063804id_/https://www.apple.com/apple-intelligence/
+Apple Intelligence,2024-06-10,https://www.apple.com/apple-intelligence/,180,2024-12-07,,,,,,,,,,,,no_snapshot,
+Dream Machine,2024-06-12,https://lumalabs.ai/dream-machine,0,2024-06-12,20240612211627,6,1,1,1,0,0,1,1,1,334,ok,https://web.archive.org/web/20240612211627id_/https://lumalabs.ai/dream-machine
+Dream Machine,2024-06-12,https://lumalabs.ai/dream-machine,30,2024-07-12,20240713013916,6,1,1,1,0,0,1,1,1,332,ok,https://web.archive.org/web/20240713013916id_/https://lumalabs.ai/dream-machine
+Dream Machine,2024-06-12,https://lumalabs.ai/dream-machine,60,2024-08-11,,,,,,,,,,,,no_snapshot,
+Dream Machine,2024-06-12,https://lumalabs.ai/dream-machine,90,2024-09-10,20240908011245,6,1,1,1,0,0,1,1,1,338,ok,https://web.archive.org/web/20240908011245id_/https://lumalabs.ai/dream-machine
+Dream Machine,2024-06-12,https://lumalabs.ai/dream-machine,180,2024-12-09,,,,,,,,,,,,no_snapshot,
+Safe Superintelligence,2024-06-19,https://ssi.inc,0,2024-06-19,20240619235503,4,1,0,1,0,0,1,0,1,240,ok,https://web.archive.org/web/20240619235503id_/https://ssi.inc
+Safe Superintelligence,2024-06-19,https://ssi.inc,30,2024-07-19,20240719210552,4,1,0,1,0,0,1,0,1,240,ok,https://web.archive.org/web/20240719210552id_/https://ssi.inc
+Safe Superintelligence,2024-06-19,https://ssi.inc,60,2024-08-18,20240819165256,4,1,0,1,0,0,1,0,1,240,ok,https://web.archive.org/web/20240819165256id_/https://ssi.inc
+Safe Superintelligence,2024-06-19,https://ssi.inc,90,2024-09-17,20240918013627,4,1,0,1,0,0,1,0,1,257,ok,https://web.archive.org/web/20240918013627id_/https://ssi.inc
+Safe Superintelligence,2024-06-19,https://ssi.inc,180,2024-12-16,,,,,,,,,,,,no_snapshot,
+Black Forest Labs,2024-08-01,https://blackforestlabs.ai,0,2024-08-01,,,,,,,,,,,,no_snapshot,
+Black Forest Labs,2024-08-01,https://blackforestlabs.ai,30,2024-08-31,20240901214726,8,1,1,1,1,1,1,1,1,301,ok,https://web.archive.org/web/20240901214726id_/https://blackforestlabs.ai
+Black Forest Labs,2024-08-01,https://blackforestlabs.ai,60,2024-09-30,20241001023528,8,1,1,1,1,1,1,1,1,305,ok,https://web.archive.org/web/20241001023528id_/https://blackforestlabs.ai
+Black Forest Labs,2024-08-01,https://blackforestlabs.ai,90,2024-10-30,20241027134915,8,1,1,1,1,1,1,1,1,380,ok,https://web.archive.org/web/20241027134915id_/https://blackforestlabs.ai
+Black Forest Labs,2024-08-01,https://blackforestlabs.ai,180,2025-01-28,20250128113842,8,1,1,1,1,1,1,1,1,409,ok,https://web.archive.org/web/20250128113842id_/https://blackforestlabs.ai
+OpenAI o1,2024-09-12,https://openai.com/o1/,0,2024-09-12,,,,,,,,,,,,no_snapshot,
+OpenAI o1,2024-09-12,https://openai.com/o1/,30,2024-10-12,20241014230230,6,1,1,1,0,0,1,1,1,185,ok,https://web.archive.org/web/20241014230230id_/https://openai.com/o1/
+OpenAI o1,2024-09-12,https://openai.com/o1/,60,2024-11-11,,,,,,,,,,,,no_snapshot,
+OpenAI o1,2024-09-12,https://openai.com/o1/,90,2024-12-11,20241212001722,6,1,1,1,0,0,1,1,1,185,ok,https://web.archive.org/web/20241212001722id_/https://openai.com/o1/
+OpenAI o1,2024-09-12,https://openai.com/o1/,180,2025-03-11,20250308005500,6,1,1,1,0,0,1,1,1,362,ok,https://web.archive.org/web/20250308005500id_/https://openai.com/o1/
+World Labs,2024-09-13,https://www.worldlabs.ai,0,2024-09-13,20240913214003,3,1,0,1,0,0,1,0,0,2,ok,https://web.archive.org/web/20240913214003id_/https://www.worldlabs.ai
+World Labs,2024-09-13,https://www.worldlabs.ai,30,2024-10-13,,,,,,,,,,,,no_snapshot,
+World Labs,2024-09-13,https://www.worldlabs.ai,60,2024-11-12,,,,,,,,,,,,no_snapshot,
+World Labs,2024-09-13,https://www.worldlabs.ai,90,2024-12-12,20241215213103,3,1,0,1,0,0,1,0,0,2,ok,https://web.archive.org/web/20241215213103id_/https://www.worldlabs.ai
+World Labs,2024-09-13,https://www.worldlabs.ai,180,2025-03-12,20250310190459,3,1,0,1,0,0,1,0,0,2,ok,https://web.archive.org/web/20250310190459id_/https://www.worldlabs.ai
+Bolt.new,2024-10-04,https://bolt.new,0,2024-10-04,20241004213200,5,1,1,1,0,0,1,1,0,35,ok,https://web.archive.org/web/20241004213200id_/https://bolt.new
+Bolt.new,2024-10-04,https://bolt.new,30,2024-11-03,20241104170324,5,1,1,1,0,0,1,1,0,28,ok,https://web.archive.org/web/20241104170324id_/https://bolt.new
+Bolt.new,2024-10-04,https://bolt.new,60,2024-12-03,20241203201205,5,1,1,1,0,0,1,1,0,21,ok,https://web.archive.org/web/20241203201205id_/https://bolt.new
+Bolt.new,2024-10-04,https://bolt.new,90,2025-01-02,20250103041704,5,1,1,1,0,0,1,1,0,21,ok,https://web.archive.org/web/20250103041704id_/https://bolt.new
+Bolt.new,2024-10-04,https://bolt.new,180,2025-04-02,20250402233041,2,0,1,0,0,0,1,0,0,25,ok,https://web.archive.org/web/20250402233041id_/https://bolt.new
+Windsurf,2024-11-13,https://codeium.com/windsurf,0,2024-11-13,20241113150238,6,1,1,1,0,0,1,1,1,731,ok,https://web.archive.org/web/20241113150238id_/https://codeium.com/windsurf
+Windsurf,2024-11-13,https://codeium.com/windsurf,30,2024-12-13,20241212190729,6,1,1,1,0,0,1,1,1,730,ok,https://web.archive.org/web/20241212190729id_/https://codeium.com/windsurf
+Windsurf,2024-11-13,https://codeium.com/windsurf,60,2025-01-12,20250113213051,6,1,1,1,0,0,1,1,1,730,ok,https://web.archive.org/web/20250113213051id_/https://codeium.com/windsurf
+Windsurf,2024-11-13,https://codeium.com/windsurf,90,2025-02-11,,,,,,,,,,,,no_snapshot,
+Windsurf,2024-11-13,https://codeium.com/windsurf,180,2025-05-12,20250402161759,6,1,1,1,0,0,1,1,1,871,ok,https://web.archive.org/web/20250402161759id_/https://codeium.com/windsurf
+Lovable,2024-11-21,https://lovable.dev,0,2024-11-21,20241121135208,6,1,1,1,0,0,1,1,1,1033,ok,https://web.archive.org/web/20241121135208id_/https://lovable.dev
+Lovable,2024-11-21,https://lovable.dev,30,2024-12-21,20241222133954,6,1,1,1,0,0,1,1,1,1022,ok,https://web.archive.org/web/20241222133954id_/https://lovable.dev
+Lovable,2024-11-21,https://lovable.dev,60,2025-01-20,,,,,,,,,,,,no_snapshot,
+Lovable,2024-11-21,https://lovable.dev,90,2025-02-19,20250219225703,6,1,1,1,0,0,1,1,1,1076,ok,https://web.archive.org/web/20250219225703id_/https://lovable.dev
+Lovable,2024-11-21,https://lovable.dev,180,2025-05-20,20250521013746,5,1,1,1,0,0,1,1,0,77,ok,https://web.archive.org/web/20250521013746id_/https://lovable.dev
+OpenAI o3,2024-12-20,https://openai.com/o3/,0,2024-12-20,,,,,,,,,,,,no_snapshot,
+OpenAI o3,2024-12-20,https://openai.com/o3/,30,2025-01-19,,,,,,,,,,,,no_snapshot,
+OpenAI o3,2024-12-20,https://openai.com/o3/,60,2025-02-18,,,,,,,,,,,,no_snapshot,
+OpenAI o3,2024-12-20,https://openai.com/o3/,90,2025-03-20,,,,,,,,,,,,no_snapshot,
+OpenAI o3,2024-12-20,https://openai.com/o3/,180,2025-06-18,,,,,,,,,,,,no_snapshot,
+DeepSeek-R1,2025-01-20,https://api-docs.deepseek.com/news/news250120,0,2025-01-20,,,,,,,,,,,,no_snapshot,
+DeepSeek-R1,2025-01-20,https://api-docs.deepseek.com/news/news250120,30,2025-02-19,20250218143359,7,1,1,1,0,1,1,1,1,366,ok,https://web.archive.org/web/20250218143359id_/https://api-docs.deepseek.com/news/news250120
+DeepSeek-R1,2025-01-20,https://api-docs.deepseek.com/news/news250120,60,2025-03-21,,,,,,,,,,,,no_snapshot,
+DeepSeek-R1,2025-01-20,https://api-docs.deepseek.com/news/news250120,90,2025-04-20,20250424174953,7,1,1,1,0,1,1,1,1,375,ok,https://web.archive.org/web/20250424174953id_/https://api-docs.deepseek.com/news/news250120
+DeepSeek-R1,2025-01-20,https://api-docs.deepseek.com/news/news250120,180,2025-07-19,20250801232006,7,1,1,1,0,1,1,1,1,382,ok,https://web.archive.org/web/20250801232006id_/https://api-docs.deepseek.com/news/news250120
+Operator,2025-01-23,https://openai.com/index/introducing-operator/,0,2025-01-23,20250123210058,6,1,1,1,0,0,1,1,1,1952,ok,https://web.archive.org/web/20250123210058id_/https://openai.com/index/introducing-operator/
+Operator,2025-01-23,https://openai.com/index/introducing-operator/,30,2025-02-22,20250222091915,6,1,1,1,0,0,1,1,1,2138,ok,https://web.archive.org/web/20250222091915id_/https://openai.com/index/introducing-operator/
+Operator,2025-01-23,https://openai.com/index/introducing-operator/,60,2025-03-24,20250326175647,6,1,1,1,0,0,1,1,1,2143,ok,https://web.archive.org/web/20250326175647id_/https://openai.com/index/introducing-operator/
+Operator,2025-01-23,https://openai.com/index/introducing-operator/,90,2025-04-23,20250422211130,6,1,1,1,0,0,1,1,1,2140,ok,https://web.archive.org/web/20250422211130id_/https://openai.com/index/introducing-operator/
+Operator,2025-01-23,https://openai.com/index/introducing-operator/,180,2025-07-22,,,,,,,,,,,,no_snapshot,
+Manus,2025-03-06,https://manus.im,0,2025-03-06,,,,,,,,,,,,no_snapshot,
+Manus,2025-03-06,https://manus.im,30,2025-04-05,20250406165907,5,1,0,1,0,0,1,1,1,946,ok,https://web.archive.org/web/20250406165907id_/https://manus.im
+Manus,2025-03-06,https://manus.im,60,2025-05-05,20250505131417,5,1,0,1,0,0,1,1,1,7328,ok,https://web.archive.org/web/20250505131417id_/https://manus.im
+Manus,2025-03-06,https://manus.im,90,2025-06-04,,,,,,,,,,,,no_snapshot,
+Manus,2025-03-06,https://manus.im,180,2025-09-02,,,,,,,,,,,,no_snapshot,

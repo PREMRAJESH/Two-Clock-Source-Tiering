@@ -1,0 +1,23 @@
+entity,relevant_y,relevant_n,excluded,precision_pct,verdict
+Apple Intelligence,24,0,1,100.0,PASS
+Apple Vision Pro,25,0,0,100.0,PASS
+Cursor,25,0,0,100.0,PASS
+DBRX,9,4,0,69.2,FAIL
+Dream Machine,1,32,0,3.0,FAIL
+Gemini (Google model),2,23,0,8.0,FAIL
+Grok,33,5,0,86.8,PASS
+Ideogram,2,7,0,22.2,FAIL
+Kimi,5,15,5,25.0,FAIL
+Liquid AI,0,33,0,0.0,FAIL
+Lovable,3,22,0,12.0,FAIL
+Mamba,0,26,0,0.0,FAIL
+Manus,25,0,0,100.0,PASS
+Operator,0,50,0,0.0,FAIL
+Qwen,25,0,0,100.0,PASS
+Sora,22,3,0,88.0,PASS
+Suno,25,0,0,100.0,PASS
+Threads,25,0,0,100.0,PASS
+Udio,25,0,0,100.0,PASS
+Windsurf,19,6,0,76.0,PASS
+vLLM,0,14,0,0.0,FAIL
+xAI,20,5,0,80.0,PASS
