@@ -59,7 +59,7 @@ from collections import defaultdict
 # Import from sibling scripts (same directory)
 sys.path.insert(0, os.path.dirname(__file__))
 from precedence_test_weighted import (
-    load_flagged_entities, load_perception, load_citation_series,
+    load_paper_excluded_entities, load_perception, load_citation_series,
     find_ramp_date, find_onset_date, compute_lead, compute_sign,
     sign_test_two_sided,
 )
@@ -328,7 +328,7 @@ def main():
     print("=" * 80)
 
     # Load shared data
-    flagged = load_flagged_entities()
+    flagged = load_paper_excluded_entities()
     perception = load_perception()
     citation_series = load_citation_series()
 
@@ -526,7 +526,7 @@ def main():
     print("=" * 80)
 
     # Load shared data
-    flagged = load_flagged_entities()
+    flagged = load_paper_excluded_entities()
     perception = load_perception()
     citation_series = load_citation_series()
 

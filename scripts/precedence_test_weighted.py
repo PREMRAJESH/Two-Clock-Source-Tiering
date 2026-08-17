@@ -24,12 +24,12 @@ DEFINITIONS (from Section 4.6 of the paper — supplied directly by lead author)
 
 ENTITY SELECTION
 ----------------
-  - EXCLUDE entities flagged `self_ref_openai` in entities.py (OpenAI entities
-    probed on an OpenAI ladder — self-recognition confound).
-  - EXCLUDE entities that never reach onset (max P(t) < onset_score) — no onset
-    date to compare against.
+  - EXCLUDE the paper's exact 17 entities:
+      * 10 precision-audit FAIL entities from Section 4.5 / Table 1.
+      * 7 no-onset entities from Section 5.4.
+  - The self_ref_openai flag in entities.py is NOT part of the raw baseline.
   - The paper's baseline uses onset_score=3 and gets 33 testable entities
-    (50 − 6 flagged − 7 no-onset − 4 right-censored or otherwise excluded).
+    (50 - 10 FAIL - 7 no-onset).
     This script will explicitly list its inclusions/exclusions so any discrepancy
     with the paper's 33 is visible and traceable.
 
@@ -37,7 +37,7 @@ INPUTS
 ------
     data_derived/ct_results_weighted.csv   (apply_weights.py output)
     inputs_frozen/pt_pilot_results.csv     (perception scores)
-    inputs_frozen/entities.py              (for self_ref_openai flags)
+    inputs_frozen/entities.py              (not used for baseline exclusions)
 
 OUTPUT
 ------
@@ -63,6 +63,7 @@ DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data_derived")
 FROZEN_DIR = os.path.join(os.path.dirname(__file__), "..", "inputs_frozen")
 
 WEIGHTED_CSV = os.path.join(DATA_DIR, "ct_results_weighted.csv")
+CT_CSV = os.path.join(FROZEN_DIR, "ct_results_v1_frozen.csv")
 PT_CSV = os.path.join(FROZEN_DIR, "pt_pilot_results.csv")
 ENTITIES_PY = os.path.join(FROZEN_DIR, "entities.py")
 OUT_CSV = os.path.join(DATA_DIR, "precedence_comparison.csv")
@@ -70,6 +71,33 @@ OUT_CSV = os.path.join(DATA_DIR, "precedence_comparison.csv")
 # Default thresholds (Section 4.6 baseline)
 RAMP_THRESHOLD = 0.10     # 10% of peak
 RAMP_FLOOR = 3            # minimum absolute mentions to count as ramp
+
+# Section 4.5 Table 1: 10 precision-audit FAIL entities, exact paper names.
+PRECISION_FAIL = {
+    "DBRX",
+    "Kimi",
+    "Ideogram",
+    "Lovable",
+    "Gemini (Google model)",
+    "Dream Machine",
+    "Liquid AI",
+    "Mamba",
+    "Operator",
+    "vLLM",
+}
+
+# Section 5.4: 7 no-onset entities, exact paper names.
+NO_ONSET = {
+    "OpenAI o1",
+    "OpenAI o3",
+    "DeepSeek",
+    "DeepSeek-R1",
+    "Manus",
+    "World Labs",
+    "Bolt.new",
+}
+
+PAPER_EXCLUDED = PRECISION_FAIL | NO_ONSET
 ONSET_SCORE = 3           # P(t) >= 3 on the 0–4 scale
 
 
@@ -113,14 +141,62 @@ def sign_test_two_sided(n_positive, n_total):
 # Loaders
 # ---------------------------------------------------------------------------
 
+def _base_name(entity_name):
+    """Strip parenthetical disambiguators: 'Cursor (the AI code editor)' -> 'Cursor'."""
+    idx = entity_name.find(" (")
+    if idx > 0:
+        return entity_name[:idx]
+    return entity_name
+
+
+def load_paper_excluded_entities():
+    """Return the paper's exact 10 FAIL + 7 no-onset exclusion set."""
+    return set(PAPER_EXCLUDED)
+
+
 def load_flagged_entities():
-    """Return set of entity names flagged self_ref_openai."""
-    with open(ENTITIES_PY, encoding="utf-8") as f:
-        src = f.read()
-    idx = src.index("ENTITIES = [")
-    ns = {}
-    exec(src[idx:], ns)
-    return {e["name"] for e in ns["ENTITIES"] if e.get("flag")}
+    """
+    Backward-compatible alias for older callers.
+
+    The baseline exclusion set is the paper's 10 FAIL + 7 no-onset names,
+    not the self_ref_openai flag.
+    """
+    return load_paper_excluded_entities()
+
+
+def is_paper_excluded(entity_name):
+    """Check the paper exclusion set using exact and base-name forms."""
+    return entity_name in PAPER_EXCLUDED or _base_name(entity_name) in PAPER_EXCLUDED
+
+
+def build_name_bridge(pt_entities, ct_entities):
+    """
+    Build a PT-name -> CT-name mapping, stripping parenthetical disambiguators
+    where needed.
+    """
+    bridge = {}
+    for pt_name in pt_entities:
+        if pt_name in ct_entities:
+            bridge[pt_name] = pt_name
+            continue
+
+        pt_base = _base_name(pt_name)
+        if pt_base in ct_entities:
+            bridge[pt_name] = pt_base
+            continue
+
+        for ct_name in ct_entities:
+            if _base_name(ct_name) == pt_base:
+                bridge[pt_name] = ct_name
+                break
+
+    return bridge
+
+
+def load_citation_entity_names():
+    """Return the CT entity namespace from weighted output or frozen raw counts."""
+    path = WEIGHTED_CSV if os.path.exists(WEIGHTED_CSV) else CT_CSV
+    return {r["entity"] for r in csv.DictReader(open(path, encoding="utf-8"))}
 
 
 def load_perception():
@@ -133,9 +209,19 @@ def load_perception():
     for r in csv.DictReader(open(PT_CSV, encoding="utf-8")):
         raw[r["entity"]].append((r["reported_cutoff"], int(r["score"])))
 
+    bridge = build_name_bridge(set(raw.keys()), load_citation_entity_names())
+
     # Deduplicate by cutoff: take max score per cutoff
     perception = {}
-    for entity, pairs in raw.items():
+    for pt_entity, pairs in raw.items():
+        entity = bridge.get(pt_entity, pt_entity)
+        by_cutoff = defaultdict(int)
+        for cutoff, score in pairs:
+            by_cutoff[cutoff] = max(by_cutoff[cutoff], score)
+        existing = perception.setdefault(entity, [])
+        existing.extend(by_cutoff.items())
+
+    for entity, pairs in list(perception.items()):
         by_cutoff = defaultdict(int)
         for cutoff, score in pairs:
             by_cutoff[cutoff] = max(by_cutoff[cutoff], score)
@@ -147,32 +233,45 @@ def load_citation_series():
     """
     entity -> list of (week_start_date, mention_count, weighted_count,
                        tier1_count, tier12_count) sorted by week_start.
+
+    If weighted output has not been generated yet, fall back to the frozen raw
+    CT counts so the raw-mode baseline remains checkable inside this script.
     """
     series = defaultdict(list)
-    if not os.path.exists(WEIGHTED_CSV):
-        print(f"Missing {WEIGHTED_CSV} — run apply_weights.py first.")
-        sys.exit(1)
-    for r in csv.DictReader(open(WEIGHTED_CSV, encoding="utf-8")):
+
+    if os.path.exists(WEIGHTED_CSV):
+        path = WEIGHTED_CSV
+        weighted_available = True
+    else:
+        path = CT_CSV
+        weighted_available = False
+
+    for r in csv.DictReader(open(path, encoding="utf-8")):
         try:
             mc = float(r["mention_count"])
         except (ValueError, TypeError):
             mc = 0.0
-        try:
-            wc = float(r["weighted_count"])
-        except (ValueError, TypeError):
+
+        if weighted_available:
+            try:
+                wc = float(r["weighted_count"])
+            except (ValueError, TypeError):
+                wc = 0.0
+            try:
+                t1 = int(r["tier1_count"])
+            except (ValueError, TypeError):
+                t1 = 0
+            try:
+                t12 = int(r["tier12_count"])
+            except (ValueError, TypeError):
+                t12 = 0
+        else:
             wc = 0.0
-        try:
-            t1 = int(r["tier1_count"])
-        except (ValueError, TypeError):
             t1 = 0
-        try:
-            t12 = int(r["tier12_count"])
-        except (ValueError, TypeError):
             t12 = 0
-        series[r["entity"]].append((
-            r["week_start"], mc, wc, t1, t12,
-        ))
-    # Sort by week
+
+        series[r["entity"]].append((r["week_start"], mc, wc, t1, t12))
+
     for e in series:
         series[e].sort()
     return series
@@ -279,13 +378,14 @@ def run_analysis(ramp_threshold=RAMP_THRESHOLD, onset_score=ONSET_SCORE,
     Run the full precedence analysis for a given set of thresholds.
     Returns (rows, summary_dict).
     """
-    flagged = load_flagged_entities()
+    paper_excluded = load_paper_excluded_entities()
     perception = load_perception()
     citation = load_citation_series()
 
     # Get birth dates from citation data
     birth_dates = {}
-    for r in csv.DictReader(open(WEIGHTED_CSV, encoding="utf-8")):
+    citation_path = WEIGHTED_CSV if os.path.exists(WEIGHTED_CSV) else CT_CSV
+    for r in csv.DictReader(open(citation_path, encoding="utf-8")):
         birth_dates[r["entity"]] = r["birth_date"]
 
     rows = []
@@ -293,8 +393,8 @@ def run_analysis(ramp_threshold=RAMP_THRESHOLD, onset_score=ONSET_SCORE,
         row = {"entity": entity, "birth_date": birth_dates.get(entity, "")}
 
         # Check exclusions
-        if entity in flagged:
-            row["excluded_reason"] = "self_ref_openai"
+        if entity in paper_excluded or is_paper_excluded(entity):
+            row["excluded_reason"] = "paper_exclusion (10 FAIL / 7 no-onset)"
             rows.append({k: row.get(k, "") for k in OUT_FIELDS})
             continue
 
