@@ -148,3 +148,18 @@ used for date-verification in `inputs_frozen/entities.py`.
   `sensitivity_analysis.py`** — these scripts join PT and CT entity names
   and will silently drop the 14 mismatched entities without the bridge.
   Must be fixed before any real weighting run.
+
+## 2026-08-18 — Viveka verification update
+
+- **gpt-4.1 is NOT retiring.** Viveka checked OpenAI's official model
+  page directly (not the Azure page). Only the "nano" variant is being
+  retired, which is a separate model we don't use. No action needed on
+  gpt-4.1; treat it as stable going forward.
+- **gpt-4-0613 and gpt-4o-2024-05-13 retirement on Oct 23, 2026 is
+  confirmed** — this matches what's already in the status table; no change
+  to that deadline.
+- **No Claude Opus swap needed.** The two remaining P(t) reruns use the
+  original OpenAI-only ladder, so Opus-4-1's retirement is irrelevant
+  here — do not add any Anthropic-model fallback logic for these runs.
+- **Viveka is targeting early-to-mid October** for her side of the two
+  remaining P(t) runs, ahead of the Oct 23 cutoff.

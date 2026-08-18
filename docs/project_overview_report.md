@@ -37,12 +37,12 @@ two-clock-source-tiering/
 │   ├── sensitivity_analysis.py     <- Task 5: 3x3 threshold grid, weight sweep & perturbation
 │   └── test_pipeline_smoketest.py  <- Task 6: Isolated sandbox end-to-end smoke test
 ├── data_derived/                   <- Generated outputs (scratch / reproducible)
-│   ├── ct_source_all.csv           <- Unified article-level domain harvest across entities
-│   ├── domain_frequency_analysis.csv <- Per-domain breadth, volume, and log-score
-│   ├── domain_tier_map.csv         <- Domain -> Tier assignments with traceable evidence
-│   ├── ct_results_weighted.csv     <- Final weighted weekly citation series
-│   ├── precedence_comparison.csv   <- Per-entity lead & sign test comparison
-│   └── sensitivity_results.csv     <- Full Table 2 mirror sensitivity grid
+│   ├── precedence_comparison.csv   <- EXISTS on disk: per-entity lead & sign test (raw fallback run, 2026-08-17)
+│   ├── sensitivity_results.csv     <- EXISTS on disk: Table 2 mirror sensitivity grid (raw fallback run, 2026-08-17)
+│   ├── ct_source_all.csv           <- Planned (Task 1 output, pending source data)
+│   ├── domain_frequency_analysis.csv <- Planned (Task 2 intermediate, pending source data)
+│   ├── domain_tier_map.csv         <- Planned (Task 2 output, pending source data)
+│   └── ct_results_weighted.csv     <- Planned (Task 3 output, pending source data)
 └── docs/                           <- Methodological justification & session logs
     ├── tier_methodology.md         <- Tier definitions, boundary evidence & caveats
     └── session_log.md              <- Chronological record of decisions and state changes
@@ -56,6 +56,12 @@ two-clock-source-tiering/
 - **File:** [scripts/verify_week_match.py](file:///d:/two-clock-source-tiering/scripts/verify_week_match.py)
 - **Objective:** Reconcile script week-selection logic between our harvester ("max mention_count week" / true peak) and Viveka's harvester (`ct_artlist_harvester.py`, "median-count week").
 - **Implementation:** Compares week outputs for priority spot-check entities (`Kimi` and `Mamba`) against `ct_artlist_LABELING.xlsx`. Enforces a strict blocker rule: **no weighting work proceeds until this check passes**.
+- **Current Blocker Status (verified on disk 2026-08-17):**
+  - `scripts/ct_artlist_harvester.py` (Viveka's script) — **not found anywhere on this machine** (repo, Downloads, Desktop, Documents, WhatsApp/Telegram transfer folders).
+  - `data_derived/ct_artlist_results.csv` (her script's output) — **not found anywhere on this machine**.
+  - `ct_artlist_LABELING.xlsx` — **received via WhatsApp** but never copied into the project. Located at:
+    `C:\Users\prem\AppData\Local\Packages\5319275A.WhatsAppDesktop_cv1g1gvanyjgm\LocalState\sessions\863B76A6E318406C0976A434B7BD31ABC84FAABE\transfers\2026-33\ct artlist LABELING.xlsx` (0.06 MB, received 2026-08-16).
+  - **Consequence:** the spot-check has NOT run and cannot run yet. Next action is to ask Viveka to resend `ct_artlist_harvester.py` and its output `ct_artlist_results.csv`, then copy the LABELING xlsx into `inputs_frozen/` before running `verify_week_match.py`.
 
 ### Task 1: Unified Source Data Merging & Domain Normalization
 - **File:** [scripts/merge_source_data.py](file:///d:/two-clock-source-tiering/scripts/merge_source_data.py)
@@ -99,7 +105,10 @@ two-clock-source-tiering/
   - This leaves exactly **33 testable entities** (50 − 10 FAIL − 7 no-onset = 33).
   - **Important:** The `self_ref_openai` flag in `entities.py` is **NOT** part of this baseline. GPT-4, GPT-4o, and Sora are included in the 33. The flag exists for a separate robustness analysis (self-recognition confound on OpenAI entities probed on an OpenAI ladder) — it is a distinct, clearly-labeled variant, not the baseline.
 - **Weighting Variants:** Runs the sign test on raw, continuous-weighted, Tier 1-only, and Tier 1+2 citation series simultaneously.
-- **Known Issue (pending fix):** Currently uses the `self_ref_openai` flag instead of the paper's FAIL+no-onset rule, and lacks the PT↔CT entity name bridge. Must be updated before any real weighted-data run.
+- **Implemented (commit `e3a12e7`):**
+  - Exclusion switched from the `self_ref_openai` flag to the paper's exact 10 FAIL + 7 no-onset rule (`PRECISION_FAIL` / `NO_ONSET` sets in this file).
+  - Added the PT↔CT entity name bridge (`build_name_bridge`, `_base_name`), so the 14 parenthetical-disambiguated entities are joined correctly instead of silently dropped.
+  - Falls back to `inputs_frozen/ct_results_v1_frozen.csv` when `data_derived/ct_results_weighted.csv` is absent, keeping the raw-mode baseline checkable without weighted data.
 
 ### Task 5: Robustness & Sensitivity Analysis
 - **File:** [scripts/sensitivity_analysis.py](file:///d:/two-clock-source-tiering/scripts/sensitivity_analysis.py)
@@ -158,10 +167,11 @@ All methodological details have been incorporated into [docs/tier_methodology.md
 | Component | Status | Next Required Action |
 |---|---|---|
 | Baseline Reproduction (`reproduce_baseline.py`) | **CONFIRMED ✓** | 28/33 exact match for both floor=3 and floor=5 |
+| Paper Exclusion Rule + Name Bridge (`precedence_test_weighted.py`, `sensitivity_analysis.py`) | **Implemented ✓ (commit `e3a12e7`)** | Re-run once weighted data exists |
+| Raw-Fallback Analysis Run | **Executed ✓ (2026-08-17)** | `precedence_test_weighted.py` and `sensitivity_analysis.py` ran against frozen raw data (weighted CSV absent); outputs `data_derived/precedence_comparison.csv` and `data_derived/sensitivity_results.csv` |
 | Pipeline Scaffolding (Tasks 1–6) | **100% Complete & Verified** | Ready to run once source data is in place |
-| Name Bridge Fix (`precedence_test_weighted.py`, `sensitivity_analysis.py`) | **Pending** | Must add PT↔CT name bridge and switch to paper's exclusion rule before real weighted runs |
-| Phase 0 Spot-Check (`verify_week_match.py`) | **Blocked** | Pending delivery of `ct_artlist_results.csv` and `ct_artlist_LABELING.xlsx` |
+| Phase 0 Spot-Check (`verify_week_match.py`) | **Blocked — never run** | `ct_artlist_harvester.py` and `ct_artlist_results.csv` were never received anywhere on this machine; `ct_artlist_LABELING.xlsx` sits in the WhatsApp transfer folder uncopied. Ask Viveka to resend the script + output, copy the xlsx into `inputs_frozen/`, then run. |
 | Remaining Harvest (`ct_source_harvester.py`) | **Pending Spot-Check** | Fill `ALREADY_COVERED` entity list from Viveka's file and run for remaining ~30 entities |
 | Precision Audit (27 AMBER rows) | **Pending Review** | Manual judgment task, kept separate from the automated code pipeline |
-| P(t) Model Retirement Deadline | **Oct 23, 2026** | Two more P(t) model runs needed before OpenAI retires `gpt-4-0613` and `gpt-4o-2024-05-13` |
+| P(t) Model Retirement Deadline | **Oct 23, 2026** | **INTERNAL TODO / REMINDER:** check in with Viveka in **early-to-mid October** to confirm her two remaining P(t) reruns landed before OpenAI retires `gpt-4-0613` and `gpt-4o-2024-05-13`. Flag it so it isn't missed while Task 0 is blocked. |
 | Precision Audit PASS/FAIL Entities | **Verified** | **12 PASS** entities: `Apple Intelligence`, `Apple Vision Pro`, `Cursor`, `Grok`, `Manus`, `Qwen`, `Sora`, `Suno`, `Threads`, `Udio`, `Windsurf`, `xAI`. |
