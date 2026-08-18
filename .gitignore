@@ -3,3 +3,7 @@ __pycache__/
 .DS_Store
 .venv/
 *.log
+
+# data_derived/ holds regenerable pipeline outputs; ignored by default.
+# Commit a deliberate milestone snapshot with: git add -f data_derived/<file>
+data_derived/*

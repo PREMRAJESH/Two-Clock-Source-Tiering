@@ -204,3 +204,26 @@ used for date-verification in `inputs_frozen/entities.py`.
   removal needed. LABELING xlsx `Label` sheet columns verified to match
   the harvester's `CSV_FIELDS` exactly (`#`, `entity`, `window`, `date`,
   `title`, `domain`, `url`, `suggested_label`, `relevant`).
+
+## 2026-08-18 (cont.) — data_derived/ tracking policy
+
+- Committed the two raw-fallback outputs as a deliberate milestone
+  snapshot (`data_derived/precedence_comparison.csv`,
+  `data_derived/sensitivity_results.csv`, commit `9e24bc3`) — they back
+  the "Raw-Fallback Analysis Run: Executed 2026-08-17" row in the
+  project overview status table.
+- **Decision going forward: ignore `data_derived/*` by default; commit
+  milestone snapshots deliberately with `git add -f`.**
+  - Why: `data_derived/` is defined as regenerable scratch output
+    (project overview, Section 2). Reproducibility rests on the frozen
+    inputs + pinned scripts + this decision log; derived CSVs are
+    intermediate artifacts, not source-of-truth data.
+  - Tracking every regen by default adds diff noise, risks stale or
+    contradictory outputs being mistaken for authoritative, and causes
+    merge churn on regenerated files.
+  - The escape hatch stays available: a specific output that backs a
+    stated result (like the two above) is force-added as a frozen
+    milestone tied to the commit that produced it.
+  - Already-tracked files (`data_derived/.placeholder.md` and the two
+    milestone CSVs) are unaffected; the ignore rule applies only to new
+    files. `.gitignore` now documents the `git add -f` convention.
