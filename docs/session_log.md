@@ -163,3 +163,44 @@ used for date-verification in `inputs_frozen/entities.py`.
   here — do not add any Anthropic-model fallback logic for these runs.
 - **Viveka is targeting early-to-mid October** for her side of the two
   remaining P(t) runs, ahead of the Oct 23 cutoff.
+
+## 2026-08-18 (cont.) — Independent other_week computation for Mamba: MISMATCH
+
+- Ran Viveka's exact week-selection algorithm independently against
+  `ct_results_v1_frozen.csv` for Mamba (all 140 `status=ok` weeks,
+  ranked by `mention_count` descending):
+  - `peak_week` = `weeks[0]` = **2025-03-31** (count 28)
+  - `other_week` = `weeks[140 // 2]` = `weeks[70]` = **2025-09-29**
+    (count 1; not equal to peak's 28, so no fallback to `weeks[1]`)
+- **Peak side lines up:** the xlsx's 25 Mamba `peak_week` article rows
+  are dated 2025-04-03 / 2025-04-04, which fall inside the 2025-03-31
+  week — consistent with the frozen series' max-count week.
+- **`other_week` side diverges:** computed = 2025-09-29 vs. the xlsx's
+  single known `other_week` value = 2024-01-26 (article date; that
+  Monday-week is 2024-01-22, ranked only #46 today with count 1 — not
+  the median week).
+- **Where it likely diverges (cannot be distinguished without her pull
+  parameters / an earlier snapshot of the frozen CSV):**
+  1. The original 22-entity pull likely ran against an EARLIER snapshot
+     of `ct_results_v1_frozen.csv` — with far fewer ok weeks the median
+     index would land on a different week.
+  2. The median-by-count strategy is itself an assumption (the script's
+     own docstring says so) — the original `other_week` may have been
+     chosen by a different method entirely.
+  3. `TimelineVolRaw` aggregate counts (frozen CSV) can rank a week
+     differently than ArtList's actual article count.
+- **Consequence:** the median algorithm is NOT independently confirmed.
+  Per Viveka's own instruction this goes back to her — decide together
+  which week-selection method is correct before building weighting on
+  either. Note this validates/refutes the ALGORITHM only; it says
+  nothing about Kimi's missing `other_week` — the xlsx still has no
+  `other_week` row for Kimi, so that check still depends on her
+  sending `ct_artlist_results.csv` or on running her harvester locally.
+- File placement cleanup this session: moved `Mamba 29092025.json` ->
+  `reference/gdelt_artlist_sample_response.json`, `ct artlist
+  LABELING.xlsx` -> `inputs_frozen/ct_artlist_LABELING.xlsx`, renamed
+  `scripts/ct artlist harvester.py` -> `scripts/ct_artlist_harvester.py`.
+  `scripts/__pycache__/` is gitignored and untracked; no tracking
+  removal needed. LABELING xlsx `Label` sheet columns verified to match
+  the harvester's `CSV_FIELDS` exactly (`#`, `entity`, `window`, `date`,
+  `title`, `domain`, `url`, `suggested_label`, `relevant`).
