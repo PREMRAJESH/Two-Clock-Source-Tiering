@@ -201,9 +201,11 @@ FILENAME_ALIASES = {
 
 def _filename_entity(path):
     base = os.path.splitext(os.path.basename(path))[0].lower()
+    base = base.lstrip("0123456789._ ")  # numbered-archive prefixes like "01_"
+    base = base.replace("_", " ")        # "apple_vision_pro" -> "apple vision pro"
     for junk in (" artlist", " peak", " random", "_peak", "_random"):
         base = base.replace(junk, "")
-    base = base.strip()
+    base = " ".join(base.split()).strip()
     return FILENAME_ALIASES.get(base)
 
 

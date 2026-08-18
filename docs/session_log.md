@@ -358,3 +358,36 @@ the merge guardrail + documentation.
 includes a `window` column plus one `other_week` row, which the merge
 excluded (diagnostic printed), and the full 5-script pipeline completed
 without error.
+
+## 2026-08-18 (cont.) — Contrast-week audit collection COMPLETE (22/22)
+
+- **All 22 ArtList JSON files for the overridden entities were collected
+  and ingested.** `--contrast` now covers **22/22 entities, 263 article
+  rows** in `data_derived/ct_artlist_contrast.csv` (all in the v2
+  `contrast_week` window; rows carry the empty `relevant` field awaiting
+  the precision labeling pass).
+- **Matching detail:** the GDELT ArtList JSONs are bare `{"articles":...}`
+  envelopes — they carry **no `query_details` field**, so entity matching
+  is filename-based via `FILENAME_ALIASES`. This was confirmed directly in
+  `Apple.json` / `Liquid.json` before ingestion.
+- **Fix applied (required to match all 22):**
+  - `_filename_entity()` in `scripts/ct_artlist_audit.py` now strips
+    leading digits (numbered-archive prefixes like `01_`) and converts `_`
+    to spaces before alias lookup. Without this, `Apple_Intelligence.json`,
+    `Dream_Machine.json`, and `Liquid_AI.json` were skipped, and the
+    numbered archive scheme below would never re-ingest.
+  - `Apple.json` (ambiguous base name) was renamed to
+    `Apple_Vision_Pro.json` before ingestion — `apple` alone is ambiguous
+    because both `Apple Intelligence` and `Apple Vision Pro` are overridden
+    entities.
+- **Archive:** the 22 raw JSONs now live in
+  `reference/contrast_collection_2026-08-18/`, renamed with the original
+  generation order (verified against the `QUERY_OVERRIDES` roster order
+  used by `print_contrast_urls`): `01_Cursor.json` … `22_Manus.json`.
+  Verified: the fixed `_filename_entity()` resolves all 22 archived names
+  to the correct entities, so the archive is re-ingestable.
+- `data_derived/ct_artlist_contrast.csv` tracked deliberately with
+  `git add -f` (milestone convention), same as the other two milestone CSVs.
+- **Remaining step for the audit lane:** hand-label the `relevant`
+  column (y/n) on the 263 contrast-week rows — the precision-audit
+  verdict for the collision-prone names. Not done here.
