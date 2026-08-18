@@ -205,6 +205,42 @@ used for date-verification in `inputs_frozen/entities.py`.
   the harvester's `CSV_FIELDS` exactly (`#`, `entity`, `window`, `date`,
   `title`, `domain`, `url`, `suggested_label`, `relevant`).
 
+### RESOLVED — CLOSED (2026-08-18, via `scripts/ct_artlist_audit.py`)
+
+- The original second-week rule is **confirmed unrecoverable** — Viveka
+  acknowledges the original `other_week` selection cannot be
+  reconstructed, so the Mamba mismatch above is moot (it is not a fixable
+  divergence; the old rule is being retired, not corrected). The audit
+  script's own docstring states this:
+  > "Documented 2026-08-18 replacement for the original (unrecoverable)
+  > second-week rule -- see changes.md 2026-08-18 entry. Picks a week that
+  > genuinely contrasts peak_week (>= min_gap_weeks away), deterministically:
+  > seeded on entity name + a fixed version tag only, never on a run date or
+  > row order, so re-running this later reproduces the same pick even if
+  > unrelated rows are added to results_path."
+- **Going forward, the deterministic v2 `contrast_week()` replaces the
+  median-by-count assumption** (`CONTRAST_MIN_GAP_WEEKS = 4`, seeded
+  `"contrast-week-v2-<entity>"`, `random.seed(20260708)`). Re-runs
+  reproduce identical picks.
+- `scripts/ct_artlist_audit.py --contrast-urls` now runs cleanly from this
+  repo's layout: added a `sys.path` bootstrap to import `ct_harvester`
+  from `inputs_frozen/`, and `contrast_week` now resolves
+  `inputs_frozen/ct_results_v1_frozen.csv` via the script's own location
+  instead of a CWD-relative name. Produces 22 real GDELT ArtList URLs (one
+  per overridden entity, ~9 min at 25s apart). Note Mamba's v2
+  `contrast_week` lands on 2025-09-29 — same date as the independent
+  median computation, coincidentally, but v2 does NOT use the median rule.
+- **Kimi note unchanged but de-blocked:** the xlsx still has no
+  `other_week`/`contrast_week` row for Kimi, but with v2 that no longer
+  blocks the audit — `--contrast-urls` already generated Kimi's
+  `contrast_week` (2026-03-16) directly. The old spot-check's dependency
+  on her `ct_artlist_results.csv` is superseded by the v2 audit lane.
+- Environment fix required to run: the Python 3.14 env had broken
+  C-extensions for numpy/matplotlib/Pillow/kiwisolver/contourpy.
+  Repaired via pip (cp314 wheels): numpy 2.5.2, matplotlib 3.11.1,
+  pillow 12.3.0, kiwisolver 1.5.0, contourpy 1.3.3, fonttools 4.63.0.
+  `pandas` is not installed but is not needed by `ct_harvester`/audit.
+
 ## 2026-08-18 (cont.) — data_derived/ tracking policy
 
 - Committed the two raw-fallback outputs as a deliberate milestone
@@ -227,3 +263,23 @@ used for date-verification in `inputs_frozen/entities.py`.
   - Already-tracked files (`data_derived/.placeholder.md` and the two
     milestone CSVs) are unaffected; the ignore rule applies only to new
     files. `.gitignore` now documents the `git add -f` convention.
+
+## 2026-08-18 (cont.) — Project-local `.venv` (no more global-env edits)
+
+- **Context:** the numpy/matplotlib/Pillow/kiwisolver/contourpy upgrades
+  above were applied to the global `C:\Python` interpreter to unblock the
+  audit script. That risks breaking other Python work on this machine that
+  pinned older versions of those packages — a one-off fix, not a policy.
+- **Policy from now on:** use a project-local venv at the repo root
+  (`.venv/`), already covered by `.gitignore` line 4. All future runs of
+  the harvester/audit scripts should use
+  `.venv\Scripts\python.exe` (or activate `.venv`), NOT the global
+  interpreter.
+- Venv created 2026-08-18 with `python -m venv .venv`; installed
+  `requests` + `matplotlib` only (pandas not required by
+  `ct_harvester`/audit). Verified: `.venv\Scripts\python.exe
+  scripts/ct_artlist_audit.py --contrast-urls` runs clean and reproduces
+  the same 22 GDELT URLs as the global interpreter.
+- Add new dependencies to the venv with
+  `.venv\Scripts\python.exe -m pip install <pkg>`; never install into the
+  global environment for project work.
