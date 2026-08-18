@@ -87,10 +87,11 @@ def main():
         # Copy entities.py into sb_inputs_dir
         shutil.copy2(os.path.join(INPUTS_DIR, "entities.py"), os.path.join(sb_inputs_dir, "entities.py"))
 
-        # 1. Viveka labeled export CSV
+        # 1. Viveka labeled export CSV (window column now present; one non-peak
+        #    row included to exercise the non-peak_week exclusion guardrail)
         viveka_file = os.path.join(sb_data_dir, "viveka_labeled_export.csv")
         with open(viveka_file, "w", newline="", encoding="utf-8") as f:
-            w = csv.DictWriter(f, fieldnames=["entity", "domain", "url", "title", "seendate", "sourcecountry", "week_start"])
+            w = csv.DictWriter(f, fieldnames=["entity", "domain", "url", "title", "seendate", "sourcecountry", "week_start", "window"])
             w.writeheader()
             for name, birth, flagged in ENTITIES[:5]:
                 for d, ec, ac in DOMAINS[:10]:
@@ -102,7 +103,18 @@ def main():
                         "seendate": "20230601T000000Z",
                         "sourcecountry": "US",
                         "week_start": birth,
+                        "window": "peak_week",
                     })
+            w.writerow({
+                "entity": ENTITIES[0][0],
+                "domain": "randomforum.org",
+                "url": "https://randomforum.org/audit-row",
+                "title": "Audit-only second-week row (must be excluded)",
+                "seendate": "20230615T000000Z",
+                "sourcecountry": "US",
+                "week_start": ENTITIES[0][1],
+                "window": "other_week",
+            })
 
         # 2. Harvester CSV (remaining 5 entities)
         harvester_file = os.path.join(sb_data_dir, "ct_source_results.csv")

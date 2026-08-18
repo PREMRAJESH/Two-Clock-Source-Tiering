@@ -120,8 +120,16 @@ All six pipeline scripts exist and are structurally complete. `scripts/test_pipe
 
 ### Source-data collection lanes
 
-- **Viveka's lane (22 overridden entities):** `scripts/ct_artlist_audit.py` is the current browser-lane tool. `--contrast-urls` generates the 22 GDELT ArtList URLs (one per overridden entity, ~9 min at 25s apart). The JSON files those URLs produce are then ingested with `--contrast` into `ct_artlist_contrast.csv`. **Status: 0/22 JSON files collected (§6, active blocker).**
-- **Our lane (~30 remaining entities):** `scripts/ct_source_harvester.py` (peak-week, GDELT ArtList, rate-limit-safe). Pending the `ALREADY_COVERED` entity list and the method decision. **Not yet run against live GDELT.**
+> **Methodology decision (2026-08-18, audited):** the ANALYTICAL source
+> sample is `peak_week`-only in BOTH lanes. The second-week sample
+> (`contrast_week`, v2) is a query-precision AUDIT for the 22 overridden
+> entities only — it is validation data, not tier-map evidence, and must
+> never be merged into `ct_source_all.csv` / the tier map / weighted counts.
+> Recorded in `docs/session_log.md` (2026-08-18 "Collection-lane methodology
+> decision"); enforced by a guardrail in `merge_source_data.py`.
+
+- **Viveka's lane (22 overridden entities):** `scripts/ct_artlist_audit.py` is the current browser-lane tool. `--contrast-urls` generates the 22 GDELT ArtList URLs (one per overridden entity, ~9 min at 25s apart). The JSON files those URLs produce are then ingested with `--contrast` into `ct_artlist_contrast.csv` — a **precision-audit** output (peak-week + contrast-week relevance checks), not an analytical input. **Status: 0/22 JSON files collected (§6, active blocker).**
+- **Our lane (~30 remaining entities):** `scripts/ct_source_harvester.py` (peak-week only, GDELT ArtList, rate-limit-safe). Pending the `ALREADY_COVERED` entity list. **Not yet run against live GDELT.**
 - `reference/gdelt_artlist_sample_response.json` is a small sample response for reference/testing only.
 
 ---

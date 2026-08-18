@@ -66,7 +66,15 @@ VIVEKA_COL_MAP = {
     "seendate": "seendate",   # or "date"?
     "sourcecountry": "sourcecountry",
     "week_start": "week_start",   # or "window"? or "other_week"?
+    "window": "window",   # verified real column in ct_artlist_LABELING.xlsx (Label sheet)
 }
+
+# Guardrail (2026-08-18 methodology decision): only peak_week rows enter the
+# analytical source sample. Non-peak rows (other_week / contrast_week) are
+# query-precision AUDIT rows, not tier-map evidence, and must not contaminate
+# the tier map or weighted counts. See docs/session_log.md.
+NON_PEAK_ROW_COUNT = [0]
+NON_PEAK_ENTITIES = defaultdict(int)
 
 # Our harvester's column names (known — from ct_source_harvester.py CSV_FIELDS)
 HARVESTER_COL_MAP = {
@@ -143,8 +151,10 @@ def read_viveka(birth_dates: dict) -> list[dict]:
     rows = []
     with open(VIVEKA_CSV, newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f)
-        # Check that expected columns exist
-        missing = [k for k in VIVEKA_COL_MAP if k not in reader.fieldnames]
+        # Check that expected columns exist. "window" is optional: an export may
+        # omit it, in which case rows default to peak_week.
+        missing = [k for k in VIVEKA_COL_MAP if k not in reader.fieldnames
+                   and k != "window"]
         if missing:
             print(f"[ERROR] Viveka CSV is missing columns: {missing}")
             print(f"        Available columns: {reader.fieldnames}")
@@ -152,12 +162,17 @@ def read_viveka(birth_dates: dict) -> list[dict]:
             sys.exit(1)
 
         for raw_row in reader:
+            entity_name = raw_row[VIVEKA_COL_MAP["entity"]]
+            window_val = raw_row.get(VIVEKA_COL_MAP["window"], "peak_week")
+            if window_val.strip().lower() != "peak_week":
+                NON_PEAK_ROW_COUNT[0] += 1
+                NON_PEAK_ENTITIES[entity_name] += 1
+                continue
             domain_raw = raw_row.get(VIVEKA_COL_MAP["domain"], "")
             if not domain_raw:
                 domain_raw = extract_domain_from_url(
                     raw_row.get(VIVEKA_COL_MAP["url"], "")
                 )
-            entity_name = raw_row[VIVEKA_COL_MAP["entity"]]
             rows.append({
                 "entity": entity_name,
                 "birth_date": birth_dates.get(entity_name, ""),
@@ -172,6 +187,10 @@ def read_viveka(birth_dates: dict) -> list[dict]:
                 "capped": "",  # her manual pull isn't subject to the 250 cap
                 "data_source": "viveka_manual",
             })
+    if NON_PEAK_ROW_COUNT[0]:
+        print(f"[INFO] Excluded {NON_PEAK_ROW_COUNT[0]} non-peak_week row(s) "
+              f"from the analytical sample (precision-audit rows, not tier-map "
+              f"evidence).")
     return rows
 
 
@@ -231,7 +250,12 @@ def write_diagnostics(viveka_rows, harvester_rows, merged_rows, outpath):
                 f"({len(v_entities)} entities)\n")
         f.write(f"Harvester rows:         {len(harvester_rows):>6d}  "
                 f"({len(h_entities)} entities)\n")
-        f.write(f"Merged total:           {len(merged_rows):>6d}\n\n")
+        f.write(f"Merged total:           {len(merged_rows):>6d}\n")
+        if NON_PEAK_ROW_COUNT[0]:
+            f.write(f"Non-peak_week rows excluded from analytical sample: "
+                    f"{NON_PEAK_ROW_COUNT[0]} "
+                    f"({', '.join(sorted(NON_PEAK_ENTITIES))})\n")
+        f.write("\n")
 
         if overlap:
             f.write(f"WARNING: {len(overlap)} entities appear in BOTH sources "

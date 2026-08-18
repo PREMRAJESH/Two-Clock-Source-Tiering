@@ -283,3 +283,78 @@ used for date-verification in `inputs_frozen/entities.py`.
 - Add new dependencies to the venv with
   `.venv\Scripts\python.exe -m pip install <pkg>`; never install into the
   global environment for project work.
+
+## 2026-08-18 (cont.) — Collection-lane methodology decision (Lane A vs Lane B audit)
+
+**Prompt:** Reviewer (Claude) concern that Lane A (22 `QUERY_OVERRIDES`
+entities, `scripts/ct_artlist_audit.py`) collects `peak_week` +
+`contrast_week`, while Lane B (~30 entities, `scripts/ct_source_harvester.py`)
+collects `peak_week` only — a possible sampling-depth inconsistency.
+
+**Audit finding (evidence-based, no data changed):**
+
+- The ANALYTICAL source sample is `peak_week`-only in BOTH lanes:
+  - Lane A: peak-week article rows from Viveka's manual labels
+    (`ct_artlist_LABELING.xlsx`, Label sheet: 517 of 566 rows are
+    `peak_week`).
+  - Lane B: `ct_source_harvester.py` fixes `window="peak_week"` and its
+    docstring records peak-week as the intended method (confirmed with
+    Viveka, 2026-08-16).
+  - `apply_weights.py` docstring: "source data is peak-week only for now".
+  - `build_tier_map.py` computes domain stats ignoring `window`.
+- `contrast_week` is collected ONLY for the 22 collision-prone entities by
+  `ct_artlist_audit.py` as a QUERY-PRECISION AUDIT sample (name-relevance
+  validation). It writes `ct_artlist_contrast.csv` / `ct_artlist_audit.csv`,
+  and no pipeline script (`merge_source_data`, `build_tier_map`,
+  `apply_weights`, `precedence_test_weighted`) reads either file. It is
+  NOT part of the tiering/weighting dataset.
+- `contrast_week` is the deterministic v2 replacement for the retired,
+  unrecoverable `other_week` (see 2026-08-18 Mamba mismatch entry).
+
+**Verdict: reviewer's concern is PARTIALLY valid** — not valid as a
+description of the current analytical design, but valid as a latent risk:
+- NOT a current defect: both lanes feed `peak_week` only; the second-week
+  sample is audit/validation only, so the asymmetry is intentional (only the
+  collision-prone entities need precision checks on their names).
+- REAL risk #1 (guardrail now enforced): `merge_source_data.py` previously
+  hardcoded Viveka rows to `window="peak_week"` and had no `window` column
+  mapping — her 49 `other_week` rows would have entered the analytical
+  sample as `peak_week`. Now the script maps `window`, excludes non-peak
+  rows from the analytical sample, and reports the exclusion in
+  `merge_diagnostics.txt`.
+- REAL risk #2 (documented prohibition): `ct_artlist_contrast.csv` /
+  `ct_artlist_audit.csv` must NEVER be merged into `ct_source_all.csv`
+  (tier map / weighted counts) without reconciling (a) the window asymmetry
+  (2 weeks for 22 entities vs 1 for 30) and (b) the volume asymmetry
+  (manual pull ~25–50 rows/entity/week vs harvester cap of 250). Merging
+  them as-is would bias the tier map and shift weighted ramp dates for
+  Lane A only.
+
+**DECISION: OPTION B.** Keep Lane B `peak_week`-only; `contrast_week`
+stays an audit/validation sample, never an analytical one. Chosen on
+evidence, not symmetry: the two lanes already converge on the same
+analytical sample, so extending Lane B to collect a second week would add
+cost (rate-limited GDELT pulls) with no methodological gain, and the
+audit lane's purpose (precision) is different from the analytical lane's
+purpose (volume/breadth).
+
+**Affected lane:** Lane A unchanged (audit script untouched);
+Lane B unchanged (harvester still peak-week only). Change is confined to
+the merge guardrail + documentation.
+
+**Implications for later analysis:**
+- `merge_source_data.py` `read_viveka()` now requires (or defaults) a
+  `window` column and drops non-peak rows; a merged file is therefore
+  peak-week-only by construction.
+- Remaining pre-existing TODO (not changed): `VIVEKA_COL_MAP` still maps
+  `week_start`/`seendate`/`sourcecountry` best-guess; the real xlsx Label
+  sheet has `date` not `week_start`. Re-verify the column map against the
+  actual CSV export before the first real merge run.
+- The ~30-entity Lane B collection can proceed as planned (peak-week only);
+  it is NOT blocked by this audit.
+
+**Verification:** `scripts/test_pipeline_smoketest.py` run via
+`.venv\Scripts\python.exe` — PASSED cleanly; synthetic Viveka export now
+includes a `window` column plus one `other_week` row, which the merge
+excluded (diagnostic printed), and the full 5-script pipeline completed
+without error.
