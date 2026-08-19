@@ -391,3 +391,12 @@ without error.
 - **Remaining step for the audit lane:** hand-label the `relevant`
   column (y/n) on the 263 contrast-week rows — the precision-audit
   verdict for the collision-prone names. Not done here.
+- **Still-pending manual-labeling tasks (both open, both equally
+  not-done — listed separately so neither reads as more current):**
+  1. The **original 27 AMBER precision-audit rows** (from
+     `ct_artlist_LABELING.xlsx` / the original audit file) — needs a
+     human (jointly with Viveka) to finish. Untouched by this session.
+  2. The **263-row contrast-week batch** (`data_derived/
+     ct_artlist_contrast.csv`) — same y/n `relevant` convention as the
+     original audit file; collection is done, labeling is not.
+  Neither has any `relevant` value prefilled by tooling.
