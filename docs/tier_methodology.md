@@ -66,6 +66,13 @@ Reproduced exactly by `scripts/reproduce_baseline.py` (2026-08-17):
 ## 6. Caveats & Limitations
 
 - **Syndication and Domain Dilution:** Domain-level tiering counts every article URL as an independent citation of its hosting domain (e.g. `yahoo.com`, `msn.com`). It does not deduplicate syndicated wire stories (e.g. a Reuters or AP article republished verbatim across multiple aggregators). Consequently, domain-level frequency metrics may under-count original wire-service originators and over-count high-volume syndication aggregators. This is a recognized limitation of domain-level GDELT ArtList sampling.
+
+  *Observed, not just theoretical — examples from the 2026-08-18 contrast-audit spot-check (`data_derived/ct_artlist_contrast.csv`):*
+  - **Threads** — "Conspiracy theories about the Trump rally shooting flourish online" captured 6× across NBC local affiliates (`nbcsandiego.com`, `nbcnewyork.com`, `nbcdfw.com`, `nbcchicago.com`, `nbcconnecticut.com`, `nbcmiami.com`).
+  - **Operator** — "Perplexity AI wants to dethrone Google…" captured 4× across Nine-owned Australian titles (`smh.com.au`, `watoday.com.au`, `brisbanetimes.com.au`, `theage.com.au`).
+  - **Qwen** — "Alibaba to integrate Qwen AI with Taobao…" captured 5× across independent outlets (`finance.yahoo.com`, `933thedrive.com`, `asiaone.com`, `arynews.tv`).
+  
+  Same story, distinct URLs/domains; domain-level tiering counts each as a separate citation of its hosting domain. These are genuine separate articles for the precision audit, but they are a single underlying event for volume/breadth tiering.
 - **Capped windows:** Carry forward any `capped` windows from the harvester — weighted scores for those weeks rest on a partial source sample (250-article limit).
 - **Tier ambiguity:** Note any domains near cluster boundaries that didn't cleanly separate; sensitivity checks perturb these boundary domains to verify result stability.
 - **Entity name mismatch between CSVs:** The perception CSV uses parenthetical disambiguators (e.g. `Cursor (the AI code editor)`) while the citation CSV uses short names (e.g. `Cursor`). 14 of 50 entities are affected. Any script joining these datasets must use a name bridge (strip parentheticals) or it will silently drop entities.

@@ -106,10 +106,16 @@ CANONICAL_FIELDS = [
 # ---------------------------------------------------------------------------
 
 def normalize_domain(raw: str) -> str:
-    """Lowercase, strip www., strip trailing dots/slashes."""
+    """Lowercase, strip www., strip trailing :port, strip trailing dots/slashes."""
     d = raw.strip().lower()
     if d.startswith("www."):
         d = d[4:]
+    d = d.rstrip("/.")
+    # strip trailing ":port" so "asiaone.com:443" == "asiaone.com"
+    # (netloc from urlparse keeps the port; the contrast batch surfaced
+    #  asiaone.com:443 vs asiaone.com counting as different domains)
+    if ":" in d:
+        d = d.split(":")[0]
     d = d.rstrip("/.")
     return d
 
