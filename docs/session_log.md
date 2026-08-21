@@ -400,3 +400,86 @@ without error.
      ct_artlist_contrast.csv`) — same y/n `relevant` convention as the
      original audit file; collection is done, labeling is not.
   Neither has any `relevant` value prefilled by tooling.
+
+## 2026-08-22 — Catch-up entry (log fell behind)
+
+**Honest note:** this log fell behind after 2026-08-18. Work continued
+across 2026-08-19 and 2026-08-22 but was not recorded in real time. This
+entry consolidates everything that happened since the last dated entry — it
+is not a granular day-by-day reconstruction.
+
+### What happened (commits, in order)
+
+1. **`e88174d` (2026-08-19) — status update:** Updated the project overview
+   status table to track both manual-labeling tasks separately (27 AMBER
+   rows + 263 contrast-week rows), rather than letting one read as more
+   current than the other. Added the "Still-pending manual-labeling tasks"
+   section to this log.
+
+2. **`880c107` (2026-08-19) — `:port` domain-normalization fix:** During
+   contrast-audit QA (ingesting the 22 archived JSONs), discovered that
+   `asiaone.com:443` and `asiaone.com` were counting as separate domains
+   in `merge_source_data.py` because `urlparse().netloc` preserves the port.
+   Fixed by stripping trailing `:port` in `normalize_domain()`. Verified:
+   both `read_viveka()` and `read_harvester()` call `normalize_domain()` at
+   their domain-normalization points; smoke test passes. Also added
+   documented syndication examples to `docs/tier_methodology.md` (Threads 6×
+   NBC affiliates, Operator 4× Nine papers, Qwen 5× independent outlets)
+   — observed, not theoretical.
+
+3. **`08b7dbd` (2026-08-19) — documentation rewrite:** Rewrote all
+   repository READMEs as professional research documentation: root overview,
+   frozen-deposit provenance record (`inputs_frozen/`), computational
+   methods index (`scripts/`), derived-outputs record (`data_derived/`),
+   documentation index (`docs/`), reference evidence index (`reference/`),
+   and archived contrast-collection record. The `data_derived/README.md`
+   was force-added as a milestone per the tracking policy.
+
+### What happened (uncommitted session work, 2026-08-22)
+
+These were done during the current working session, committed together
+with this log update:
+
+4. **Report regeneration (`docs/project_overview_report.md`):** Regenerated
+   the full report against current `git ls-files` / `git log`. Fixed the
+   §3 / §6 contradiction (§3 still said "0/22 JSON files collected" while
+   §6 said complete). Added the `:port` domain-normalization bug as its own
+   writeup (same format as the `self_ref_openai` bug entry). Updated §8
+   commit history to include all 15 commits through `08b7dbd`. Updated §2
+   tree and tracked-files list to reflect current reality (22 archive JSONs,
+   `ct_artlist_contrast.csv`, new READMEs, `ct_artlist_audit.py` tracked).
+
+5. **AMBER rows extracted:** Isolated the 27 `?`-flagged rows from
+   `inputs_frozen/ct_artlist_LABELING.xlsx` into
+   `data_derived/amber_rows_review.csv` (columns: entity, window, date,
+   title, domain, url, suggested_label, relevant). The `relevant` column is
+   empty — awaiting manual y/n labeling. Entity breakdown: Apple Intelligence
+   (13), Kimi (10), Qwen (2), Dream Machine (1), Lovable (1).
+
+6. **`ALREADY_COVERED` populated in `ct_source_harvester.py`:** Filled the
+   skip-list with the exact 22 entity names from the xlsx's entity column.
+   Remaining for Lane B: 28 entities (not the ~30 previously estimated).
+   Harvester is configured but **not run against live GDELT** — awaiting
+   sanity-check before burning rate-limit budget.
+
+7. **`needs_translation` column added to `ct_artlist_contrast.csv`:** Added
+   a boolean column flagging rows with non-ASCII characters in the title
+   (rough heuristic for non-English). 31 of 263 rows flagged. Caveat: ~5–6
+   are false positives (em-dashes, £ symbols in otherwise-English titles).
+   This is a first-pass conversation starter for Viveka, not a final
+   translation judgment.
+
+### Current state of labeling tasks
+
+| Task | Rows | Status |
+|---|---|---|
+| 27 AMBER precision-audit rows | 27 | Extracted to `amber_rows_review.csv`, `relevant` empty — manual labeling pending |
+| 263-row contrast-week batch | 263 | `relevant` empty in `ct_artlist_contrast.csv` — manual labeling pending |
+| Total | 290 | Neither has any value prefilled by tooling |
+
+### What this log update is
+
+This is a catch-up, not a real-time record. The entries above cover work
+that happened across 2026-08-19 and 2026-08-22, consolidated into one
+dated entry because the log fell behind. Future entries should resume
+real-time logging at the next decision point.

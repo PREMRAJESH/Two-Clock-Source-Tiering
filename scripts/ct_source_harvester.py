@@ -70,18 +70,33 @@ USER_AGENT = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
 GDELT_DOC_API = "https://api.gdeltproject.org/api/v2/doc/doc"
 OUT_RESULTS = "../data_derived/ct_source_results.csv"
 
-# TODO: fill this in with the exact `entity` column values from
-# "ct artlist LABELING.xlsx" once confirmed. Names must match EXACTLY
-# (case, punctuation) against ENTITIES below or the skip-check silently
-# fails to skip. Leaving empty for now means this would try all 50 --
-# DO NOT RUN until this list is filled in.
+# Populated from the unique `entity` column values in
+# inputs_frozen/ct_artlist_LABELING.xlsx (Label sheet).
+# Names match exactly (case, punctuation) against ENTITIES below.
+# Verified 2026-08-22: 22 unique entities, leaving 28 remaining.
 ALREADY_COVERED = [
-    # "Apple Intelligence",
-    # "Apple Vision Pro",
-    # "Cursor",
-    # "DBRX",
-    # "Dream Machine",
-    # ... fill in remaining ~15 from the xlsx entity column
+    "Apple Intelligence",
+    "Apple Vision Pro",
+    "Cursor",
+    "DBRX",
+    "Dream Machine",
+    "Gemini (Google model)",
+    "Grok",
+    "Ideogram",
+    "Kimi",
+    "Liquid AI",
+    "Lovable",
+    "Mamba",
+    "Manus",
+    "Operator",
+    "Qwen",
+    "Sora",
+    "Suno",
+    "Threads",
+    "Udio",
+    "Windsurf",
+    "vLLM",
+    "xAI",
 ]
 
 # Same 50 entities/dates as ct_harvester.py -- verified byte-identical
