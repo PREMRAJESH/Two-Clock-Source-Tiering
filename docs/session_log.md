@@ -562,3 +562,79 @@ harvester's adaptive throttling handles backoff). If the quota resets
 overnight, the full batch should complete in ~5-10 minutes. If 429s
 recur, the backoff logic will slow down automatically but the batch
 could take 20-30 minutes.
+
+## 2026-08-22 (cont.) — Lane B retry ALSO 429; GDELT testing PAUSED for the day
+
+- **Second Lane B test attempt today also blocked.** Re-attempted
+  `ct_source_harvester.py` with 35s spacing plus 60/120/300s retry
+  backoff. Every attempt still returned HTTP 429 — the block did not
+  clear across any of the waits.
+- **This reads as a longer block than the earlier one, not a transient
+  throttle.** A 429 that survives a full 300s wait is qualitatively
+  different from the per-5s "one request every 5 seconds" throttle.
+  Continuing to retry risks *extending* the block (resetting its window)
+  rather than clearing it — so more attempts today are counterproductive.
+- **DECISION: STOP all GDELT calls for today.** No further Lane B test
+  attempts on 2026-08-22. This supersedes the earlier entry's
+  "wait until tomorrow, run with 6s spacing" recommendation — the block
+  is more persistent than a simple daily-quota reset would explain.
+- **Next attempt: a later cooldown window** — at least several hours out,
+  ideally the next calendar day, to give the block time to fully clear.
+- **At the next attempt, also change network.** Test from a different
+  network (e.g. a mobile hotspot) to distinguish a shared-IP cause
+  (another user on this IP exhausted the quota) from a genuine extended
+  block tied to this project's own GDELT usage. This determines whether
+  the fix is "wait it out" or "route around the IP."
+
+## 2026-08-22 (cont.) — 27 AMBER rows finalized + CSV-vs-master discrepancy
+
+**Reviewed and wrote the `relevant` column for all 27 AMBER rows** in
+`data_derived/amber_rows_review.csv`. Final distribution: **16 `y`,
+5 `n`, 6 `unverifiable`** (count verified = 27 before writing; each row
+matched on entity + domain, not just row order). The master
+`inputs_frozen/ct_artlist_LABELING.xlsx` Label sheet was **NOT** modified
+— only the derived CSV was written.
+
+**Discrepancy found (data integrity):** the master xlsx Label sheet
+already carried `relevant` values for all 27 `?`-suggested rows, present
+since the file's Aug 18 mtime — **21 `y`, 5 `404`, 1 "leads to different
+article".** The 2026-08-22 extraction into `amber_rows_review.csv`
+(catch-up entry, item 5) **blanked all 27** `relevant` cells ("awaiting
+manual labeling"), discarding those pre-existing calls — so that CSV was
+never a faithful export of the master's `relevant` column; it silently
+dropped values that existed upstream. Flagged for reconciliation with
+Viveka; deliberately NOT auto-back-filled from the master, because
+several of the master's tentative `y`s were overridden on review (below).
+
+**Kimi override (precedent-based, not a fresh guess):** the 5 live-link
+Kimi "China top AI players" rows (homenewshere, digitaljournal, kdhnews,
+wyomingnews, averyjournal) were set to **`n`**, overriding the master's
+tentative `y`. Basis: Viveka's own definite (non-AMBER,
+`suggested_label='n'`) Kimi calls elsewhere in the Label sheet — all 15
+are multi-company / China-AI-roundup pieces ("Trump administration vows
+crackdown on Chinese companies exploiting AI models made in US" ×14
+syndicated copies + "Tencent unveils AI model in high-stakes test for
+OpenAI hire") and she marked **every one `n`.** "China top AI players" is
+the same listicle/roundup shape (Kimi named among several Chinese AI
+firms, not the article's subject), so `n` matches her established
+standard. Caveat: the "How to label" sheet gives **no** explicit
+"primarily-about vs any-meaningful-mention" definition — it frames the
+task as a "Query Precision Audit (pre-filled)" and relies on her
+pre-filled calls plus a sanity hint (Mamba/Liquid AI/Operator/vLLM ~all
+`n`; Cursor/Suno/Threads ~all `y`) — so precedent-matching against her
+own firm calls is the only available standard, not a written rule.
+
+**6 rows marked `unverifiable` (not forced y/n):**
+- 5 Kimi rows with dead links (HTTP `404` in the master): the-messenger,
+  lebanondemocrat, gjsentinel, themountainpress, suncommercial.
+- 1 Apple Intelligence row: lifehacker.com.au, flagged "leads to
+  different article" in the master (URL resolves to something other than
+  the labeled headline).
+- **Wayback Machine could not be consulted from this environment.**
+  `archive.org` / `web.archive.org` are outside the network egress
+  allowlist (only `agentrouter.org` is permitted); both WebFetch and the
+  workspace fetch tool returned `cowork-egress-blocked`. Per the review
+  instruction, these are marked `unverifiable` rather than forced to a
+  y/n. **Next step for these 6:** re-check via Wayback from a network
+  where the archive is reachable (or have Viveka pull the archived
+  snapshots / re-fetch the dead links), then finalize.
