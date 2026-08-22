@@ -483,3 +483,82 @@ This is a catch-up, not a real-time record. The entries above cover work
 that happened across 2026-08-19 and 2026-08-22, consolidated into one
 dated entry because the log fell behind. Future entries should resume
 real-time logging at the next decision point.
+
+## 2026-08-22 (cont.) — needs_translation verification + Lane B test attempt
+
+### needs_translation verified (real numbers)
+
+Confirmed against `data_derived/ct_artlist_contrast.csv` (263 rows):
+
+- **31 of 263 rows flagged `needs_translation=true`** (11.8%)
+- **232 rows `needs_translation=false`**
+- **0 rows empty** (column fully populated)
+
+Entity breakdown of flagged rows:
+| Entity | Flagged |
+|---|---|
+| Operator | 9 |
+| Apple Vision Pro | 5 |
+| Dream Machine | 4 |
+| Cursor | 3 |
+| Grok | 3 |
+| xAI | 3 |
+| Apple Intelligence | 1 |
+| Gemini (Google model) | 1 |
+| Sora | 1 |
+| Threads | 1 |
+
+**False-positive caveat (~5-6 rows):** em-dashes, £ symbols, and
+accented characters in otherwise-English titles. Examples:
+- Row 33 (Apple Vision Pro, radiotimes.com): "Apple Music offers three
+  months for ?1.99" -- the ? is a £ sign, English article
+- Row 98 (Gemini, techradar.com): "Siri is truly terrible, but I'm
+  optimistic..." -- the ? is an em-dash, English article
+- Row 102 (Grok, dailymaverick.co.za): "Grok -- Elon Musk's new sassy..."
+  -- em-dash, English article
+
+**Genuine non-English candidates:** the Chinese-language domains
+(ddaily.co.kr, finance.sina.com.cn, tech.ifeng.com, kwongwah.com.my,
+news.china.com, newtalk.tw, news.ifeng.com, ura.news, dailyinqilab.com)
+and Spanish-language domains (malagahoy.es, elperiodico.com,
+dobreprogramy.pl) are the real signal. The heuristic catches them but
+also catches the false positives above.
+
+### Lane B 2-entity test — BLOCKED (GDELT rate-limited)
+
+Attempted to test `ct_source_harvester.py` against 2 entities
+(ElevenLabs, Bolt.new) with 35s spacing and retry/backoff logic.
+
+**Result: all attempts returned HTTP 429** ("Please limit requests to
+one every 5 seconds"). Tried waiting 60s, 120s, and 300s between attempts.
+The rate limit persisted across all waits. This is likely a daily quota
+exhausted by the earlier 22-entity contrast-week collection burst
+(~22 GDELT calls in a short window on 2026-08-18).
+
+**GDELT is currently inaccessible from this IP.** The 2-entity test
+cannot proceed until the rate limit clears (likely tomorrow).
+
+### Full ~30-entity batch runtime estimate (theoretical, pending rate-limit clearance)
+
+Based on `ct_source_harvester.py` code:
+- **28 remaining entities** (50 total minus 22 ALREADY_COVERED)
+- **1 GDELT ArtList call per entity** (peak week, 7-day window)
+- **Base spacing:** `SLEEP_BETWEEN_CALLS = 6.0s` (harvester default)
+- **Typical response time:** 2-5 seconds per call
+
+**Best case (no 429s):** 28 calls * (6s sleep + 3s avg response) =
+~252 seconds = **~4.2 minutes**
+
+**Realistic case (some 429 backoff):** If ~30% of calls hit 429, backoff
+is 30s/60s/120s per retry. Estimated: **~15-25 minutes**
+
+**Conservative case (heavy 429s, user-requested 35s spacing):** If we
+override `SLEEP_BETWEEN_CALLS` to 35s: 28 * 35s = 980s + responses =
+**~18-20 minutes**
+
+**Recommendation:** Wait until tomorrow for the daily quota to reset,
+then run with the harvester's default 6s spacing (not 35s -- the
+harvester's adaptive throttling handles backoff). If the quota resets
+overnight, the full batch should complete in ~5-10 minutes. If 429s
+recur, the backoff logic will slow down automatically but the batch
+could take 20-30 minutes.
