@@ -10,9 +10,12 @@ INPUTS (both must exist before running)
 -------
 1. Viveka's labeled data, exported from ct_artlist_LABELING.xlsx to CSV:
        data_derived/viveka_labeled_export.csv
-   Expected columns (VERIFY against the real file — these are best guesses):
-       entity, domain, url, title, seendate, sourcecountry, week_start
-   If her file has different column names, update VIVEKA_COL_MAP below.
+   Real columns (verified 2026-08-22 against ct_artlist_LABELING.xlsx Label sheet):
+       entity, window, date, title, domain, url, suggested_label, relevant
+   Only entity/window/date/title/domain/url are consumed here. week_start is
+   DERIVED from `date` (Monday of the ISO week — GDELT weeks are Monday-based);
+   seendate is carried from `date`; sourcecountry is not in her file (left blank).
+   If her column names ever change, update VIVEKA_COL_MAP below.
 
 2. Our harvested data for the remaining ~30 entities:
        data_derived/ct_source_results.csv
@@ -42,6 +45,7 @@ import csv
 import os
 import sys
 from collections import defaultdict
+from datetime import datetime, timedelta
 from urllib.parse import urlparse
 
 # ---------------------------------------------------------------------------
@@ -56,17 +60,20 @@ HARVESTER_CSV = os.path.join(DATA_DIR, "ct_source_results.csv")
 OUT_MERGED = os.path.join(DATA_DIR, "ct_source_all.csv")
 OUT_DIAGNOSTICS = os.path.join(DATA_DIR, "merge_diagnostics.txt")
 
-# Map Viveka's column names -> canonical names.
-# TODO: inspect her actual xlsx export and fix these.
+# Map canonical field name -> Viveka's actual column name in
+# ct_artlist_LABELING.xlsx (Label sheet). Verified 2026-08-22.
+# Her sheet has NO seendate/sourcecountry/week_start columns:
+#   - week_start is derived from `date` (see week_start_from_date)
+#   - seendate is carried from `date`
+#   - sourcecountry is left blank
+# `window` is optional (rows without it default to peak_week).
 VIVEKA_COL_MAP = {
     "entity": "entity",
-    "domain": "domain",       # or maybe "source_domain"?
+    "window": "window",
+    "date": "date",
+    "domain": "domain",
     "url": "url",
     "title": "title",
-    "seendate": "seendate",   # or "date"?
-    "sourcecountry": "sourcecountry",
-    "week_start": "week_start",   # or "window"? or "other_week"?
-    "window": "window",   # verified real column in ct_artlist_LABELING.xlsx (Label sheet)
 }
 
 # Guardrail (2026-08-18 methodology decision): only peak_week rows enter the
@@ -129,6 +136,33 @@ def extract_domain_from_url(url: str) -> str:
         return ""
 
 
+def week_start_from_date(date_str: str) -> str:
+    """Monday of the ISO week containing date_str (GDELT weeks are Monday-based).
+
+    Viveka's Label sheet stores a per-article `date` (YYYY-MM-DD) but no
+    week_start column. Every peak_week row falls inside the same 7-day peak
+    window, so collapsing each article's date to the Monday of its week
+    reproduces the single peak_week_start the harvester emits and that the rest
+    of the pipeline keys on (apply_weights buckets weighted counts by
+    (entity, week_start); precedence_test_weighted keys its citation series on
+    week_start). Returns "" if the date is missing/unparseable.
+    """
+    s = (date_str or "").strip()
+    if not s:
+        return ""
+    d = None
+    for fmt in ("%Y-%m-%d", "%Y/%m/%d", "%m/%d/%Y"):
+        try:
+            d = datetime.strptime(s, fmt)
+            break
+        except ValueError:
+            continue
+    if d is None:
+        return ""
+    monday = d - timedelta(days=d.weekday())
+    return monday.strftime("%Y-%m-%d")
+
+
 # ---------------------------------------------------------------------------
 # Birth-date lookup from entities.py
 # ---------------------------------------------------------------------------
@@ -157,10 +191,11 @@ def read_viveka(birth_dates: dict) -> list[dict]:
     rows = []
     with open(VIVEKA_CSV, newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f)
-        # Check that expected columns exist. "window" is optional: an export may
-        # omit it, in which case rows default to peak_week.
-        missing = [k for k in VIVEKA_COL_MAP if k not in reader.fieldnames
-                   and k != "window"]
+        # Check that expected columns exist. We validate the ACTUAL column
+        # names (the map's values). "window" is optional: an export may omit
+        # it, in which case rows default to peak_week.
+        missing = [col for key, col in VIVEKA_COL_MAP.items()
+                   if key != "window" and col not in reader.fieldnames]
         if missing:
             print(f"[ERROR] Viveka CSV is missing columns: {missing}")
             print(f"        Available columns: {reader.fieldnames}")
@@ -169,7 +204,7 @@ def read_viveka(birth_dates: dict) -> list[dict]:
 
         for raw_row in reader:
             entity_name = raw_row[VIVEKA_COL_MAP["entity"]]
-            window_val = raw_row.get(VIVEKA_COL_MAP["window"], "peak_week")
+            window_val = raw_row.get(VIVEKA_COL_MAP["window"], "") or "peak_week"
             if window_val.strip().lower() != "peak_week":
                 NON_PEAK_ROW_COUNT[0] += 1
                 NON_PEAK_ENTITIES[entity_name] += 1
@@ -179,17 +214,21 @@ def read_viveka(birth_dates: dict) -> list[dict]:
                 domain_raw = extract_domain_from_url(
                     raw_row.get(VIVEKA_COL_MAP["url"], "")
                 )
+            date_val = raw_row.get(VIVEKA_COL_MAP["date"], "")
             rows.append({
                 "entity": entity_name,
                 "birth_date": birth_dates.get(entity_name, ""),
                 "window": "peak_week",
-                "week_start": raw_row.get(VIVEKA_COL_MAP["week_start"], ""),
+                # No week_start column in her sheet: derive Monday-of-week from
+                # the article date so it aligns with the harvester's
+                # peak_week_start and the frozen counts' week_start keys.
+                "week_start": week_start_from_date(date_val),
                 "domain": normalize_domain(domain_raw),
                 "domain_raw": domain_raw,
                 "url": raw_row.get(VIVEKA_COL_MAP["url"], ""),
                 "title": raw_row.get(VIVEKA_COL_MAP["title"], ""),
-                "seendate": raw_row.get(VIVEKA_COL_MAP["seendate"], ""),
-                "sourcecountry": raw_row.get(VIVEKA_COL_MAP["sourcecountry"], ""),
+                "seendate": date_val,           # carried from her `date` column
+                "sourcecountry": "",            # not present in her sheet
                 "capped": "",  # her manual pull isn't subject to the 250 cap
                 "data_source": "viveka_manual",
             })

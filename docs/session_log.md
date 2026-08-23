@@ -638,3 +638,215 @@ own firm calls is the only available standard, not a written rule.
   y/n. **Next step for these 6:** re-check via Wayback from a network
   where the archive is reachable (or have Viveka pull the archived
   snapshots / re-fetch the dead links), then finalize.
+
+
+## 2026-08-22 (cont.) — Step 1: VIVEKA_COL_MAP fixed to real Label-sheet columns
+
+Reworked `scripts/merge_source_data.py` so `read_viveka()` reads the columns
+Viveka's `ct_artlist_LABELING.xlsx` (Label sheet) actually has, instead of the
+old best-guess set.
+
+**What changed:**
+- `VIVEKA_COL_MAP` now maps only the real, verified columns: `entity`,
+  `window`, `date`, `domain`, `url`, `title`. Dropped the phantom `seendate`,
+  `sourcecountry`, and `week_start` keys (her sheet has none of these). Removed
+  the stale `# TODO: inspect her actual xlsx export and fix these.` comment.
+- `week_start` is now DERIVED, not read: new helper `week_start_from_date()`
+  returns the Monday of the ISO week containing the article `date` (GDELT weeks
+  are Monday-based). All peak_week articles for an entity fall inside the same
+  7-day window, so they collapse to one Monday that matches the harvester's
+  `peak_week_start` and the frozen counts' `week_start` keys. This matters
+  because `apply_weights` buckets weighted counts by `(entity, week_start)` and
+  `precedence_test_weighted` keys its citation series on `week_start` — an empty
+  or mismatched value would silently zero out weighted counts.
+- `seendate` is now carried from her `date` column (cosmetic passthrough; not
+  consumed by the tier/weight path). `sourcecountry` is written as `""`.
+- Missing-column check now validates the ACTUAL column names (map values),
+  with `window` optional (rows without it default to peak_week). Also guarded
+  an empty `window` cell to default to peak_week rather than being silently
+  dropped as non-peak.
+- Updated the module docstring's "Expected columns" block to the verified real
+  columns.
+
+**Coupled fix (required by the contract change):**
+`scripts/test_pipeline_smoketest.py` built its synthetic Viveka export with the
+OLD columns (`seendate`, `sourcecountry`, `week_start`, no `date`). After this
+change the reader requires `date`, so the smoke test's fixture would fail the
+missing-columns check. Updated that fixture to the real column layout
+(`entity, window, date, title, domain, url, suggested_label, relevant`); the
+non-peak `other_week` guardrail row was preserved. (Smoke test is run in Step 4.)
+
+**Verification:** `python3 -m py_compile` clean on both files;
+`week_start_from_date` unit-checked on 7 cases (Mon→itself, Tue/Sun→same
+Monday, next-Monday, mid-week→prior Monday, empty→"", unparseable→"") — all pass.
+
+
+## 2026-08-22 (cont.) — Step 2: non-English contrast-row reconciliation (31/263)
+
+Went through all 31 `needs_translation=true` rows in
+`data_derived/ct_artlist_contrast.csv` (263 data rows total) and classified
+each by Unicode-script analysis + reading the title. Three-way breakdown:
+
+- **Genuinely non-English: 15.** By language: Korean 3 (ddaily.co.kr, all
+  Apple Vision Pro), Chinese 7 (Cursor 3 — finance.sina.com.cn ×2 +
+  tech.ifeng.com; Dream Machine 4 — kwongwah.com.my, news.china.com,
+  newtalk.tw, news.ifeng.com), Russian 1 (ura.news, Operator), Bengali 1
+  (dailyinqilab.com, Operator), Spanish 2 (malagahoy.es, elperiodico.com,
+  Operator), Polish 1 (dobreprogramy.pl, Operator). 12 of these are
+  non-Latin scripts (Hangul/CJK/Cyrillic/Bengali); the other 3 are
+  Latin-script but unambiguously Spanish/Polish by content.
+- **False-positive flags: 16.** Every one is an English title; the flag was
+  tripped purely by a non-ASCII *punctuation/symbol* character, not by any
+  foreign-language text: 13× EN DASH (U+2013), 1× POUND SIGN (U+00A3, the
+  radiotimes "£1.99" Apple Music deal), 1× NO-BREAK SPACE (U+00A0, the
+  mactech Bluey/Apple Arcade item), 1× NON-BREAKING HYPHEN (U+2011, the
+  tomshardware "frontier-level" Grok 4 item).
+- **Genuinely uncertain: 0.** No flagged title was ambiguous — each resolved
+  cleanly to English or to a specific foreign language.
+
+**Sum check: 15 + 16 + 0 = 31.** ✓
+
+**Root cause / recommendation:** the `needs_translation` heuristic evidently
+fires on the presence of ANY non-ASCII codepoint, so ubiquitous typographic
+punctuation (en-dashes especially) produces a ~52% false-positive rate on this
+batch. Recommend tightening it to detect non-Latin *letters* (or running real
+language detection) rather than any-non-ASCII, before the 263-row contrast set
+is hand-labeled. Only the 15 genuine rows actually need translation to judge
+relevance; the 16 English rows can be labeled as-is.
+
+
+## 2026-08-22 (cont.) — Step 3: verify_week_match.py flagged SUPERSEDED
+
+Added a prominent `*** SUPERSEDED (2026-08-18) — STALE SCAFFOLDING, DO NOT RUN
+AS-IS ***` banner at the top of `scripts/verify_week_match.py`'s docstring. The
+note states it was early scaffolding built on guessed column names and Viveka's
+abandoned `other_week` median-count rule, which was replaced on 2026-08-18 by
+the deterministic v2 `contrast_week()` method; its premise no longer holds and
+its assumptions are known-wrong. File was NOT deleted — retained for provenance
+of the original Kimi/Mamba spot-check request, per instruction ("just flag it").
+No other lines in the file were changed.
+
+
+## 2026-08-22 (cont.) — Step 4: smoke test — found + fixed a real portability bug, now passes
+
+Ran `scripts/test_pipeline_smoketest.py`. **First run FAILED** — but not on
+logic: `sensitivity_analysis.py` raised a `SyntaxError` at line 391 (and again
+at 589):
+
+    print(f"  {'T3 \\ T2':>10s}", end="")
+    SyntaxError: f-string expression part cannot include a backslash
+
+This is a real portability defect: backslashes inside an f-string *expression*
+were illegal before Python 3.12 (PEP 701 lifted the restriction). The file
+therefore does not even parse on Python 3.10/3.11. The first 4 pipeline scripts
+ran clean; only script 5 was blocked, and it was blocked at parse time (so it
+would also have blocked Step 6).
+
+**Fix (behavior-preserving):** hoisted the backslash literal out of the
+f-string expression into a plain string assignment, in both places:
+
+    axis_label = 'T3 \\ T2'
+    print(f"  {axis_label:>10s}", end="")
+
+Output is identical (right-justified "T3 \ T2" grid-axis header). This is now
+valid on every Python version (3.10 through 3.13). `py_compile` clean on all 5
+scripts afterward.
+
+**Re-run result: `>>> SMOKE TEST PASSED CLEANLY! All 5 pipeline scripts
+executed without error. <<<`** (ran under the sandbox's Python 3.10.12; all 5
+scripts are pure-stdlib so this is environment-independent — no pandas/requests
+needed for Lane A).
+
+Notes:
+- The smoke test's synthetic Viveka fixture was already updated to the real
+  column layout in Step 1, so the merge step ingested it correctly (excluded 1
+  non-peak_week guardrail row; merged 50 Viveka + 65 harvester = 115).
+- Weighted / Tier-1 / Tier-1+2 precedence cells read "0/0 (no testable
+  entities)" in the smoke test because the synthetic `week_start` (Monday of
+  the synthetic birth date) intentionally does not line up with the synthetic
+  frozen counts' weeks; the raw path gives the expected 10/10. This is
+  pre-existing synthetic-data behavior (identical before the Step 1 change) and
+  is not a regression — the test only asserts clean execution.
+- ACTION FOR USER: confirm the target Python version. If the team runs 3.12+,
+  the old code worked and this fix is a harmless portability improvement; if
+  anyone runs <=3.11, this fix was load-bearing (the pipeline could not run).
+
+
+## 2026-08-22 (cont.) — Step 5: generated viveka_labeled_export.csv (peak_week only)
+
+Self-generated `data_derived/viveka_labeled_export.csv` from the Label sheet of
+`inputs_frozen/ct_artlist_LABELING.xlsx` (read-only, master untouched).
+
+- Source Label sheet: 566 data rows, header
+  `#, entity, window, date, title, domain, url, suggested_label, relevant`.
+  Window split: **peak_week 517 / other_week 49** (517+49=566).
+- Export written with peak_week rows ONLY: **517 rows**, dropping the 49
+  other_week (precision-audit) rows per the 2026-08-18 sampling policy. Dropped
+  the leading `#` index column; kept the 8 substantive columns
+  (`entity, window, date, title, domain, url, suggested_label, relevant`),
+  which is exactly the contract `read_viveka()` now expects.
+- Verified: re-read row count = 517, every row window == peak_week, 22 distinct
+  entities (= Lane A's 22 QUERY_OVERRIDES entities). Dates were already ISO
+  strings in the sheet (no Excel-serial conversion needed).
+- End-to-end reader check: `read_viveka()` ingests all 517 (0 excluded as
+  non-peak), derives a non-empty `week_start` for every row, and 100% of the
+  derived week_start values fall on a Monday (GDELT convention) — confirms the
+  Step 1 derivation works on the real data, not just the synthetic fixture.
+
+
+## 2026-08-22 (cont.) — Step 6: full Lane-A pipeline dry-run — all 5 clean; found + fixed a 2nd real bug
+
+Ran the full pipeline on Lane A data ALONE (the 517-row peak_week
+viveka_labeled_export.csv from Step 5 + real inputs_frozen; NO harvester file,
+since Lane B is not yet harvested). Executed in an isolated sandbox copy so the
+real data_derived/ outputs (precedence_comparison.csv, sensitivity_results.csv)
+were NOT touched — verified identical before/after.
+
+**Chain result: all 5 scripts exit 0 (CLEAN).** No column-layout bugs surfaced
+in merge -> build_tier_map -> apply_weights -> precedence_test_weighted ->
+sensitivity_analysis against real data.
+
+Real-data checkpoints (vs the synthetic smoke test):
+- merge_source_data: 517 Viveka + 0 harvester = 517 rows (harvester correctly
+  skipped).
+- build_tier_map: 329 unique normalized domains; **Jenks GVF = 0.926 (PASS,
+  >= 0.70)** — real natural-breaks tiering (T1=21, T2=61, T3=247), not the
+  quantile fallback the synthetic data triggered.
+- apply_weights: all 517 article domains matched the tier map; frozen counts
+  for 50 entities; **22/50 entities have source data** — the 28 "missing" are
+  exactly the un-harvested Lane B entities (expected, not a bug). Wrote
+  ct_results_weighted.csv (6570 rows).
+- precedence_test_weighted: ran clean. Comparison table:
+
+      Method                              Precedes  Median lead   p-value
+      Raw (original paper)                   28/33        83 d     6.6e-05
+      Raw (original mention_count)           28/33        83 d     6.62e-05   <- reproduces baseline exactly
+      Weighted (continuous tier weights)      3/11      -100 d     2.27e-01
+      Tier 1 only (binary exclusion)          2/10      -100 d     1.09e-01
+      Tier 1+2 (binary exclusion)             3/11      -100 d     2.27e-01
+
+  IMPORTANT: the weighted rows are PRELIMINARY and NOT interpretable yet — only
+  ~11/50 entities are testable because Lane B isn't harvested. The -100 d /
+  non-significant weighted results are an artifact of the partial Lane-A-only
+  sample, NOT a finding that weighting kills the effect. The raw baseline
+  reproducing at 28/33, p=6.6e-05 is the meaningful signal that the plumbing is
+  correct.
+
+**2nd real bug found + fixed (sensitivity_analysis.py):** the "TIER-BOUNDARY
+PERTURBATION TEST" (Section 2) was silently dead. `Counter` is used at line 441
+but was never imported (top of file only imported `defaultdict`), so it raised
+`NameError: name 'Counter' is not defined`, which the broad `except Exception`
+at line ~633 swallowed and mislabeled as "[SKIP] ... requires generated data".
+This meant the boundary-perturbation robustness check produced NOTHING on any
+input, ever. Fixed by importing Counter (`from collections import defaultdict,
+Counter`). After the fix the perturbation test runs and emits real variants:
+boundary_shift_up (26 doms, 13.2% vol, 3/11, p=2.27e-01) and boundary_shift_down
+(52 doms, 24.6% vol, 3/11, p=2.27e-01); sensitivity_results.csv grew 88 -> 90
+rows. RECOMMENDATION: narrow that `except Exception` (and the similar one in the
+weight-sweep block) — a catch-all that reports every error as "requires
+generated data" is exactly what hid this bug; it should let NameError/AttributeError
+propagate rather than masquerade as a data-availability skip.
+
+Caveat on environment: run under the sandbox's Python 3.10.12 (all pipeline
+scripts are pure-stdlib for Lane A, so no venv needed here). Numbers above are
+preliminary pending the Lane B harvest.

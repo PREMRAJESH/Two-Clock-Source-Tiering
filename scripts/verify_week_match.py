@@ -3,6 +3,21 @@
 """
 verify_week_match.py  --  The Kimi/Mamba spot-check Viveka asked for
 ==========================================================================
+*** SUPERSEDED (2026-08-18) — STALE SCAFFOLDING, DO NOT RUN AS-IS ***
+--------------------------------------------------------------------------
+This script is retained for provenance only. It was early scaffolding written
+against a guessed column layout and Viveka's since-abandoned `other_week`
+median-count rule. That whole approach was replaced on 2026-08-18 by the
+deterministic v2 `contrast_week()` method (see scripts/*contrast* and
+docs/session_log.md). The `other_week` median rule proved unrecoverable, so
+the premise of this check no longer holds and its assumptions below (guessed
+CSV/label column names, per-entity single-week model) are known to be wrong.
+
+Do NOT run this as part of the pipeline or treat its output as authoritative.
+Kept, not deleted, so the reasoning trail from the original spot-check request
+survives. If you need the week-alignment check, use the v2 contrast_week logic
+instead.
+--------------------------------------------------------------------------
 BEFORE ANYTHING ELSE ON SOURCE-WEIGHTING PROCEEDS, this needs to pass.
 
 Compares the `other_week` her ct_artlist_harvester.py picked (median-count

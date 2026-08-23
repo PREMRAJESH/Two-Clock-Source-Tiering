@@ -54,7 +54,7 @@ OUTPUT
 import csv
 import os
 import sys
-from collections import defaultdict
+from collections import defaultdict, Counter
 
 # Import from sibling scripts (same directory)
 sys.path.insert(0, os.path.dirname(__file__))
@@ -388,7 +388,8 @@ def main():
 
         # Print weight sweep as a matrix
         print(f"\n  Tier 1 = 1.0 (fixed)")
-        print(f"  {'T3 \\ T2':>10s}", end="")
+        axis_label = 'T3 \\ T2'  # backslash hoisted out of f-string expr (py<3.12 compat)
+        print(f"  {axis_label:>10s}", end="")
         for w2 in TIER2_WEIGHTS:
             print(f"  {'T2=' + str(w2):>14s}", end="")
         print()
@@ -586,7 +587,8 @@ def main():
 
         # Print weight sweep as a matrix
         print(f"\n  Tier 1 = 1.0 (fixed)")
-        print(f"  {'T3 \\ T2':>10s}", end="")
+        axis_label = 'T3 \\ T2'  # backslash hoisted out of f-string expr (py<3.12 compat)
+        print(f"  {axis_label:>10s}", end="")
         for w2 in TIER2_WEIGHTS:
             print(f"  {'T2=' + str(w2):>14s}", end="")
         print()

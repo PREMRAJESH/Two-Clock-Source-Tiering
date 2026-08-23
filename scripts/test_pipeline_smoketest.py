@@ -87,33 +87,36 @@ def main():
         # Copy entities.py into sb_inputs_dir
         shutil.copy2(os.path.join(INPUTS_DIR, "entities.py"), os.path.join(sb_inputs_dir, "entities.py"))
 
-        # 1. Viveka labeled export CSV (window column now present; one non-peak
-        #    row included to exercise the non-peak_week exclusion guardrail)
+        # 1. Viveka labeled export CSV — real Label-sheet columns
+        #    (entity, window, date, title, domain, url, suggested_label,
+        #    relevant). week_start is DERIVED from `date` by merge_source_data,
+        #    so it is intentionally NOT a column here. One non-peak row is
+        #    included to exercise the non-peak_week exclusion guardrail.
         viveka_file = os.path.join(sb_data_dir, "viveka_labeled_export.csv")
         with open(viveka_file, "w", newline="", encoding="utf-8") as f:
-            w = csv.DictWriter(f, fieldnames=["entity", "domain", "url", "title", "seendate", "sourcecountry", "week_start", "window"])
+            w = csv.DictWriter(f, fieldnames=["entity", "window", "date", "title", "domain", "url", "suggested_label", "relevant"])
             w.writeheader()
             for name, birth, flagged in ENTITIES[:5]:
                 for d, ec, ac in DOMAINS[:10]:
                     w.writerow({
                         "entity": name,
+                        "window": "peak_week",
+                        "date": birth,
+                        "title": f"Story about {name}",
                         "domain": d,
                         "url": f"https://www.{d}/article-1",
-                        "title": f"Story about {name}",
-                        "seendate": "20230601T000000Z",
-                        "sourcecountry": "US",
-                        "week_start": birth,
-                        "window": "peak_week",
+                        "suggested_label": "y",
+                        "relevant": "y",
                     })
             w.writerow({
                 "entity": ENTITIES[0][0],
+                "window": "other_week",
+                "date": ENTITIES[0][1],
+                "title": "Audit-only second-week row (must be excluded)",
                 "domain": "randomforum.org",
                 "url": "https://randomforum.org/audit-row",
-                "title": "Audit-only second-week row (must be excluded)",
-                "seendate": "20230615T000000Z",
-                "sourcecountry": "US",
-                "week_start": ENTITIES[0][1],
-                "window": "other_week",
+                "suggested_label": "?",
+                "relevant": "n",
             })
 
         # 2. Harvester CSV (remaining 5 entities)
