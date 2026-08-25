@@ -850,3 +850,204 @@ propagate rather than masquerade as a data-availability skip.
 Caveat on environment: run under the sandbox's Python 3.10.12 (all pipeline
 scripts are pure-stdlib for Lane A, so no venv needed here). Numbers above are
 preliminary pending the Lane B harvest.
+
+## 2026-08-23 — Contrast-batch triage (Task 3) begins; Batch 1 (Operator) labeled
+
+Started triaging the 263-row contrast batch (data_derived/ct_artlist_contrast.csv)
+by entity, using Viveka's DEFINITE (non-'?') precedent calls from the master
+Label sheet (inputs_frozen/ct_artlist_LABELING.xlsx) as the relevance standard
+for each entity. New method caveat recorded in docs/tier_methodology.md §6:
+contrast_week rows must NOT be block-judged on an entity's peak-week precedent
+rate — the contrast week is deliberately off-peak and surfaces more ambient /
+unrelated term-matches than the peak week. Apple Vision Pro is the clearest case
+(25/0 'y' precedent, yet contrast rows are mostly Apple TV/Music/Arcade noise,
+not the headset). Batches 16-18 (Apple Vision Pro, Apple Intelligence, Threads)
+flagged for row-by-row reads, not block treatment.
+
+Batch 1 — Operator (25 rows), precedent 0 'y' / 50 'n' (she has never marked an
+Operator article relevant, including generic agentic-AI pieces). All 25 contrast
+rows are off-topic (OpenAI-Seoul-office ×7, Perplexity-dethrones-Google ×4,
+Opera-"Neon"-browser ×3, generic AI-agent ×3, assorted foreign-language/earnings
+noise) — none name OpenAI's Operator agent. Viveka confirmed all 25 → relevant=n
+(incl. the borderline generic-agent rows 10/18/19). Written to the CSV via a
+byte-preserving targeted edit: only the 25 Operator lines changed, CRLF and every
+other row preserved byte-for-byte (verified 25/25 differing lines == Operator
+indices). 25 of 263 contrast rows now labeled.
+
+Batch 2 — Gemini (Google model) (25 rows), precedent 2 'y' / 23 'n'. Her standard
+is consistent: Gemini-model-specific how-to / feature / integration content = y;
+broad-AI or other-product stories = n (her 23 'n' include a 19× syndicated "Teens
+use AI chatbots" block, none Gemini-specific). Contrast rows split 10 y / 15 n.
+The 15 n: an Apple–Baidu-partnership cluster (6 rows, one rolling syndicated
+story) + broad-AI/off-topic (9, incl. a zerohedge/thenewamerican "AI leftist
+bias" dup pair). The 10 y: 9 Gemini-specific pieces (Workspace / Maps / Messages /
+Pixel-Nano / how-tos / Advanced-vs-Copilot) + row 22 (qz "How AI chatbots are
+censored") — Viveka's override: it names and discusses Gemini's actual behavior
+alongside other chatbots, closer to her Gemini-specific 'y' pattern than the
+generic-chatbot 'n' pattern. Written via the byte-preserving verified method
+(25/25 differing lines == Gemini indices; CRLF + all other rows preserved).
+50 of 263 contrast rows now labeled.
+
+Batch 3 — Dream Machine (5 rows), precedent 0 'y' / 32 'n' (pure-N wall; the term
+is polluted and she has never counted a Dream Machine article — her 'n' set
+includes a large syndicated "Alain Delon dies" block). All 5 contrast rows are
+off-topic: 1 English Holocaust-memorial-award PR item + a 4-row foreign-language
+cluster on the June 2025 Air India Boeing 787 crash. None reference Luma's Dream
+Machine video model. All 5 → n (verified, 5/5 differing lines). 55 of 263 labeled.
+
+Batch 4 — Lovable (5 rows), precedent 2 'y' / 22 'n'. Her 'y' examples are
+Lovable-the-company-specific ("Lovable Launches Vibe Coding App…", "Lovable Is
+Offering a 10% Raise…"); her 'n' set is adjacent-startup noise (a ~15x syndicated
+"Roomba pioneer builds AI pet" block, "Voi founder's startup Pit", "Stockholm
+hottest startup city") — none about Lovable. All 5 contrast rows are off-topic or
+only topically adjacent: row 2 (LGBTQ+ hotels NYC, independent.co.uk) and row 3
+(StumbleUpon time-killer, howtogeek) are pure noise; row 4 is about rival Base44's
+own model (techcrunch); rows 1 (vibe-coding-in-Nepal, phnompenhpost) and 5
+(founding-to-unicorn, fortune) are vibe-coding / startup-trend pieces whose titles
+do not name Lovable. Rows 1 & 5 were checked against the local harvest artifact
+reference/contrast_collection_2026-08-18/20_Lovable.json — it stores only GDELT
+ArtList metadata (url/title/seendate/socialimage/domain/language/sourcecountry),
+no body or snippet text, so a by-name Lovable mention is not confirmable locally
+and neither title names it. Viveka confirmed all 5 → relevant=n. Written via the
+byte-preserving verified method (5/5 differing lines == Lovable indices; CRLF and
+all other rows preserved). 60 of 263 contrast rows now labeled.
+
+Batch 5 — Liquid AI (2 rows), precedent 0 'y' / 33 'n' (pure-N wall; the term is
+polluted by "liquid cooling" hardware/infra stories — her 33 'n' include NVIDIA/LG
+"AI factory", Arista, Supermicro/Dell items, and she has never counted a Liquid AI
+article). Both contrast rows → n: row 1 "Vertiv expands global liquid cooling
+services" (technicalreviewmiddleeast.com) is a clean liquid-cooling term collision;
+row 2 "Edge Computing For Tomorrow" (forbes.com) is topically adjacent (edge /
+on-device inference is Liquid AI's space) but its title does not name the company
+and no local snippet exists to confirm a by-name mention — Viveka kept it n,
+consistent with her precedent of excluding broad-AI/infra think-pieces (none of her
+33 N examples cleared that bar either). Written via the byte-preserving verified
+method (2/2 differing lines == Liquid AI indices; CRLF and all other rows
+preserved). 62 of 263 contrast rows now labeled.
+
+Batch 6 — Kimi (2 rows), precedent 0 definite-'y' / 15 definite-'n' (+ ~10 amber).
+Nuance: all 15 'n' are one generic China-AI-policy story (a 6x+ syndicated "Trump
+administration vows crackdown on Chinese companies exploiting AI models" block),
+so the 0-Y precedent reflects that no genuinely Kimi-specific article reached her
+peak-week sample — not a rule that she excludes Kimi-specific content. Split 1 y /
+1 n: row 1 "China Alibaba could launch Qwen for enterprise this week"
+(siliconrepublic.com) is about a rival model (Qwen), not Kimi → n; row 2 "Cursor
+admits its new coding model was built on top of Moonshot AI Kimi" (techcrunch.com)
+names Kimi in the title and is substantively about it → y (Viveka's call; the
+0-Y precedent, being noise-only, does not bind against a genuine name-in-title
+Kimi piece). First 'y' in the recent run of all-N batches. Written via the
+byte-preserving verified method (2/2 differing lines == Kimi indices; CRLF and all
+other rows preserved). 64 of 263 contrast rows now labeled.
+
+Batch 7 — vLLM (2 rows), precedent 0 'y' / 14 'n' (her 'n' are all generic
+AI-infra/agent noise — ROCm/phoronix hardware, a syndicated "FlyHermes Agent"
+block, Meiro "enterprise AI infrastructure"; no vLLM-specific piece has cleared
+her bar). Both contrast rows sit in the inference-serving infra space but neither
+names vLLM in its title and no local snippet exists: row 1 "About nCompass"
+(ncompass.tech) is a corporate about-page for an inference startup, not coverage
+of vLLM; row 2 "Red Hat Delivers Next Wave of Gen AI Innovation…" (webwire.com) is
+a broad Gen-AI press release — Red Hat genuinely ships/serves on vLLM so a body
+mention is plausible, but the title is generic PR of exactly the kind her 14 N's
+exclude. Both → n (Viveka's call). Written via the byte-preserving verified method
+(2/2 differing lines == vLLM indices; CRLF and all other rows preserved). 66 of
+263 contrast rows now labeled.
+
+2026-08-25 — Reconciliation with Viveka's contrast-week package
+--------------------------------------------------------------
+Received D:\Prem_Package_contrast_week\ from Viveka: a README, her own
+ct_artlist_contrast.csv (present twice — a root copy ct_artlist_contrast_1.csv
+and Prem_Package/ct_artlist_contrast.csv, byte-identical to each other), and 22
+raw GDELT ArtList JSON fetches (one per entity, named by entity).
+
+Verified provenance (read-only comparison; nothing merged blindly):
+- Her CSV is a COMPLETE PARALLEL LABELING PASS over the SAME sample, not an
+  earlier stage: 263 rows, all labeled (67 'y' / 196 'n'). Schema matches ours on
+  the first 8 columns; her 9th column is `note` where ours is `needs_translation`.
+- Row alignment is exact: 263/263 rows match by (entity,url) in identical order,
+  no unmatched rows either side.
+- Her README documents a two-tier method: title-based primary pass on all 263,
+  then FULL-TEXT verification on the 28 title-ambiguous rows (annotated in `note`).
+  Result 67y/196n. She flags an Operator query-precision finding (only 3 of ~25
+  Operator rows genuinely discuss OpenAI's Operator on full-text read) and notes
+  Mamba + vLLM's flagged rows resolved as genuine hits (IBM Granite 4.0; a Red Hat
+  press release).
+- The 22 raw_gdelt_fetches are the SAME underlying pulls as our archived
+  reference/contrast_collection_2026-08-18/ (numbered 01-22): all 22/22 entities
+  have identical URL sets (0 only-mine, 0 only-hers) and, on spot-checked files
+  (Operator, Mamba, Apple Vision Pro), every shared record is field-for-field
+  identical (title/seendate/domain/language/sourcecountry). Same collection,
+  re-exported and renamed — consistent with the deterministic contrast_week rule
+  (seeded on entity name + version tag, not run-date).
+
+Five disagreements between her file and ours among the 66 rows both had labeled;
+resolved as follows (writes below):
+- L149 / L157 / L158 Operator (theregister / forbes / blog.skyvern): OURS n ->
+  HERS y. Took HER calls -> y. Her full-text verification beats our Batch-1
+  title/precedent sweep (we had zeroed all 25 Operator rows). These are exactly the
+  3 genuine Operator articles her README precision finding calls out.
+- L239 vLLM (webwire "Red Hat Delivers Next Wave of Gen AI Innovation"): OURS n ->
+  HERS y. Took HER call -> y (full text confirms an explicit vLLM mention). This
+  reverses the Batch-7 n on that row.
+- L97 Gemini (qz "How AI chatbots are censored"): OURS y vs HERS n. KEPT our y —
+  NO change. Her n was title-only tier (no verification note), so this is not her
+  rigorous method beating ours; it's two unverified guesses. A web-search check of
+  the actual article content (prem, 2026-08-25) confirms it is specifically about
+  Gemini refusing ~half the test questions — more than any other chatbot in the
+  piece — i.e. substantive Gemini-specific content, supporting our 'y'.
+
+Batch 8 (Mamba) resolved: L137 IBM Granite 4.0 (ibm.com) -> y. Her file
+independently marks it y with a full-text verification note on the same article,
+matching what we found via search (Granite 4.0 is a genuine Mamba-2/Transformer
+hybrid). Batch 8 closed as y.
+
+Writes applied via a byte-preserving surgical edit keyed on (entity,url): exactly
+5 physical CSV lines changed (137,149,157,158,239 -> 'y'); all other rows and CRLF
+line endings preserved byte-for-byte; semantic re-read verified. Contrast CSV now
+67 of 263 labeled (16 'y' / 51 'n'). Note: our repo CSV keeps its own
+`needs_translation` 9th column; her `note` column was used only as evidence for the
+reconciliation, not merged into our schema.
+
+Batch 9 — Qwen (25 rows). Now cross-referenced against Viveka's package labels
+(all 25 Qwen rows were TITLE-tier in her pass — no verification notes — so her
+calls here are a second opinion at the same tier as ours, not full-text verdicts).
+Outcome: 8 'y' / 17 'n'.
+- 7 y: the Alibaba-integrates-Qwen-into-Taobao / agentic-shopping story, syndicated
+  7x (L179,180,181,183,184 same headline + L186 scmp + L187 gdnonline variants).
+  Unambiguously Qwen-specific; matches her y; this is the same cluster already cited
+  as a syndication example in tier_methodology.md.
+- 14 clear-noise n: L165,166,167,169,170,171,172,174,175,176,177,178,182,188
+  (other models/companies or generic AI, none about Qwen).
+- 3 uncertain -> n: L173 (foreignpolicy "How China Is Winning the AI Race" — Qwen at
+  most a passing example), L189 (jola.dev "Running local models on an M4" — not a
+  named comparison piece), L185 (clichemag "Discover the Best AI Model 2026").
+- 1 uncertain -> y (OVERRIDE of both our lean and her n): L168 memeburn "7 Best AI
+  Models of 2026: Ranked". prem verified via web search that the actual article
+  names "Qwen 3.6 Plus" specifically with a substantive comparative claim ("makes
+  more sense for high-volume workloads") — a named + substantive hit, not a passing
+  mention. Same override pattern as Kimi/Cursor (Batch 6) and Mamba/IBM-Granite
+  (Batch 8): where the body names the entity substantively, it beats a title-only
+  n on either side.
+- LOW-CONFIDENCE n flag: L185 (clichemag) is the SAME genre as L168 — a "best AI
+  model" roundup from a similar period — and L168 turned out to genuinely name Qwen
+  with substance. L185 could not be verified specifically, so it stays n by default
+  rather than assumed-y from L168's pattern. Worth a second look if a full-text pass
+  is done later.
+Written via the byte-preserving verified method (exactly 25 physical lines 165-189
+changed; CRLF + all other rows preserved; semantic re-read confirms 8y/17n). 92 of
+263 contrast rows now labeled (24 'y' / 68 'n').
+
+2026-08-25 — Archived Viveka's verification package into the repo
+----------------------------------------------------------------
+Created reference/contrast_verification_2026-08-25/ holding Viveka's independent,
+full-text-verified contrast-week labeling pass:
+- README.md (her package readme, copied as-is)
+- ct_artlist_contrast_viveka_verified.csv (her 263-row labeled file, 67 'y' /
+  196 'n'; renamed from her ct_artlist_contrast.csv to keep it distinct from our
+  working data_derived/ct_artlist_contrast.csv).
+This is the reconciliation source used for the 5 label disagreements + the Mamba
+resolution documented in the "2026-08-25 — Reconciliation with Viveka's
+contrast-week package" entry above. Not copied (confirmed byte-identical to files
+already in the repo): her raw_gdelt_fetches/ (== reference/contrast_collection_
+2026-08-18/, 22/22 identical URL sets) and her standalone root ct_artlist_contrast_1.csv
+(== the package copy). Her `note` column is preserved here as the verification
+evidence trail; it is NOT merged into our working file's schema.
