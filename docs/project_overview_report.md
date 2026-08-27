@@ -177,7 +177,7 @@ Full detail in `docs/session_log.md` (2026-08-18 entries). The deterministic v2 
 | Item | Status | Detail |
 |---|---|---|
 | **27 AMBER precision-audit rows** | **BLOCKED (manual)** | Extracted to `data_derived/amber_rows_review.csv` (27 rows, entity breakdown: Apple Intelligence 13, Kimi 10, Qwen 2, Dream Machine 1, Lovable 1). `relevant` column empty -- awaiting manual y/n labeling (jointly with Viveka). |
-| **263-row contrast-week precision batch** | **PENDING (manual)** | `data_derived/ct_artlist_contrast.csv` (22/22 entities, 263 rows, committed cd47959). `relevant` column empty -- awaiting manual y/n labeling. `needs_translation` column added (31 flagged). |
+| **263-row contrast-week precision batch** | **COMPLETE** | `data_derived/ct_artlist_contrast.csv` (22/22 entities, 263 rows). **263/263 labeled, 78y/185n.** Committed 886019f. `needs_translation` column (31 flagged) added 2026-08-22. |
 
 ### Resolved (closed, on disk)
 
@@ -199,12 +199,14 @@ Full detail in `docs/session_log.md` (2026-08-18 entries). The deterministic v2 
 | ALREADY_COVERED populated | **COMPLETE** (22 entities; 28 remaining for Lane B) |
 | needs_translation flagging | **COMPLETE** (31 of 263 flagged) |
 | Documentation rewrite (7 READMEs) | **COMPLETE** (committed 08b7dbd) |
+| 263-row contrast-week triage | **COMPLETE** (263/263 labeled, 78y/185n; committed 886019f) |
 | Report regeneration | **COMPLETE** (this file, 2026-08-22) |
 
 ### Pending but not blocking
 
 - Weighting pipeline execution on real source data (Tasks 1-6) -- awaits the source-collection lanes.
 - Remaining 28-entity source pull (`ct_source_harvester.py`) -- ALREADY_COVERED populated, not yet run.
+- 27 AMBER precision-audit rows -- extracted, `relevant` column empty, awaiting manual labeling.
 - `docs/tier_methodology.md` content -- intentionally unfilled until real domain data exists.
 
 ---
@@ -221,14 +223,14 @@ Full detail in `docs/session_log.md` (2026-08-18 entries). The deterministic v2 
 ### Still needed from Viveka (or joint)
 
 1. **27 AMBER precision-audit judgments** -- extracted to `amber_rows_review.csv`, `relevant` column empty; joint human task.
-2. **263-row contrast-week labeling** -- `relevant` column empty in `ct_artlist_contrast.csv`; collection done, labeling not.
-3. **Two P(t) reruns before Oct 23, 2026** -- hers, targeting early-to-mid October.
+2. **Two P(t) reruns before Oct 23, 2026** -- hers, targeting early-to-mid October.
 
 ---
 
 ## 8. Commit History (for traceability)
 
 ```
+886019f post-triage adjustments: xAI 8 rows n->y (product coverage), Apple Vision Pro L30 n->y (discontinuation cycle); 78y/185n total
 3b50d5b AMBER extraction, ALREADY_COVERED, needs_translation flag, session-log catch-up
 08b7dbd rewrite repository documentation as professional research documentation
 880c107 fix: strip trailing :port in domain normalization (asiaone.com:443 bug found via contrast-audit QA)
