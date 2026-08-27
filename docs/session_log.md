@@ -1051,3 +1051,107 @@ already in the repo): her raw_gdelt_fetches/ (== reference/contrast_collection_
 2026-08-18/, 22/22 identical URL sets) and her standalone root ct_artlist_contrast_1.csv
 (== the package copy). Her `note` column is preserved here as the verification
 evidence trail; it is NOT merged into our working file's schema.
+
+## 2026-08-25 — Batch 11 (small tail: Sora / Udio / Suno / Ideogram / Manus / DBRX / Windsurf, 28 rows)
+
+Our independent title read and Viveka's independent title-only pass FULLY AGREED: 2 y / 26 n. User ratified ("continue") after the full per-row breakdown + recommendation.
+
+y (2) — named + substantive:
+  - L127 Ideogram (techradar) — "What is Ideogram" explainer, wholly about the product.
+  - L237 Windsurf (nextbigfuture) — "Windsurf is Competitive With Cursor for AI Coding".
+
+n (26):
+  - Sora (10): L190-L199 — anime-name collisions, celeb gossip, generic AI think-pieces, OpenAI-company news not Sora-specific (L193 ChatGPT-agentic), ByteDance/Baidu gen-AI.
+  - Udio (9): L228-L236 — 'audio' collision (Lil Wayne fest), generic 'artists oppose AI training' cluster, AI election trailer, a Suno-specific piece (L229).
+  - Suno (3): L200-L202 — generic GenAI contracts; genealogy-blog index / AI-song.
+  - Ideogram (1): L126 — xAI image API, not Ideogram.
+  - Manus (2): L138-L139 — generic agentic-commerce law; 'Manus' = Donegal given name (Joyce theatre).
+  - DBRX (1): L70 — generic 'AI budgets' piece.
+
+Low-confidence n's flagged for possible later full-text check (default n per conservative title bar, revisitable like Qwen L185):
+  - L234 Udio (businessinsider, "Lucian Grainge Goes on the Offensive As AI Washes Over Music") — UMG sued Udio+Suno mid-2024; body may discuss Udio. Strongest verify candidate in the tail.
+  - L197 Sora (indiewire, "65 AI Studios Launched Since 2022") — Sora at most a passing example.
+  - L202 Suno (geneamusings, AI-song blog) — may name Suno as the tool; low signal.
+
+Reconciliation-rule note: none of the 171 then-remaining rows carry a Viveka full-text `note` (all 28 of her verified notes are in Operator/vLLM/Mamba, already labeled). So for every remaining batch her call is TITLE-ONLY tier — the 'her verified call wins' rule is N/A; her label is a same-tier second opinion, resolved by content where it matters.
+
+Running total after Batch 11: 120/263 labeled (26 y / 94 n), 143 blank.
+
+## 2026-08-25 — Batch 12 (Cursor, 18 rows)
+
+Strong entity in a noisy AI-coding/vibe-coding neighborhood → read row-by-row (not block). Viveka title-only 1y/17n; agreed on the verdict but flagged body-level verify candidates. Result: 1 y / 17 n.
+
+  y (1): L63 businessinsider "Cursor No-AI, Hands-on Hiring Approach" — about Cursor/Anysphere directly.
+  n (17): L52-L62, L64-L69 — pointer-'cursor' collisions (KCMO kids L57, Apple UI redesign L59), CN animation-game rankings (L62,L68), Google Cloud outage L65, GitLab earnings L64, generic vibe/agentic-AI & competitor-coding pieces.
+
+Low-confidence n's (title-only; body could name Cursor; NOT web-verifiable from sandbox — egress locked to one host). Revisit like Qwen L185:
+  - L61 alphr "Best AI for Coding Assistance" — TOP flip candidate (roundup almost certainly features Cursor substantively, Qwen-L168 pattern).
+  - L60 venturebeat (Zencoder launch), L67 ifeng (ByteDance AI-coding), L69 businessinsider (Replit vibe-coding) — secondary.
+
+Running total after Batch 12: 138/263 labeled (27 y / 111 n), 125 blank.
+
+## 2026-08-25 — Batches 13-17 (final triage: 125 rows, delegated exec)
+User directive: "okay execute remaining batches" — row-by-row reads written directly; borderlines flagged not silently overridden.
+
+- **Batch 13 Apple Intelligence** (L2-L26): 11y / 14n. y=core AI-feature pieces + false-advertising-lawsuit cluster + Siri-delay/over-promise + iOS-18.4-AI-features. n=general iOS previews, beta/release churn, hardware, homeOS.
+  - FLAG L14 (9to5mac "iOS 18.4: Four new features") = low-confidence n; body may be AI-centric.
+- **Batch 14 Apple Vision Pro** (L27-L51): 6y / 19n. y=team-disbanded/"what it left behind" (Korean), visionOS 26.5 release, iRacing-on-Vision-Pro cluster. n=Apple TV/Music/Arcade, hardware, unrelated.
+  - FLAG L30 (phandroid "Apple is done betting on enclosed headsets") kept n per Viveka title-only; LIKELY y — Apple's only enclosed headset is Vision Pro, same May-2026 discontinuation cycle as L27/L28.
+- **Batch 15 Grok** (L101-L125): 12y / 13n. y=Grok launch/explainer/roast/poem + X in-stream buttons. n=OpenAI/Altman, Musk-advertiser, deepfakes, AI roundups.
+  - OVERRIDE L113 (insidebitcoins DEXTools "GROK, Coldstack, ValleyDAO") Viveka y -> **n**: this is the GROK crypto memecoin, not xAI's Grok. Term collision.
+  - OVERRIDE L107 (zeenews "...Poem Written By AI") Viveka n -> **y**: same Musk-shares-Grok-poem story as L105/L110/L116 (all y); title genericized to "AI" but body is the Grok poem.
+- **Batch 16 Threads** (L203-L227): 7y / 18n. y=Threads monetization/usage/creator-confusion + X-vs-Threads-growth cluster. n=Openvibe, Meta moderation, Instagram, and the large Trump-rally-shooting conspiracy syndication cluster.
+  - FLAG L217 (marketplace.org week-in-review, "Threads turns a year old") borderline-y: roundup with a substantive Threads-anniversary segment.
+- **Batch 17 xAI** (L240-L264): 6y / 19n. y=xAI-sues-OpenAI, xAI-offers-Grok-to-govt, xAI-Grokipedia (explicit), xAI-unveils-Grokipedia, OpenAI-dismiss-xAI-suit (x2).
+  - METHOD FLAG (user review): followed Viveka's consistent line = explicit "xAI" framing -> y; "Musk's ..." framing -> n. Under a broader "any xAI product/lawsuit coverage = y" bar, ~13 rows would flip to y: Grokipedia-as-Musk's (L246,248,250,253,254,255), Musk-v-Apple/OpenAI suit (L251,256,257,262,263), Azure-adds-Grok-4 (L243), govt-Grok-deal-as-Musk's (L264). Left n; easy to flip if user prefers the broader bar.
+
+**MILESTONE: triage complete -- 263/263 labeled, 0 blank. Totals 69y / 194n** (vs Viveka's title-only 67y/196n; net +2y/-2n across full set, from earlier-batch content overrides + the two Grok swaps above). Byte-preserving EOL-aware writes; git-reversible (uncommitted).
+
+## 2026-08-27 -- Post-triage adjustments (xAI, Apple Vision Pro)
+
+User-directed final adjustments after reviewing the completed triage
+output. Applied to `data_derived/ct_artlist_contrast.csv` only (not the
+master xlsx).
+
+**xAI -- 8 rows flipped n -> y (substantive xAI product coverage despite
+"Musk's" headline framing):**
+- L243 (tomshardware): "Microsoft adds Grok 4 to Azure AI Foundry" -- xAI product on Azure
+- L246 (gizmodo): "Elon Musk Wikipedia Competitor Is Going to Be a Disaster" -- about xAI's Grokipedia
+- L248 (news18): "Elon Musk Introduces Grokipedia To Challenge Wikipedia" -- xAI product announcement
+- L250 (fudzilla): "Musk wants to replace Wikipedia with Grokipedia" -- xAI product
+- L253 (digit.in): "Elon Musk wants to replace Wikipedia with Grokipedia" -- xAI product
+- L254 (pcmag): "Elon Musk Plans to Take on Wikipedia With 'Grokipedia'" -- xAI product
+- L255 (pcworld): "Elon Musk is working on 'Grokipedia' to dethrone Wikipedia" -- xAI product
+- L264 (slashgear): "US Government Signs Deal To Use Elon Musk Grok AI" -- xAI product in government deal
+
+**xAI -- 5 rows kept as n (lawsuit/business-dispute cluster, matches
+existing precedent):**
+- L251 (economictimes): "Apple, OpenAI ask US judge to dismiss Musk suit"
+- L256 (macdailynews): "Apple, OpenAI ask U.S. judge to dismiss Elon Musk lawsuit"
+- L257 (arstechnica): "OpenAI mocks Musk math in suit over iPhone/ChatGPT integration"
+- L262 (marketscreener): "OpenAI asks court to dismiss trade-secret lawsuit from Musk xAI"
+- L263 (timesofindia): "AI talent wars: OpenAI requests court to dismiss xAI allegations"
+
+**xAI rationale:** The 8 flipped rows are all about xAI products
+(Grokipedia, Grok on Azure, Grok for government). The "Musk's" headline
+framing does not change that the substance is xAI product coverage. The
+5 kept-n rows are all about the Musk-vs-OpenAI lawsuit -- litigation,
+not product -- which is the established N-pattern for xAI/Grok.
+
+**Apple Vision Pro -- 1 row flipped n -> y:**
+- L30 (phandroid): "Apple is done betting on enclosed headsets for now"
+  -- Apple's only enclosed headset is Vision Pro; this is
+  discontinuation-cycle coverage, consistent with L27/L28 (both y, same
+  discontinuation-cycle Korean-language pieces).
+
+**Unchanged (confirmed correct):**
+- Grok L113 (insidebitcoins DEXTools "GROK" crypto token): n -- term collision, confirmed
+- Grok L107 (zeenews "Poem Written By AI"): y -- Grok poem story, confirmed
+- Apple Intelligence L14 (9to5mac "iOS 18.4"): n -- unchanged
+- Threads L217 (marketplace.org week-in-review): y -- unchanged
+
+**Post-adjustment totals:**
+- xAI: y=14, n=11 (was 6y/19n after Batch 17)
+- Apple Vision Pro: y=7, n=18 (was 6y/19n after Batch 14)
+- Grok: y=12, n=13 (unchanged)
+- Grand total (all 263 rows): **78y / 185n** (was 69y/194n; net +9y/-9n from xAI: +8y/-8n, AVP: +1y/-1n)
