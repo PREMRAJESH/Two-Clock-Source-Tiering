@@ -1155,3 +1155,34 @@ not product -- which is the established N-pattern for xAI/Grok.
 - Apple Vision Pro: y=7, n=18 (was 6y/19n after Batch 14)
 - Grok: y=12, n=13 (unchanged)
 - Grand total (all 263 rows): **78y / 185n** (was 69y/194n; net +9y/-9n from xAI: +8y/-8n, AVP: +1y/-1n)
+
+## 2026-08-27 -- Lane B GDELT test: full connection timeout (different failure than 08-22)
+
+Attempted to test `ct_source_harvester.py` against 2 remaining entities
+(ElevenLabs, Bolt.new) with 35s spacing. **Result: complete connection
+timeout** -- the GDELT API did not respond at all within 15 seconds.
+No HTTP status code returned; `requests.Timeout` raised.
+
+**This is a different failure mode than 2026-08-22:**
+- 2026-08-22: HTTP 429 responses ("limit requests to one every 5
+  seconds") -- server was responding, just rejecting excess requests.
+- 2026-08-27: No response at all. Connection hangs until timeout.
+  Not a 429, not a 503 -- the server simply does not reply.
+
+**Network ruled out:** `httpbin.org` returns 200 fine from the same
+environment. This is GDELT-specific, not a general network issue.
+
+**Most likely cause:** GDELT-side infrastructure issue rather than an
+escalated IP block. Their founder (Kalev Leetaru) has posted about
+infrastructure outages before, and GDELT has had full outages from
+hosting issues previously, unrelated to any single user's request
+pattern. A silent timeout (no response at all) is consistent with an
+upstream infrastructure problem, not a rate-limit or IP block (which
+would return an HTTP error).
+
+**Status: GDELT testing paused for today.** No further attempts.
+
+**Next attempt: tomorrow or later.** Same protocol as before:
+1. Small test first (2 entities, 35s spacing)
+2. If clean, report and wait for go-ahead before full batch
+3. If still failing, do not retry aggressively
