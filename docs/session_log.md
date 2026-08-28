@@ -1186,3 +1186,21 @@ would return an HTTP error).
 1. Small test first (2 entities, 35s spacing)
 2. If clean, report and wait for go-ahead before full batch
 3. If still failing, do not retry aggressively
+
+## 2026-08-28 -- Lane B GDELT test: still timing out (no change from 08-27)
+
+Single probe to GDELT (ElevenLabs, 15s timeout). **Result: TIMEOUT_15S**
+-- no response at all. Same failure mode as 2026-08-27 (silent timeout,
+not a 429).
+
+**Two consecutive days of full connection timeouts.** This is now a
+persistent outage or block, not a transient glitch. Possible causes
+(unchanged from 08-27):
+- GDELT-side infrastructure outage (their founder has posted about
+  hosting issues before; they have had full outages previously)
+- IP-level block escalated from rate-limit to silence
+
+**No further GDELT attempts today.** Next attempt should test from a
+different network (e.g. mobile hotspot) to distinguish IP-block from
+GDELT outage. If GDELT is down for everyone, retrying from the same IP
+is pointless.
