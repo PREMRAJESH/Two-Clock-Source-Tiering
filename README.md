@@ -136,7 +136,7 @@ Two collection procedures are involved:
   generates the 22 GDELT ArtList URLs and ingests the saved JSON responses.
   The raw JSONs are archived in
   [`reference/contrast_collection_2026-08-18/`](reference/contrast_collection_2026-08-18/README.md).
-- **Our lane (~30 remaining entities):** `scripts/ct_source_harvester.py`
+- **Our lane (28 remaining entities):** `scripts/ct_source_harvester.py`
   (peak-week, GDELT ArtList mode). **Not yet run against live GDELT.**
 
 ## Reproducibility and Provenance
@@ -171,10 +171,10 @@ log; nothing is claimed that the repository does not show.
 |---|---|
 | **CONFIRMED** | Paper baseline reproduction: 28/33 ramp-precedes-onset, median lead 83 days, p = 6.6 × 10⁻⁵, verified under both ramp floors (3 and 5) by `scripts/reproduce_baseline.py`. |
 | **IMPLEMENTED** | Weighting pipeline (Tasks 1–6: merge → tier map → weights → precedence → sensitivity → smoke test). Structurally complete and smoke-tested; **not yet run on real source data**. |
-| **COMPLETE** | 22-entity `contrast_week` audit collection: 22/22 entities, 263 article rows, raw JSONs archived and committed (`cd47959`). Collection done; **labeling pending**. |
+| **COMPLETE** | 22-entity `contrast_week` audit collection: 22/22 entities, 263 article rows, raw JSONs archived and committed (`cd47959`). **Triage complete: 263/263 labeled, 78y/185n** (committed `886019f`). |
 | **AUDIT / VALIDATION** | Domain-normalization fix (`:port` stripping, e.g. `asiaone.com:443` → `asiaone.com`) verified against both call sites in `merge_source_data.py`. |
-| **PENDING** | Weighting pipeline execution on real source data; ~30-entity peak-week harvest (`ct_source_harvester.py`); tier-methodology fill-in. |
-| **BLOCKED (manual)** | Two human labeling tasks: the original **27 AMBER precision-audit rows** and the **263-row contrast-week batch** (`relevant` y/n judgments). Neither has any value prefilled by tooling. |
+| **PENDING** | Weighting pipeline execution on real source data; 28-entity peak-week harvest (`ct_source_harvester.py`); tier-methodology fill-in. |
+| **COMPLETE (manual)** | 27 AMBER precision-audit rows: extracted to `amber_rows_review.csv`, labeled 16y/5n/6 unverifiable (committed `3b50d5b`). |
 
 See [`docs/project_overview_report.md`](docs/project_overview_report.md)
 for the consolidated status with detail, and [`docs/session_log.md`](docs/session_log.md)
@@ -242,9 +242,10 @@ repository:
   from 2026-08-17, produced before any weighted source evidence existed;
   their weighted/tier columns are empty. They are not final weighted
   results.
-- **Two manual labeling tasks pending:** the 27 AMBER precision rows and the
-  263-row contrast-week batch. The contrast batch's `relevant` column is
-  empty by design.
+- **Two manual labeling tasks completed:** the 27 AMBER precision rows
+  (16y/5n/6 unverifiable) and the 263-row contrast-week batch (78y/185n).
+  Sign-off on the AMBER-batch reconciliation (CSV-vs-master export bug,
+  5 Kimi y->n overrides) is still pending with Viveka.
 - **`other_week` rule retired as unrecoverable.** The original second-week
   rule could not be reconstructed; the deterministic v2 `contrast_week`
   replaced it (documented 2026-08-18). The stale `scripts/verify_week_match.py`

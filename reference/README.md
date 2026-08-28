@@ -12,6 +12,7 @@ collected:
 |---|---|---|
 | `gdelt_artlist_sample_response.json` | A sample GDELT ArtList (browser-export) API response, captured early in the audit work. | Documents the exact response envelope the collection procedures consume; useful if GDELT's export shape changes or for inspecting the raw schema. |
 | `contrast_collection_2026-08-18/` | Archive of the **22 raw GDELT ArtList JSON responses** collected on 2026-08-18 for the v2 contrast-week precision audit — one file per audit entity. | Raw-source preservation: lets the audit ingest be re-run or re-verified from the exact bytes GDELT returned. See its own [README](contrast_collection_2026-08-18/README.md). |
+| `contrast_verification_2026-08-25/` | Viveka's independent full-text-verified contrast-week labeling pass: her `ct_artlist_contrast_viveka_verified.csv` (263 rows, 67y/196n) and README. | Reconciliation source for the5-label disagreements resolved in the triage; preserved as the verification evidence trail. |
 
 ## What this directory is NOT
 

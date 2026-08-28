@@ -25,7 +25,8 @@ the frozen deposit; the derived files are its analytical transformation.
 
 | File | Derived quantity / analysis | Input basis | Research role | Status |
 |---|---|---|---|---|
-| `ct_artlist_contrast.csv` | **v2 contrast-week precision-audit batch** — 263 article rows, all 22 audit entities, columns `entity, query, sample_window, seendate, title, domain, url, relevant`. | Archived raw GDELT JSONs (`../reference/contrast_collection_2026-08-18/`), ingested by `ct_artlist_audit.py --contrast`. | **Audit/validation data** — the query-precision sample, **not** analytical evidence. `relevant` is empty awaiting manual labeling. | Tracked milestone (`cd47959`) |
+| `ct_artlist_contrast.csv` | **v2 contrast-week precision-audit batch** — 263 article rows, all 22 audit entities, columns `entity, query, sample_window, seendate, title, domain, url, relevant, needs_translation`. | Archived raw GDELT JSONs (`../reference/contrast_collection_2026-08-18/`), ingested by `ct_artlist_audit.py --contrast`. | **Audit/validation data** — the query-precision sample, **not** analytical evidence. **263/263 labeled, 78y/185n** (triage complete 2026-08-25; post-triage adjustments 2026-08-27). | Tracked milestone (`cd47959`; triage `886019f`) |
+| `amber_rows_review.csv` | **27 AMBER precision-audit rows** — extracted from `inputs_frozen/ct_artlist_LABELING.xlsx` (entity, window, date, title, domain, url, suggested_label, relevant). | `ct_artlist_LABELING.xlsx` (original audit file). | **Audit data** — the 27 `?`-suggested rows from the precision audit; 16y / 5n / 6 unverifiable. | Tracked milestone (`3b50d5b`) |
 | `precedence_comparison.csv` | **Precedence comparison per entity** — raw / weighted / Tier-1 / Tier-1+2 ramp dates, leads, and signs, plus `excluded_reason`. Columns: `entity, birth_date, ramp_raw_week, ramp_raw_count, ramp_weighted_week, ramp_weighted_count, ramp_tier1_week, ramp_tier12_week, onset_cutoff, onset_score, lead_raw_days, lead_weighted_days, lead_tier1_days, lead_tier12_days, sign_raw, sign_weighted, sign_tier1, sign_tier12, excluded_reason`. | `precedence_test_weighted.py` on frozen series (raw-fallback run). | **Statistical output** — currently a raw-only placeholder (see below). | Tracked milestone (`9e24bc3`) |
 | `sensitivity_results.csv` | **Table-2-mirror sensitivity grid** — rows `variant, ramp_threshold, onset_threshold, count_type, weight_t1, weight_t2, weight_t3, n_precedes, n_testable, n_ties, median_lead_days, p_value`. | `sensitivity_analysis.py` on frozen series (raw-fallback run). | **Sensitivity output** — currently a raw-only placeholder (see below). | Tracked milestone (`9e24bc3`) |
 | `.placeholder.md` | Directory placeholder (empty-directory marker). | — | — | Tracked (first commit) |
@@ -61,7 +62,7 @@ them. The policy is recorded in `../docs/session_log.md` (2026-08-18).
   `merge_diagnostics.txt`, `domain_frequency_analysis.csv`,
   `domain_tier_map.csv`, `tier_cross_check.txt`, `ct_results_weighted.csv`,
   and any other run-time output.
-- **Tracked milestones:** the three files in the inventory above.
+- **Tracked milestones:** the four files in the inventory above.
 
 A file should be committed here only when it is a deliberate milestone
 backing a stated result — not on every re-run.
@@ -73,7 +74,8 @@ evidence** in `../reference/contrast_collection_2026-08-18/`. Its
 `sample_window` is `contrast_week` for every row. Per the lane-sampling
 decision, it is **audit data, never analytical data**: no pipeline
 procedure reads it into the tier map or weighted counts. Its `relevant`
-column awaits manual y/n labeling before query precision can be scored.
+column was labeled in the263-row triage (complete 2026-08-25, 78y/185n
+after post-triage adjustments 2026-08-27).
 
 ## Regenerating
 

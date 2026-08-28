@@ -17,7 +17,7 @@ below by their **methodological role** in the analysis.
 |---|---|---|---|---|
 | `reproduce_baseline.py` | Verify the paper's raw-count precedence baseline against the frozen deposit | `../inputs_frozen/ct_results_v1_frozen.csv`, `../inputs_frozen/pt_pilot_results.csv` | stdout report (no files) | **Baseline verification** — locks the reference point the weighting comparison must beat |
 | `ct_artlist_audit.py` | Audit query precision for the 22 collision-prone entities (v2 `contrast_week`); ingest archived GDELT JSONs | `../inputs_frozen/ct_harvester.py`, `../inputs_frozen/ct_results_v1_frozen.csv` | CWD-relative `ct_artlist_contrast.csv` (v2) or `ct_artlist_audit.csv` (v1) | **Audit / validation** — produces *audit* data, never analytical data |
-| `ct_source_harvester.py` | Collect article-level GDELT evidence (peak week) for the ~30 entities not covered by Lane A | `../inputs_frozen/ct_results_v1_frozen.csv`, `../inputs_frozen/ct_harvester.py` | `../data_derived/ct_source_results.csv` | **Evidence collection (analytical lane)** — network; not yet run |
+| `ct_source_harvester.py` | Collect article-level GDELT evidence (peak week) for the 28 entities not covered by Lane A | `../inputs_frozen/ct_results_v1_frozen.csv`, `../inputs_frozen/ct_harvester.py` | `../data_derived/ct_source_results.csv` | **Evidence collection (analytical lane)** — network; not yet run |
 | `ct_artlist_harvester.py` | Lead author's article-level harvester (peak + a guessed second week) | `ct_harvester.py` (same folder) | CSV files | **Superseded** — its second-week rule is retired (see below) |
 | `verify_week_match.py` | Old week-consistency spot-check | `../data_derived/ct_artlist_results.csv` (does not exist), `../inputs_frozen/ct_artlist_LABELING.xlsx` | stdout report | **Superseded / stale** — do not run |
 | `merge_source_data.py` | Combine collected source evidence into the analytical source file | `../inputs_frozen/entities.py`, optional `../data_derived/viveka_labeled_export.csv`, `../data_derived/ct_source_results.csv` | `../data_derived/ct_source_all.csv`, `../data_derived/merge_diagnostics.txt` | **Data preparation** — enforces the peak-week analytical sampling |
@@ -74,7 +74,7 @@ The archived raw responses it ingests live in
 
 ### `ct_source_harvester.py` — analytical lane (peak week)
 
-Collects article-level GDELT evidence (ArtList mode) for the ~30 entities
+Collects article-level GDELT evidence (ArtList mode) for the 28 entities
 not covered by Lane A, for each entity's **peak week** (the single highest
 `mention_count` week in the frozen citation series). Peak-week-only by
 design, matching the lead author's confirmed method and the lane-sampling

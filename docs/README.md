@@ -33,16 +33,9 @@ Three documents, each a distinct layer of research traceability:
   caveat, precision cross-check, baseline exclusion rule) and its observed
   syndication examples.
 - **`project_overview_report.md` is a point-in-time snapshot.** It was last
-  regenerated **2026-08-18**, before the 22-entity contrast collection
-  completed later that day. A few lines are therefore stale against the
-  current working tree — most notably the §2 layout note calling
-  `scripts/ct_artlist_audit.py` "NEW, untracked" and the §3 line
-  "Status: 0/22 JSON files collected (§6, active blocker)". The collection
-  is now **complete** (22/22 entities, 263 rows, archived + committed
-  `cd47959`), and `ct_artlist_audit.py` is tracked. The §6 status table was
-  updated in commit `e88174d`. Until the report is next regenerated, treat
-  the status table, `session_log.md`, and git history as authoritative over
-  the §2/§3 prose.
+  regenerated **2026-08-22** and updated through **2026-08-27** (post-triage
+  adjustments and Lane B GDELT test log). Its status table is current; the §2
+  layout prose may lag the session log at the margins.
 
 ## Conventions
 

@@ -52,8 +52,8 @@ two-clock-source-tiering/
 │   └── __pycache__/                <- gitignored, untracked
 ├── data_derived/                <- Generated outputs (regenerable; see section 4.2 tracking policy)
 │   ├── ct_artlist_contrast.csv     <- TRACKED milestone: 22-entity contrast-week audit batch
-│   │                                 (263 rows; needs_translation column added 2026-08-22)
-│   ├── amber_rows_review.csv       <- TRACKED: 27 AMBER rows extracted for manual labeling
+│   │                                 (263 rows, 78y/185n; triage complete 2026-08-25)
+│   ├── amber_rows_review.csv       <- TRACKED: 27 AMBER rows, labeled 16y/5n/6 unverifiable
 │   ├── precedence_comparison.csv   <- TRACKED milestone: raw-fallback run, 2026-08-17
 │   ├── sensitivity_results.csv     <- TRACKED milestone: Table 2 mirror grid, raw-fallback
 │   ├── README.md                   <- Derived-outputs record
@@ -176,7 +176,7 @@ Full detail in `docs/session_log.md` (2026-08-18 entries). The deterministic v2 
 
 | Item | Status | Detail |
 |---|---|---|
-| **27 AMBER precision-audit rows** | **BLOCKED (manual)** | Extracted to `data_derived/amber_rows_review.csv` (27 rows, entity breakdown: Apple Intelligence 13, Kimi 10, Qwen 2, Dream Machine 1, Lovable 1). `relevant` column empty -- awaiting manual y/n labeling (jointly with Viveka). |
+| **27 AMBER precision-audit rows** | **COMPLETE (manual)** | Extracted to `data_derived/amber_rows_review.csv` (27 rows, entity breakdown: Apple Intelligence 13, Kimi 10, Qwen 2, Dream Machine 1, Lovable 1). Final distribution: **16 `y`, 5 `n`, 6 `unverifiable`** (dead links / redirect mismatches; see session log 2026-08-22). |
 | **263-row contrast-week precision batch** | **COMPLETE** | `data_derived/ct_artlist_contrast.csv` (22/22 entities, 263 rows). **263/263 labeled, 78y/185n.** Committed 886019f. `needs_translation` column (31 flagged) added 2026-08-22. |
 
 ### Resolved (closed, on disk)
@@ -195,7 +195,7 @@ Full detail in `docs/session_log.md` (2026-08-18 entries). The deterministic v2 
 | Pipeline scaffolding Tasks 1-6 | **COMPLETE + smoke-tested** |
 | Raw-fallback analysis run | **EXECUTED** (2026-08-17; milestone CSVs tracked) |
 | 22-entity contrast-week audit collection | **COMPLETE** (22/22, 263 rows; committed cd47959); labeling pending |
-| AMBER rows extraction | **COMPLETE** (27 rows to amber_rows_review.csv) |
+| AMBER rows extraction | **COMPLETE** (27 rows to amber_rows_review.csv; labeled 16y/5n/6 unverifiable, committed `3b50d5b`) |
 | ALREADY_COVERED populated | **COMPLETE** (22 entities; 28 remaining for Lane B) |
 | needs_translation flagging | **COMPLETE** (31 of 263 flagged) |
 | Documentation rewrite (7 READMEs) | **COMPLETE** (committed 08b7dbd) |
@@ -206,7 +206,6 @@ Full detail in `docs/session_log.md` (2026-08-18 entries). The deterministic v2 
 
 - Weighting pipeline execution on real source data (Tasks 1-6) -- awaits the source-collection lanes.
 - Remaining 28-entity source pull (`ct_source_harvester.py`) -- ALREADY_COVERED populated, not yet run.
-- 27 AMBER precision-audit rows -- extracted, `relevant` column empty, awaiting manual labeling.
 - `docs/tier_methodology.md` content -- intentionally unfilled until real domain data exists.
 
 ---
@@ -222,7 +221,7 @@ Full detail in `docs/session_log.md` (2026-08-18 entries). The deterministic v2 
 
 ### Still needed from Viveka (or joint)
 
-1. **27 AMBER precision-audit judgments** -- extracted to `amber_rows_review.csv`, `relevant` column empty; joint human task.
+1. **Sign-off on the AMBER-batch reconciliation** (CSV-vs-master export bug, 5 Kimi y->n overrides) -- labeling itself is complete (16y/5n/6 unverifiable), but her review/confirmation of these specific decisions is still open.
 2. **Two P(t) reruns before Oct 23, 2026** -- hers, targeting early-to-mid October.
 
 ---
