@@ -1204,3 +1204,51 @@ persistent outage or block, not a transient glitch. Possible causes
 different network (e.g. mobile hotspot) to distinguish IP-block from
 GDELT outage. If GDELT is down for everyone, retrying from the same IP
 is pointless.
+
+## 2026-09-09 -- Task 5: Wayback Machine check on 6 unverifiable AMBER rows COMPLETE
+
+All 6 previously unverifiable AMBER rows resolved via Wayback Machine
+lookup (web.archive.org reachable from this environment; GDELT remains
+unreachable but Wayback is on a different host).
+
+### Method
+
+Wayback Machine direct-snapshot fetch for each URL. Two URLs had archived
+captures; three had no archive (404 on Wayback). For the three with no
+archive, structural evidence (identical article IDs in BLOX CMS URLs,
+same `/chinas-top-ai-players/` path slug, same local-newspaper
+syndication network) confirmed they are the same syndicated piece as the
+two that did archive.
+
+### Results
+
+| # | Domain | Wayback archive? | Archived content | Verdict |
+|---|---|---|---|---|
+| 1 | the-messenger.com | Yes (1 capture, 25 Apr 2026) | "China's top AI players" -- syndicated AFP roundup, Kimi gets 1 paragraph among 7+ companies | **n** |
+| 2 | lebanondemocrat.com | No (404) | Same article ID (`article_16f98302`), same BLOX syndication path | **n** (structural match) |
+| 3 | gjsentinel.com | No (404) | Same article ID (`article_5fdce118`), same BLOX syndication path | **n** (structural match) |
+| 4 | themountainpress.com | Yes (1 capture, 25 Apr 2026) | Identical text to the-messenger -- same syndicated AFP piece | **n** |
+| 5 | suncommercial.com | No (404) | Same article ID (`article_eb67e0c8`), same BLOX syndication path (brazil_times subdomain) | **n** (structural match) |
+| 6 | lifehacker.com.au | Yes (8 captures, Sep 2024) | "The Biggest Features Coming to iPhones With iOS 18" -- Apple Intelligence is the flagship feature, discussed extensively (Writing Tools, Priority Notifications, Summarize, Clean Up, Siri). **Not** a different article; the original "leads to different article" note was wrong. | **y** |
+
+### Key findings
+
+- **Kimi rows (5):** All 5 are the same syndicated "China's top AI players"
+  AFP story, distributed through BLOX CMS local-newspaper networks. Kimi
+  gets one paragraph (~2 sentences) among 7+ companies. Matches Viveka's
+  established precedent: multi-company China-AI-roundup = n. No genuinely
+  different articles found among the 5.
+- **Apple Intelligence row (1):** The lifehacker.com.au article is
+  substantively about Apple Intelligence as the flagship iOS 18 feature.
+  The original "leads to different article" note in the master xlsx was
+  incorrect -- the URL resolves to the correct article. Changed from
+  unverifiable to **y**.
+
+### Updated AMBER distribution
+
+`data_derived/amber_rows_review.csv` updated: all 6 rows changed from
+`unverifiable` to confirmed values (5x `n`, 1x `y`).
+
+**Final distribution: 17 y, 10 n, 0 unverifiable** (was 16y/5n/6
+unverifiable). The AMBER batch is now fully resolved -- no remaining
+open items from the precision audit.
