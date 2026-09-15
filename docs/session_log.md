@@ -1246,9 +1246,45 @@ two that did archive.
 
 ### Updated AMBER distribution
 
-`data_derived/amber_rows_review.csv` updated: all 6 rows changed from
+`data_derived/amber_rows_review.csv` was updated: all 6 rows changed from
 `unverifiable` to confirmed values (5x `n`, 1x `y`).
 
-**Final distribution: 17 y, 10 n, 0 unverifiable** (was 16y/5n/6
+**Wayback-verified distribution: 17 y, 10 n, 0 unverifiable** (was 16y/5n/6
 unverifiable). The AMBER batch is now fully resolved -- no remaining
 open items from the precision audit.
+
+**NOTE (2026-09-09):** The AMBER CSV was subsequently regenerated from the
+master xlsx (export-bug fix, see below). The CSV now reflects the master's
+original values (21y/5 404/1 redirect), not the Wayback-overwritten values.
+The Wayback findings above are preserved in this log as the verification
+record but the CSV values have been restored to the master's state.
+
+## 2026-09-09 -- Export-bug fix: amber_rows_review.csv now preserves master's relevant values
+
+**Bug found:** `amber_rows_review.csv` was extracted from the master xlsx
+(`inputs_frozen/ct_artlist_LABELING.xlsx`) during the 2026-08-22 session
+but the extraction process blanked all 27 `relevant` values to `""`,
+discarding the master's existing calls (21y, 5 404, 1 "leads to different
+article"). This was the "CSV-vs-master export bug" flagged in the session
+log and referenced in Task 13's conditional sign-off.
+
+**Root cause:** No saved extraction script existed -- the AMBER extraction
+was done inline during the session, and the inline code did not read the
+`relevant` column from the xlsx. (By contrast, `viveka_labeled_export.csv`
+correctly preserves `relevant` from the master -- that export was done
+properly.)
+
+**Fix:** Created `scripts/extract_amber_rows.py` -- a reproducible script
+that reads the master xlsx Label sheet, filters to `suggested_label='?'`
+rows, and preserves the `relevant` column exactly as it exists upstream.
+Ran the script; `amber_rows_review.csv` now matches the master: **21y /
+5 404 / 1 redirect**.
+
+**Relationship to Wayback findings (2026-09-09):** The Wayback verification
+changed 5 Kimi 404s to `n` and 1 lifehacker redirect to `y` based on
+archived content. Those are legitimate verification findings but they
+replaced the master's values in the CSV. The export-bug fix restores the
+master's values as the CSV's authoritative state. The Wayback findings
+remain in this log as the verification record; if the overrides are to be
+applied to the CSV, that requires a separate decision (and a `relevant`
+column update via the extraction script, not inline edits).
