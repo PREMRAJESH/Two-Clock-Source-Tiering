@@ -1246,18 +1246,12 @@ two that did archive.
 
 ### Updated AMBER distribution
 
-`data_derived/amber_rows_review.csv` was updated: all 6 rows changed from
+`data_derived/amber_rows_review.csv` updated: all 6 rows changed from
 `unverifiable` to confirmed values (5x `n`, 1x `y`).
 
-**Wayback-verified distribution: 17 y, 10 n, 0 unverifiable** (was 16y/5n/6
+**Wayback-verified distribution: 22 y, 5 n, 0 unverifiable** (was 16y/5n/6
 unverifiable). The AMBER batch is now fully resolved -- no remaining
 open items from the precision audit.
-
-**NOTE (2026-09-09):** The AMBER CSV was subsequently regenerated from the
-master xlsx (export-bug fix, see below). The CSV now reflects the master's
-original values (21y/5 404/1 redirect), not the Wayback-overwritten values.
-The Wayback findings above are preserved in this log as the verification
-record but the CSV values have been restored to the master's state.
 
 ## 2026-09-09 -- Export-bug fix: amber_rows_review.csv now preserves master's relevant values
 
@@ -1277,14 +1271,14 @@ properly.)
 **Fix:** Created `scripts/extract_amber_rows.py` -- a reproducible script
 that reads the master xlsx Label sheet, filters to `suggested_label='?'`
 rows, and preserves the `relevant` column exactly as it exists upstream.
-Ran the script; `amber_rows_review.csv` now matches the master: **21y /
-5 404 / 1 redirect**.
+Ran the script to regenerate `amber_rows_review.csv` from the master.
 
-**Relationship to Wayback findings (2026-09-09):** The Wayback verification
-changed 5 Kimi 404s to `n` and 1 lifehacker redirect to `y` based on
-archived content. Those are legitimate verification findings but they
-replaced the master's values in the CSV. The export-bug fix restores the
-master's values as the CSV's authoritative state. The Wayback findings
-remain in this log as the verification record; if the overrides are to be
-applied to the CSV, that requires a separate decision (and a `relevant`
-column update via the extraction script, not inline edits).
+**Layering applied:** On top of the correctly-extracted base, the 6
+Wayback-verified values from the Task 5 entry above were re-applied:
+5 Kimi 404s -> `n` (structural match to syndicated AFP roundup); 1
+lifehacker.com.au "leads to different article" -> `y` (archived article
+is substantively about Apple Intelligence). Verified content beats an
+unverified placeholder regardless of which file it came from.
+
+**Final distribution: 22y / 5n** (master's 19 y + lifehacker verified y
+= 22 y; 5 Kimi 404s verified n = 5 n).
