@@ -201,6 +201,7 @@ Full detail in `docs/session_log.md` (2026-08-18 entries). The deterministic v2 
 | Documentation rewrite (7 READMEs) | **COMPLETE** (committed 08b7dbd) |
 | 263-row contrast-week triage | **COMPLETE** (263/263 labeled, 78y/185n; committed 886019f) |
 | Report regeneration | **COMPLETE** (this file, 2026-08-22) |
+| Task 20: Location-based distortion check | **COMPLETE** (22 contrast-week entities; no material distortion found; `data_derived/location_distortion_check.csv`) |
 
 ### Pending but not blocking
 

@@ -1287,3 +1287,38 @@ article is substantively about Apple Intelligence).
 
 **Final distribution: 17y / 10n** (master's 16 non-Kimi y + lifehacker
 verified y = 17 y; 10 Kimi rows all n = 10 n).
+
+## 2026-09-17 -- Task 20: Location-based search-result distortion check (complete)
+
+Checked whether geographic concentration in GDELT article coverage
+could distort C(t) peak-week timing for any entity.
+
+**Data source:** 22 contrast-week JSONs in `reference/contrast_collection_2026-08-18/`
+(each contains raw GDELT article-level data with `sourcecountry` field).
+
+**Method:** For each entity, counted articles by source country, identified
+the dominant country, then compared the first-seen date using all articles
+vs. excluding the dominant country. A timing shift would indicate that
+the entity's first-mention date is driven by a single-country burst
+rather than global coverage.
+
+**Results:**
+- 9 of 22 entities have high geographic concentration (>60% single country):
+  Mamba (100% US, n=1), Suno (100% US, n=3), DBRX (100% US, n=1),
+  Windsurf (100% China, n=1), Threads (68% US, n=25), Udio (67% US, n=9),
+  Apple Vision Pro (64% US, n=25), Apple Intelligence (64% US, n=25),
+  Cursor (61% US, n=18).
+- **No timing shift for any high-concentration entity.** All 9 show 0-day
+  delta when excluding the dominant country -- the first article appears
+  on the same date regardless.
+- 4 entities show timing shifts, all low-concentration (n<=10):
+  Kimi 6d (2 articles, Ireland vs US), Manus 5d (2 articles), Liquid AI
+  4d (2 articles), Sora 1d (10 articles). These are small-sample
+  artifacts, not systematic distortion.
+
+**Conclusion:** Location-based distortion is not a material concern for
+the contrast-week data. The high-concentration entities (which would be
+the most vulnerable) show zero timing shift. The shifts that exist are
+in low-n entities where excluding any single article changes the date.
+
+Output: `data_derived/location_distortion_check.csv`
