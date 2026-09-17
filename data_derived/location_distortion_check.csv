@@ -1,0 +1,23 @@
+entity,total_articles,dominant_country,dominant_pct,first_all_date,first_all_country,first_nondom_date,first_nondom_country,delta_days,flag
+Cursor,18,United States,61.1,2025-06-09,India,2025-06-09,India,0,HIGH
+Apple Vision Pro,25,United States,64.0,2026-05-11,South Korea,2026-05-11,South Korea,0,HIGH
+vLLM,2,unknown,50.0,2024-12-16,unknown,2024-12-16,United States,0,LOW
+Threads,25,United States,68.0,2024-07-08,Australia,2024-07-08,Australia,0,HIGH
+xAI,25,United States,48.0,2025-09-29,Sri Lanka,2025-09-29,Sri Lanka,0,LOW
+Qwen,25,United States,56.0,2026-05-04,Pakistan,2026-05-04,Pakistan,0,MEDIUM
+Ideogram,2,India,50.0,2025-03-21,India,2025-03-21,United Kingdom,0,LOW
+Kimi,2,Ireland,50.0,2026-03-16,Ireland,2026-03-22,United States,6,LOW
+Grok,25,United States,56.0,2023-11-27,United States,2023-11-27,India,0,MEDIUM
+Mamba,1,United States,100.0,2025-10-02,United States,N/A,N/A,,HIGH
+Gemini,25,United States,56.0,2024-03-25,Australia,2024-03-25,Australia,0,MEDIUM
+Liquid AI,2,United Arab Emirates,50.0,2025-02-17,United Arab Emirates,2025-02-21,United States,4,LOW
+Suno,3,United States,100.0,2025-04-03,United States,N/A,N/A,,HIGH
+Sora,10,United States,50.0,2025-03-10,United States,2025-03-11,Pakistan,1,LOW
+DBRX,1,United States,100.0,2025-05-25,United States,N/A,N/A,,HIGH
+Udio,9,United States,66.7,2024-10-22,Japan,2024-10-22,Japan,0,HIGH
+Apple Intelligence,25,United States,64.0,2025-03-17,Japan,2025-03-17,Japan,0,HIGH
+Dream Machine,5,China,40.0,2025-06-11,Germany,2025-06-11,Germany,0,LOW
+Windsurf,1,China,100.0,2025-03-23,China,N/A,N/A,,HIGH
+Lovable,5,United States,60.0,2026-06-29,Cambodia,2026-06-29,Cambodia,0,MEDIUM
+Operator,25,United States,32.0,2025-05-26,unknown,2025-05-26,unknown,0,LOW
+Manus,2,United States,50.0,2025-11-25,United States,2025-11-30,Ireland,5,LOW
