@@ -174,7 +174,7 @@ log; nothing is claimed that the repository does not show.
 | **COMPLETE** | 22-entity `contrast_week` audit collection: 22/22 entities, 263 article rows, raw JSONs archived and committed (`cd47959`). **Triage complete: 263/263 labeled, 78y/185n** (committed `886019f`). |
 | **AUDIT / VALIDATION** | Domain-normalization fix (`:port` stripping, e.g. `asiaone.com:443` → `asiaone.com`) verified against both call sites in `merge_source_data.py`. |
 | **PENDING** | Weighting pipeline execution on real source data; 28-entity peak-week harvest (`ct_source_harvester.py`); tier-methodology fill-in. |
-| **COMPLETE (manual)** | 27 AMBER precision-audit rows: extracted to `amber_rows_review.csv`, 22y/5n (export-bug fixed, Wayback-verified; committed `3b50d5b`). |
+| **COMPLETE (manual)** | 27 AMBER precision-audit rows: extracted to `amber_rows_review.csv`, 17y/10n (export-bug fixed, full Wayback verification; committed `3b50d5b`). |
 
 See [`docs/project_overview_report.md`](docs/project_overview_report.md)
 for the consolidated status with detail, and [`docs/session_log.md`](docs/session_log.md)
@@ -243,7 +243,7 @@ repository:
   their weighted/tier columns are empty. They are not final weighted
   results.
 - **Two manual labeling tasks completed:** the 27 AMBER precision rows
-  (22y/5n, Wayback-verified) and the 263-row contrast-week batch (78y/185n).
+  (17y/10n, Wayback-verified) and the 263-row contrast-week batch (78y/185n).
   Sign-off on the AMBER-batch reconciliation (CSV-vs-master export bug,
   5 Kimi y->n overrides) is still pending with Viveka.
 - **`other_week` rule retired as unrecoverable.** The original second-week

@@ -1249,9 +1249,13 @@ two that did archive.
 `data_derived/amber_rows_review.csv` updated: all 6 rows changed from
 `unverifiable` to confirmed values (5x `n`, 1x `y`).
 
-**Wayback-verified distribution: 22 y, 5 n, 0 unverifiable** (was 16y/5n/6
-unverifiable). The AMBER batch is now fully resolved -- no remaining
-open items from the precision audit.
+**Wayback-verified distribution: 17 y, 10 n, 0 unverifiable** (was 16y/5n/6
+unverifiable, then 22y/5n after partial verification). The AMBER batch
+is now fully resolved -- all 10 Kimi rows are `n` (same syndicated AFP
+"China's top AI players" roundup across the newspaper syndication
+network; 5 confirmed via Wayback archives, 5 confirmed structurally
+identical), 1 lifehacker.com.au row is `y` (substantively about Apple
+Intel), remaining 16 `y` rows unchanged.
 
 ## 2026-09-09 -- Export-bug fix: amber_rows_review.csv now preserves master's relevant values
 
@@ -1273,12 +1277,13 @@ that reads the master xlsx Label sheet, filters to `suggested_label='?'`
 rows, and preserves the `relevant` column exactly as it exists upstream.
 Ran the script to regenerate `amber_rows_review.csv` from the master.
 
-**Layering applied:** On top of the correctly-extracted base, the 6
-Wayback-verified values from the Task 5 entry above were re-applied:
-5 Kimi 404s -> `n` (structural match to syndicated AFP roundup); 1
-lifehacker.com.au "leads to different article" -> `y` (archived article
-is substantively about Apple Intelligence). Verified content beats an
-unverified placeholder regardless of which file it came from.
+**Layering applied:** On top of the correctly-extracted base, the 10
+Wayback-verified Kimi rows were all set to `n` (same syndicated AFP
+"China's top AI players" roundup across the newspaper syndication
+network -- 5 confirmed via Wayback archives, 5 structurally identical
+with same title/slug pattern across affiliated newspaper domains).
+1 lifehacker.com.au "leads to different article" -> `y` (archived
+article is substantively about Apple Intelligence).
 
-**Final distribution: 22y / 5n** (master's 19 y + lifehacker verified y
-= 22 y; 5 Kimi 404s verified n = 5 n).
+**Final distribution: 17y / 10n** (master's 16 non-Kimi y + lifehacker
+verified y = 17 y; 10 Kimi rows all n = 10 n).
