@@ -1,50 +1,42 @@
-# Research Documentation
+# Research Documentation & Decision Registry
 
-This directory holds the **research documentation** of the analysis: the
-record of methodological decisions, the current research state, and the
-methodological specification. Together they provide the traceability chain
-that ties frozen evidence to derived results.
+> **Directory Scope:** `docs/`  
+> **Classification:** Methodological Specifications, Decision Logs & Consolidated State Reports  
+> **Governance:** Traceability Chain for Two-Clock Source-Tiering Research
 
-Three documents, each a distinct layer of research traceability:
+---
 
-| Document | Layer | Role |
-|---|---|---|
-| `session_log.md` | **Decision & provenance record** | Chronological, dated entries recording every methodological decision, why it was made, and (where relevant) the commit that implemented it. The **authoritative** record: it supersedes any prose summary elsewhere. |
-| `project_overview_report.md` | **Consolidated state report** | A point-in-time snapshot of the whole analysis: repository layout, collection lanes, task-by-task implementation status, blockers, and commit history for traceability. |
-| `tier_methodology.md` | **Methodological specification** | The definition and rationale for source-tier construction and weighting, written as a template to be filled from observed data. |
+## 1. Documentation Architecture
 
-## When to consult each document
+This directory maintains the formal scientific and operational records that connect frozen input datasets (`inputs_frozen/`) to derived statistical findings (`data_derived/`).
 
-- **To learn what was decided and why** → `session_log.md`. It is
-  chronological; read the most recent entries first.
-- **To get the current consolidated state of the analysis** →
-  `project_overview_report.md`. Note it is a snapshot regenerated on a
-  stated date and can lag the session log (see notes below).
-- **To understand or extend the tier-construction method** →
-  `tier_methodology.md`.
+| Document Name | Document Layer | Primary Governance Function |
+| :--- | :--- | :--- |
+| [`session_log.md`](session_log.md) | **Decision & Provenance Record** | Chronological ledger documenting every methodological choice, technical remediation, bug fix, and associated Git commit hash. **Authoritative source of truth**. |
+| [`project_overview_report.md`](project_overview_report.md) | **Consolidated State Report** | Comprehensive snapshot of repository architecture, lane status, implementation benchmarks, and blocking dependencies. |
+| [`tier_methodology.md`](tier_methodology.md) | **Methodological Specification** | Formal specification of domain clustering algorithms (Jenks natural breaks), authority tier definitions, continuous/binary weighting schemes, and sensitivity protocols. |
 
-## Notes on current status
+---
 
-- **`tier_methodology.md` is a DRAFT / TEMPLATE.** It is intentionally not
-  filled in: tier boundaries and weights are to be derived from observed
-  domain data, not pre-assigned from assumption. Do not read its unfilled
-  sections as results. It records the methodology *specification and
-  rationale* (Approach B empirical frequency clustering, syndication
-  caveat, precision cross-check, baseline exclusion rule) and its observed
-  syndication examples.
-- **`project_overview_report.md` is a point-in-time snapshot.** It was last
-  regenerated **2026-08-22** and updated through **2026-08-27** (post-triage
-  adjustments and Lane B GDELT test log). Its status table is current; the §2
-  layout prose may lag the session log at the margins.
+## 2. Document Navigation & Usage Guide
 
-## Conventions
+* **To Review Methodological Decisions & Chronology:**  
+  Consult [`session_log.md`](session_log.md). Entries are ordered chronologically; recent decisions appear toward the bottom.
+* **To Inspect Operational Project Status & Milestone Progress:**  
+  Consult [`project_overview_report.md`](project_overview_report.md) for task-by-task execution states and pipeline verification status.
+* **To Inspect Tiering Formulas, Mathematical Formulations, & Limitations:**  
+  Consult [`tier_methodology.md`](tier_methodology.md) for statistical formulations and syndication handling rules.
 
-- **Decisions live in the session log**, not in prose documents, so they
-  are never lost or contradicted.
-- **Nothing is claimed as a result unless it is supported by a procedure
-  and its derived output** (see `../data_derived/README.md`).
+---
 
-## Licensing
+## 3. Methodological Governance Standards
 
-Documentation text in this directory is covered by the repository's code
-license (MIT; `../LICENSE-CODE.md`).
+1. **Traceability Principle:** Every empirical claim must trace directly to a reproducible computational script in `scripts/` and a verified input in `inputs_frozen/`.
+2. **Decision Precedence:** In cases of discrepancies between summary prose and chronological entries, [`session_log.md`](session_log.md) holds ultimate precedence.
+3. **Hypothesis Neutrality:** Methodological pipelines and exclusion criteria must remain invariant regardless of whether results yield a positive correlation or a reportable null finding.
+
+---
+
+## 4. Licensing
+
+Documentation in this directory is released under the **MIT License** ([`LICENSE-CODE.md`](../LICENSE-CODE.md)).

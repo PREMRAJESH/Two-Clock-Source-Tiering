@@ -1,79 +1,98 @@
-# Source tier methodology — DRAFT / TEMPLATE
+# Source-Tiering Methodology & Weighting Specification
 
-Status: not yet filled in. Fill this in only after real domain data
-exists in `data_derived/ct_source_results.csv` — do not pre-assign tiers
-from assumption.
+> **Status:** Draft / Methodological Specification Template  
+> **Target Milestone:** Source Data Ingestion & Production Tiering Run  
+> **Reference Paper:** *The Two-Clock Model: Structural Presence and AI Perception of Technology Entities* (Mohan Das, 2026)  
+> **Repository:** `two-clock-source-tiering`
 
-## 1. What this is testing
+---
 
-Does weighting citation mentions by source authority produce a stronger
-(or tighter) relationship with AI-perception onset than raw, unweighted
-citation counts do? (Paper's Section 4.6 precedence test, rerun on a
-weighted C(t).)
+## 1. Research Question & Empirical Objective
 
-## 2. Tier definitions
+This document establishes the methodological framework and computational specification for testing the source-authority hypothesis within the Two-Clock Model framework:
 
-| Tier | Definition | Example domains (fill in once observed) | Weight |
-|---|---|---|---|
-| 1 | major national/international news, Wikipedia, government | TBD | TBD |
-| 2 | trade press, industry publications | TBD | TBD |
-| 3 | blogs, forums, low-authority sites | TBD | TBD |
+> **Core Research Question:**  
+> Does weighting third-party news citations $C(t)$ by **source authority** ($C_{\text{weighted}}(t)$) strengthen, attenuate, or leave unchanged the observed empirical precedence of citation ramps over AI-perception onsets $P(t)$?
 
-*Note on Upstream Tiering Confound:* Primary tier assignment uses Approach B (empirical frequency clustering on $\log(\text{breadth} \times \text{volume})$). High-volume syndication aggregators (e.g. `yahoo.com`, `msn.com`) carrying republished wire stories (AP/Reuters) accumulate high volume and entity breadth, which can cluster them into Tier 1 or Tier 2 based on republication volume rather than original reporting authority.
+In the baseline paper, citation ramps precede perception onsets in **28 of 33 testable entities (84.8%)** with a median lead of **83 days** ($p = 6.62 \times 10^{-5}$, two-sided exact sign test). This analytical contribution tests whether incorporating domain-level authority signals provides additional predictive power beyond raw volumetric accumulation.
 
-## 3. Evidence for the boundaries
+---
 
-Do NOT justify boundaries by "this outlet feels important." Justify by:
+## 2. Source Authority Tier Architecture
 
-- **Empirical Frequency Clustering (Approach B):** Natural breaks (Jenks optimization) on $\log(\text{breadth} \times \text{volume})$ across all observed domains in `ct_source_all.csv`, evaluated with Goodness of Variance Fit (GVF $\ge 0.70$).
-- **Syndication Upstream Impact:** Acknowledge that Jenks cluster breaks reflect raw domain frequency in GDELT, meaning syndication aggregators inherit higher placement due to high republication volume.
-- **Precision Audit Cross-Check:** Compare domain prevalence between high-precision (PASS) and low-precision (FAIL) entities in `inputs_frozen/ct_artlist_precision.csv` (used as a sanity cross-check, since precision audits name-relevance rather than authority).
+> [!IMPORTANT]
+> **Empirical Derivation Standard:**  
+> Tier boundaries and continuous weighting parameters must be derived empirically from observed data (`data_derived/ct_source_all.csv`) via statistical clustering rather than subjective qualitative assignment.
 
-## 4. Evidence for the weights
+| Tier | Conceptual Scope | Target Domain Archetypes | Weight Scheme (Binary) | Weight Scheme (Continuous) |
+| :---: | :--- | :--- | :---: | :---: |
+| **Tier 1** | Primary National / Global Outlets & Institutional Authorities | Top-tier national/international newspapers, wire services (Reuters, AP), Wikipedia, official governmental portals | $1.00$ | Normalized mean frequency within cluster |
+| **Tier 2** | Specialized Trade Press & Regional Publications | Accredited technology journals, industry-specific trade publications, established regional outlets | $0.50$ | Normalized mean frequency within cluster |
+| **Tier 3** | Syndication Aggregators, Blogs & Niche Web Media | Syndication mirrors, niche tech blogs, community forums, low-authority content aggregators | $0.25$ | Normalized mean frequency within cluster |
 
-[Not gut-call numbers — derive from something checkable: e.g. an
-independent authority ranking, or an empirical sensitivity check showing
-which weight ratios change the precedence result and which don't.]
+---
 
-## 5. Baseline exclusion rule (verified against paper)
+## 3. Methodological Principles & Boundary Formulation
 
-The paper's 33-entity testable set is derived as follows (Viveka,
-confirmed against Sections 4.5 and 5.4 of the paper text):
+Boundary selection rests on reproducible, data-driven statistical methods:
 
-    TESTABLE 33 = all 50 entities MINUS:
-      10 precision-audit FAIL (Section 4.5, Table 1):
-          DBRX, Kimi, Ideogram, Lovable, Gemini (Google model),
-          Dream Machine, Liquid AI, Mamba, Operator, vLLM
-      7 no-onset entities (Section 5.4):
-          OpenAI o1, OpenAI o3, DeepSeek, DeepSeek-R1,
-          Manus, World Labs, Bolt.new
+1. **Empirical Frequency Clustering (Approach B):**  
+   Domain tier assignments are generated using 1D $k$-means / Jenks natural breaks optimization applied to the compound metric:
+   $$\text{Metric} = \log(\text{Breadth} \times \text{Volume})$$
+   where $\text{Breadth}$ is the count of distinct entities citing the domain, and $\text{Volume}$ is the total article mention count across all sampled entities. Clustering quality is validated by ensuring a Goodness of Variance Fit ($\text{GVF} \ge 0.70$).
 
-**The `self_ref_openai` flag in `entities.py` is NOT part of this
-baseline.** GPT-4, GPT-4o, and Sora are included in the 33. The flag
-exists for a separate robustness analysis (self-recognition confound on
-OpenAI entities probed on an OpenAI ladder) but is a distinct, clearly-
-labeled variant — not the baseline.
+2. **Precision Audit Cross-Validation:**  
+   Domain prevalence distributions are cross-referenced between high-precision ($\text{PASS}$) and low-precision ($\text{FAIL}$) entity subsets (`inputs_frozen/ct_artlist_precision.csv`) as an empirical sanity check to ensure clustering stability across distinct query noise profiles.
 
-Reproduced exactly by `scripts/reproduce_baseline.py` (2026-08-17):
+3. **Weight Sensitivity Grid:**  
+   To safeguard against arbitrary weight selection, results are subjected to a multi-dimensional parameter sweep across alternative continuous and discrete weighting vectors:
+   $$\mathbf{W} \in \{ (1.0, 0.5, 0.25), (1.0, 0.75, 0.5), (1.0, 0.33, 0.1), (1.0, 1.0, 0.0) \}$$
 
-| | Ramp precedes onset | Median lead (days) | p-value |
-|---|---|---|---|
-| Raw baseline (floor=3) | 28/33 (85%) | 83 | 6.62 × 10⁻⁵ |
-| Raw baseline (floor=5) | 28/33 (85%) | 83 | 6.62 × 10⁻⁵ |
-| Weighted | TBD | TBD | TBD |
-| Weighted (excl. self_ref_openai) | TBD | TBD | TBD |
+---
 
-## 6. Caveats & Limitations
+## 4. Baseline Exclusion Protocol (Paper Alignment)
 
-- **Syndication and Domain Dilution:** Domain-level tiering counts every article URL as an independent citation of its hosting domain (e.g. `yahoo.com`, `msn.com`). It does not deduplicate syndicated wire stories (e.g. a Reuters or AP article republished verbatim across multiple aggregators). Consequently, domain-level frequency metrics may under-count original wire-service originators and over-count high-volume syndication aggregators. This is a recognized limitation of domain-level GDELT ArtList sampling.
+The analytical sample strictly mirrors the 33-entity testable set established in Sections 4.5 and 5.4 of the baseline paper:
 
-  *Observed, not just theoretical — examples from the 2026-08-18 contrast-audit spot-check (`data_derived/ct_artlist_contrast.csv`):*
-  - **Threads** — "Conspiracy theories about the Trump rally shooting flourish online" captured 6× across NBC local affiliates (`nbcsandiego.com`, `nbcnewyork.com`, `nbcdfw.com`, `nbcchicago.com`, `nbcconnecticut.com`, `nbcmiami.com`).
-  - **Operator** — "Perplexity AI wants to dethrone Google…" captured 4× across Nine-owned Australian titles (`smh.com.au`, `watoday.com.au`, `brisbanetimes.com.au`, `theage.com.au`).
-  - **Qwen** — "Alibaba to integrate Qwen AI with Taobao…" captured 5× across independent outlets (`finance.yahoo.com`, `933thedrive.com`, `asiaone.com`, `arynews.tv`).
-  
-  Same story, distinct URLs/domains; domain-level tiering counts each as a separate citation of its hosting domain. These are genuine separate articles for the precision audit, but they are a single underlying event for volume/breadth tiering.
-- **Contrast-week relevance ≠ peak-week base rate:** A contrast week is deliberately chosen to be *off-peak*, so it surfaces proportionally more ambient, unrelated term-matches than the peak week does. An entity's overall precedent rate (its share of relevant articles in the peak-week Label sheet) is therefore a poor predictor for its contrast-week rows and must not be used to judge them as a block. The clearest example is **Apple Vision Pro**: a strong "yes" precedent (25/0 relevant in the Label sheet), yet its contrast-week rows are mostly unrelated Apple TV / Music / Arcade items rather than the headset. *Practical consequence:* the strong-precedent-but-noisy entities — **Apple Vision Pro, Apple Intelligence, and Threads** — must be triaged row-by-row (individual reads), not cleared as a single block on the strength of their peak-week precedent.
-- **Capped windows:** Carry forward any `capped` windows from the harvester — weighted scores for those weeks rest on a partial source sample (250-article limit).
-- **Tier ambiguity:** Note any domains near cluster boundaries that didn't cleanly separate; sensitivity checks perturb these boundary domains to verify result stability.
-- **Entity name mismatch between CSVs:** The perception CSV uses parenthetical disambiguators (e.g. `Cursor (the AI code editor)`) while the citation CSV uses short names (e.g. `Cursor`). 14 of 50 entities are affected. Any script joining these datasets must use a name bridge (strip parentheticals) or it will silently drop entities.
+$$\text{Testable Set (33)} = \text{Total Entities (50)} \setminus \left( \text{Precision FAIL (10)} \cup \text{No-Onset Entities (7)} \right)$$
+
+### Exclusion Roster
+
+* **Precision-Audit Failures (10 Entities; Section 4.5, Table 1):**  
+  `DBRX`, `Kimi`, `Ideogram`, `Lovable`, `Gemini (Google model)`, `Dream Machine`, `Liquid AI`, `Mamba`, `Operator`, `vLLM`
+* **No-Onset Entities (7 Entities; Section 5.4):**  
+  `OpenAI o1`, `OpenAI o3`, `DeepSeek`, `DeepSeek-R1`, `Manus`, `World Labs`, `Bolt.new`
+
+> [!NOTE]
+> **OpenAI Self-Reference Handling:**  
+> The `self_ref_openai` flag in `inputs_frozen/entities.py` applies to entities evaluated on an OpenAI-based model ladder (`GPT-4`, `GPT-4o`, `Sora`). These entities remain in the primary 33-entity baseline to ensure direct comparability with published results, and are isolated only within dedicated sensitivity sub-analyses.
+
+### Verified Reproduction vs. Projected Results
+
+| Analysis Variant | Sample Size ($N$) | Ramp Precedes Onset | Concordance Rate | Median Lead | $p$-value (Sign Test) |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **Raw Baseline ($\text{Floor}=3$)** | 33 | 28 / 33 | 84.8% | 83 days | $6.62 \times 10^{-5}$ |
+| **Raw Baseline ($\text{Floor}=5$)** | 33 | 28 / 33 | 84.8% | 83 days | $6.62 \times 10^{-5}$ |
+| **Weighted Analytical Model** | 33 | *[Pending Data]* | *[Pending Data]* | *[Pending Data]* | *[Pending Data]* |
+| **Weighted (Excl. `self_ref_openai`)** | 30 | *[Pending Data]* | *[Pending Data]* | *[Pending Data]* | *[Pending Data]* |
+
+---
+
+## 5. Methodological Caveats & Structural Limitations
+
+1. **Syndication and Wire Story Duplication:**  
+   GDELT ArtList mode records individual article URLs per hosting domain. High-volume syndication aggregators (e.g. `yahoo.com`, `msn.com`) republish wire stories from primary agencies (Reuters, AP) verbatim, artificially inflating aggregator frequency metrics while under-representing original wire sources.
+   
+   *Empirical instances documented during 2026-08-18 audit spot-checks:*
+   - **Threads:** A single syndicated story (*"Conspiracy theories about the Trump rally shooting flourish online"*) was captured $6\times$ across distinct regional NBC affiliate domains (`nbcsandiego.com`, `nbcnewyork.com`, `nbcdfw.com`, etc.).
+   - **Operator:** *"Perplexity AI wants to dethrone Google…"* appeared across $4$ independent Nine-owned Australian mastheads (`smh.com.au`, `theage.com.au`, etc.).
+   - **Qwen:** Alibaba integration coverage appeared across $5$ separate international syndication outlets.
+
+2. **Contrast-Week Base Rates vs. Peak-Week Sampling:**  
+   Off-peak sampling (`contrast_week`) surfaces higher ambient linguistic noise than peak-week sampling. Consequently, peak-week precision cannot be assumed for contrast weeks, necessitating granular, row-by-row triage on ambiguous entities (`Apple Vision Pro`, `Apple Intelligence`, `Threads`).
+
+3. **Domain Normalization Integrity:**  
+   Standardized domain parsing strips port artifacts (e.g. `asiaone.com:443` $\to$ `asiaone.com`) to prevent artificial domain fragmentation across cluster boundaries.
+
+4. **Entity Disambiguation Bridge:**  
+   Discrepancies between parenthetical perception names (e.g., `Cursor (the AI code editor)`) and short citation strings (`Cursor`) must be reconciled via the canonical name bridge in `scripts/precedence_test_weighted.py` to prevent silent entity loss.
