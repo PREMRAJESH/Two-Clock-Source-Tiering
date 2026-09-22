@@ -1322,3 +1322,28 @@ the most vulnerable) show zero timing shift. The shifts that exist are
 in low-n entities where excluding any single article changes the date.
 
 Output: `data_derived/location_distortion_check.csv`
+
+## 2026-09-22 -- Contributor Workspace Separation & Repository-Wide Documentation Standardization
+
+### 1. Contributor Workstream Separation (`contrib/prem-sargara/` & `contrib/viveka/`)
+- **Motivation:** Clear demarcation of ownership between Prem Sargara (computational pipeline, weighting engine, data normalization, statistical tests) and Viveka (qualitative source classification, master label validation, perception track $P(t)$).
+- **Implementation:**
+  - Initialized `contrib/prem-sargara/TASKS.md` and `contrib/viveka/TASKS.md` with explicit contributor metadata, workstream scope, and preserved subfolder allocation placeholders (`[UNSET]`).
+  - Divided operational task backlogs:
+    - **Prem Sargara:** Tasks Completed So Far, Phase A (Technical Pipeline & Data Processing; Tasks 1–11), Phase D (Search Distortion Audit; Task 20), Phase E (Joint Publication Readiness; Tasks 21–26).
+    - **Viveka:** Phase B (Source-Tiering Review & Expert Sign-Offs; Tasks 12–15), Phase C (Perception Track $P(t)$ & Longitudinal Scoring; Tasks 16–19), Phase E (Joint Publication Readiness; Tasks 21–26).
+  - Commits: `04eec07`, `7d92ae0`, `9c72446`, `23323b6`.
+
+### 2. Contributor Tracking Upgraded to Enterprise Standards
+- Re-architected both contributor task files to enterprise/academic standards:
+  - Added Contributor Metadata & Overview tables (Contributor, Workstream, Primary Domain, Core Deliverables, Current Phase).
+  - Added Executive Summaries and Cross-Contributor Handoff Matrices detailing upstream/downstream input/output dependencies between researchers.
+  - Formatted task tables with Task IDs (`TASK-01` through `TASK-26`), clear deliverables, execution status, and explicit dependencies/hard deadlines (e.g. Oct 23, 2026 model deprecation).
+
+### 3. Repository-Wide Documentation Audit & Academic Standardization
+- Audited and elevated all documentation layers across the repository (`ea49a5d`):
+  - **`docs/tier_methodology.md`**: Upgraded from rough template to a formal publication-ready methodological specification draft. Formulated mathematical specifications in LaTeX ($\log(\text{Breadth} \times \text{Volume})$, Goodness of Variance Fit $\text{GVF} \ge 0.70$, discrete/continuous weighting schemes), detailed empirical syndication duplication examples (Threads, Operator, Qwen), and specified the exact 33-entity testable baseline exclusion protocol.
+  - **`docs/README.md`**: Structured into formal documentation layers (Decision Registry, State Reports, Methodological Specs) with navigation guides and governance standards.
+  - **`data_derived/README.md`**: Standardized dataset inventory table, primary evidence vs. derived output comparison matrix, milestone commit policy, and step-by-step reproduction commands. Corrected typographical inconsistencies.
+  - **`reference/README.md` & `reference/contrast_verification_2026-08-25/README.md`**: Standardized inventory tables, verified raw response integrity protocols, and documented the two-tier verification methodology (title-based primary pass vs. full-text deep audit) along with key empirical findings (Operator precision degradation, Mamba/vLLM resolutions).
+
