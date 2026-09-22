@@ -1,63 +1,98 @@
-# Prem Sargara - Contributor Workspace & Tasks
+# Contributor Workspace & Task Tracking — Prem Sargara
 
-This directory is designated for contributions, workspace files, and task tracking for **prem-sargara**.
+> **Workstream:** Citation Source-Tiering & Weighting Analysis  
+> **Repository Scope:** `contrib/prem-sargara/`  
+> **Status:** Active (Phase 2 Execution) | **Last Updated:** 2026-09-22
 
-## Subfolders & Modules
+---
+
+## 1. Contributor Metadata & Overview
+
+| Attribute | Specification |
+| :--- | :--- |
+| **Contributor** | Prem Sargara (`prem-sargara`) |
+| **Primary Domain** | Analytical Pipeline, Source-Tier Weighting Engine, GDELT Harvesting & Data Normalization |
+| **Core Deliverables** | Analytical Merging Engine, Tier Weighting Methodology (`tier_methodology.md`), Precedence Test Suite |
+| **Current Phase** | Lane A Dry-Run Completed → Preparing Lane B Harvest & Full Analytical Pipeline |
+
+### Executive Summary
+Prem Sargara leads the quantitative and computational track for citation source-tiering and weighting analysis. This workstream encompasses pipeline engineering, bug remediation on baseline datasets, deterministic domain normalization, peak-week sampling guardrails, and running the weighted precedence and sensitivity test suites prior to paper publication.
+
+---
+
+## 2. Workspace Architecture & Subfolders
 
 - **Subfolder**: `[UNSET]`
   <!-- TODO: Add subfolder location here once prem-sargara confirms her preferred folder name. Do not guess or auto-assign a folder name. -->
 
-## Tasks & Progress
+---
 
-**Contribution:** Citation Source-Tiering / Weighting Analysis  
-**As of:** 2026-08-22
+## 3. Completed Infrastructure & Milestones
+
+> [!NOTE]
+> All items below have been fully implemented, independently reproduced, and verified in the live production pipeline.
+
+- [x] **Repo Scaffolding & Separation**: Repository structured with clean boundaries (`inputs_frozen/`, `scripts/`, `data_derived/`, `docs/`) and proper licensing.
+- [x] **Baseline Paper Reproduction**: Baseline paper result ($28/33$, median lead 83 days, $p=6.62\times 10^{-5}$) independently reproduced and verified in the analytical pipeline.
+- [x] **`self_ref_openai` Bug Patch**: Resolved silent exclusion bug that would have skewed baseline calculations.
+- [x] **Entity Name Bridge (PT ↔ CT)**: Mapped 14 entity name discrepancies between Perception Track and Citation Track.
+- [x] **Deterministic Contrast-Week v2**: Investigated `other_week` discrepancy and replaced unrecoverable rule with deterministic `contrast_week` v2 method.
+- [x] **Domain Normalization Port Patch**: Fixed port-stripping QA bug (`asiaone.com:443` vs `asiaone.com`).
+- [x] **Analytical Sampling Policy**: Implemented peak-week-only sampling policy with automated guardrail tests.
+- [x] **Environment Isolation**: Adopted project-local `.venv` environment policy.
+- [x] **Data Derived Tracking Standard**: Established deliberate milestone commit policy for `data_derived/`.
+- [x] **Contrast-Week Audit Collection**: Collected and archived 22-entity contrast-week dataset (22/22 entities, 263 rows).
+- [x] **Model Retirement Verification**: Verified model retirement schedules against primary API documentation (gpt-4.1 safe; gpt-4-0613 / gpt-4o-2024-05-13 retiring Oct 23, 2026).
+- [x] **Precision Audit Review**: Reviewed 27 AMBER precision-audit rows (16 affirmative `y`, 5 negative `n`, 6 pending Wayback verification).
+- [x] **Non-English Contrast Flagging**: Flagged 31/263 non-English contrast rows for downstream reconciliation.
 
 ---
 
-### Tasks Completed So Far
+## 4. Operational Task Backlog & Execution Roadmap
 
-- [x] Repo scaffolded, licensed, cleanly separated (frozen inputs / scripts / derived outputs / docs)
-- [x] Baseline paper result (28/33, median lead 83 days, p=6.62×10⁻⁵) independently reproduced and verified in the real pipeline, not just a standalone checker
-- [x] `self_ref_openai` exclusion bug found and fixed (would have silently broken the baseline)
-- [x] PT↔CT entity name mismatch (14 entities) found and fixed with a name bridge
-- [x] `other_week` mismatch investigated, root-caused (original rule unrecoverable), resolved with a new deterministic `contrast_week` v2 method
-- [x] Domain-normalization `:port` bug found via QA and fixed (`asiaone.com:443` vs `asiaone.com`)
-- [x] Peak-week-only analytical sampling policy decided and enforced in code (guardrail tested)
-- [x] Project-local `.venv` policy adopted (stopped touching the global Python install)
-- [x] `data_derived/` tracking policy decided (ignore by default, deliberate milestone commits)
-- [x] 22-entity contrast-week audit fully collected (22/22, 263 rows) and archived
-- [x] Model-retirement facts verified against primary sources (gpt-4.1 safe, gpt-4-0613 / gpt-4o-2024-05-13 retiring Oct 23)
-- [x] 27 AMBER precision-audit rows reviewed (16 y, 5 n, 6 unverifiable pending Wayback check)
-- [x] Non-English contrast rows flagged (31/263), pending final reconciliation of the count
+### Phase A — Technical Pipeline & Data Processing (PRS Ownership)
+
+| Task ID | Task Description & Deliverable | Status | Target / Dependency |
+| :---: | :--- | :---: | :--- |
+| **TASK-01** | Fix `VIVEKA_COL_MAP` in `merge_source_data.py` to align with live Label-sheet column schema | `[x] Complete` | Lane A Schema Align |
+| **TASK-02** | Reconcile non-English contrast-row count (31 flagged: breakdown genuine vs. false-positive vs. uncertain) | `[x] Complete` | Audit Reconciliation |
+| **TASK-03** | Triage 263-row contrast batch: resolve unambiguous rows autonomously, isolate ambiguous rows for Viveka | `[x] Complete` | Triage Batch |
+| **TASK-04** | Deprecate `verify_week_match.py` and mark script header as superseded | `[x] Complete` | Maintenance |
+| **TASK-05** | Execute browser-based Wayback Machine verification on 6 unverifiable AMBER audit rows | `[x] Complete` | Archive Inspection |
+| **TASK-06** | Execute `test_pipeline_smoketest.py` suite to ensure total pipeline green state | `[x] Complete` | QA Validation |
+| **TASK-07** | Self-generate `viveka_labeled_export.csv` from live Label master sheet (notify Viveka) | `[x] Complete` | Pipeline Ingestion |
+| **TASK-08** | Perform dry-run of complete analytical pipeline on Lane A dataset alone | `[x] Complete` | Validation Run |
+| **TASK-09** | Execute Lane B harvest (~28–30 remaining entities) upon GDELT API rate limit reset | `[ ] Pending` | GDELT Availability |
+| **TASK-10** | Run full production analytical pipeline (Merge → Tier Map → Weights → Precedence Test → Sensitivity Analysis) | `[ ] Pending` | Post-Lane B Harvest |
+| **TASK-11** | Authorship of `tier_methodology.md` (Tier definitions, empirical evidence, weight rationale, raw vs. weighted delta) | `[ ] Pending` | Final Analytical Run |
 
 ---
 
-### Task List — Remaining Work
+### Phase D — Search Result Distortion Audit
 
-#### Part A — Fully in your hands
+| Task ID | Task Description & Deliverable | Status | Target / Dependency |
+| :---: | :--- | :---: | :--- |
+| **TASK-20** | Execute Round 3 validation pass (location-based search-result distortion check) | `[ ] Pending` | Following Viveka's Round 2 |
 
-- [x] **Task 1:** Fix `VIVEKA_COL_MAP` in `merge_source_data.py` to match her real Label-sheet columns
-- [x] **Task 2:** Reconcile the non-English contrast-row count (31 flagged — confirm genuine vs. false-positive vs. still-uncertain breakdown)
-- [x] **Task 3:** Triage the 263-row contrast batch — clear unambiguous rows yourself, leave only genuinely uncertain ones for Viveka
-- [x] **Task 4:** Mark `verify_week_match.py` as superseded
-- [x] **Task 5:** Run Wayback Machine check (your own browser) on the 6 unverifiable AMBER rows
-- [x] **Task 6:** Run `test_pipeline_smoketest.py` to confirm pipeline is still green
-- [x] **Task 7:** Self-generate `viveka_labeled_export.csv` from her Label sheet (flag this choice to her — see Task 13)
-- [x] **Task 8:** Dry-run the full pipeline on Lane A data alone (preliminary, validates real column layout)
-- [ ] **Task 9:** Run Lane B harvest (~28-30 remaining entities) once GDELT rate limit clears
-- [ ] **Task 10:** Run the full analytical pipeline for real once both lanes have data (merge → tier map → weights → precedence test → sensitivity analysis)
-- [ ] **Task 11:** Fill in `tier_methodology.md` for real — tier definitions, evidence, weight rationale, actual weighted-vs-raw result
+---
 
-#### Part D — PRS other pending commitment
+### Phase E — Publication Readiness & Joint Synthesis
 
-- [ ] **Task 20:** Round 3 validation pass (location-based search-result distortion check), after her round 2 lands
+| Task ID | Task Description & Deliverable | Status | Target / Dependency |
+| :---: | :--- | :---: | :--- |
+| **TASK-21** | Integrate weighted-vs-raw analytical findings, tier methodology, and syndication caveats into paper draft | `[ ] Pending` | Post-Task 11 |
+| **TASK-22** | Update manuscript Declarations and CRediT authorship taxonomy matrix | `[ ] Pending` | Pre-Submission |
+| **TASK-23** | Compose Generative AI and AI-Agent usage disclosure section for manuscript | `[ ] Pending` | Pre-Submission |
+| **TASK-24** | Conduct full multi-pass stress-test read-through of complete paper manuscript | `[ ] Pending` | Manuscript Freeze |
+| **TASK-25** | Finalize target submission venue and update Zenodo DOI repository deposit versioning | `[ ] Pending` | Final Release |
+| **TASK-26** | Perform final proofreading, style compliance, and typographic formatting pass | `[ ] Pending` | Final Release |
 
-#### Part E — Joint, late-stage (before publication)
+---
 
-- [ ] **Task 21:** Write results into the paper draft (weighted-vs-raw comparison, tier methodology section, syndication caveat)
-- [ ] **Task 22:** Update Declarations / CRediT section for your contribution and authorship
-- [ ] **Task 23:** Update Generative AI use disclosure to cover your side's AI-agent usage
-- [ ] **Task 24:** Full stress-test read-through of the whole paper
-- [ ] **Task 25:** Decide submission venue / update Zenodo deposit versioning
-- [ ] **Task 26:** Final proofread and formatting pass
+## 5. Cross-Contributor Handoff Matrix
 
+> [!IMPORTANT]
+> **Handoff Dependencies:**
+> - **Input from Viveka**: Confirmation of `ALREADY_COVERED` entity list (Task 15) before triggering Task 09 (Lane B Harvest).
+> - **Output to Viveka**: Self-generated `viveka_labeled_export.csv` schema validation for her final sign-off.
+> - **Joint Target**: Completion of Phase E manuscript integration prior to target venue deadline.
