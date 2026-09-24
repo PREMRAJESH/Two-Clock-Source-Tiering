@@ -72,7 +72,7 @@ Prem Sargara leads the quantitative and computational track for citation source-
 
 | Task ID | Task Description & Deliverable | Status | Target / Dependency |
 | :---: | :--- | :---: | :--- |
-| **TASK-20** | Execute Round 3 validation pass (location-based search-result distortion check) | `[ ] Pending` | Following Viveka's Round 2 |
+| **TASK-20** | Execute Round 3 validation pass (location-based search-result distortion check) | `[x] Complete` | Output: `data_derived/location_distortion_check.csv` (2026-09-17) |
 
 ---
 
@@ -81,8 +81,8 @@ Prem Sargara leads the quantitative and computational track for citation source-
 | Task ID | Task Description & Deliverable | Status | Target / Dependency |
 | :---: | :--- | :---: | :--- |
 | **TASK-21** | Integrate weighted-vs-raw analytical findings, tier methodology, and syndication caveats into paper draft | `[ ] Pending` | Post-Task 11 |
-| **TASK-22** | Update manuscript Declarations and CRediT authorship taxonomy matrix | `[ ] Pending` | Pre-Submission |
-| **TASK-23** | Compose Generative AI and AI-Agent usage disclosure section for manuscript | `[ ] Pending` | Pre-Submission |
+| **TASK-22** | Update manuscript Declarations and CRediT authorship taxonomy matrix | `[x] Draft Complete` | Drafted in `docs/declarations_and_credit.md` |
+| **TASK-23** | Compose Generative AI and AI-Agent usage disclosure section for manuscript | `[x] Draft Complete` | Drafted in `docs/declarations_and_credit.md` |
 | **TASK-24** | Conduct full multi-pass stress-test read-through of complete paper manuscript | `[ ] Pending` | Manuscript Freeze |
 | **TASK-25** | Finalize target submission venue and update Zenodo DOI repository deposit versioning | `[ ] Pending` | Final Release |
 | **TASK-26** | Perform final proofreading, style compliance, and typographic formatting pass | `[ ] Pending` | Final Release |

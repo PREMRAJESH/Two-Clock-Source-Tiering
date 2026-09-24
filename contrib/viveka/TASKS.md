@@ -62,8 +62,8 @@ This document tracks the operational workstream and deliverables attributed to V
 | Task ID | Task Description & Deliverable | Status & Evidence | Target / Dependency |
 | :---: | :--- | :--- | :--- |
 | **TASK-21** | Collaborate on paper manuscript draft (weighted-vs-raw comparison, source-tier section) | `[ ] Pending` | Post-Task 11 |
-| **TASK-22** | Update Declarations section and verify CRediT contributor taxonomy | `[ ] Pending` | Pre-Submission |
-| **TASK-23** | Review Generative AI / Agent disclosure section for accuracy | `[ ] Pending` | Pre-Submission |
+| **TASK-22** | Update Declarations section and verify CRediT contributor taxonomy | `[x] Draft Complete` — drafted in `docs/declarations_and_credit.md`, pending joint sign-off | Pre-Submission |
+| **TASK-23** | Review Generative AI / Agent disclosure section for accuracy | `[x] Draft Complete` — drafted in `docs/declarations_and_credit.md`, pending joint review | Pre-Submission |
 | **TASK-24** | Participate in complete stress-test read-through of the manuscript | `[ ] Pending` | Manuscript Freeze |
 | **TASK-25** | Finalize target submission venue selection and Zenodo DOI archiving | `[ ] Pending` | Final Release |
 | **TASK-26** | Perform final proofreading and formatting verification | `[ ] Pending` | Final Release |
