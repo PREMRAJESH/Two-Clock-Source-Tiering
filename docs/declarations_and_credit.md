@@ -51,3 +51,14 @@ AI-assisted coding environments and agentic coding tools (including Google Antig
 * Generating initial drafts for technical documentation and table formatting.
 
 All source code, analytical pipelines, data outputs, and text modifications underwent exhaustive human review, execution testing, and independent statistical validation prior to inclusion in the repository.
+
+---
+
+## 5. Data and Code Availability
+
+In accordance with FAIR (Findable, Accessible, Interoperable, Reusable) data standards and preprint best practices:
+
+* **Curated Research Datasets:** The complete empirical dataset—including frozen input citation series (`ct_results_v1_frozen.csv`), longitudinal perception scores (`pt_pilot_results.csv`), expert-labeled domain tier mappings (`domain_tier_map.csv`), and contrast verification packages—is archived on **Zenodo** ([https://doi.org/10.5281/zenodo.XXXXXXX](https://doi.org/10.5281/zenodo.XXXXXXX)) under a Creative Commons Attribution 4.0 International license ([CC-BY-4.0](file:///d:/two-clock-source-tiering/LICENSE-DATA.md)).
+* **Reproducible Pipeline Software:** The complete analytical codebase, including normalization routines, Jenks natural breaks clustering, weighted precedence tests, and sensitivity analysis suites, is available on GitHub under the [MIT License](file:///d:/two-clock-source-tiering/LICENSE-CODE.md).
+* **Publication Sequencing Protocol:** The dataset package and code release are archived on Zenodo prior to SSRN submission to ensure an immutable, timestamped Digital Object Identifier (DOI) is embedded directly into the preprint manuscript submitted to SSRN.
+

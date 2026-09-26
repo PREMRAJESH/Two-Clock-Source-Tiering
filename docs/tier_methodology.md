@@ -71,10 +71,16 @@ $$\text{Testable Set (33)} = \text{Total Entities (50)} \setminus \left( \text{P
 
 | Analysis Variant | Sample Size ($N$) | Ramp Precedes Onset | Concordance Rate | Median Lead | $p$-value (Sign Test) |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **Raw Baseline ($\text{Floor}=3$)** | 33 | 28 / 33 | 84.8% | 83 days | $6.62 \times 10^{-5}$ |
-| **Raw Baseline ($\text{Floor}=5$)** | 33 | 28 / 33 | 84.8% | 83 days | $6.62 \times 10^{-5}$ |
-| **Weighted Analytical Model** | 33 | *[Pending Data]* | *[Pending Data]* | *[Pending Data]* | *[Pending Data]* |
-| **Weighted (Excl. `self_ref_openai`)** | 30 | *[Pending Data]* | *[Pending Data]* | *[Pending Data]* | *[Pending Data]* |
+| **Raw Baseline ($\text{Floor}=3$)** | 33 | 28 / 33 | 84.8% | +83 days | $6.62 \times 10^{-5}$ |
+| **Raw Baseline ($\text{Floor}=5$)** | 33 | 28 / 33 | 84.8% | +83 days | $6.62 \times 10^{-5}$ |
+| **Lane A Weighted (Continuous)** | 11 | 3 / 11 | 27.3% | -100 days | $0.227$ |
+| **Lane A Binary (Tier 1 only)** | 10 | 2 / 10 | 20.0% | -100 days | $0.109$ |
+| **Lane A Binary (Tier 1 + 2)** | 11 | 3 / 11 | 27.3% | -100 days | $0.227$ |
+| **Full Production (Lane A + B)** | 33 | *[Pending Lane B]* | *[Pending]* | *[Pending]* | *[Pending]* |
+
+> [!NOTE]
+> **Interim Empirical Finding (Lane A Benchmark):**  
+> In the unweighted baseline, citation accumulation leads LLM perception onsets by a statistically significant margin (84.8%, $p = 6.62 \times 10^{-5}$). However, applying source-tier weighting across Lane A entities attenuates this lead (dropping concordance to 27.3%, $p = 0.227$). This suggests that early temporal signal in $C(t)$ is carried diffusely across Tier 2/Tier 3 specialized web and niche sources rather than being concentrated strictly in top-tier institutional outlets.
 
 ---
 

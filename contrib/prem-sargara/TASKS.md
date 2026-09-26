@@ -64,7 +64,7 @@ Prem Sargara leads the quantitative and computational track for citation source-
 | **TASK-08** | Perform dry-run of complete analytical pipeline on Lane A dataset alone | `[x] Complete` | Validation Run |
 | **TASK-09** | Execute Lane B harvest (~28–30 remaining entities) upon GDELT API rate limit reset | `[ ] Pending` | GDELT Availability |
 | **TASK-10** | Run full production analytical pipeline (Merge → Tier Map → Weights → Precedence Test → Sensitivity Analysis) | `[ ] Pending` | Post-Lane B Harvest |
-| **TASK-11** | Authorship of `tier_methodology.md` (Tier definitions, empirical evidence, weight rationale, raw vs. weighted delta) | `[ ] Pending` | Final Analytical Run |
+| **TASK-11** | Authorship of `tier_methodology.md` (Tier definitions, empirical evidence, weight rationale, raw vs. weighted delta) | `[x] Draft Benchmarked` | Empirical benchmarks documented in `docs/tier_methodology.md` |
 
 ---
 
@@ -80,11 +80,11 @@ Prem Sargara leads the quantitative and computational track for citation source-
 
 | Task ID | Task Description & Deliverable | Status | Target / Dependency |
 | :---: | :--- | :---: | :--- |
-| **TASK-21** | Integrate weighted-vs-raw analytical findings, tier methodology, and syndication caveats into paper draft | `[ ] Pending` | Post-Task 11 |
+| **TASK-21** | Integrate weighted-vs-raw analytical findings, tier methodology, and syndication caveats into paper draft | `[ ] Pending` | Post-Task 10/11 |
 | **TASK-22** | Update manuscript Declarations and CRediT authorship taxonomy matrix | `[x] Draft Complete` | Drafted in `docs/declarations_and_credit.md` |
 | **TASK-23** | Compose Generative AI and AI-Agent usage disclosure section for manuscript | `[x] Draft Complete` | Drafted in `docs/declarations_and_credit.md` |
 | **TASK-24** | Conduct full multi-pass stress-test read-through of complete paper manuscript | `[ ] Pending` | Manuscript Freeze |
-| **TASK-25** | Finalize target submission venue and update Zenodo DOI repository deposit versioning | `[ ] Pending` | Final Release |
+| **TASK-25** | Finalize target submission venue and update Zenodo DOI repository deposit versioning | `[x] Strategy Confirmed` | Ratified: Zenodo (data+code DOI) -> SSRN submission |
 | **TASK-26** | Perform final proofreading, style compliance, and typographic formatting pass | `[ ] Pending` | Final Release |
 
 ---
