@@ -199,15 +199,22 @@ def load_citation_entity_names():
     return {r["entity"] for r in csv.DictReader(open(path, encoding="utf-8"))}
 
 
-def load_perception():
+def load_perception(pt_path=None):
     """
     entity -> list of (cutoff_date, score) sorted by cutoff_date.
     For models sharing the same cutoff, take the MAX score (conservative:
     if any model at that cutoff recognizes the entity, onset has occurred).
+
+    Supports either pt_pilot_results.csv ('score' column) or
+    pt_pilot_results_merged.csv ('score_mean' column).
     """
+    path = pt_path or PT_CSV
     raw = defaultdict(list)
-    for r in csv.DictReader(open(PT_CSV, encoding="utf-8")):
-        raw[r["entity"]].append((r["reported_cutoff"], int(r["score"])))
+    for r in csv.DictReader(open(path, encoding="utf-8")):
+        s_val = r.get("score")
+        if s_val is None or s_val == "":
+            s_val = r.get("score_mean", 0)
+        raw[r["entity"]].append((r["reported_cutoff"], float(s_val)))
 
     bridge = build_name_bridge(set(raw.keys()), load_citation_entity_names())
 
@@ -373,13 +380,13 @@ def compute_lead(ramp_week, onset_cutoff):
 
 
 def run_analysis(ramp_threshold=RAMP_THRESHOLD, onset_score=ONSET_SCORE,
-                 ramp_floor=RAMP_FLOOR):
+                 ramp_floor=RAMP_FLOOR, pt_path=None):
     """
     Run the full precedence analysis for a given set of thresholds.
     Returns (rows, summary_dict).
     """
     paper_excluded = load_paper_excluded_entities()
-    perception = load_perception()
+    perception = load_perception(pt_path=pt_path)
     citation = load_citation_series()
 
     # Get birth dates from citation data
@@ -500,7 +507,14 @@ def main():
           f"(floor={RAMP_FLOOR} mentions)")
     print(f"Onset threshold: P(t) >= {ONSET_SCORE}")
 
-    rows = run_analysis()
+    pt_path = None
+    if "--merged" in sys.argv or "--multi-run" in sys.argv:
+        pt_path = os.path.join(FROZEN_DIR, "pt_pilot_results_merged.csv")
+        print("Perception source: 3-run consensus mean (pt_pilot_results_merged.csv)")
+    else:
+        print("Perception source: baseline single-run (pt_pilot_results.csv)")
+
+    rows = run_analysis(pt_path=pt_path)
 
     # Count exclusions
     excluded = [r for r in rows if r.get("excluded_reason")]

@@ -113,6 +113,9 @@ To test sensitivity to cluster cutoffs, tier partition boundaries were shifted b
 ### 4.3 High-Precision Subset Cross-Check
 Restricting evaluation to the subset of entities achieving unambiguous disambiguation precision (`PASS` on the query audit; $N=12$) produced an identical pattern: raw concordance of $72.7\%$ ($8/11$) attenuates to $27.3\%$ ($3/11$, $p = 0.227$) under source weighting.
 
+### 4.4 Perception Multi-Run Repeat Stability Cross-Check
+To verify that onset dates are not sensitive to LLM evaluation variance, the analysis was replicated against the 3-run repeat evaluation dataset ([`inputs_frozen/pt_pilot_results_merged.csv`](file:///d:/two-clock-source-tiering/inputs_frozen/pt_pilot_results_merged.csv), $N=250$ cell evaluations across 50 entities, Krippendorff's $\alpha = 0.95$, Zenodo Record [10.5281/zenodo.22970684](https://doi.org/10.5281/zenodo.22970684)). Evaluated against consensus mean perception scores ($\bar{P}(t) \ge 3.0$), raw precedence concordance remained invariant at **84.4% (27 of 32)**, confirming measurement stability across independent model evaluations.
+
 ---
 
 ## 5. Discussion: Information Diffusion Mechanics & Syndication Dynamics
