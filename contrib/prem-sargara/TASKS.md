@@ -23,7 +23,7 @@ Prem Sargara leads the quantitative and computational track for citation source-
 ## 2. Workspace Architecture & Subfolders
 
 - **Subfolder**: `[UNSET]`
-  <!-- TODO: Add subfolder location here once prem-sargara confirms her preferred folder name. Do not guess or auto-assign a folder name. -->
+  <!-- TODO: Add subfolder location here once prem-sargara confirms his preferred folder name. Do not guess or auto-assign a folder name. -->
 
 ---
 

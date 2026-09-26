@@ -1,101 +1,143 @@
 # SSRN Publishing-Rights & Preprint Licensing Policy
 
 > **Task Reference:** TASK-19 (SSRN Publishing-Rights & Preprint Licensing Policy)  
-> **Associated Tasks:** TASK-22 (CRediT Authorship), TASK-25 (Target Venue Selection & Zenodo DOI)  
-> **Status:** Resolved & Publication-Ready Guidance  
-> **Date:** September 2026
+> **Associated Tasks:** TASK-22 (CRediT Authorship Taxonomy), TASK-23 (Generative AI Disclosure), TASK-25 (Venue Selection & Zenodo DOI Governance)  
+> **Governance Level:** Institutional Research Policy & Legal IP Specification  
+> **Status:** Final & Publication-Ready  
+> **Date:** September 2026  
 
 ---
 
-## 1. Executive Summary & Core Decisions
+## 1. Executive Summary & Core Policy Determinations
 
-This policy document resolves the legal, copyright, and distribution considerations for depositing the Two-Clock Model manuscript on **SSRN (Social Science Research Network)** alongside the existing **Zenodo repository** ([10.5281/zenodo.21532575](https://doi.org/10.5281/zenodo.21532575)).
+This policy establishes the formal legal, intellectual property (IP), and distribution framework for releasing the Two-Clock Model working paper on **SSRN (Social Science Research Network)** in tandem with the **Zenodo repository** ([Concept DOI: 10.5281/zenodo.21532574](https://doi.org/10.5281/zenodo.21532574)) and public **GitHub repository**.
 
-| Question | Resolution | Practical Action |
+| Core Dimension | Legal Determination | Operational Directive |
 | :--- | :--- | :--- |
-| **Does SSRN require transfer of copyright?** | **No.** Authors retain full, exclusive copyright. SSRN receives only a non-exclusive distribution license. | Maintain standard author copyright notice on paper header. |
-| **Which license should be selected on SSRN?** | **CC-BY-NC-ND 4.0** *(Recommended for paper draft)* or **CC-BY 4.0** *(Maximum Open Access)*. | Select during the SSRN e-Submission metadata step. |
-| **Does posting on SSRN count as "prior publication"?** | **No.** Virtually all major academic publishers (Elsevier, Springer-Nature, ACM, IEEE, INFORMS) explicitly permit preprints. | Declare preprint existence and SSRN URL in journal submission cover letter. |
-| **How does SSRN link to the Zenodo deposit?** | Direct bidirectional cross-reference. | Cite Zenodo dataset DOI in SSRN abstract; add SSRN URL to Zenodo v2 metadata. |
+| **Copyright Transfer** | **None.** Full, exclusive intellectual property is retained by the co-authors. SSRN receives only a non-exclusive distribution license. | Maintain standard dual-author copyright notice on preprint header. |
+| **SSRN License Selection** | **CC-BY-NC-ND 4.0** *(Attribution-NonCommercial-NoDerivatives)*. | Select during the SSRN e-Submission metadata workflow. |
+| **Journal Prior Publication** | **Permitted.** Leading venues (Elsevier, Springer Nature, ACM, IEEE, INFORMS/AIS) treat SSRN preprints as non-prior working papers. | Include standard preprint declaration in journal submission cover letters. |
+| **Multi-Platform Lineage** | Direct, permanent bidirectional cross-referencing between Zenodo, SSRN, and GitHub. | Embed Zenodo Concept DOI in SSRN abstract; add SSRN URL to Zenodo metadata (`IsSupplementTo`). |
+| **Third-Party Data IP** | All model outputs, news metadata, and archived snapshots comply with fair use and provider API terms. | Publish under open research exemptions; no commercial redistribution of raw media text. |
 
 ---
 
-## 2. SSRN Copyright & Rights Framework
+## 2. Intellectual Property, Co-Authorship & Rights Governance
 
-### 2.1 Author Copyright Retention
-Under SSRN's Terms of Service and Author Agreement:
-1. **Non-Exclusive Right to Distribute:** SSRN is granted a perpetual, non-exclusive, worldwide license to host, archive, index, and distribute the full-text working paper.
-2. **Authors Retain Ownership:** The authors (**Viveka Mohan Das & Prem Sargara**) retain 100% of underlying intellectual property, copyright, and the right to submit the identical or revised manuscript to any peer-reviewed journal or conference.
-3. **No Commercial Exclusivity:** SSRN does not claim commercial rights, nor does it prevent the authors from monetizing, revising, or republishing the work elsewhere.
+### 2.1 Co-Authorship & Joint Copyright Retention
+* **Joint Ownership:** Under international copyright law (Berne Convention) and US Copyright Act (17 U.S.C. § 201(a)), the manuscript and its interpretive prose are the joint intellectual property of co-authors **Viveka Mohan Das** and **Prem Sargara**.
+* **Non-Exclusive Distribution Grant:** Submission to SSRN grants SSRN a perpetual, worldwide, non-exclusive license to host, archive, index, cache, and distribute the manuscript in electronic format.
+* **No Unilateral Relicensing:** Neither author may unilaterally relicense the manuscript text under a more permissive open-license (e.g., converting from CC-BY-NC-ND to CC0 or CC-BY) without the express mutual written consent of both co-authors.
+* **Commercial Exclusivity:** SSRN does **not** obtain commercial exclusivity. The authors retain unfettered rights to publish, monetize, translate, or adapt the work, or submit identical or revised versions to peer-reviewed journals.
 
----
-
-## 3. Preprint Licensing Selection Matrix
-
-SSRN allows authors to select specific Creative Commons licenses upon submission. Because the analytical code is released under **MIT** and the dataset is released under **CC-BY 4.0** on Zenodo, the manuscript preprint license can be chosen based on the target journal strategy:
-
-| License Option | Description | Journal Compatibility | Recommended For |
-| :--- | :--- | :--- | :--- |
-| **CC-BY-NC-ND 4.0**<br>*(Attribution-NonCommercial-NoDerivatives)* | Anyone may read and share the PDF with attribution, but cannot sell it or create unauthorized derivative papers. | **Highest Compatibility.** Accepted by 100% of commercial and society publishers (Elsevier, Springer, IEEE, ACM, Taylor & Francis). | **Recommended Option.** Protects manuscript text while allowing free global preprint distribution. |
-| **CC-BY 4.0**<br>*(Attribution)* | Anyone may read, share, adapt, and build upon the work, even commercially, provided attribution is given. | Accepted by all Gold Open Access journals (e.g., *PLOS ONE*, *Nature Communications*, *Frontiers*); accepted by most hybrid journals, but a few traditional publishers prefer NC. | Best if targeting fully open-access journals or if institutional funder mandates strict CC-BY. |
-| **SSRN Default / All Rights Reserved** | Standard preprint distribution without explicit CC re-use terms. | Universally accepted by traditional journals. | Fallback if publisher has unusual restrictions. |
-
-> [!TIP]
-> **Recommendation:** Select **CC-BY-NC-ND 4.0** on SSRN for the paper manuscript.  
-> This ensures that third parties cannot commercialize or modify the manuscript without permission, while preserving complete flexibility to submit to any high-impact journal later. The underlying code and dataset remain openly usable under MIT and CC-BY 4.0.
-
----
-
-## 4. Journal "Prior Publication" Compliance
-
-A frequent concern is whether an SSRN working paper disqualifies a paper from subsequent journal publication (the "Ingelfinger Rule"). 
-
-Under modern publishing standards (COPE and SHERPA/RoMEO conventions):
-1. **Preprints are Standard Practice:** Major technology, information systems, and computer science venues treat preprints as early working drafts designed to solicit feedback, not formal prior publication.
-2. **Key Publisher Policies:**
-   * **Elsevier:** Explicitly permits preprints on preprint servers (including SSRN, which is owned by Elsevier) at any time.
-   * **Springer Nature:** Encourages posting preprints before or during formal submission.
-   * **ACM & IEEE:** Permit preprints on non-commercial repositories (including SSRN and arXiv); authors update the preprint with the final DOI upon publication.
-   * **INFORMS & AIS (MIS Quarterly, ISR, Management Science):** Fully support preprints; authors must disclose prior distribution in submission comments.
-
-### Required Journal Disclosure Statement:
-Upon submitting to a journal, include this standard statement in the cover letter:
-> *"An earlier working paper version of this research, reporting initial empirical findings, was posted as a preprint on SSRN (SSRN ID: [INSERT]) and data deposited on Zenodo (DOI: 10.5281/zenodo.21532575). In accordance with your journal's preprint policy, this distribution is non-commercial and does not constitute prior formal publication."*
-
----
-
-## 5. Integration Architecture: SSRN + Zenodo + GitHub
-
-To maintain scientific rigor and clear provenance across platforms, the repository connects as follows:
+### 2.2 Tripartite Licensing Architecture
+To maximize scientific impact while safeguarding the integrity of author analysis, the research assets are governed under a tripartite licensing model:
 
 ```
-[ GitHub Repository ] 
-        │ (Public Release Tag / v2.0)
-        ▼
-[ Zenodo v2 Deposit ] ──(DOI: 10.5281/zenodo.21532575)
-        ▲
-        │ Cross-links dataset DOI & scripts
-        ▼
-[ SSRN Working Paper ] ──(Paper Abstract & PDF)
+┌────────────────────────────────────────────────────────────────────────┐
+│                        Two-Clock Research Stack                        │
+├───────────────────────┬───────────────────────┬────────────────────────┤
+│     Paper Manuscript  │   Empirical Datasets  │  Pipeline & Tooling    │
+│        (SSRN PDF)     │    (Zenodo Archives)  │   (GitHub Repository)  │
+├───────────────────────┼───────────────────────┼────────────────────────┤
+│   CC-BY-NC-ND 4.0     │      CC-BY 4.0        │       MIT License      │
+│  (NonCommercial /     │  (Open Attribution    │  (Permissive Software  │
+│   No Derivatives)     │   Data Reuse)         │   Reuse & Execution)   │
+└───────────────────────┴───────────────────────┴────────────────────────┘
 ```
-
-1. **In the SSRN Manuscript / Abstract:**
-   * Include the standard Data & Code Availability statement:  
-     *"All reproducible data pipelines, classification scripts, and frozen empirical datasets are permanently archived on Zenodo (DOI: [10.5281/zenodo.21532575](https://doi.org/10.5281/zenodo.21532575)) and GitHub."*
-2. **In the Zenodo Deposit:**
-   * When publishing the v2 version of the Zenodo deposit (following Task 10/11 production run), include the SSRN paper URL under "Related identifiers" as `IsSupplementTo`.
+1. **Manuscript Prose (CC-BY-NC-ND 4.0):** Anyone may freely download, read, and share the PDF with attribution. Third parties cannot sell the paper, incorporate it into commercial paywalls, or distribute modified/altered derivatives.
+2. **Empirical Data (CC-BY 4.0):** Data tables, scores, and classifications on Zenodo are reusable for independent empirical inquiry with standard attribution.
+3. **Software & Pipeline (MIT License):** All Python analysis scripts and verification harnesses are permissively licensed for public execution and computational reproduction.
 
 ---
 
-## 6. Actionable Submission Checklist for Viveka
+## 3. Third-Party Data Compliance & Output Rights
 
-When uploading the manuscript to SSRN:
-- [ ] **Paper Title:** *"The Two-Clock Model: Structural Presence, Citation Ramps, and AI Perception of Technology Entities"*
-- [ ] **Author Line:** Viveka Mohan Das & Prem Sargara
-- [ ] **Affiliations & Disclosures:** Include declarations from [`docs/declarations_and_credit.md`](declarations_and_credit.md)
-- [ ] **License Selected:** Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International (**CC-BY-NC-ND 4.0**)
-- [ ] **SSRN e-Library Networks:** 
-  * Information Systems & eBusiness Network (ISN)
-  * Economics Research Network (ERN) / Innovation & Technology Management
-  * Artificial Intelligence & Machine Learning Subject Matter e-Journal
-- [ ] **Cross-link:** Paste Zenodo DOI `10.5281/zenodo.21532575` in the abstract.
+To prevent copyright or terms-of-service challenges:
+
+1. **OpenAI Model Outputs & Evaluations:**
+   * Under OpenAI's Business Terms and API Terms of Service, OpenAI assigns to the user all right, title, and interest in and to output generated by the services.
+   * Under current US Copyright Office Compendium guidance (§313.2), raw machine-generated text lacking human creative expression is not subject to copyright. The authors' selection, arrangement, scoring rubrics, and evaluation framework constitute the protectable work.
+2. **GDELT Project Citation Metadata:**
+   * Citation series $C(t)$ utilize news mention volume, dates, and domain-level metadata derived from the open GDELT Project (Leetaru & Schrodt, 2013). No proprietary full-text news corpuses are reproduced or mirrored, preserving full compliance with international fair dealing and copyright boundaries.
+3. **Wayback Machine Snapshots:**
+   * Structural presence scores $S(t)$ evaluate publicly accessible historical homepage snapshots from the Internet Archive under scholarly fair use doctrine (17 U.S.C. § 107) for non-consumptive computational analysis.
+
+---
+
+## 4. Journal "Prior Publication" (Ingelfinger Rule) Compliance
+
+### 4.1 Publisher Pre-Print Policies
+Under modern scholarly communications standards (COPE and SHERPA/RoMEO frameworks), depositing a working paper on SSRN does **not** constitute formal prior publication:
+
+* **Elsevier (SSRN Owner):** Explicitly guarantees that preprints posted to SSRN can be submitted to any Elsevier journal without prejudice.
+* **Springer Nature:** Fully supports preprints; encouragement of public preprint feedback is codified in editorial policy across Nature and Springer portfolio journals.
+* **ACM & IEEE:** Permit preprint deposits on non-commercial repositories (including SSRN and arXiv); authors update preprint metadata with the formal DOI upon journal acceptance.
+* **INFORMS & AIS (*MIS Quarterly*, *Information Systems Research*, *Management Science*):** Recognize working papers and conference preprints as standard scholarly communication; require disclosure in submission cover letters.
+
+### 4.2 Required Journal Disclosure Wording
+When submitting the manuscript to a peer-reviewed journal, include the following statement in the cover letter:
+> *"An earlier working paper version of this research, reporting initial empirical findings, was posted as a preprint on SSRN (SSRN ID: [INSERT]) and associated data deposited on Zenodo (Concept DOI: [10.5281/zenodo.21532574](https://doi.org/10.5281/zenodo.21532574)). In accordance with your journal's preprint policy, this distribution is non-commercial, non-exclusive, and does not constitute prior formal publication."*
+
+### 4.3 Post-Acceptance (Green Open Access) Transition Rules
+Upon formal acceptance by a peer-reviewed journal:
+1. **Maintain Working Paper:** Do **not** remove the SSRN preprint. The scholarly record requires continuity.
+2. **Update SSRN Metadata:** Add the journal citation, volume/issue numbers, and the formal Journal DOI to the SSRN title page metadata ("Published In" field).
+3. **Version of Record (VoR) Boundary:** Do **not** replace the SSRN working paper PDF with the publisher's final typeset PDF unless publishing under a paid Gold Open Access license that permits repository mirroring. The Author Accepted Manuscript (AAM) or preprint remains the legitimate Green Open Access artifact.
+
+---
+
+## 5. Repository & Archival Lineage
+
+To ensure unbroken scientific provenance, the multi-platform ecosystem connects as follows:
+
+```
+                       [ GitHub Repository ]
+                   (Source Code & Active Pipeline)
+                                 │
+                     Release Tag │ (v2.0 / v3.0)
+                                 ▼
+                     [ Zenodo Concept Archive ]
+                    (DOI: 10.5281/zenodo.21532574)
+                     ├── v1 Dataset: 21532575
+                     ├── v1 Paper:   21533068
+                     ├── v2 Dataset: 22970684
+                     └── v2 Paper:   22970826
+                                 ▲
+                     IsSupplementTo │ Cites Dataset DOI
+                                 ▼
+                        [ SSRN Working Paper ]
+                  (Manuscript PDF & Abstract Record)
+```
+
+### Citation & Cross-Reference Requirements
+1. **In SSRN Abstract / Manuscript Header:**  
+   *"All reproducible data pipelines, classification scripts, and frozen empirical datasets are permanently archived on Zenodo (Concept DOI: [10.5281/zenodo.21532574](https://doi.org/10.5281/zenodo.21532574)) and GitHub (PREMRAJESH/Two-Clock-Source-Tiering)."*
+2. **In Zenodo Metadata:**  
+   Add the SSRN working paper URL under `Related identifiers` as relation type `IsSupplementTo`.
+
+---
+
+## 6. SSRN Permanence, Revision & Withdrawal Policy
+
+* **Irrevocable Archival Record:** Authors must be aware that once an SSRN paper is approved and assigned an SSRN ID, it becomes part of the permanent academic record. SSRN does not delete working papers upon simple request, ensuring citation integrity.
+* **Version Updates:** Authors can submit revisions (e.g., adding the source-tiering analysis and joint co-authorship) directly via the SSRN User HeadQuarters without altering the underlying SSRN ID or URL.
+
+---
+
+## 7. Actionable Submission Checklist for SSRN Upload
+
+When executing the SSRN submission:
+
+- [ ] **Paper Title:** *"The Two-Clock Model: Structural Presence and AI Perception of Technology Entities"*
+- [ ] **Co-Authors:**
+  * **Viveka Mohan Das** (AISearch Global, Sydney, Australia; ORCID: `0009-0007-9715-0951`)
+  * **Prem Sargara** (Independent Researcher; Analytical Pipeline & Reproducibility Lead)
+- [ ] **License Selected:** **CC-BY-NC-ND 4.0** (Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International)
+- [ ] **Primary SSRN e-Library Classifications:**
+  * *Information Systems & eBusiness Network (ISN)*
+  * *Economics Research Network (ERN) / Innovation & Technology Management*
+  * *Artificial Intelligence & Machine Learning Subject Matter e-Journal*
+- [ ] **Data Availability Statement:** Embed Zenodo Concept DOI `10.5281/zenodo.21532574` directly into the abstract.
+- [ ] **Ethics & AI Declarations:** Attach verbatim disclosures from [`docs/declarations_and_credit.md`](declarations_and_credit.md).
+
