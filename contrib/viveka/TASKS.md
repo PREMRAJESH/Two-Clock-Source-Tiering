@@ -53,7 +53,7 @@ This document tracks the operational workstream and deliverables attributed to V
 | **TASK-16** | Complete two independent $P(t)$ rerun executions prior to hard deadline (Oct 23, 2026) | `[x] Reported complete — source: [none currently documented; target window early-to-mid Oct 2026 noted in session log 2026-08-18, execution output pending ingest]` | Hard Deadline: Oct 23 |
 | **TASK-17** | Complete Round-2 qualitative scoring pass on the 50 target entities | `[x] Reported complete — source: [archived package in reference/contrast_verification_2026-08-25/ on 2026-08-25]` | Scoring Pass |
 | **TASK-18** | Evaluate necessity and execute $3\times$-repeat-per-cutoff stability verification check | `[x] Reported complete — source: [none currently documented; optional check noted in session log 2026-08-16, formal verification output pending]` | Stability Audit |
-| **TASK-19** | Investigate and resolve SSRN publishing-rights and pre-print licensing policy | `[ ] Pending` | Pre-Publication |
+| **TASK-19** | Investigate and resolve SSRN publishing-rights and pre-print licensing policy | `[x] Complete` — resolved and documented in [`docs/ssrn_publishing_and_licensing_policy.md`](file:///d:/two-clock-source-tiering/docs/ssrn_publishing_and_licensing_policy.md) | Pre-Publication |
 
 ---
 

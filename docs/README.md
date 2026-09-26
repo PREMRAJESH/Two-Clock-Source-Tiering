@@ -15,6 +15,8 @@ This directory maintains the formal scientific and operational records that conn
 | [`session_log.md`](session_log.md) | **Decision & Provenance Record** | Chronological ledger documenting every methodological choice, technical remediation, bug fix, and associated Git commit hash. **Authoritative source of truth**. |
 | [`project_overview_report.md`](project_overview_report.md) | **Consolidated State Report** | Comprehensive snapshot of repository architecture, lane status, implementation benchmarks, and blocking dependencies. |
 | [`tier_methodology.md`](tier_methodology.md) | **Methodological Specification** | Formal specification of domain clustering algorithms (Jenks natural breaks), authority tier definitions, continuous/binary weighting schemes, and sensitivity protocols. |
+| [`declarations_and_credit.md`](declarations_and_credit.md) | **Publication Declarations** | Formal CRediT contributor taxonomy and Generative AI instrument/editorial disclosures (Tasks 22 & 23). |
+| [`ssrn_publishing_and_licensing_policy.md`](ssrn_publishing_and_licensing_policy.md) | **Preprint & Rights Policy** | Legal, copyright retention, Creative Commons license selection (CC-BY-NC-ND vs. CC-BY), and journal prior-publication compliance guide for SSRN and Zenodo (Task 19). |
 
 ---
 
