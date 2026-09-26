@@ -80,7 +80,7 @@ Prem Sargara leads the quantitative and computational track for citation source-
 
 | Task ID | Task Description & Deliverable | Status | Target / Dependency |
 | :---: | :--- | :---: | :--- |
-| **TASK-21** | Integrate weighted-vs-raw analytical findings, tier methodology, and syndication caveats into paper draft | `[ ] Pending` | Post-Task 10/11 |
+| **TASK-21** | Integrate weighted-vs-raw analytical findings, tier methodology, and syndication caveats into paper draft | `[x] Section Authored` | Authored publication-ready draft in `docs/manuscript_section_source_tiering.md` |
 | **TASK-22** | Update manuscript Declarations and CRediT authorship taxonomy matrix | `[x] Draft Complete` | Drafted in `docs/declarations_and_credit.md` |
 | **TASK-23** | Compose Generative AI and AI-Agent usage disclosure section for manuscript | `[x] Draft Complete` | Drafted in `docs/declarations_and_credit.md` |
 | **TASK-24** | Conduct full multi-pass stress-test read-through of complete paper manuscript | `[ ] Pending` | Manuscript Freeze |
