@@ -1,0 +1,251 @@
+entity,birth_date,provider,model,reported_cutoff,score_run1,score_run2,score_run3,score_mean,score_std,score_min,score_max,agreement
+AlphaFold 3,2024-05-08,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+AlphaFold 3,2024-05-08,openai,gpt-4.1-2025-04-14,2024-06,4,3,4,3.667,0.471,3,4,within_1
+AlphaFold 3,2024-05-08,openai,gpt-4o-2024-05-13,2023-10,0,2,2,1.333,0.943,0,2,diverge
+AlphaFold 3,2024-05-08,openai,gpt-4o-2024-11-20,2023-10,0,0,0,0,0.0,0,0,exact
+AlphaFold 3,2024-05-08,openai,gpt-5.2,2025-06,3,4,3,3.333,0.471,3,4,within_1
+AlphaGeometry,2024-01-17,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+AlphaGeometry,2024-01-17,openai,gpt-4.1-2025-04-14,2024-06,4,4,4,4,0.0,4,4,exact
+AlphaGeometry,2024-01-17,openai,gpt-4o-2024-05-13,2023-10,0,0,0,0,0.0,0,0,exact
+AlphaGeometry,2024-01-17,openai,gpt-4o-2024-11-20,2023-10,0,0,0,0,0.0,0,0,exact
+AlphaGeometry,2024-01-17,openai,gpt-5.2,2025-06,4,4,4,4,0.0,4,4,exact
+Apple Intelligence,2024-06-10,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+Apple Intelligence,2024-06-10,openai,gpt-4.1-2025-04-14,2024-06,4,4,4,4,0.0,4,4,exact
+Apple Intelligence,2024-06-10,openai,gpt-4o-2024-05-13,2023-10,0,0,0,0,0.0,0,0,exact
+Apple Intelligence,2024-06-10,openai,gpt-4o-2024-11-20,2023-10,0,0,0,0,0.0,0,0,exact
+Apple Intelligence,2024-06-10,openai,gpt-5.2,2025-06,4,4,4,4,0.0,4,4,exact
+Apple Vision Pro,2023-06-05,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+Apple Vision Pro,2023-06-05,openai,gpt-4.1-2025-04-14,2024-06,4,4,4,4,0.0,4,4,exact
+Apple Vision Pro,2023-06-05,openai,gpt-4o-2024-05-13,2023-10,3,3,3,3,0.0,3,3,exact
+Apple Vision Pro,2023-06-05,openai,gpt-4o-2024-11-20,2023-10,4,4,4,4,0.0,4,4,exact
+Apple Vision Pro,2023-06-05,openai,gpt-5.2,2025-06,4,4,4,4,0.0,4,4,exact
+Black Forest Labs,2024-08-01,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+Black Forest Labs,2024-08-01,openai,gpt-4.1-2025-04-14,2024-06,0,0,0,0,0.0,0,0,exact
+Black Forest Labs,2024-08-01,openai,gpt-4o-2024-05-13,2023-10,0,0,0,0,0.0,0,0,exact
+Black Forest Labs,2024-08-01,openai,gpt-4o-2024-11-20,2023-10,0,0,0,0,0.0,0,0,exact
+Black Forest Labs,2024-08-01,openai,gpt-5.2,2025-06,3,3,3,3,0.0,3,3,exact
+Bolt.new,2024-10-04,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+Bolt.new,2024-10-04,openai,gpt-4.1-2025-04-14,2024-06,0,0,0,0,0.0,0,0,exact
+Bolt.new,2024-10-04,openai,gpt-4o-2024-05-13,2023-10,0,0,0,0,0.0,0,0,exact
+Bolt.new,2024-10-04,openai,gpt-4o-2024-11-20,2023-10,0,0,0,0,0.0,0,0,exact
+Bolt.new,2024-10-04,openai,gpt-5.2,2025-06,1,0,0,0.333,0.471,0,1,within_1
+Claude 3,2024-03-04,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+Claude 3,2024-03-04,openai,gpt-4.1-2025-04-14,2024-06,3,4,3,3.333,0.471,3,4,within_1
+Claude 3,2024-03-04,openai,gpt-4o-2024-05-13,2023-10,0,0,0,0,0.0,0,0,exact
+Claude 3,2024-03-04,openai,gpt-4o-2024-11-20,2023-10,0,0,0,0,0.0,0,0,exact
+Claude 3,2024-03-04,openai,gpt-5.2,2025-06,4,4,4,4,0.0,4,4,exact
+Command R+,2024-04-04,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+Command R+,2024-04-04,openai,gpt-4.1-2025-04-14,2024-06,0,0,0,0,0.0,0,0,exact
+Command R+,2024-04-04,openai,gpt-4o-2024-05-13,2023-10,0,0,0,0,0.0,0,0,exact
+Command R+,2024-04-04,openai,gpt-4o-2024-11-20,2023-10,0,0,0,0,0.0,0,0,exact
+Command R+,2024-04-04,openai,gpt-5.2,2025-06,4,4,3,3.667,0.471,3,4,within_1
+Cursor (the AI code editor),2023-03-01,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+Cursor (the AI code editor),2023-03-01,openai,gpt-4.1-2025-04-14,2024-06,2,2,2,2,0.0,2,2,exact
+Cursor (the AI code editor),2023-03-01,openai,gpt-4o-2024-05-13,2023-10,0,0,0,0,0.0,0,0,exact
+Cursor (the AI code editor),2023-03-01,openai,gpt-4o-2024-11-20,2023-10,0,0,0,0,0.0,0,0,exact
+Cursor (the AI code editor),2023-03-01,openai,gpt-5.2,2025-06,3,3,3,3,0.0,3,3,exact
+DBRX,2024-03-27,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+DBRX,2024-03-27,openai,gpt-4.1-2025-04-14,2024-06,3,4,4,3.667,0.471,3,4,within_1
+DBRX,2024-03-27,openai,gpt-4o-2024-05-13,2023-10,0,0,0,0,0.0,0,0,exact
+DBRX,2024-03-27,openai,gpt-4o-2024-11-20,2023-10,0,0,0,0,0.0,0,0,exact
+DBRX,2024-03-27,openai,gpt-5.2,2025-06,4,3,4,3.667,0.471,3,4,within_1
+DeepSeek,2023-07-17,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+DeepSeek,2023-07-17,openai,gpt-4.1-2025-04-14,2024-06,2,2,2,2,0.0,2,2,exact
+DeepSeek,2023-07-17,openai,gpt-4o-2024-05-13,2023-10,0,0,0,0,0.0,0,0,exact
+DeepSeek,2023-07-17,openai,gpt-4o-2024-11-20,2023-10,0,0,0,0,0.0,0,0,exact
+DeepSeek,2023-07-17,openai,gpt-5.2,2025-06,2,3,3,2.667,0.471,2,3,within_1
+DeepSeek-R1,2025-01-20,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+DeepSeek-R1,2025-01-20,openai,gpt-4.1-2025-04-14,2024-06,0,0,0,0,0.0,0,0,exact
+DeepSeek-R1,2025-01-20,openai,gpt-4o-2024-05-13,2023-10,0,0,0,0,0.0,0,0,exact
+DeepSeek-R1,2025-01-20,openai,gpt-4o-2024-11-20,2023-10,0,0,0,0,0.0,0,0,exact
+DeepSeek-R1,2025-01-20,openai,gpt-5.2,2025-06,0,3,3,2,1.414,0,3,diverge
+Devin AI,2024-03-12,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+Devin AI,2024-03-12,openai,gpt-4.1-2025-04-14,2024-06,3,3,4,3.333,0.471,3,4,within_1
+Devin AI,2024-03-12,openai,gpt-4o-2024-05-13,2023-10,0,0,0,0,0.0,0,0,exact
+Devin AI,2024-03-12,openai,gpt-4o-2024-11-20,2023-10,0,0,0,0,0.0,0,0,exact
+Devin AI,2024-03-12,openai,gpt-5.2,2025-06,4,4,4,4,0.0,4,4,exact
+Dream Machine (by Luma),2024-06-12,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+Dream Machine (by Luma),2024-06-12,openai,gpt-4.1-2025-04-14,2024-06,4,4,4,4,0.0,4,4,exact
+Dream Machine (by Luma),2024-06-12,openai,gpt-4o-2024-05-13,2023-10,0,0,0,0,0.0,0,0,exact
+Dream Machine (by Luma),2024-06-12,openai,gpt-4o-2024-11-20,2023-10,0,0,0,0,0.0,0,0,exact
+Dream Machine (by Luma),2024-06-12,openai,gpt-5.2,2025-06,4,4,4,4,0.0,4,4,exact
+ElevenLabs,2023-01-23,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+ElevenLabs,2023-01-23,openai,gpt-4.1-2025-04-14,2024-06,3,4,3,3.333,0.471,3,4,within_1
+ElevenLabs,2023-01-23,openai,gpt-4o-2024-05-13,2023-10,3,3,3,3,0.0,3,3,exact
+ElevenLabs,2023-01-23,openai,gpt-4o-2024-11-20,2023-10,4,4,4,4,0.0,4,4,exact
+ElevenLabs,2023-01-23,openai,gpt-5.2,2025-06,4,4,4,4,0.0,4,4,exact
+GPT-4,2023-03-14,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+GPT-4,2023-03-14,openai,gpt-4.1-2025-04-14,2024-06,4,4,4,4,0.0,4,4,exact
+GPT-4,2023-03-14,openai,gpt-4o-2024-05-13,2023-10,3,3,4,3.333,0.471,3,4,within_1
+GPT-4,2023-03-14,openai,gpt-4o-2024-11-20,2023-10,4,4,4,4,0.0,4,4,exact
+GPT-4,2023-03-14,openai,gpt-5.2,2025-06,4,4,4,4,0.0,4,4,exact
+GPT-4o,2024-05-13,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+GPT-4o,2024-05-13,openai,gpt-4.1-2025-04-14,2024-06,4,4,4,4,0.0,4,4,exact
+GPT-4o,2024-05-13,openai,gpt-4o-2024-05-13,2023-10,0,0,0,0,0.0,0,0,exact
+GPT-4o,2024-05-13,openai,gpt-4o-2024-11-20,2023-10,0,0,0,0,0.0,0,0,exact
+GPT-4o,2024-05-13,openai,gpt-5.2,2025-06,4,4,4,4,0.0,4,4,exact
+Gemini (the Google AI model),2023-12-06,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+Gemini (the Google AI model),2023-12-06,openai,gpt-4.1-2025-04-14,2024-06,4,4,4,4,0.0,4,4,exact
+Gemini (the Google AI model),2023-12-06,openai,gpt-4o-2024-05-13,2023-10,0,0,0,0,0.0,0,0,exact
+Gemini (the Google AI model),2023-12-06,openai,gpt-4o-2024-11-20,2023-10,3,2,2,2.333,0.471,2,3,within_1
+Gemini (the Google AI model),2023-12-06,openai,gpt-5.2,2025-06,4,4,4,4,0.0,4,4,exact
+Gemini 1.5 Pro,2024-02-15,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+Gemini 1.5 Pro,2024-02-15,openai,gpt-4.1-2025-04-14,2024-06,4,4,4,4,0.0,4,4,exact
+Gemini 1.5 Pro,2024-02-15,openai,gpt-4o-2024-05-13,2023-10,0,0,0,0,0.0,0,0,exact
+Gemini 1.5 Pro,2024-02-15,openai,gpt-4o-2024-11-20,2023-10,0,0,0,0,0.0,0,0,exact
+Gemini 1.5 Pro,2024-02-15,openai,gpt-5.2,2025-06,4,4,4,4,0.0,4,4,exact
+Grok (the xAI chatbot),2023-11-04,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+Grok (the xAI chatbot),2023-11-04,openai,gpt-4.1-2025-04-14,2024-06,4,4,4,4,0.0,4,4,exact
+Grok (the xAI chatbot),2023-11-04,openai,gpt-4o-2024-05-13,2023-10,0,0,0,0,0.0,0,0,exact
+Grok (the xAI chatbot),2023-11-04,openai,gpt-4o-2024-11-20,2023-10,0,0,0,0,0.0,0,0,exact
+Grok (the xAI chatbot),2023-11-04,openai,gpt-5.2,2025-06,4,4,3,3.667,0.471,3,4,within_1
+Humane Ai Pin,2023-11-09,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+Humane Ai Pin,2023-11-09,openai,gpt-4.1-2025-04-14,2024-06,4,3,4,3.667,0.471,3,4,within_1
+Humane Ai Pin,2023-11-09,openai,gpt-4o-2024-05-13,2023-10,0,0,0,0,0.0,0,0,exact
+Humane Ai Pin,2023-11-09,openai,gpt-4o-2024-11-20,2023-10,3,3,3,3,0.0,3,3,exact
+Humane Ai Pin,2023-11-09,openai,gpt-5.2,2025-06,4,4,4,4,0.0,4,4,exact
+Ideogram,2023-08-22,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+Ideogram,2023-08-22,openai,gpt-4.1-2025-04-14,2024-06,4,4,4,4,0.0,4,4,exact
+Ideogram,2023-08-22,openai,gpt-4o-2024-05-13,2023-10,0,0,0,0,0.0,0,0,exact
+Ideogram,2023-08-22,openai,gpt-4o-2024-11-20,2023-10,0,0,0,0,0.0,0,0,exact
+Ideogram,2023-08-22,openai,gpt-5.2,2025-06,3,4,4,3.667,0.471,3,4,within_1
+Kimi (the AI chatbot),2023-10-09,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+Kimi (the AI chatbot),2023-10-09,openai,gpt-4.1-2025-04-14,2024-06,2,3,4,3,0.816,2,4,diverge
+Kimi (the AI chatbot),2023-10-09,openai,gpt-4o-2024-05-13,2023-10,0,0,0,0,0.0,0,0,exact
+Kimi (the AI chatbot),2023-10-09,openai,gpt-4o-2024-11-20,2023-10,0,0,0,0,0.0,0,0,exact
+Kimi (the AI chatbot),2023-10-09,openai,gpt-5.2,2025-06,3,3,3,3,0.0,3,3,exact
+Liquid AI,2023-12-06,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+Liquid AI,2023-12-06,openai,gpt-4.1-2025-04-14,2024-06,2,0,2,1.333,0.943,0,2,diverge
+Liquid AI,2023-12-06,openai,gpt-4o-2024-05-13,2023-10,0,0,0,0,0.0,0,0,exact
+Liquid AI,2023-12-06,openai,gpt-4o-2024-11-20,2023-10,0,0,0,0,0.0,0,0,exact
+Liquid AI,2023-12-06,openai,gpt-5.2,2025-06,2,3,2,2.333,0.471,2,3,within_1
+Llama 2,2023-07-18,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+Llama 2,2023-07-18,openai,gpt-4.1-2025-04-14,2024-06,4,3,3,3.333,0.471,3,4,within_1
+Llama 2,2023-07-18,openai,gpt-4o-2024-05-13,2023-10,3,3,3,3,0.0,3,3,exact
+Llama 2,2023-07-18,openai,gpt-4o-2024-11-20,2023-10,4,4,4,4,0.0,4,4,exact
+Llama 2,2023-07-18,openai,gpt-5.2,2025-06,4,4,4,4,0.0,4,4,exact
+Llama 3,2024-04-18,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+Llama 3,2024-04-18,openai,gpt-4.1-2025-04-14,2024-06,3,3,3,3,0.0,3,3,exact
+Llama 3,2024-04-18,openai,gpt-4o-2024-05-13,2023-10,0,0,0,0,0.0,0,0,exact
+Llama 3,2024-04-18,openai,gpt-4o-2024-11-20,2023-10,0,0,0,0,0.0,0,0,exact
+Llama 3,2024-04-18,openai,gpt-5.2,2025-06,4,4,3,3.667,0.471,3,4,within_1
+Lovable (the AI app builder),2024-11-21,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+Lovable (the AI app builder),2024-11-21,openai,gpt-4.1-2025-04-14,2024-06,0,0,0,0,0.0,0,0,exact
+Lovable (the AI app builder),2024-11-21,openai,gpt-4o-2024-05-13,2023-10,0,0,0,0,0.0,0,0,exact
+Lovable (the AI app builder),2024-11-21,openai,gpt-4o-2024-11-20,2023-10,0,0,0,0,0.0,0,0,exact
+Lovable (the AI app builder),2024-11-21,openai,gpt-5.2,2025-06,2,0,0,0.667,0.943,0,2,diverge
+Mamba (the deep learning architecture),2023-12-01,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+Mamba (the deep learning architecture),2023-12-01,openai,gpt-4.1-2025-04-14,2024-06,4,4,4,4,0.0,4,4,exact
+Mamba (the deep learning architecture),2023-12-01,openai,gpt-4o-2024-05-13,2023-10,0,0,0,0,0.0,0,0,exact
+Mamba (the deep learning architecture),2023-12-01,openai,gpt-4o-2024-11-20,2023-10,0,0,0,0,0.0,0,0,exact
+Mamba (the deep learning architecture),2023-12-01,openai,gpt-5.2,2025-06,4,4,4,4,0.0,4,4,exact
+Manus (the AI agent),2025-03-06,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+Manus (the AI agent),2025-03-06,openai,gpt-4.1-2025-04-14,2024-06,0,0,0,0,0.0,0,0,exact
+Manus (the AI agent),2025-03-06,openai,gpt-4o-2024-05-13,2023-10,0,0,0,0,0.0,0,0,exact
+Manus (the AI agent),2025-03-06,openai,gpt-4o-2024-11-20,2023-10,0,0,0,0,0.0,0,0,exact
+Manus (the AI agent),2025-03-06,openai,gpt-5.2,2025-06,0,0,0,0,0.0,0,0,exact
+Mistral AI,2023-04-28,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+Mistral AI,2023-04-28,openai,gpt-4.1-2025-04-14,2024-06,4,4,4,4,0.0,4,4,exact
+Mistral AI,2023-04-28,openai,gpt-4o-2024-05-13,2023-10,2,3,3,2.667,0.471,2,3,within_1
+Mistral AI,2023-04-28,openai,gpt-4o-2024-11-20,2023-10,4,4,4,4,0.0,4,4,exact
+Mistral AI,2023-04-28,openai,gpt-5.2,2025-06,3,3,4,3.333,0.471,3,4,within_1
+Mixtral 8x7B,2023-12-08,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+Mixtral 8x7B,2023-12-08,openai,gpt-4.1-2025-04-14,2024-06,4,4,4,4,0.0,4,4,exact
+Mixtral 8x7B,2023-12-08,openai,gpt-4o-2024-05-13,2023-10,0,0,0,0,0.0,0,0,exact
+Mixtral 8x7B,2023-12-08,openai,gpt-4o-2024-11-20,2023-10,0,0,0,0,0.0,0,0,exact
+Mixtral 8x7B,2023-12-08,openai,gpt-5.2,2025-06,4,4,4,4,0.0,4,4,exact
+NotebookLM,2023-07-12,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+NotebookLM,2023-07-12,openai,gpt-4.1-2025-04-14,2024-06,3,4,4,3.667,0.471,3,4,within_1
+NotebookLM,2023-07-12,openai,gpt-4o-2024-05-13,2023-10,3,3,3,3,0.0,3,3,exact
+NotebookLM,2023-07-12,openai,gpt-4o-2024-11-20,2023-10,3,3,3,3,0.0,3,3,exact
+NotebookLM,2023-07-12,openai,gpt-5.2,2025-06,4,4,4,4,0.0,4,4,exact
+Ollama,2023-07-01,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+Ollama,2023-07-01,openai,gpt-4.1-2025-04-14,2024-06,3,4,4,3.667,0.471,3,4,within_1
+Ollama,2023-07-01,openai,gpt-4o-2024-05-13,2023-10,0,0,0,0,0.0,0,0,exact
+Ollama,2023-07-01,openai,gpt-4o-2024-11-20,2023-10,0,0,0,0,0.0,0,0,exact
+Ollama,2023-07-01,openai,gpt-5.2,2025-06,3,3,3,3,0.0,3,3,exact
+OpenAI o1,2024-09-12,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+OpenAI o1,2024-09-12,openai,gpt-4.1-2025-04-14,2024-06,0,0,0,0,0.0,0,0,exact
+OpenAI o1,2024-09-12,openai,gpt-4o-2024-05-13,2023-10,0,0,0,0,0.0,0,0,exact
+OpenAI o1,2024-09-12,openai,gpt-4o-2024-11-20,2023-10,0,0,0,0,0.0,0,0,exact
+OpenAI o1,2024-09-12,openai,gpt-5.2,2025-06,0,0,0,0,0.0,0,0,exact
+OpenAI o3,2024-12-20,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+OpenAI o3,2024-12-20,openai,gpt-4.1-2025-04-14,2024-06,0,0,0,0,0.0,0,0,exact
+OpenAI o3,2024-12-20,openai,gpt-4o-2024-05-13,2023-10,0,0,0,0,0.0,0,0,exact
+OpenAI o3,2024-12-20,openai,gpt-4o-2024-11-20,2023-10,0,0,0,0,0.0,0,0,exact
+OpenAI o3,2024-12-20,openai,gpt-5.2,2025-06,0,0,0,0,0.0,0,0,exact
+Operator (the OpenAI agent),2025-01-23,openai,gpt-4-0613,2021-09,1,0,1,0.667,0.471,0,1,within_1
+Operator (the OpenAI agent),2025-01-23,openai,gpt-4.1-2025-04-14,2024-06,0,0,0,0,0.0,0,0,exact
+Operator (the OpenAI agent),2025-01-23,openai,gpt-4o-2024-05-13,2023-10,0,0,0,0,0.0,0,0,exact
+Operator (the OpenAI agent),2025-01-23,openai,gpt-4o-2024-11-20,2023-10,0,0,0,0,0.0,0,0,exact
+Operator (the OpenAI agent),2025-01-23,openai,gpt-5.2,2025-06,0,0,0,0,0.0,0,0,exact
+Phi-3,2024-04-23,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+Phi-3,2024-04-23,openai,gpt-4.1-2025-04-14,2024-06,3,3,3,3,0.0,3,3,exact
+Phi-3,2024-04-23,openai,gpt-4o-2024-05-13,2023-10,0,0,0,0,0.0,0,0,exact
+Phi-3,2024-04-23,openai,gpt-4o-2024-11-20,2023-10,0,0,0,0,0.0,0,0,exact
+Phi-3,2024-04-23,openai,gpt-5.2,2025-06,3,3,4,3.333,0.471,3,4,within_1
+Qwen,2023-08-03,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+Qwen,2023-08-03,openai,gpt-4.1-2025-04-14,2024-06,3,3,3,3,0.0,3,3,exact
+Qwen,2023-08-03,openai,gpt-4o-2024-05-13,2023-10,0,0,0,0,0.0,0,0,exact
+Qwen,2023-08-03,openai,gpt-4o-2024-11-20,2023-10,3,3,3,3,0.0,3,3,exact
+Qwen,2023-08-03,openai,gpt-5.2,2025-06,4,4,4,4,0.0,4,4,exact
+Rabbit R1,2024-01-09,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+Rabbit R1,2024-01-09,openai,gpt-4.1-2025-04-14,2024-06,4,4,4,4,0.0,4,4,exact
+Rabbit R1,2024-01-09,openai,gpt-4o-2024-05-13,2023-10,0,0,0,0,0.0,0,0,exact
+Rabbit R1,2024-01-09,openai,gpt-4o-2024-11-20,2023-10,0,0,0,0,0.0,0,0,exact
+Rabbit R1,2024-01-09,openai,gpt-5.2,2025-06,4,4,4,4,0.0,4,4,exact
+Safe Superintelligence,2024-06-19,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+Safe Superintelligence,2024-06-19,openai,gpt-4.1-2025-04-14,2024-06,4,4,4,4,0.0,4,4,exact
+Safe Superintelligence,2024-06-19,openai,gpt-4o-2024-05-13,2023-10,0,0,0,0,0.0,0,0,exact
+Safe Superintelligence,2024-06-19,openai,gpt-4o-2024-11-20,2023-10,0,0,0,0,0.0,0,0,exact
+Safe Superintelligence,2024-06-19,openai,gpt-5.2,2025-06,4,3,3,3.333,0.471,3,4,within_1
+Sakana AI,2023-08-01,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+Sakana AI,2023-08-01,openai,gpt-4.1-2025-04-14,2024-06,4,4,4,4,0.0,4,4,exact
+Sakana AI,2023-08-01,openai,gpt-4o-2024-05-13,2023-10,0,0,0,0,0.0,0,0,exact
+Sakana AI,2023-08-01,openai,gpt-4o-2024-11-20,2023-10,0,0,0,0,0.0,0,0,exact
+Sakana AI,2023-08-01,openai,gpt-5.2,2025-06,3,3,4,3.333,0.471,3,4,within_1
+Sora (the OpenAI model),2024-02-15,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+Sora (the OpenAI model),2024-02-15,openai,gpt-4.1-2025-04-14,2024-06,3,3,4,3.333,0.471,3,4,within_1
+Sora (the OpenAI model),2024-02-15,openai,gpt-4o-2024-05-13,2023-10,0,0,0,0,0.0,0,0,exact
+Sora (the OpenAI model),2024-02-15,openai,gpt-4o-2024-11-20,2023-10,0,0,0,0,0.0,0,0,exact
+Sora (the OpenAI model),2024-02-15,openai,gpt-5.2,2025-06,3,3,4,3.333,0.471,3,4,within_1
+Stable Diffusion 3,2024-02-22,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+Stable Diffusion 3,2024-02-22,openai,gpt-4.1-2025-04-14,2024-06,4,4,3,3.667,0.471,3,4,within_1
+Stable Diffusion 3,2024-02-22,openai,gpt-4o-2024-05-13,2023-10,2,0,0,0.667,0.943,0,2,diverge
+Stable Diffusion 3,2024-02-22,openai,gpt-4o-2024-11-20,2023-10,0,0,0,0,0.0,0,0,exact
+Stable Diffusion 3,2024-02-22,openai,gpt-5.2,2025-06,4,3,3,3.333,0.471,3,4,within_1
+Suno (the AI music service),2023-12-20,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+Suno (the AI music service),2023-12-20,openai,gpt-4.1-2025-04-14,2024-06,4,3,3,3.333,0.471,3,4,within_1
+Suno (the AI music service),2023-12-20,openai,gpt-4o-2024-05-13,2023-10,0,0,0,0,0.0,0,0,exact
+Suno (the AI music service),2023-12-20,openai,gpt-4o-2024-11-20,2023-10,0,0,0,0,0.0,0,0,exact
+Suno (the AI music service),2023-12-20,openai,gpt-5.2,2025-06,3,4,3,3.333,0.471,3,4,within_1
+Threads (the Meta app),2023-07-05,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+Threads (the Meta app),2023-07-05,openai,gpt-4.1-2025-04-14,2024-06,4,4,4,4,0.0,4,4,exact
+Threads (the Meta app),2023-07-05,openai,gpt-4o-2024-05-13,2023-10,4,4,4,4,0.0,4,4,exact
+Threads (the Meta app),2023-07-05,openai,gpt-4o-2024-11-20,2023-10,4,4,4,4,0.0,4,4,exact
+Threads (the Meta app),2023-07-05,openai,gpt-5.2,2025-06,4,3,4,3.667,0.471,3,4,within_1
+Udio (the AI music service),2024-04-10,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+Udio (the AI music service),2024-04-10,openai,gpt-4.1-2025-04-14,2024-06,3,3,3,3,0.0,3,3,exact
+Udio (the AI music service),2024-04-10,openai,gpt-4o-2024-05-13,2023-10,0,0,0,0,0.0,0,0,exact
+Udio (the AI music service),2024-04-10,openai,gpt-4o-2024-11-20,2023-10,0,0,0,0,0.0,0,0,exact
+Udio (the AI music service),2024-04-10,openai,gpt-5.2,2025-06,3,2,3,2.667,0.471,2,3,within_1
+Windsurf (the AI code editor),2024-11-13,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+Windsurf (the AI code editor),2024-11-13,openai,gpt-4.1-2025-04-14,2024-06,0,0,0,0,0.0,0,0,exact
+Windsurf (the AI code editor),2024-11-13,openai,gpt-4o-2024-05-13,2023-10,0,0,0,0,0.0,0,0,exact
+Windsurf (the AI code editor),2024-11-13,openai,gpt-4o-2024-11-20,2023-10,0,0,0,0,0.0,0,0,exact
+Windsurf (the AI code editor),2024-11-13,openai,gpt-5.2,2025-06,3,0,0,1,1.414,0,3,diverge
+World Labs,2024-09-13,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+World Labs,2024-09-13,openai,gpt-4.1-2025-04-14,2024-06,0,0,0,0,0.0,0,0,exact
+World Labs,2024-09-13,openai,gpt-4o-2024-05-13,2023-10,0,0,0,0,0.0,0,0,exact
+World Labs,2024-09-13,openai,gpt-4o-2024-11-20,2023-10,0,0,0,0,0.0,0,0,exact
+World Labs,2024-09-13,openai,gpt-5.2,2025-06,0,0,0,0,0.0,0,0,exact
+vLLM,2023-06-20,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+vLLM,2023-06-20,openai,gpt-4.1-2025-04-14,2024-06,3,2,2,2.333,0.471,2,3,within_1
+vLLM,2023-06-20,openai,gpt-4o-2024-05-13,2023-10,0,0,0,0,0.0,0,0,exact
+vLLM,2023-06-20,openai,gpt-4o-2024-11-20,2023-10,3,0,0,1,1.414,0,3,diverge
+vLLM,2023-06-20,openai,gpt-5.2,2025-06,4,4,4,4,0.0,4,4,exact
+xAI,2023-07-12,openai,gpt-4-0613,2021-09,0,0,0,0,0.0,0,0,exact
+xAI,2023-07-12,openai,gpt-4.1-2025-04-14,2024-06,4,3,4,3.667,0.471,3,4,within_1
+xAI,2023-07-12,openai,gpt-4o-2024-05-13,2023-10,3,0,0,1,1.414,0,3,diverge
+xAI,2023-07-12,openai,gpt-4o-2024-11-20,2023-10,0,0,3,1,1.414,0,3,diverge
+xAI,2023-07-12,openai,gpt-5.2,2025-06,3,3,3,3,0.0,3,3,exact
