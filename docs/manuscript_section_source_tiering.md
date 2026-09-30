@@ -97,13 +97,10 @@ Restricting analysis exclusively to top-tier institutional sources (Tier 1 only)
 To verify that attenuation is not an artifact of specific threshold choices or weight vector selections, we conducted a systematic three-dimensional sensitivity analysis:
 
 ### 4.1 Weight Ratio Sweep
-We evaluated precedence stability across a grid of alternative weighting vectors $\mathbf{W} = (w_1, w_2, w_3)$:
-
-$$\mathbf{W} \in \{ (1.0, 0.25, 0.0), (1.0, 0.5, 0.1), (1.0, 0.5, 0.25), (1.0, 0.75, 0.5), (1.0, 1.0, 0.0) \}$$
-
-Across all 16 tested parameter combinations:
-* Concordance remained strictly invariant at $27.3\%$ ($3/11$ positive signs, median lead $-100$ days, $p = 0.227$).
-* The result remained robust regardless of whether Tier 3 was completely zeroed out ($w_3 = 0.0$) or moderately down-weighted ($w_3 = 0.25$).
+We evaluated precedence stability across a $4 \times 4$ grid of 16 alternative weighting vectors $\mathbf{W} = (w_1, w_2, w_3)$ with $w_1 = 1.0$ (fixed), $w_2 \in \{0.25, 0.50, 0.75, 1.00\}$, and $w_3 \in \{0.0, 0.10, 0.25, 0.50\}$:
+* Across 15 of the 16 tested parameter combinations ($w_2 \ge 0.50$ or $w_3 \ge 0.10$), concordance remained strictly invariant at **$27.3\%$ ($3/11$ positive signs, median lead $-100$ days, $p = 0.227$)**.
+* At the extreme lower-bound corner $(1.0, 0.25, 0.0)$—where Tier 3 is completely zeroed out and Tier 2 is heavily suppressed—concordance reaches **$20.0\%$ ($2/10$, $p = 0.109$)**, directly matching the Tier 1 binary exclusion regime.
+* The precedence attenuation finding is thus highly robust across the entire viable weight parameter space.
 
 ### 4.2 Boundary Perturbation Audit
 To test sensitivity to cluster cutoffs, tier partition boundaries were shifted by $\pm 10\%$ in metric value:

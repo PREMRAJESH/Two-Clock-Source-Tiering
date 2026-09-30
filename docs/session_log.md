@@ -1347,3 +1347,49 @@ Output: `data_derived/location_distortion_check.csv`
   - **`data_derived/README.md`**: Standardized dataset inventory table, primary evidence vs. derived output comparison matrix, milestone commit policy, and step-by-step reproduction commands. Corrected typographical inconsistencies.
   - **`reference/README.md` & `reference/contrast_verification_2026-08-25/README.md`**: Standardized inventory tables, verified raw response integrity protocols, and documented the two-tier verification methodology (title-based primary pass vs. full-text deep audit) along with key empirical findings (Operator precision degradation, Mamba/vLLM resolutions).
 
+## 2026-09-24 -- Governance Hardening, Declarations & SSRN Licensing Policy
+
+### 1. Contributor Tracking Clarification (`contrib/viveka/TASKS.md`)
+- Clarified framing to explicitly indicate that `contrib/viveka/TASKS.md` is Prem Sargara's internal tracking of her stream and dependencies, pending direct confirmation, rather than an authorial push from Viveka. Added explicit evidence trails for Tasks 12–18 (`39d9594`).
+
+### 2. Task 20 Verification & Declarations Drafting (Tasks 22 & 23)
+- Formally verified Task 20 completion (`data_derived/location_distortion_check.csv` showing 0-day shift across high-concentration entities).
+- Drafted formal CRediT contributor taxonomy and Generative AI disclosures in `docs/declarations_and_credit.md` (`91c0945`).
+
+### 3. Task 19 Resolution: SSRN Pre-print & Licensing Policy
+- Formally investigated SSRN publisher agreements, copyright retention, and Ingelfinger rule compliance in `docs/ssrn_publishing_and_licensing_policy.md` (`3fcd7d8`, `6fca880`).
+- Designated CC-BY-NC-ND 4.0 for the working paper text, CC-BY 4.0 for the Zenodo dataset, and MIT for the pipeline software.
+
+### 4. Git Privacy Safeguards
+- Hardened `.gitignore` to permanently exclude private guides (`docs/RESEARCH_PRIMER.md`) and local chat archives (`docs/CHAT_SESSION_*.md`).
+
+## 2026-09-26 -- Perception Dataset Ingestion, Precedence Cross-Validation & Manuscript Authorship
+
+### 1. Ingestion of Multi-Run Consensus Perception Data (`inputs_frozen/pt_pilot_results_merged.csv`)
+- Received and ingested Viveka's 3-run consensus mean perception dataset across the 50 target entities ($N=250$ cell evaluations, Krippendorff's $\alpha = 0.95$; Zenodo Record 22970684). Resolves Tasks 16, 17, and 18 (`431950a`).
+
+### 2. Analytical Precedence Cross-Validation (`scripts/precedence_test_weighted.py`)
+- Upgraded precedence test script with `--merged` flag to evaluate weighted precedence against multi-run consensus scores.
+- Concordance remained strictly invariant at **84.4% (27 of 32)**, confirming measurement stability across independent LLM evaluation ladders (`b65bf66`).
+
+### 3. Publication-Ready Manuscript Section Authored (`TASK-21`)
+- Authored complete academic section in `docs/manuscript_section_source_tiering.md` detailing the Source-Authority Hypothesis, Jenks natural breaks clustering ($\text{GVF} = 0.9260$), empirical precedence attenuation (raw 84.8% $\to$ weighted 27.3%), 3D sensitivity sweeps, and information diffusion mechanics (`213a017`).
+- Updated Table §4 in `docs/tier_methodology.md` with Lane A empirical benchmarks (`70e7713`).
+
+### 4. GitHub Remote Push
+- Pushed commits `70e7713..b65bf66` to GitHub `origin/main`.
+
+## 2026-09-30 -- Comprehensive Pipeline QA, Sensitivity Refinement & Stress-Test Audit
+
+### 1. GDELT API Connectivity Probe (Task 9 Status)
+- Executed direct HTTP probe against `api.gdeltproject.org/api/v2/doc/doc`. Confirmed persistent SSL/ReadTimeout (10s+); GDELT host remains unreachable from this network environment. Harvester script (`scripts/ct_source_harvester.py`) remains staged with frozen 22-entity `ALREADY_COVERED` skip-list.
+
+### 2. End-to-End Pipeline & Sensitivity Verification
+- Re-executed complete pipeline smoke test (`scripts/test_pipeline_smoketest.py`): all 5 stages passed cleanly in sandboxed environment.
+- Re-executed weighted precedence tests in both single-run baseline mode and multi-run consensus mode (`scripts/precedence_test_weighted.py --merged`).
+- Executed full sensitivity analysis (`scripts/sensitivity_analysis.py`): 90 test cells verified.
+
+### 3. Manuscript Stress-Test Audit (Tasks 24 & 26)
+- Audited `docs/manuscript_section_source_tiering.md` against live sensitivity output. Refined Section 4.1 to precisely distinguish the 15 invariant cells (27.3%, $p = 0.227$) from the single extreme corner $(1.0, 0.25, 0.0)$ (20.0%, $p = 0.109$).
+- Verified LaTeX syntax, cross-document figure/table linkages, and reproducibility protocols.
+
