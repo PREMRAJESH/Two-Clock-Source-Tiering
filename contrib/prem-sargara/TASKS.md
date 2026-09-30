@@ -80,12 +80,12 @@ Prem Sargara leads the quantitative and computational track for citation source-
 
 | Task ID | Task Description & Deliverable | Status | Target / Dependency |
 | :---: | :--- | :---: | :--- |
-| **TASK-21** | Integrate weighted-vs-raw analytical findings, tier methodology, and syndication caveats into paper draft | `[x] Section Authored` | Authored publication-ready draft in `docs/manuscript_section_source_tiering.md` |
-| **TASK-22** | Update manuscript Declarations and CRediT authorship taxonomy matrix | `[x] Draft Complete` | Drafted in `docs/declarations_and_credit.md` |
-| **TASK-23** | Compose Generative AI and AI-Agent usage disclosure section for manuscript | `[x] Draft Complete` | Drafted in `docs/declarations_and_credit.md` |
-| **TASK-24** | Conduct full multi-pass stress-test read-through of complete paper manuscript | `[x] Draft Audit Complete` | Stress-test audit executed across all drafted manuscript and methodology sections (2026-09-30) |
-| **TASK-25** | Finalize target submission venue and update Zenodo DOI repository deposit versioning | `[x] Strategy Confirmed` | Ratified: Zenodo (data+code DOI) -> SSRN submission |
-| **TASK-26** | Perform final proofreading, style compliance, and typographic formatting pass | `[x] Draft Audit Complete` | LaTeX, table notation, and cross-reference formatting verified (2026-09-30) |
+| **TASK-21** | Integrate weighted-vs-raw analytical findings, tier methodology, and syndication caveats into paper draft | `[x] Complete` | Authored and finalized with full production results in `docs/manuscript_section_source_tiering.md` |
+| **TASK-22** | Update manuscript Declarations and CRediT authorship taxonomy matrix | `[x] Complete` | Drafted in `docs/declarations_and_credit.md` |
+| **TASK-23** | Compose Generative AI and AI-Agent usage disclosure section for manuscript | `[x] Complete` | Drafted in `docs/declarations_and_credit.md` |
+| **TASK-24** | Conduct full multi-pass stress-test read-through of complete paper manuscript | `[x] Complete` | Full stress-test audit executed across all manuscript sections and complete 32-entity production dataset (2026-09-30) |
+| **TASK-25** | Finalize target submission venue and update Zenodo DOI repository deposit versioning | `[x] Complete` | Ratified: Zenodo (data+code DOI) -> SSRN submission |
+| **TASK-26** | Perform final proofreading, style compliance, and typographic formatting pass | `[x] Complete` | LaTeX, table notation, and cross-reference formatting verified and locked (2026-09-30) |
 
 ---
 
