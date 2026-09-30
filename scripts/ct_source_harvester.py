@@ -50,6 +50,7 @@ written). Test on 1-2 entities before the full remaining-entity run.
 """
 
 import csv
+import os
 import time
 from datetime import datetime, timedelta
 
@@ -59,7 +60,8 @@ import requests
 # CONFIG
 # ---------------------------------------------------------------------------
 
-FROZEN_CSV = "../inputs_frozen/ct_results_v1_frozen.csv"   # relative to scripts/
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+FROZEN_CSV = os.path.join(BASE_DIR, "..", "inputs_frozen", "ct_results_v1_frozen.csv")
 MAXRECORDS = 250
 REQUEST_TIMEOUT = 30
 SLEEP_BETWEEN_CALLS = 6.0
@@ -68,7 +70,7 @@ RATE_LIMIT_BASE_WAIT = 30
 USER_AGENT = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
               "(KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36")
 GDELT_DOC_API = "https://api.gdeltproject.org/api/v2/doc/doc"
-OUT_RESULTS = "../data_derived/ct_source_results.csv"
+OUT_RESULTS = os.path.join(BASE_DIR, "..", "data_derived", "ct_source_results.csv")
 
 # Populated from the unique `entity` column values in
 # inputs_frozen/ct_artlist_LABELING.xlsx (Label sheet).
