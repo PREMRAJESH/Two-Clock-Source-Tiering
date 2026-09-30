@@ -265,13 +265,21 @@ CSV_FIELDS = ["entity", "birth_date", "window", "peak_week_start",
 def run():
     peak_weeks = load_peak_weeks()
     rows = []
+    already_in_file = set()
+    if os.path.isfile(OUT_RESULTS):
+        with open(OUT_RESULTS, newline="", encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            for r in reader:
+                rows.append(r)
+                already_in_file.add(r["entity"])
 
-    targets = [(n, b) for n, b in ENTITIES if n not in ALREADY_COVERED]
-    print("Running peak-week harvest for %d entities (%d already covered by Viveka's file, skipped)"
+    skip_set = set(ALREADY_COVERED) | already_in_file
+    targets = [(n, b) for n, b in ENTITIES if n not in skip_set]
+    print("Running peak-week harvest for %d remaining entities (%d already covered/harvested, skipped)"
           % (len(targets), len(ENTITIES) - len(targets)))
-    if not ALREADY_COVERED:
-        print("WARNING: ALREADY_COVERED is empty -- this will run ALL 50 entities. "
-              "Fill in the list from ct artlist LABELING.xlsx before running for real.")
+    if not targets:
+        print("All entities are already covered or harvested! Nothing to do.")
+        return
 
     for name, birth_str in targets:
         if name not in peak_weeks:
