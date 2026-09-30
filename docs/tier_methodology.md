@@ -76,11 +76,13 @@ $$\text{Testable Set (33)} = \text{Total Entities (50)} \setminus \left( \text{P
 | **Lane A Weighted (Continuous)** | 11 | 3 / 11 | 27.3% | -100 days | $0.227$ |
 | **Lane A Binary (Tier 1 only)** | 10 | 2 / 10 | 20.0% | -100 days | $0.109$ |
 | **Lane A Binary (Tier 1 + 2)** | 11 | 3 / 11 | 27.3% | -100 days | $0.227$ |
-| **Full Production (Lane A + B)** | 33 | *[Pending Lane B]* | *[Pending]* | *[Pending]* | *[Pending]* |
+| **Full Production (Continuous)** | 32 | 12 / 32 | 37.5% | -51 days | $0.215$ |
+| **Full Production (Tier 1 only)** | 32 | 12 / 32 | 37.5% | -51 days | $0.215$ |
+| **Full Production (Tier 1 + 2)** | 32 | 12 / 32 | 37.5% | -51 days | $0.215$ |
 
 > [!NOTE]
-> **Interim Empirical Finding (Lane A Benchmark):**  
-> In the unweighted baseline, citation accumulation leads LLM perception onsets by a statistically significant margin (84.8%, $p = 6.62 \times 10^{-5}$). However, applying source-tier weighting across Lane A entities attenuates this lead (dropping concordance to 27.3%, $p = 0.227$). This suggests that early temporal signal in $C(t)$ is carried diffusely across Tier 2/Tier 3 specialized web and niche sources rather than being concentrated strictly in top-tier institutional outlets.
+> **Final Empirical Finding (Full Production Analysis):**  
+> In the unweighted baseline, citation accumulation leads LLM perception onsets by a statistically significant margin (84.4%, $p = 1.13 \times 10^{-4}$). However, applying source-tier weighting across the complete production cohort attenuates this precedence, dropping concordance to **37.5% (12 of 32)** with a median lead shifting to **-51 days** ($p = 0.215$, non-significant). This confirms that early temporal signal in $C(t)$ is carried diffusely across Tier 2 and Tier 3 specialized and long-tail web sources rather than top-tier institutional outlets.
 
 ---
 

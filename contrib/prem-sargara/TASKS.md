@@ -62,9 +62,9 @@ Prem Sargara leads the quantitative and computational track for citation source-
 | **TASK-06** | Execute `test_pipeline_smoketest.py` suite to ensure total pipeline green state | `[x] Complete` | QA Validation |
 | **TASK-07** | Self-generate `viveka_labeled_export.csv` from live Label master sheet (notify Viveka) | `[x] Complete` | Pipeline Ingestion |
 | **TASK-08** | Perform dry-run of complete analytical pipeline on Lane A dataset alone | `[x] Complete` | Validation Run |
-| **TASK-09** | Execute Lane B harvest (~28–30 remaining entities) upon GDELT API rate limit reset | `[ ] Pending` | GDELT Availability |
-| **TASK-10** | Run full production analytical pipeline (Merge → Tier Map → Weights → Precedence Test → Sensitivity Analysis) | `[ ] Pending` | Post-Lane B Harvest |
-| **TASK-11** | Authorship of `tier_methodology.md` (Tier definitions, empirical evidence, weight rationale, raw vs. weighted delta) | `[x] Draft Benchmarked` | Empirical benchmarks documented in `docs/tier_methodology.md` |
+| **TASK-09** | Execute Lane B harvest (~28–30 remaining entities) upon GDELT API rate limit reset | `[x] Complete` | 23 Lane B entities harvested (2,896 rows in `data_derived/ct_source_results.csv`); all 32 testable entities covered |
+| **TASK-10** | Run full production analytical pipeline (Merge → Tier Map → Weights → Precedence Test → Sensitivity Analysis) | `[x] Complete` | Automated via `scripts/run_production_pipeline.py`; 32 testable entities evaluated under continuous & binary regimes |
+| **TASK-11** | Authorship of `tier_methodology.md` (Tier definitions, empirical evidence, weight rationale, raw vs. weighted delta) | `[x] Complete` | Final production numbers (12/32, 37.5%, -51d, p=0.215) documented in Table §4 of `docs/tier_methodology.md` |
 
 ---
 

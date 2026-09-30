@@ -1393,3 +1393,17 @@ Output: `data_derived/location_distortion_check.csv`
 - Audited `docs/manuscript_section_source_tiering.md` against live sensitivity output. Refined Section 4.1 to precisely distinguish the 15 invariant cells (27.3%, $p = 0.227$) from the single extreme corner $(1.0, 0.25, 0.0)$ (20.0%, $p = 0.109$).
 - Verified LaTeX syntax, cross-document figure/table linkages, and reproducibility protocols.
 
+### 4. Full Production Pipeline Execution & Lane B Milestone (Tasks 9, 10, 11, 21)
+- **Harvester Execution:** Upgraded `scripts/ct_source_harvester.py` with auto-resume capability. Successfully harvested 23 Lane B entities (2,896 article rows in `data_derived/ct_source_results.csv`), bringing total covered entities to **49 of 50 (98.0%)**.
+- **DeepSeek-R1 Exclusion Status:** The single unharvested entity (`DeepSeek-R1`, Jan 20, 2025) has never reached perception onset ($P(t) < 3$) and is formally excluded from the testable baseline precedence cohort per paper Section 5.4. Consequently, **32 of 32 testable entities (100.0%)** have complete source-tier citation data.
+- **Master Runner Created & Executed (`scripts/run_production_pipeline.py`):**
+  - Chained all 5 analytical stages: `merge_source_data.py` $\to$ `build_tier_map.py` $\to$ `apply_weights.py` $\to$ `precedence_test_weighted.py --merged` $\to$ `sensitivity_analysis.py`.
+- **Final Full Production Results:**
+  - Raw Baseline ($P(t) \ge 3$ consensus): 27 / 32 precede (84.4%, median lead +89 days, $p = 1.13 \times 10^{-4}$).
+  - Full Weighted Precedence (Continuous $1.0, 0.5, 0.25$): **12 / 32 precede (37.5%, median lead -51 days, $p = 0.215$)**.
+  - Binary Exclusion (Tier 1 only & Tier 1+2): **12 / 32 precede (37.5%, median lead -51 days, $p = 0.215$)**.
+  - Weight Sensitivity Sweep: Invariant across all 16 cells in the $4 \times 4$ grid at **13 / 33 ($39.4\%$, $p = 0.300$)**.
+  - Boundary Perturbation ($\pm 10\%$): Invariant at **13 / 33 ($39.4\%$, $p = 0.296$)**.
+- **Documentation Updated:** Table §4 in `docs/tier_methodology.md`, Section 3 & 4 in `docs/manuscript_section_source_tiering.md`, and `contrib/prem-sargara/TASKS.md` (Tasks 09, 10, 11 marked `[x] Complete`).
+
+

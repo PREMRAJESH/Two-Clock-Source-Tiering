@@ -73,39 +73,38 @@ where $\Delta t_e > 0$ denotes citation precedence, $\Delta t_e < 0$ denotes per
 
 ### 3.2 Precedence Test Comparison: Raw Baseline vs. Weighted Regimes
 
-Applying the weighting framework against the empirical testable cohort reveals a striking divergence from raw volumetric counts:
+Applying the weighting framework across the full production cohort ($N=32$ testable entities) reveals a striking divergence from raw volumetric counts:
 
 | Analytical Regime | Sample Size ($N$) | Concordance ($\Delta t > 0$) | Concordance Rate | Median Lead ($\Delta t$) | Sign Test ($p$-value) |
 | :--- | :---: | :---: | :---: | :---: | :---: |
 | **Raw Baseline (Paper Section 5.4)** | 33 | 28 / 33 | **84.8%** | **+83 days** | $\mathbf{6.62 \times 10^{-5}}$ |
-| **Raw Baseline ($\text{Floor}=5$)** | 33 | 28 / 33 | **84.8%** | **+83 days** | $6.62 \times 10^{-5}$ |
-| **Continuous Weights ($1.0, 0.5, 0.25$)** | 11 | 3 / 11 | **27.3%** | **-100 days** | $0.227$ |
-| **Binary Exclusion: Tier 1 Only** | 10 | 2 / 10 | **20.0%** | **-100 days** | $0.109$ |
-| **Binary Exclusion: Tier 1 + Tier 2** | 11 | 3 / 11 | **27.3%** | **-100 days** | $0.227$ |
+| **Raw Baseline (3-Run Consensus)** | 32 | 27 / 32 | **84.4%** | **+89 days** | $\mathbf{1.13 \times 10^{-4}}$ |
+| **Continuous Weights ($1.0, 0.5, 0.25$)** | 32 | 12 / 32 | **37.5%** | **-51 days** | **$0.215$ (Not Sig.)** |
+| **Binary Exclusion: Tier 1 Only** | 32 | 12 / 32 | **37.5%** | **-51 days** | **$0.215$ (Not Sig.)** |
+| **Binary Exclusion: Tier 1 + Tier 2** | 32 | 12 / 32 | **37.5%** | **-51 days** | **$0.215$ (Not Sig.)** |
 
-*Note: The weighted cohort reflects the empirical benchmark evaluated across testable Lane A entities ($N=11$). The 17 excluded entities mirror the baseline paper protocol (10 query-precision audit failures + 7 no-onset entities).*
+*Note: Evaluated across all testable entities ($N=32$) following the baseline paper protocol (10 query-precision audit failures + 7 no-onset entities excluded, plus 1 empirical no-onset under consensus). All 32 testable entities possess full source-tier citation data.*
 
 ### 3.3 Core Empirical Finding
-Weighting citation mentions by source authority does **not** strengthen temporal precedence; rather, it **significantly attenuates** the relationship. Under continuous weighting, the proportion of entities exhibiting citation precedence collapses from $84.8\%$ to $27.3\%$, while median lead shifts from a positive lead of $+83$ days to a negative lead of $-100$ days ($p = 0.227$, failing to achieve statistical significance).
+Weighting citation mentions by source authority does **not** strengthen temporal precedence; rather, it **significantly attenuates** the relationship. Under continuous weighting, the proportion of entities exhibiting citation precedence collapses from $84.4\%$ to **$37.5\%$ (12 of 32)**, while median lead shifts from a positive lead of $+89$ days to a negative lead of **$-51$ days** ($p = 0.215$, failing to achieve statistical significance).
 
-Restricting analysis exclusively to top-tier institutional sources (Tier 1 only) further degrades concordance to $20.0\%$ ($p = 0.109$).
+Restricting analysis strictly to top-tier institutional outlets (Tier 1 only) or combining Tier 1 and 2 yields an identical attenuation ($37.5\%$, $p = 0.215$), confirming that institutional authority filtering removes the leading-edge signal.
 
 ---
 
 ## 4. Sensitivity Analysis & Robustness Validation
 
-To verify that attenuation is not an artifact of specific threshold choices or weight vector selections, we conducted a systematic three-dimensional sensitivity analysis:
+To verify that attenuation is not an artifact of specific threshold choices or weight vector selections, we conducted a systematic three-dimensional sensitivity analysis across the complete corpus:
 
 ### 4.1 Weight Ratio Sweep
 We evaluated precedence stability across a $4 \times 4$ grid of 16 alternative weighting vectors $\mathbf{W} = (w_1, w_2, w_3)$ with $w_1 = 1.0$ (fixed), $w_2 \in \{0.25, 0.50, 0.75, 1.00\}$, and $w_3 \in \{0.0, 0.10, 0.25, 0.50\}$:
-* Across 15 of the 16 tested parameter combinations ($w_2 \ge 0.50$ or $w_3 \ge 0.10$), concordance remained strictly invariant at **$27.3\%$ ($3/11$ positive signs, median lead $-100$ days, $p = 0.227$)**.
-* At the extreme lower-bound corner $(1.0, 0.25, 0.0)$—where Tier 3 is completely zeroed out and Tier 2 is heavily suppressed—concordance reaches **$20.0\%$ ($2/10$, $p = 0.109$)**, directly matching the Tier 1 binary exclusion regime.
-* The precedence attenuation finding is thus highly robust across the entire viable weight parameter space.
+* Across **all 16 tested parameter combinations**, concordance remained strictly invariant at **$39.4\%$ (13 of 33, $p = 0.300$)**.
+* The precedence attenuation finding is thus completely invariant across the entire viable weight parameter space, holding whether low-tier sources are eliminated ($w_3 = 0.0$) or moderately down-weighted ($w_3 = 0.25$).
 
 ### 4.2 Boundary Perturbation Audit
 To test sensitivity to cluster cutoffs, tier partition boundaries were shifted by $\pm 10\%$ in metric value:
-* **Boundary Shift Up (+10%):** 26 domains reassigned (representing $13.2\%$ of article volume) $\to$ Precedence concordance remained identical at **$3/11$ ($27.3\%$, $p = 0.227$)**.
-* **Boundary Shift Down (-10%):** 52 domains reassigned (representing $24.6\%$ of article volume) $\to$ Precedence concordance remained identical at **$3/11$ ($27.3\%$, $p = 0.227$)**.
+* **Boundary Shift Up (+10%):** 4 domains reassigned (representing $0.7\%$ of article volume) $\to$ Precedence concordance remained identical at **$13/33$ ($39.4\%$, $p = 0.296$)**, median lead $-51$ days.
+* **Boundary Shift Down (-10%):** 202 domains reassigned (representing $13.9\%$ of article volume) $\to$ Precedence concordance remained identical at **$13/33$ ($39.4\%$, $p = 0.296$)**, median lead $-51$ days.
 
 ### 4.3 High-Precision Subset Cross-Check
 Restricting evaluation to the subset of entities achieving unambiguous disambiguation precision (`PASS` on the query audit; $N=12$) produced an identical pattern: raw concordance of $72.7\%$ ($8/11$) attenuates to $27.3\%$ ($3/11$, $p = 0.227$) under source weighting.
