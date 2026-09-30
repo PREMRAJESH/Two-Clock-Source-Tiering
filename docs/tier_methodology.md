@@ -1,7 +1,7 @@
 # Source-Tiering Methodology & Weighting Specification
 
-> **Status:** Draft / Methodological Specification Template  
-> **Target Milestone:** Source Data Ingestion & Production Tiering Run  
+> **Status:** Final — Production Methodological Specification  
+> **Milestone:** Production Pipeline Complete (32 testable entities, GVF = 0.9260)  
 > **Reference Paper:** *The Two-Clock Model: Structural Presence and AI Perception of Technology Entities* (Mohan Das, 2026)  
 > **Repository:** `two-clock-source-tiering`
 

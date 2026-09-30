@@ -1394,8 +1394,8 @@ Output: `data_derived/location_distortion_check.csv`
 - Verified LaTeX syntax, cross-document figure/table linkages, and reproducibility protocols.
 
 ### 4. Full Production Pipeline Execution & Lane B Milestone (Tasks 9, 10, 11, 21)
-- **Harvester Execution:** Upgraded `scripts/ct_source_harvester.py` with auto-resume capability. Successfully harvested 23 Lane B entities (2,896 article rows in `data_derived/ct_source_results.csv`), bringing total covered entities to **49 of 50 (98.0%)**.
-- **DeepSeek-R1 Exclusion Status:** The single unharvested entity (`DeepSeek-R1`, Jan 20, 2025) has never reached perception onset ($P(t) < 3$) and is formally excluded from the testable baseline precedence cohort per paper Section 5.4. Consequently, **32 of 32 testable entities (100.0%)** have complete source-tier citation data.
+- **Harvester Execution:** Upgraded `scripts/ct_source_harvester.py` with auto-resume capability. Successfully harvested all 28 Lane B entities (3,146 article rows in `data_derived/ct_source_results.csv`), bringing total covered entities to **50 of 50 (100.0%)**.
+- **DeepSeek-R1 Harvest Status:** `DeepSeek-R1` was successfully harvested (250 article rows). Although it has source-tier citation data, it has never reached perception onset ($P(t) < 3$) and remains formally excluded from the testable baseline precedence cohort per paper Section 5.4. Consequently, **32 of 32 testable entities (100.0%)** have complete source-tier citation data.
 - **Master Runner Created & Executed (`scripts/run_production_pipeline.py`):**
   - Chained all 5 analytical stages: `merge_source_data.py` $\to$ `build_tier_map.py` $\to$ `apply_weights.py` $\to$ `precedence_test_weighted.py --merged` $\to$ `sensitivity_analysis.py`.
 - **Final Full Production Results:**
@@ -1406,4 +1406,22 @@ Output: `data_derived/location_distortion_check.csv`
   - Boundary Perturbation ($\pm 10\%$): Invariant at **13 / 33 ($39.4\%$, $p = 0.296$)**.
 - **Documentation Updated:** Table §4 in `docs/tier_methodology.md`, Section 3 & 4 in `docs/manuscript_section_source_tiering.md`, and `contrib/prem-sargara/TASKS.md` (Tasks 09, 10, 11 marked `[x] Complete`).
 
+## 2026-10-01
 
+### Corrective Note: DeepSeek-R1 Harvest Confirmation & Entity Count Fix
+
+- **Prior session log entry (2026-09-30 §4) corrected:** The earlier entry
+  recorded 23 Lane B entities / 2,896 rows / 49 of 50 coverage. Verified
+  against the live `data_derived/ct_source_results.csv`: the file contains
+  **28 unique entities and 3,146 total rows**, including **250 rows for
+  DeepSeek-R1**. All 50 entities in the roster now have GDELT ArtList
+  source-tier evidence.
+- **Analytical impact: none.** `DeepSeek-R1` remains in the paper's
+  7-entity no-onset exclusion set (Section 5.4, $P(t) < 3$) and does not
+  enter the testable 32. The production pipeline results (12/32, 37.5%,
+  $p = 0.215$) are unchanged.
+- **Documentation audit completed.** All 21 repository markdown files
+  reviewed for professional quality and staleness. 12 issues identified
+  and corrected (3 critical stale-status references in root `README.md`,
+  3 placeholder DOIs, 6 minor metadata/label updates). Entity count
+  references updated across all files to reflect 50/50 full coverage.

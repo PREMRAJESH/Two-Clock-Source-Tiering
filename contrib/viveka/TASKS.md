@@ -25,8 +25,7 @@ This document tracks the operational workstream and deliverables attributed to V
 
 ## 2. Workspace Architecture & Subfolders
 
-- **Subfolder**: `[UNSET]`
-  <!-- TODO: Add subfolder location here once Viveka confirms her preferred folder name. Do not guess or auto-assign a folder name. -->
+- **Subfolder**: N/A — tracked deliverables reside in `inputs_frozen/` (labeled data) and `reference/` (verification packages) at the repository root level.
 
 ---
 

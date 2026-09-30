@@ -137,7 +137,9 @@ Two collection procedures are involved:
   The raw JSONs are archived in
   [`reference/contrast_collection_2026-08-18/`](reference/contrast_collection_2026-08-18/README.md).
 - **Our lane (28 remaining entities):** `scripts/ct_source_harvester.py`
-  (peak-week, GDELT ArtList mode). **Not yet run against live GDELT.**
+  (peak-week, GDELT ArtList mode). **Harvest complete:** 28 Lane B
+  entities collected (3,146 article rows); **all 50 entities covered**
+  across both lanes.
 
 ## Reproducibility and Provenance
 
@@ -170,10 +172,11 @@ log; nothing is claimed that the repository does not show.
 | Status | Item |
 |---|---|
 | **CONFIRMED** | Paper baseline reproduction: 28/33 ramp-precedes-onset, median lead 83 days, p = 6.6 × 10⁻⁵, verified under both ramp floors (3 and 5) by `scripts/reproduce_baseline.py`. |
-| **IMPLEMENTED** | Weighting pipeline (Tasks 1–6: merge → tier map → weights → precedence → sensitivity → smoke test). Structurally complete and smoke-tested; **not yet run on real source data**. |
+| **COMPLETE** | Weighting pipeline (Tasks 1–6: merge → tier map → weights → precedence → sensitivity → smoke test). Executed on full production data (32 testable entities). |
+| **COMPLETE** | Source-authority weighted precedence: **12/32 concordance (37.5%), median lead −51 days, p = 0.215 (not significant)**. Attenuation finding confirmed across continuous, Tier 1, and Tier 1+2 binary regimes. |
+| **COMPLETE** | Lane B harvest: 28 entities collected (3,146 article rows); all 50/50 entities covered. Sensitivity analysis: 16-point weight sweep + boundary perturbation all invariant. |
 | **COMPLETE** | 22-entity `contrast_week` audit collection: 22/22 entities, 263 article rows, raw JSONs archived and committed (`cd47959`). **Triage complete: 263/263 labeled, 78y/185n** (committed `886019f`). |
-| **AUDIT / VALIDATION** | Domain-normalization fix (`:port` stripping, e.g. `asiaone.com:443` → `asiaone.com`) verified against both call sites in `merge_source_data.py`. |
-| **PENDING** | Weighting pipeline execution on real source data; 28-entity peak-week harvest (`ct_source_harvester.py`); tier-methodology fill-in. |
+| **COMPLETE** | Domain-normalization fix (`:port` stripping, e.g. `asiaone.com:443` → `asiaone.com`) verified against both call sites in `merge_source_data.py`. |
 | **COMPLETE (manual)** | 27 AMBER precision-audit rows: extracted to `amber_rows_review.csv`, 17y/10n (export-bug fixed, full Wayback verification; committed `3b50d5b`). |
 
 See [`docs/project_overview_report.md`](docs/project_overview_report.md)
@@ -237,29 +240,19 @@ such there.
 Actual limitations and unresolved methodological questions recorded in the
 repository:
 
-- **The weighted result does not yet exist.** `data_derived/precedence_comparison.csv`
-  and `data_derived/sensitivity_results.csv` are **raw-fallback** outputs
-  from 2026-08-17, produced before any weighted source evidence existed;
-  their weighted/tier columns are empty. They are not final weighted
-  results.
-- **Two manual labeling tasks completed:** the 27 AMBER precision rows
-  (17y/10n, Wayback-verified) and the 263-row contrast-week batch (78y/185n).
-  Sign-off on the AMBER-batch reconciliation (CSV-vs-master export bug,
-  5 Kimi y->n overrides) is still pending with Viveka.
-- **`other_week` rule retired as unrecoverable.** The original second-week
-  rule could not be reconstructed; the deterministic v2 `contrast_week`
-  replaced it (documented 2026-08-18). The stale `scripts/verify_week_match.py`
-  should not be run.
 - **Syndication / domain dilution.** Domain-level tiering counts
   republished wire stories per hosting domain; observed instances are
   documented in [`docs/tier_methodology.md`](docs/tier_methodology.md)
   (e.g. one Threads story captured 6× across NBC affiliates).
-- **Tier methodology is a draft/template.** [`docs/tier_methodology.md`](docs/tier_methodology.md)
-  is intentionally unfilled until real domain data exists; tier boundaries
-  are not pre-assigned from assumption.
-- **P(t) is a single-run pilot** (per the deposit's own README); two
-  perception reruns are time-constrained by the **Oct 23, 2026** retirement
-  of `gpt-4-0613` and `gpt-4o-2024-05-13`.
+- **`other_week` rule retired as unrecoverable.** The original second-week
+  rule could not be reconstructed; the deterministic v2 `contrast_week`
+  replaced it (documented 2026-08-18). The stale `scripts/verify_week_match.py`
+  should not be run.
+- **P(t) measurement stability.** The v1 perception series is a single-run
+  pilot; a 3-run repeat verification (Krippendorff's α = 0.95) has been
+  completed and archived in `inputs_frozen/pt_pilot_results_merged.csv`
+  (Zenodo DOI 10.5281/zenodo.22970684). Legacy models `gpt-4-0613` and
+  `gpt-4o-2024-05-13` retire **Oct 23, 2026**.
 
 ## Citation / Related Research
 

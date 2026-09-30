@@ -5,6 +5,9 @@
 **Repository:** `two-clock-source-tiering/`
 **Report last regenerated:** 2026-08-22 -- every claim below was verified against the working tree, `git ls-files`, and `git log` on this date; anything not verifiable from a real file is marked *(unverified)* rather than asserted.
 
+> [!NOTE]
+> **Historical Snapshot:** This report reflects the repository state as of 2026-08-22 (Phase 1 completion). Since then, the Lane B harvest, full production pipeline, and manuscript sections have been completed. For current status, see the root [`README.md`](../README.md) and [`contrib/prem-sargara/TASKS.md`](../contrib/prem-sargara/TASKS.md).
+
 ---
 
 ## 1. Academic Context & Core Research Objective

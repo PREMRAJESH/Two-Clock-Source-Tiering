@@ -3,7 +3,7 @@
 > **Authors:** Prem Sargara & Viveka Mohan Das  
 > **Target Manuscript:** *The Two-Clock Model: Structural Presence and AI Perception of Technology Entities*  
 > **Section Scope:** Computational Methodology, Empirical Findings, Sensitivity Analysis & Information Diffusion Dynamics  
-> **Repository:** `two-clock-source-tiering` | **Zenodo Archive:** [10.5281/zenodo.XXXXXXX](https://doi.org/10.5281/zenodo.XXXXXXX)
+> **Repository:** `two-clock-source-tiering` | **Zenodo Archive:** [10.5281/zenodo.21532574](https://doi.org/10.5281/zenodo.21532574)
 
 ---
 
@@ -156,7 +156,7 @@ The attenuation of temporal precedence under source weighting yields vital insig
 ## 6. Open Science, Data and Code Availability
 
 In alignment with open science and FAIR research data standards:
-* **Primary Data Archive:** The complete dataset—including domain tier maps, normalized frequency tables, weighted weekly time series, and sensitivity grid outputs—is permanently deposited on **Zenodo** ([https://doi.org/10.5281/zenodo.XXXXXXX](https://doi.org/10.5281/zenodo.XXXXXXX)) under a Creative Commons Attribution 4.0 International license ([CC-BY-4.0](file:///d:/two-clock-source-tiering/LICENSE-DATA.md)).
+* **Primary Data Archive:** The complete dataset—including domain tier maps, normalized frequency tables, weighted weekly time series, and sensitivity grid outputs—is permanently deposited on **Zenodo** ([https://doi.org/10.5281/zenodo.21532574](https://doi.org/10.5281/zenodo.21532574)) under a Creative Commons Attribution 4.0 International license ([CC-BY-4.0](file:///d:/two-clock-source-tiering/LICENSE-DATA.md)).
 * **Computational Pipeline:** Complete Python replication scripts (`build_tier_map.py`, `apply_weights.py`, `precedence_test_weighted.py`, `sensitivity_analysis.py`) are versioned on GitHub under the [MIT License](file:///d:/two-clock-source-tiering/LICENSE-CODE.md).
 * **Deterministic Execution:** The entire analysis pipeline executes deterministically with zero stochastic parameters:
   ```bash
