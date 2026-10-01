@@ -8,7 +8,7 @@ Orchestrates the entire analytical source-tiering pipeline end-to-end:
   2. build_tier_map.py           (Natural breaks Jenks clustering into 3 tiers)
   3. apply_weights.py            (Apply tier weights to weekly citation counts)
   4. precedence_test_weighted.py (Precedence sign test with --merged consensus)
-  5. sensitivity_analysis.py     (90-cell sensitivity grid sweep)
+  5. sensitivity_analysis.py     (Threshold grid & 16-cell weight sweeps)
 
 Usage:
   python scripts/run_production_pipeline.py

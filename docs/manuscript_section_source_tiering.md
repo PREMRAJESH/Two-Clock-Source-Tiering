@@ -73,28 +73,31 @@ where $\Delta t_e > 0$ denotes citation precedence, $\Delta t_e < 0$ denotes per
 
 ### 3.2 Precedence Test Comparison: Raw Baseline vs. Weighted Regimes
 
-Applying the weighting framework across the full production cohort ($N=32$ testable entities) reveals a striking divergence from raw volumetric counts:
+Applying the weighting framework across both the published baseline ($N=33$) and the multi-run consensus cohort ($N=32$) reveals an invariant divergence from raw volumetric counts:
 
-| Analytical Regime | Sample Size ($N$) | Concordance ($\Delta t > 0$) | Concordance Rate | Median Lead ($\Delta t$) | Sign Test ($p$-value) |
+| Analytical Specification | Sample Size ($N$) | Concordance ($\Delta t > 0$) | Concordance Rate | Median Lead ($\Delta t$) | Sign Test ($p$-value) |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **Raw Baseline (Paper Section 5.4)** | 33 | 28 / 33 | **84.8%** | **+83 days** | $\mathbf{6.62 \times 10^{-5}}$ |
-| **Raw Baseline (3-Run Consensus)** | 32 | 27 / 32 | **84.4%** | **+89 days** | $\mathbf{1.13 \times 10^{-4}}$ |
-| **Continuous Weights ($1.0, 0.5, 0.25$)** | 32 | 12 / 32 | **37.5%** | **-51 days** | **$0.215$ (Not Sig.)** |
+| **Published Baseline (Raw, Paper §5.4)** | 33 | 28 / 33 | **84.8%** | **+83 days** | $\mathbf{6.62 \times 10^{-5}}$ |
+| **Published Baseline (Source-Tier Weighted)** | 33 | 13 / 33 | **39.4%** | **-51 days** | **$0.296$ (Not Sig.)** |
+| **3-Run Consensus Baseline (Raw, Paper §5.5)** | 32 | 27 / 32 | **84.4%** | **+89 days** | $\mathbf{1.13 \times 10^{-4}}$ |
+| **3-Run Consensus (Source-Tier Weighted)** | 32 | 12 / 32 | **37.5%** | **-51 days** | **$0.215$ (Not Sig.)** |
 | **Binary Exclusion: Tier 1 Only** | 32 | 12 / 32 | **37.5%** | **-51 days** | **$0.215$ (Not Sig.)** |
 | **Binary Exclusion: Tier 1 + Tier 2** | 32 | 12 / 32 | **37.5%** | **-51 days** | **$0.215$ (Not Sig.)** |
 
-*Note: Evaluated across all testable entities ($N=32$) following the baseline paper protocol (10 query-precision audit failures + 7 no-onset entities excluded, plus 1 empirical no-onset under consensus). All 32 testable entities possess full source-tier citation data.*
+*Note: In the published v1 baseline ($N=33$), 17 entities are excluded (10 query-precision audit failures + 7 no-onset entities). In the 3-run consensus mean spec ($N=32$, Section 5.5), Windsurf additionally drops into no-onset because its mean perception score maxes out at $2.67 < 3.0$. All testable entities possess complete empirical source-tier data.*
 
 ### 3.3 Core Empirical Finding
-Weighting citation mentions by source authority does **not** strengthen temporal precedence; rather, it **significantly attenuates** the relationship. Under continuous weighting, the proportion of entities exhibiting citation precedence collapses from $84.4\%$ to **$37.5\%$ (12 of 32)**, while median lead shifts from a positive lead of $+89$ days to a negative lead of **$-51$ days** ($p = 0.215$, failing to achieve statistical significance).
+Weighting citation mentions by source authority does **not** strengthen temporal precedence; rather, it **significantly attenuates** the relationship. Across both specifications:
+- Under the published baseline ($N=33$), concordance collapses from $84.8\%$ (28/33) to **$39.4\%$ (13 of 33)**, and median lead drops from $+83$ days to **$-51$ days** ($p = 0.296$).
+- Under the 3-run consensus ($N=32$), concordance collapses from $84.4\%$ (27/32) to **$37.5\%$ (12 of 32)**, and median lead shifts from $+89$ days to **$-51$ days** ($p = 0.215$).
 
-Restricting analysis strictly to top-tier institutional outlets (Tier 1 only) or combining Tier 1 and 2 yields an identical attenuation ($37.5\%$, $p = 0.215$), confirming that institutional authority filtering removes the leading-edge signal.
+Restricting analysis strictly to top-tier institutional outlets (Tier 1 only) or combining Tier 1 and Tier 2 yields identical attenuation ($37.5\%$, $p = 0.215$), confirming that institutional authority filtering removes the leading-edge signal.
 
 ---
 
 ## 4. Sensitivity Analysis & Robustness Validation
 
-To verify that attenuation is not an artifact of specific threshold choices or weight vector selections, we conducted a systematic three-dimensional sensitivity analysis across the complete corpus:
+To verify that attenuation is not an artifact of specific threshold choices or weight vector selections, we conducted a systematic multi-dimensional sensitivity analysis across the complete corpus, generating 126 discrete evaluation conditions recorded in `data_derived/sensitivity_results.csv` (108 threshold matrix evaluations, 16 weight ratio sweep cells, and 2 boundary perturbation audits):
 
 ### 4.1 Weight Ratio Sweep
 We evaluated precedence stability across a $4 \times 4$ grid of 16 alternative weighting vectors $\mathbf{W} = (w_1, w_2, w_3)$ with $w_1 = 1.0$ (fixed), $w_2 \in \{0.25, 0.50, 0.75, 1.00\}$, and $w_3 \in \{0.0, 0.10, 0.25, 0.50\}$:
@@ -112,11 +115,14 @@ Restricting evaluation to the subset of entities achieving unambiguous disambigu
 ### 4.4 Perception Multi-Run Repeat Stability Cross-Check
 To verify that onset dates are not sensitive to LLM evaluation variance, the analysis was replicated against the 3-run repeat evaluation dataset ([`inputs_frozen/pt_pilot_results_merged.csv`](file:///d:/two-clock-source-tiering/inputs_frozen/pt_pilot_results_merged.csv), $N=250$ cell evaluations across 50 entities, Krippendorff's $\alpha = 0.95$, Zenodo Record [10.5281/zenodo.22970684](https://doi.org/10.5281/zenodo.22970684)). Evaluated against consensus mean perception scores ($\bar{P}(t) \ge 3.0$), raw precedence concordance remained invariant at **84.4% (27 of 32)**, confirming measurement stability across independent model evaluations.
 
+### 4.5 Threshold Grid Matrix (Table 2 Mirror)
+Across the 108 threshold matrix evaluations (3 ramp thresholds $\{5\%, 10\%, 20\%\} \times 3$ onset thresholds $\{P \ge 2, P \ge 3, P \ge 4\} \times 4$ count series across the full cohort, PASS-only, and no-capped subsets), attenuation remains consistent: weighted concordance rates range from $27.3\%$ to $42.3\%$, with no threshold combination reversing the attenuation pattern.
+
 ---
 
-## 5. Discussion: Information Diffusion Mechanics & Syndication Dynamics
+## 5. Discussion: The Diffuse Ingestion Hypothesis & Syndication Dynamics
 
-The attenuation of temporal precedence under source weighting yields vital insights into how technological knowledge disseminates across the public web and enters generative AI models:
+The attenuation of temporal precedence under source weighting demonstrates that early citation ramps are carried by Tier 2 and Tier 3 media rather than Tier 1 institutional outlets. To explain why this attenuation occurs, we synthesize the observed empirical dynamics into an explanatory framework:
 
 ```
 [Entity Launch / Inception]
@@ -130,7 +136,7 @@ The attenuation of temporal precedence under source weighting yields vital insig
                     │
                     ▼
 ┌───────────────────────────────────────┐
-│        AI Web Crawl Ingestion         │  <-- LLM pre-training / web scrape window
+│        AI Web Crawl Ingestion         │  <-- Hypothesized LLM pre-training scrape window
 │   (Models absorb early diffuse text)  │      (P(t) reaches onset score >= 3)
 └───────────────────┬───────────────────┘
                     │
@@ -142,14 +148,14 @@ The attenuation of temporal precedence under source weighting yields vital insig
 └───────────────────────────────────────┘
 ```
 
-1. **Diffuse Early Diffusion:**  
+1. **Diffuse Early Coverage:**  
    Emerging technology entities are first covered by niche trade journals, developer communities, and specialized technology blogs. This diffuse coverage forms the genuine leading edge of the citation ramp $C(t)$.
 2. **Institutional Latency:**  
    Tier 1 legacy publications exhibit substantial editorial latency. National outlets typically cover technology entities only after they achieve mainstream commercial scale or public controversy—often months after the entity has already been indexed in large web crawls and internalized by LLMs.
 3. **Syndication Cascades:**  
    High-volume wire stories (e.g., AFP, Reuters) duplicate rapidly across local syndication networks (e.g., BLOX CMS affiliates). While syndication amplifies raw volume, down-weighting these syndication echoes delays the detected ramp date, causing the measured citation clock to lag behind model perception.
-4. **Implications for AI Knowledge Acquisition:**  
-   LLM pre-training corpora (such as Common Crawl and RefinedWeb) vacuum up the open web broadly. Models do not require institutional sanction from legacy mastheads to learn entity existence; they acquire perception from the broad, long-tail distribution of digital text.
+4. **The Diffuse Ingestion Hypothesis:**  
+   While our non-parametric sign test directly demonstrates the temporal displacement of citation ramps under domain weighting, the causal mechanism linking web publication to internal LLM representations represents an explanatory hypothesis rather than a direct empirical observation of training data. Large language model pre-training corpora (e.g., Common Crawl, RefinedWeb) crawl the open web indiscriminately. We hypothesize that models internalize entity knowledge from the broad, long-tail distribution of digital text well before legacy institutional mastheads publish authoritative coverage.
 
 ---
 

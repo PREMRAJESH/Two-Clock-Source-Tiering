@@ -71,18 +71,17 @@ $$\text{Testable Set (33)} = \text{Total Entities (50)} \setminus \left( \text{P
 
 | Analysis Variant | Sample Size ($N$) | Ramp Precedes Onset | Concordance Rate | Median Lead | $p$-value (Sign Test) |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **Raw Baseline ($\text{Floor}=3$)** | 33 | 28 / 33 | 84.8% | +83 days | $6.62 \times 10^{-5}$ |
-| **Raw Baseline ($\text{Floor}=5$)** | 33 | 28 / 33 | 84.8% | +83 days | $6.62 \times 10^{-5}$ |
-| **Lane A Weighted (Continuous)** | 11 | 3 / 11 | 27.3% | -100 days | $0.227$ |
-| **Lane A Binary (Tier 1 only)** | 10 | 2 / 10 | 20.0% | -100 days | $0.109$ |
-| **Lane A Binary (Tier 1 + 2)** | 11 | 3 / 11 | 27.3% | -100 days | $0.227$ |
-| **Full Production (Continuous)** | 32 | 12 / 32 | 37.5% | -51 days | $0.215$ |
-| **Full Production (Tier 1 only)** | 32 | 12 / 32 | 37.5% | -51 days | $0.215$ |
-| **Full Production (Tier 1 + 2)** | 32 | 12 / 32 | 37.5% | -51 days | $0.215$ |
+| **Published Raw Baseline ($\text{Floor}=3$ or $5$)** | 33 | 28 / 33 | 84.8% | +83 days | $6.62 \times 10^{-5}$ |
+| **Published Baseline (Source-Tier Weighted)** | 33 | 13 / 33 | 39.4% | -51 days | $0.296$ (Not Sig.) |
+| **3-Run Consensus Raw Baseline (§5.5)** | 32 | 27 / 32 | 84.4% | +89 days | $1.13 \times 10^{-4}$ |
+| **3-Run Consensus (Source-Tier Weighted)** | 32 | 12 / 32 | 37.5% | -51 days | $0.215$ (Not Sig.) |
+| **Full Production (Tier 1 only)** | 32 | 12 / 32 | 37.5% | -51 days | $0.215$ (Not Sig.) |
+| **Full Production (Tier 1 + 2)** | 32 | 12 / 32 | 37.5% | -51 days | $0.215$ (Not Sig.) |
+| **Lane A Benchmark (Continuous)** | 11 | 3 / 11 | 27.3% | -100 days | $0.227$ |
 
 > [!NOTE]
 > **Final Empirical Finding (Full Production Analysis):**  
-> In the unweighted baseline, citation accumulation leads LLM perception onsets by a statistically significant margin (84.4%, $p = 1.13 \times 10^{-4}$). However, applying source-tier weighting across the complete production cohort attenuates this precedence, dropping concordance to **37.5% (12 of 32)** with a median lead shifting to **-51 days** ($p = 0.215$, non-significant). This confirms that early temporal signal in $C(t)$ is carried diffusely across Tier 2 and Tier 3 specialized and long-tail web sources rather than top-tier institutional outlets.
+> In the unweighted baseline, citation accumulation leads LLM perception onsets by a statistically significant margin (84.4%–84.8%, $p < 0.001$). However, applying source-tier weighting across the complete production cohort attenuates this precedence, dropping concordance to **37.5% (12/32)** or **39.4% (13/33)** with a median lead shifting to **-51 days** (non-significant). This demonstrates that the early temporal signal in $C(t)$ is carried by Tier 2 and Tier 3 media; we hypothesize that LLM pretraining crawls absorb this early diffuse coverage before mainstream institutional outlets report on the entities.
 
 ---
 

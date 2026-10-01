@@ -1425,3 +1425,8 @@ Output: `data_derived/location_distortion_check.csv`
   and corrected (3 critical stale-status references in root `README.md`,
   3 placeholder DOIs, 6 minor metadata/label updates). Entity count
   references updated across all files to reflect 50/50 full coverage.
+
+### Review of Viveka Mohan Das Feedback on Production Release
+- **Specification Discrepancy Clarified:** Verified that the reported 27/32 (+89d, $p = 1.13 \times 10^{-4}$) is the Section 5.5 multi-run consensus mean spec (`pt_pilot_results_merged.csv`, $\bar{P}(t) \ge 3.0$), where Windsurf's mean score ($2.67 < 3.0$) drops it into no-onset ($N=32$). In the published v1 baseline ($N=33$, `pt_pilot_results.csv`), raw baseline is 28/33 (+83d, $p = 6.62 \times 10^{-5}$), and weighted precedence drops to **13/33 (39.4%, -51d, $p = 0.296$)**. Both specs show invariant attenuation (~84% down to ~38%).
+- **Sensitivity Matrix Architecture Disambiguated:** Clarified that the "16-cell sweep" is the exact $4 \times 4$ weight ratio sweep in `sensitivity_analysis.py`, while "90-cell grid" was an early historical label from when `sensitivity_results.csv` had 90 rows (line 844). In the complete 50-entity production release, the sensitivity space contains **126 rows** (108 threshold matrix conditions, 16 weight ratio cells, 2 boundary shifts).
+- **Hypothesis Framing Formally Adopted:** Updated `docs/manuscript_section_source_tiering.md` (§4 & §5) and `docs/tier_methodology.md` (§4) to explicitly designate the long-tail pretraining crawl absorption dynamic as **The Diffuse Ingestion Hypothesis** rather than a proven causal claim from the sign test. Updated master runner comment in `scripts/run_production_pipeline.py`.
