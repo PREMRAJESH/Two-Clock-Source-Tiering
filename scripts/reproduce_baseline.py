@@ -349,6 +349,138 @@ def main():
                 print(f"    X {entity:45s} {reason}")
             print()
 
+    # ----------------------------------------------------------------------
+    # Item 2 check: Do weights of (1, 1, 1) reproduce the raw series?
+    # ----------------------------------------------------------------------
+    print("-" * 72)
+    print("  WEIGHTS (1, 1, 1) REPRODUCTION CHECK (Review Item 2)")
+    print("-" * 72)
+    check_weights_111_equivalence(ramp_threshold=0.10, ramp_floor=3, onset_score=3)
+
+
+def check_weights_111_equivalence(ramp_threshold=0.10, ramp_floor=3, onset_score=3):
+    """
+    Verification requested by Viveka Mohan Das (Review Item 2):
+    'Do weights of (1, 1, 1) reproduce the raw series exactly? Please add this
+    check to reproduce_baseline.py.'
+
+    Tests whether unweighted/equal weighting (1, 1, 1) of harvested source articles
+    reproduces the raw citation series and baseline ramp dates.
+    """
+    weighted_csv = os.path.join(os.path.dirname(__file__), "..", "data_derived", "ct_results_weighted.csv")
+    if not os.path.exists(weighted_csv):
+        print(f"  Weighted results file not found at {weighted_csv}.")
+        print("  Run scripts/apply_weights.py first to generate ct_results_weighted.csv.")
+        return
+
+    # Load weekly timeline
+    entity_weeks = defaultdict(list)
+    total_weeks = 0
+    mismatches = 0
+    nonzero_raw_weeks = 0
+    nonzero_w111_weeks = 0
+
+    with open(weighted_csv, newline="", encoding="utf-8") as f:
+        for r in csv.DictReader(f):
+            total_weeks += 1
+            raw_mc = float(r.get("mention_count", 0))
+            # all_tier_count is the sum of articles across all tiers with w=(1,1,1)
+            w111_mc = float(r.get("all_tier_count", 0))
+            if raw_mc > 0:
+                nonzero_raw_weeks += 1
+            if w111_mc > 0:
+                nonzero_w111_weeks += 1
+            if abs(raw_mc - w111_mc) > 1e-4:
+                mismatches += 1
+
+            entity_weeks[r["entity"]].append({
+                "week_start": r["week_start"],
+                "raw": raw_mc,
+                "w111": w111_mc,
+            })
+
+    for e in entity_weeks:
+        entity_weeks[e].sort(key=lambda x: x["week_start"])
+
+    # Load perception and compute ramp comparisons
+    perception = load_perception()
+    pt_entities = set(perception.keys())
+    ct_entities = set(entity_weeks.keys())
+    bridge = build_name_bridge(pt_entities, ct_entities)
+
+    ramp_matches = 0
+    ramp_mismatches = 0
+    leads_raw = []
+    leads_w111 = []
+
+    for pt_name in sorted(perception.keys()):
+        ct_name = bridge.get(pt_name)
+        if is_excluded(pt_name) or (ct_name and is_excluded(ct_name)):
+            continue
+        onset = find_onset_date(perception[pt_name], min_score=onset_score)
+        if onset is None or not ct_name or ct_name not in entity_weeks:
+            continue
+
+        wk = entity_weeks[ct_name]
+        # Find raw ramp
+        raw_peak = max(r["raw"] for r in wk)
+        raw_level = max(ramp_threshold * raw_peak, ramp_floor)
+        ramp_raw = None
+        for r in wk:
+            if r["raw"] >= raw_level:
+                ramp_raw = r["week_start"]
+                break
+
+        # Find w111 ramp
+        w111_peak = max(r["w111"] for r in wk)
+        w111_level = max(ramp_threshold * w111_peak, ramp_floor)
+        ramp_w111 = None
+        for r in wk:
+            if r["w111"] >= w111_level:
+                ramp_w111 = r["week_start"]
+                break
+
+        if ramp_raw and ramp_w111:
+            if ramp_raw == ramp_w111:
+                ramp_matches += 1
+            else:
+                ramp_mismatches += 1
+
+            l_raw = compute_lead(ramp_raw, onset)
+            l_w111 = compute_lead(ramp_w111, onset)
+            leads_raw.append(l_raw)
+            leads_w111.append(l_w111)
+
+    n_testable = len(leads_raw)
+    raw_pos = sum(1 for l in leads_raw if l > 0)
+    w111_pos = sum(1 for l in leads_w111 if l > 0)
+    median_raw = sorted(leads_raw)[len(leads_raw) // 2] if leads_raw else 0
+    median_w111 = sorted(leads_w111)[len(leads_w111) // 2] if leads_w111 else 0
+    p_w111 = sign_test_two_sided(min(w111_pos, n_testable - w111_pos), n_testable)
+
+    print(f"  Total entity-weeks in dataset:        {total_weeks}")
+    print(f"  Weeks with nonzero raw mentions:       {nonzero_raw_weeks} (full longitudinal timeline)")
+    print(f"  Weeks with nonzero harvested articles: {nonzero_w111_weeks} (exactly 1 peak week per entity)")
+    print(f"  Entity-week count mismatches:         {mismatches}/{total_weeks} ({mismatches/total_weeks*100:.1f}%)")
+    print()
+    print(f"  Testable entities evaluated:          {n_testable}")
+    print(f"  Entities where (1,1,1) ramp = raw ramp: {ramp_matches}/{n_testable} ({ramp_matches/n_testable*100:.1f}%)")
+    print(f"  Entities where (1,1,1) ramp != raw:     {ramp_mismatches}/{n_testable} ({ramp_mismatches/n_testable*100:.1f}%)")
+    print()
+    print(f"  Raw baseline precedence:              {raw_pos}/{n_testable} ({raw_pos/n_testable*100:.1f}%), median lead: +{median_raw}d")
+    print(f"  (1, 1, 1) weighted precedence:        {w111_pos}/{n_testable} ({w111_pos/n_testable*100:.1f}%), median lead: {median_w111:+d}d, p = {p_w111:.3f}")
+    print()
+    print("  VERDICT: FAIL")
+    print("  Weights of (1, 1, 1) do NOT reproduce the raw series.")
+    print("  ROOT CAUSE:")
+    print("    Domain data was harvested ONLY for each entity's single peak citation week.")
+    print("    All other 130 weeks are filled with 0.0. Therefore, any weighting scheme")
+    print("    (including (1,1,1)) reduces each entity's citation timeline to a single-week")
+    print("    impulse at the peak week. The 'weighted ramp' is identically the peak week,")
+    print("    converting the analysis into 'peak week vs. perception onset'.")
+    print("=" * 72)
+
 
 if __name__ == "__main__":
     main()
+

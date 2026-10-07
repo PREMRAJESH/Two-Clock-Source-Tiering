@@ -1430,3 +1430,39 @@ Output: `data_derived/location_distortion_check.csv`
 - **Specification Discrepancy Clarified:** Verified that the reported 27/32 (+89d, $p = 1.13 \times 10^{-4}$) is the Section 5.5 multi-run consensus mean spec (`pt_pilot_results_merged.csv`, $\bar{P}(t) \ge 3.0$), where Windsurf's mean score ($2.67 < 3.0$) drops it into no-onset ($N=32$). In the published v1 baseline ($N=33$, `pt_pilot_results.csv`), raw baseline is 28/33 (+83d, $p = 6.62 \times 10^{-5}$), and weighted precedence drops to **13/33 (39.4%, -51d, $p = 0.296$)**. Both specs show invariant attenuation (~84% down to ~38%).
 - **Sensitivity Matrix Architecture Disambiguated:** Clarified that the "16-cell sweep" is the exact $4 \times 4$ weight ratio sweep in `sensitivity_analysis.py`, while "90-cell grid" was an early historical label from when `sensitivity_results.csv` had 90 rows (line 844). In the complete 50-entity production release, the sensitivity space contains **126 rows** (108 threshold matrix conditions, 16 weight ratio cells, 2 boundary shifts).
 - **Hypothesis Framing Formally Adopted:** Updated `docs/manuscript_section_source_tiering.md` (§4 & §5) and `docs/tier_methodology.md` (§4) to explicitly designate the long-tail pretraining crawl absorption dynamic as **The Diffuse Ingestion Hypothesis** rather than a proven causal claim from the sign test. Updated master runner comment in `scripts/run_production_pipeline.py`.
+
+### Standalone Working Paper Finalization (`docs/standalone_working_paper.md`)
+- **Manuscript Consolidation:** Replaced historical duplicate drafts with a clean, unified 649-line standalone manuscript formatted as a formal academic working paper for internal review with Viveka Mohan Das.
+- **Scientific Corrections Verified:**
+  - Neutralized subjective "source authority" terminology across titles, metrics, and text in favor of *Domain Coverage Breadth* and *coverage prominence*.
+  - Explicitly qualified 20% ramp threshold significance (acknowledges $p = 0.063$ at 20% ramp, $P \ge 3$; $p = 0.080$ at $P \ge 2$).
+  - Full non-causal boundary delineation in Discussion (§6.2) and Conclusion (§9).
+  - Explicit inclusion of peak-week sampling limitations and potential peak-to-ramp tier projection artifacts.
+  - Complete 126-condition sensitivity breakdown matching `data_derived/sensitivity_results.csv` (108 threshold matrix + 16 weight ratio sweep + 2 boundary perturbation cells).
+- **Peer-Review Phrasing Softening:**
+  - Softened assertive claims regarding C(t) composition from "the leading component of C(t) is composed of diffuse, lower-tier coverage" to: *"the analysis indicates that a substantial component of the observed citation signal is associated with domains assigned to the lower-weighted tiers under the study's empirical tiering scheme."*
+  - Replaced universal invariance claims with parameter-scoped language: *"supporting the robustness of the observed attenuation across the evaluated parameterizations."*
+  - Refined Tier 1 timing description: *"under the study's empirical tiering scheme, coverage from domains classified as Tier 1 tends to appear relatively later in the entities' lifecycles compared to observed model perception onset."*
+  - Replaced "statistically decisive", "invariant results", "completely stable", and "unambiguous" with exact, cautious peer-review phrasing (e.g., *"statistically significant exact sign-test results"*, *"identical results across all 16 evaluated weight combinations"*, *"remains consistent across the evaluated specifications"*, and *"The primary empirical finding is that source-tier weighting substantially attenuates the observed precedence relationship"*).
+  - Applied final precision polish: replaced *"leading indicator of AI knowledge acquisition"* with *"established an empirical temporal precedence relationship"*; replaced causal claim (*"demonstrating that attenuation is driven by"*) with bounded observational language (*"suggesting that, within the evaluated weight grid, the attenuation is associated with"*); and removed rhetorical framing defending the Two-Clock Model in §6.5.
+- **Publication-Ready Manuscript Conversion (`docs/standalone_working_paper.md`):**
+  - Removed all draft banners, provisional title option menus, and inline disclaimer blocks. Formatted title block and author affiliations cleanly for academic PDF generation: **Prem Sargara**¹ and **Viveka Mohan Das**² (¹ Independent Researcher; ² AISearch Global, Sydney, Australia).
+  - Integrated formal CRediT `Author Contributions` subsection into `Declarations` detailing exact empirical and conceptual contributions of both authors.
+  - Relocated the pre-publication internal checklist to a separate tracking document ([`docs/pre_publication_checklist.md`](file:///d:/two-clock-source-tiering/docs/pre_publication_checklist.md)) so the working paper contains zero internal placeholders and is structured identically to a camera-ready working paper or preprint deposit.
+- **Ramp Source-Composition & Negative Lead Clarifications:**
+  - Refined §6.1 to explicitly state that because source-level metadata were collected from each entity's peak citation week rather than its ramp week, results reflect applying the empirical tier map to the longitudinal citation series rather than a direct empirical observation of the exact ramp week's domain roster.
+  - Added clarifying notes in §4.6 and §5.2 explaining that negative lead times (e.g., Mistral AI, Ollama, Sakana AI, xAI) do not mean an entity had no prior citations, but rather that citation volume did not cross the 10%-of-peak operational ramp threshold prior to the discrete perception-onset cutoff date.
+
+### Pre-Publication Peer Review from Viveka Mohan Das & Methodological Audit (2026-10-05)
+- **Review Received:** Viveka Mohan Das delivered an extensive 35-point peer review across six categories, flagging a potential fatal issue in "CHECK THIS FIRST": weighted ramp dates in Appendix B match the peak citation week (e.g. Cursor +1,202d = 2026-06-15; Sora +669d = 2025-12-15; ElevenLabs +1,022d = 2025-11-10; Ollama +1,066d = 2026-06-01; xAI +915d = 2026-01-12).
+- **Core Investigation (Items 1–3):**
+  1. *Nonzero count audit:* `data_derived/ct_results_weighted.csv` contains nonzero values in **exactly 50 entity-weeks** across the entire 6,570-row timeline (exactly 1 week per entity: the peak week). Missing weeks were set to `0.0` in `scripts/apply_weights.py` (line 218).
+  2. *(1, 1, 1) check:* Implemented `check_weights_111_equivalence()` in `scripts/reproduce_baseline.py`. Proved that weights of $(1, 1, 1)$ do NOT reproduce the raw baseline (5,077/6,570 mismatches, only 11/33 ramp matches); instead, $W=(1,1,1)$ yields the exact collapsed result ($13/33, -51\text{d}, p=0.296$).
+  3. *Invariance explanation:* Because each entity has only one non-zero week in the weighted series, that week trivially crosses the $10\%$ ramp threshold ($C(t) \ge \max(0.10 \cdot W_{\text{peak}}, 3)$). Varying $w_2, w_3$ scales the peak height but cannot alter which week crosses first.
+- **Root Conclusion:** The weighted analysis was testing **Peak Citation Date vs. Perception Onset Date**, not a weighted citation ramp. The apparent precedence collapse and the Diffuse Ingestion Hypothesis were artifacts of single-point time series truncation.
+- **Deliverables Completed:**
+  - Updated `scripts/reproduce_baseline.py` with the $(1, 1, 1)$ equivalence assertion check.
+  - Authored comprehensive audit response memo: `docs/viveka_review_response_items_1_to_3.md`.
+  - Archived complete session record: `docs/CHAT_SESSION_2026-10-05.md`.
+  - Preserved manuscript draft intact pending strategic alignment with Viveka.
+
