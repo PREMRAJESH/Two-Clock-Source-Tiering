@@ -1,3 +1,6 @@
+> [!WARNING]
+> **WITHDRAWAL ADVISORY (2026-10-05):** The weighted numerical results in this document (e.g., Table §4 weighted rows) are formally **WITHDRAWN** due to single-week impulse truncation. The descriptive tier map and baseline methodology specifications stand. See [`docs/withdrawal_notice_2026-10-05.md`](file:///d:/two-clock-source-tiering/docs/withdrawal_notice_2026-10-05.md).
+
 # Source-Tiering Methodology & Weighting Specification
 
 > **Status:** Final — Production Methodological Specification  

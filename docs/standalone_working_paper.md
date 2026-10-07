@@ -1,3 +1,6 @@
+> [!WARNING]
+> **WITHDRAWAL ADVISORY (2026-10-05):** The weighted numerical results in this document (e.g., Abstract, Table 2 weighted rows, §5 results, and §6 Diffuse Ingestion framing) are formally **WITHDRAWN** due to single-week impulse truncation. The descriptive tier map, baseline reproduction, and structural methodology specifications stand. See [`docs/withdrawal_notice_2026-10-05.md`](file:///d:/two-clock-source-tiering/docs/withdrawal_notice_2026-10-05.md).
+
 # Does Domain Coverage Breadth Matter? Source-Tier Weighting and the Temporal Precedence of News Mentions over AI Perception
 
 **Prem Sargara**  

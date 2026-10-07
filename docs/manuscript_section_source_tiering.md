@@ -1,3 +1,6 @@
+> [!WARNING]
+> **WITHDRAWAL ADVISORY (2026-10-05):** The weighted numerical results in this document (e.g., Table §3.2, §4 sensitivity grids, and §5 Diffuse Ingestion framing) are formally **WITHDRAWN** due to single-week impulse truncation. The descriptive tier map and baseline methodology specifications stand. See [`docs/withdrawal_notice_2026-10-05.md`](file:///d:/two-clock-source-tiering/docs/withdrawal_notice_2026-10-05.md).
+
 # Empirical Sensitivity of the Two-Clock Dynamic to Source Authority: A Three-Tier Citation Weighting Model
 
 > **Authors:** Prem Sargara & Viveka Mohan Das  
