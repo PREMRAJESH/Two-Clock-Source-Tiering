@@ -19,6 +19,18 @@ import subprocess
 import sys
 import time
 
+# --- WITHDRAWAL NOTICE (2026-10-05) ---
+# The weighted pipeline stages measured peak citation week vs. perception onset,
+# not a weighted ramp. See docs/withdrawal_notice_2026-10-05.md.
+# To force re-execution (e.g. after longitudinal data is harvested),
+# pass --force-rerun on the command line.
+WITHDRAWN = True
+if WITHDRAWN and "--force-rerun" not in sys.argv:
+    print("ERROR: This pipeline's weighted stages are WITHDRAWN.")
+    print("See: docs/withdrawal_notice_2026-10-05.md")
+    print("To force execution anyway, pass --force-rerun")
+    sys.exit(1)
+
 SCRIPTS_DIR = os.path.dirname(os.path.abspath(__file__))
 REPO_ROOT = os.path.abspath(os.path.join(SCRIPTS_DIR, ".."))
 DATA_DIR = os.path.join(REPO_ROOT, "data_derived")
@@ -72,14 +84,16 @@ def main():
     # 2. Build tier map via natural breaks clustering
     run_stage("build_tier_map.py")
 
+    force_args = ["--force-rerun"] if "--force-rerun" in sys.argv else []
+
     # 3. Apply weights to citation counts
-    run_stage("apply_weights.py")
+    run_stage("apply_weights.py", args=force_args)
 
     # 4. Precedence Sign Test (using consensus multi-run perception)
-    run_stage("precedence_test_weighted.py", args=["--merged"])
+    run_stage("precedence_test_weighted.py", args=["--merged"] + force_args)
 
     # 5. Full sensitivity analysis sweeps
-    run_stage("sensitivity_analysis.py")
+    run_stage("sensitivity_analysis.py", args=force_args)
 
     print("\n" + "=" * 70)
     print("ALL PRODUCTION PIPELINE STAGES COMPLETED SUCCESSFULLY!")

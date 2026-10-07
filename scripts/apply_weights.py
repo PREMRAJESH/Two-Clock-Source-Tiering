@@ -51,6 +51,17 @@ import os
 import sys
 from collections import Counter, defaultdict
 
+# --- WITHDRAWAL NOTICE (2026-10-05) ---
+# The weighted analysis measured peak citation week vs. perception onset,
+# not a weighted ramp. See docs/withdrawal_notice_2026-10-05.md.
+# To force re-execution (e.g. after longitudinal data is harvested),
+# pass --force-rerun on the command line.
+WITHDRAWN = True
+if WITHDRAWN and "--force-rerun" not in sys.argv:
+    print("ERROR: This script's outputs are WITHDRAWN.")
+    print("See: docs/withdrawal_notice_2026-10-05.md")
+    sys.exit(1)
+
 # ---------------------------------------------------------------------------
 # CONFIG
 # ---------------------------------------------------------------------------
