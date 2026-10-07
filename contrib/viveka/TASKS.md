@@ -60,12 +60,12 @@ This document tracks the operational workstream and deliverables attributed to V
 
 | Task ID | Task Description & Deliverable | Status & Evidence | Target / Dependency |
 | :---: | :--- | :--- | :--- |
-| **TASK-21** | Collaborate on paper manuscript draft (weighted-vs-raw comparison, source-tier section) | `[x] Draft Ready for Joint Review` — authored in `docs/manuscript_section_source_tiering.md` | Post-Task 11 |
+| **TASK-21** | Collaborate on paper manuscript draft (weighted-vs-raw comparison, source-tier section) | `⛔ Blocked` — pending resolution of withdrawal and path-forward decision (Option A vs. C) | Post-Task 11 |
 | **TASK-22** | Update Declarations section and verify CRediT contributor taxonomy | `[x] Draft Ready for Joint Review` — drafted in `docs/declarations_and_credit.md`, pending joint sign-off | Pre-Submission |
 | **TASK-23** | Review Generative AI / Agent disclosure section for accuracy | `[x] Draft Ready for Joint Review` — drafted in `docs/declarations_and_credit.md`, pending joint review | Pre-Submission |
-| **TASK-24** | Participate in complete stress-test read-through of the manuscript | `[x] Prem Audit Complete` — ready for joint final read-through | Manuscript Freeze |
+| **TASK-24** | Participate in complete stress-test read-through of the manuscript | `⛔ Blocked` — cannot proceed until withdrawal resolution and Items 4–35 review are complete | Manuscript Freeze |
 | **TASK-25** | Finalize target submission venue selection and Zenodo DOI archiving | `[x] Confirmed` — Zenodo deposit first (data + preprint DOI) followed by SSRN submission; tested on provenance paper | Final Release |
-| **TASK-26** | Perform final proofreading and formatting verification | `[x] Prem Audit Complete` — ready for joint pre-submission sign-off | Final Release |
+| **TASK-26** | Perform final proofreading and formatting verification | `⛔ Blocked` — depends on TASK-21 and final manuscript unfreezing | Final Release |
 
 ---
 

@@ -10,6 +10,8 @@ This checklist tracks internal review milestones between Prem Sargara and Viveka
 - [x] Limitations section confirmed comprehensive and unvarnished (peak-week sampling, checkpoint resolution, etc.)
 - [x] Methodological framing aligned with peer-review standards (bounded observational claims, non-causal distinction)
 - [ ] Viveka Mohan Das review of complete manuscript draft
+- [ ] Weighted analysis withdrawal resolved — path forward agreed with Viveka
+- [ ] Review Items 4–35 from Viveka's fix list addressed (surviving results conditionally retained)
 - [ ] Authorship structure, ordering, and institutional affiliations explicitly confirmed
 - [ ] Final manuscript title selected from proposed options (recommended title implemented)
 - [ ] All literature citations checked against primary publication records

@@ -1466,3 +1466,20 @@ Output: `data_derived/location_distortion_check.csv`
   - Archived complete session record: `docs/CHAT_SESSION_2026-10-05.md`.
   - Preserved manuscript draft intact pending strategic alignment with Viveka.
 
+## 2026-10-05 / 2026-10-07 -- Formal Methodological Withdrawal Execution & Guardrails
+
+### 1. Ruling from Viveka Mohan Das & Phased Plan Approval
+- Following review of the technical audit memo (`docs/viveka_review_response_items_1_to_3.md`) and equivalence check demonstration, Viveka formally approved the response action plan:
+  - **Phases 0–3 approved:** Commit audit work, author formal withdrawal notice, prepend non-destructive advisory banners, implement code guardrails, update tracking registers.
+  - **Additive only:** Zero manuscript text edited, zero repo history deleted.
+  - **Phase 4 approved:** Triage Review Items 4–35 into still applicable vs. moot, and provide an item-by-item response.
+  - **Option selection:** Deferred between Option A (True Longitudinal Harvesting) and Option C (Methodological Diagnostic Paper) pending Phase 4 review. Option B permanently declined.
+  - **API cost verification:** Confirmed that GDELT 2.0 DOC API is completely free and requires no paid keys or tools.
+  - **Data preservation:** Frozen inputs `ct_results_v1_frozen.csv`, `ct_artlist_audit.csv`, and `pt_pilot_results.csv` maintained strictly untouched.
+
+### 2. Execution of Withdrawal Protocols (Phases 0–3)
+- **Phase 0:** Committed audit artifacts (`scripts/reproduce_baseline.py`, `docs/session_log.md`, `data_derived/precedence_comparison.csv`, `docs/viveka_review_response_items_1_to_3.md`, `docs/pre_publication_checklist.md`, `docs/standalone_working_paper.md`) to `origin/main`.
+- **Phase 1:** Authored formal withdrawal notice (`docs/withdrawal_notice_2026-10-05.md`) detailing the exact inventory of withdrawn figures (13/33, 12/32, Tier 1 only, Tier 1+2, 16-cell sweep, 108-cell weighted rows, boundary perturbation, Diffuse Ingestion framing) and surviving results (baseline reproduction 28/33, tier map descriptive taxonomy, syndication findings, location distortion audit). Prepended non-destructive warning banners to `docs/tier_methodology.md`, `docs/manuscript_section_source_tiering.md`, and `docs/standalone_working_paper.md`.
+- **Phase 2:** Installed active `WITHDRAWN = True` execution guards on `scripts/apply_weights.py`, `scripts/precedence_test_weighted.py`, `scripts/sensitivity_analysis.py`, and `scripts/run_production_pipeline.py`. Scripts halt with exit code 1 and advisory pointers unless `--force-rerun` is explicitly supplied. `scripts/reproduce_baseline.py` and `scripts/build_tier_map.py` remain fully runnable.
+- **Phase 3:** Updated `docs/pre_publication_checklist.md` with withdrawal and fix-list milestones. Updated `contrib/viveka/TASKS.md` marking manuscript-dependent tasks as ⛔ Blocked.
+
