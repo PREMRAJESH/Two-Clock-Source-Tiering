@@ -1483,3 +1483,26 @@ Output: `data_derived/location_distortion_check.csv`
 - **Phase 2:** Installed active `WITHDRAWN = True` execution guards on `scripts/apply_weights.py`, `scripts/precedence_test_weighted.py`, `scripts/sensitivity_analysis.py`, and `scripts/run_production_pipeline.py`. Scripts halt with exit code 1 and advisory pointers unless `--force-rerun` is explicitly supplied. `scripts/reproduce_baseline.py` and `scripts/build_tier_map.py` remain fully runnable.
 - **Phase 3:** Updated `docs/pre_publication_checklist.md` with withdrawal and fix-list milestones. Updated `contrib/viveka/TASKS.md` marking manuscript-dependent tasks as ⛔ Blocked.
 
+## 2026-10-11 -- Phase 4 Review Reconciliation, Checksum Audit & Methodological Responses
+
+### 1. Forensic Audit & Fixes (Review Items 4–35 Follow-up)
+- **Triage Reconciliation:** Resolved count discrepancy to **26 Still Applicable and 6 Moot** (treating Item 21 arithmetic as Moot along with the withdrawn sensitivity grid; alternatively 27/5 if tracked as an active manuscript deletion task).
+- **Manuscript Freeze Verification:** Verified by git diff (`git diff a2a41a5..HEAD -- docs/standalone_working_paper.md` is empty) that zero edits were made to manuscript text; lines 600 & 605 still contain "the authors". Past-tense phrasing in prior memo was an errant draft typo.
+- **Competing Interests Statement:** Struck "no relationship" wording; statement deferred for direct authoring by Viveka Mohan Das.
+- **Zenodo DOI Disambiguation (Item 9):** Verified via Zenodo REST API that `10.5281/zenodo.21533067` is the overarching Concept DOI (all versions of Part II working paper) and `10.5281/zenodo.22970826` is the Version 2 DOI. Both point to the exact same record.
+- **Dataset Title Reconciliation (Item 11):** Verified from Zenodo metadata that the exact title for v1 and v2 is *The Two-Clock Model: Structural Presence and AI Perception of Technology Entities* (Version v2, Sept 26, 2026; DOI `10.5281/zenodo.22970684`).
+- **GDELT Citation Standardization (Item 13):** Standardized across all documents to *Leetaru, K., & Schrodt, P. A. (2013). GDELT: Global Data on Events, Location, and Tone, 1979–2012. ISA Annual Convention.*
+- **Capped Entity Accounting (Item 18):** Clarified arithmetic: 5 entities hit the 250 cap, 3 are excluded under no-onset (`DeepSeek`, `DeepSeek-R1`, `OpenAI o1`), leaving exactly 2 testable entities hitting cap (`GPT-4`, `GPT-4o`).
+- **Zenodo MD5 Checksum Verification (Directive 5):** Downloaded `ct_artlist_audit.csv` from Zenodo Record `22970684` into `inputs_frozen/` (157,958 bytes; MD5 `fcf3c2f00b729c6e8ba0d12340237613`). Verified that all 12 files in `inputs_frozen/` match Zenodo deposit checksums bit-for-bit.
+
+### 2. Methodological Inquiries Answered
+- **Circularity Defense (Item 6):** Endorsed Leave-One-Entity-Out (LOEO) tier construction as the primary cross-validation architecture, guaranteeing zero data leakage / circularity.
+- **Window Spans (Item 74–184 weeks, Item 16):** Confirmed all 50 entities share the exact same calendar census endpoint (`2026-06-29`) and start ~4 weeks prior to birth. Variable span is purely entry timing (birth date), not premature cutoff.
+- **P-value Reconciliation (Item 25):** Proved exact binomial test concordance: baseline 20% ramp, $P \ge 3$ ($23/33$) yields $p = 0.03508$ (exact match to Viveka's 0.035). At $P \ge 2$, Prem's fixed $N=33$ ($22/33$) yields $p = 0.0801$, while Viveka's expanded $N=34$ ($22/34$) yields $p = 0.1215$ (exact match to Viveka's 0.12).
+- **Hypothesis Formulation (Item 28):** Adopted explicit post-hoc disclosure: study was not preregistered, hypotheses formulated after empirical results, sweeps exploratory.
+- **Labeling Comparison (Item 35):** Forensically compared `ct_artlist_LABELING.xlsx` vs. `ct_artlist_audit.csv`. Verified identical 566 rows across 22 entities, 100% URL overlap (518/518), and 0 substantive disagreements (315 `y`, 245 `n` in both; 6 working notes standardized to `exclude`).
+
+### 3. Repository Record Authored
+- Documented complete analysis in [`docs/viveka_phase4_reconciliation_memo_2026-10-11.md`](file:///d:/two-clock-source-tiering/docs/viveka_phase4_reconciliation_memo_2026-10-11.md).
+
+

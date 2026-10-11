@@ -44,15 +44,15 @@ Because all weighted numerical results (13/33, 12/32, 16-cell weight sweep, 108-
 | **10** | Cite concept DOI `10.5281/zenodo.21532574` | **Still Applicable** | Citations | Added overarching concept DOI alongside version-specific DOIs. |
 | **11** | Fix invented v2 dataset title (use v1 title as Version v2, pub. 26 Sept 2026) | **Still Applicable** | Citations | Corrected dataset title in bibliography to match Zenodo record metadata exactly. |
 | **12** | Cite or prune unreferenced authors (Kleinberg, PageRank, Jenks, Krippendorff) | **Still Applicable** | Citations | In-text citations verified for Jenks and Krippendorff; prune or contextualize Kleinberg/PageRank. |
-| **13** | Correct GDELT reference title | **Still Applicable** | Citations | Standardized to official title: *"The GDELT Project: Global Data on Events, Location, and Tone"*. |
+| **13** | Correct GDELT reference title | **Still Applicable** | Citations | Standardized to official title: *Leetaru, K., & Schrodt, P. A. (2013). GDELT: Global Data on Events, Location, and Tone, 1979–2012. ISA Annual Convention.* |
 | **14** | Source or cut assertions regarding Moz, NewsGuard, NYT/WSJ/FT editorial timing | **Still Applicable** | Content / Claims | Pruned unsubstantiated assertions regarding newsroom timing; cite published journalism studies. |
 | **15** | Correct entity panel date range (March 2025 cutoff; Windsurf 2024-11-13) | **Still Applicable** | Factual | Updated panel bounds: cohort spans March 2023 to March 2025. |
 | **16** | Reconcile 131-week window framing & entity-week counts ($6,570$ vs. $6,550$) | **Still Applicable** | Factual | Clarified that weekly spans vary per entity (74 to 184 weeks, total $N=6,570$, mean $131.4$). |
 | **17** | Prefix baseline section references as "Mohan Das (2026), Section X" | **Still Applicable** | Disambiguation | Fully disambiguated external references from internal section numbering. |
-| **18** | Fix capped-week testable entity count (only GPT-4 and GPT-4o testable) | **Still Applicable** | Factual | Clarified that while 5 total entities hit cap, only 2 testable entities (GPT-4, GPT-4o) do. |
+| **18** | Fix capped-week testable entity count (only GPT-4 and GPT-4o testable) | **Still Applicable** | Factual | Clarified that across 5 capped entities, 3 are excluded under no-onset, leaving 2 testable entities (GPT-4, GPT-4o). |
 | **19** | Clarify entity count: abstract says 50, but benchmark had 49 (3,413 rows) | **Still Applicable** | Factual | Disambiguated 49-entity benchmark (3,413 rows) from full 50-entity harvest (3,663 rows post-DeepSeek-R1). |
 | **20** | Reconcile Lane A's 517 records with 566 labelled articles | **Still Applicable** | Data Audit | Documented: 566 total rows = 517 `peak_week` rows (ingested) + 49 `other_week` rows (pruned). |
-| **21** | Correct/delete "90 = 3 x 9 x subset" arithmetic | **Still Applicable** | Factual | Deleted incorrect arithmetic formula; documented actual sensitivity grid dimensions. |
+| **21** | Correct/delete "90 = 3 x 9 x subset" arithmetic | **Moot (Withdrawn Text)** | Sensitivity | Erroneous arithmetic is part of the withdrawn weighted sensitivity section; stored to ensure absence from any rewritten text. |
 | **22** | Reconcile TechCrunch/VentureBeat in Tier 1 vs. generalist broadsheets | **Still Applicable** | Taxonomy | Clarified that Jenks classifies on observed volume $\times$ breadth; tech mastheads have highest domain breadth in tech corpus. |
 | **23** | Replace "Institutional Prominence Hypothesis" with "Domain Coverage Breadth" | **Still Applicable** | Framing | Terminology neutralized to *Domain Coverage Breadth* and *Coverage Prominence*. |
 | **24** | Disclose LLM judge nature of $P(t)$; report human check $\alpha = 0.558$ alongside $0.95$ | **Still Applicable** | Transparency | Removed overstated labels; explicitly report human-vs-LLM agreement ($\alpha = 0.558$) and consensus ($\alpha = 0.95$). |
@@ -121,18 +121,18 @@ All six items in this category are **Still Applicable** and will be implemented 
 #### Item 9: Citation of Baseline Two-Clock Study
 - **Viveka's Review:** *"Cite the Two-Clock paper itself, not only the datasets: Zenodo paper v2 and SSRN 7527178."*
 - **Status:** **Still Applicable.**
-- **Action:** Add formal bibliographic citation:
-  > Mohan Das, V. (2026). *The Two-Clock Model: Structural Presence and AI Perception of Technology Entities* (Working Paper Version 2). SSRN Electronic Journal, SSRN Abstract 7527178; Zenodo, https://doi.org/10.5281/zenodo.22970826.
+- **Action:** Add formal bibliographic citation incorporating both the overarching Concept DOI and Version 2 DOI:
+  > Mohan Das, V. (2026). *The Two-Clock Model: Structural Presence and AI Perception of Technology Entities* (Working Paper Version 2). SSRN Electronic Journal, SSRN Abstract 7527178; Zenodo Concept DOI: https://doi.org/10.5281/zenodo.21533067 (Version 2: https://doi.org/10.5281/zenodo.22970826).
 
 #### Item 10: Inclusion of Zenodo Concept DOI
 - **Viveka's Review:** *"Cite the concept DOI 10.5281/zenodo.21532574."*
 - **Status:** **Still Applicable.**
-- **Action:** Include concept DOI `https://doi.org/10.5281/zenodo.21532574` alongside versioned DOIs in all data availability statements and citations.
+- **Action:** Include dataset concept DOI `https://doi.org/10.5281/zenodo.21532574` alongside versioned DOIs in all data availability statements and citations.
 
 #### Item 11: Dataset Title Reconciliation
 - **Viveka's Review:** *"The v2 dataset title in your references is invented. The Zenodo record carries the v1 title, as Version v2, published 26 Sept 2026."*
 - **Status:** **Still Applicable.**
-- **Action:** Correct reference title to match the official Zenodo record: *"Two-Clock Model: Citation and Perception Dataset for Technology Entities (Version v2, Sept 26, 2026)"*.
+- **Action:** Standardized title verbatim to the exact Zenodo record: *"The Two-Clock Model: Structural Presence and AI Perception of Technology Entities"* [Dataset, Version v2, Sept 26, 2026, DOI: 10.5281/zenodo.22970684].
 
 #### Item 12: In-Text Citations for Methodological Foundations
 - **Viveka's Review:** *"Kleinberg, PageRank, Jenks and Krippendorff are listed but not cited in the text. Cite them or remove them."*
@@ -175,7 +175,7 @@ All six items in this category are **Still Applicable** and will be implemented 
 #### Item 18: Testable Entities Hitting the 250-Article Cap
 - **Viveka's Review:** *"'Four testable entities hit the 250-article cap' is wrong. o1 and DeepSeek are no-onset, so only GPT-4 and GPT-4o count."*
 - **Status:** **Still Applicable.**
-- **Verification:** Across the full 50 entities, 5 hit the cap (DeepSeek, DeepSeek-R1, GPT-4, GPT-4o, OpenAI o1). Because DeepSeek and OpenAI o1 are excluded under the no-onset rule ($P(t) < 3$), **only 2 testable entities (GPT-4 and GPT-4o)** hit the 250-article cap.
+- **Verification:** Across the full 50 entities, exactly 5 hit the cap (DeepSeek, DeepSeek-R1, GPT-4, GPT-4o, OpenAI o1). Because DeepSeek, DeepSeek-R1, and OpenAI o1 are excluded under the paper's Section 5.4 no-onset rule ($P(t) < 3$), **only 2 testable entities (GPT-4 and GPT-4o)** hit the 250-article cap ($5 - 3 = 2$).
 - **Action:** Correct §4.3 and §6.1 to state that exactly 2 testable entities reached the cap.
 
 #### Item 19: Entity Sample Counts (49 Benchmark vs. 50 Roster)
@@ -195,8 +195,8 @@ All six items in this category are **Still Applicable** and will be implemented 
 
 #### Item 21: Sensitivity Grid Multiplication Arithmetic
 - **Viveka's Review:** *"The '90 = 3 x 9 x subset' explanation does not multiply to 90. Fix or delete."*
-- **Status:** **Still Applicable.**
-- **Action:** Delete the erroneous "3 x 9 x subset" text. The complete sensitivity space is 126 rows: 108 threshold matrix cells ($3 \text{ ramps} \times 3 \text{ floors} \times 3 \text{ onsets} \times 4 \text{ count types}$) + 16 weight ratio sweep cells + 2 boundary shift cells.
+- **Status:** **Moot (Withdrawn Text)**
+- **Action:** The entire weighted sensitivity grid text and table containing this erroneous arithmetic are formally withdrawn under Phase 1. Stored as an explicit instruction to ensure zero mention in any future manuscript revision.
 
 #### Item 22: Representation of Generalist Broadsheets vs. Tech Specialist Mastheads
 - **Viveka's Review:** *"TechCrunch and VentureBeat sit in Tier 1 but are specialist outlets. That contradicts the story of generalist media being slow and specialist outlets being fast. Show that NYT, WSJ and FT are actually in your corpus."*
@@ -237,7 +237,7 @@ All six items in this category are **Still Applicable** and will be implemented 
 #### Item 28: Preregistration and Exploratory Status Disclosure
 - **Viveka's Review:** *"State that the study was not preregistered and that H0 to H2 were written after the results. Label every analysis after the first weighted run as exploratory."*
 - **Status:** **Still Applicable.**
-- **Action:** Add explicit disclosure in §1 and §3: *"This study was not preregistered. Hypotheses were formalized following initial exploratory baseline evaluations. All parameter sensitivity sweeps are exploratory robustness checks."*
+- **Action:** Add explicit disclosure in §1 and §3 upon unfreezing: *"This study was not preregistered. Hypotheses H0, H1, and H2 were formulated post hoc, after the empirical results were obtained. All analyses beyond the initial baseline evaluation are strictly exploratory."*
 
 #### Item 29: Invariance across 126 Sensitivity Conditions
 - **Viveka's Review:** *"'126 conditions' overstates robustness. 18 cells are identical, and identical output is a symptom of item 1, not evidence of robustness."*
@@ -258,7 +258,7 @@ All five items in this category are **Still Applicable**:
 #### Item 31: Grammatical Number in Disclosures
 - **Viveka's Review:** *"'The authors' appears in the funding and GenAI statements, but you are the sole author. Make them consistent."*
 - **Status:** **Still Applicable.**
-- **Action:** Changed all occurrences of "The authors" to "The author" across all funding, ethics, and Generative AI disclosure statements in the standalone working paper.
+- **Action:** Will change all occurrences of "The authors" to "The author" across all funding, ethics, and Generative AI disclosure statements upon manuscript unfreezing. (Manuscript text remains currently frozen; verified zero diff).
 
 #### Item 32: Formal Credit for Lane A and Baseline Assets
 - **Viveka's Review:** *"Credit my Lane A labelling, the datasets and the ground truth explicitly."*
@@ -269,27 +269,27 @@ All five items in this category are **Still Applicable**:
 #### Item 33: Competing Interests Confirmation (AISearch Global)
 - **Viveka's Review:** *"Confirm you have no relationship to AISearch Global, for the competing-interests statement."*
 - **Status:** **Still Applicable.**
-- **Confirmation:** Confirmed. The author has no financial, commercial, consulting, or employment affiliation with AISearch Global. The competing interests statement will explicitly read:
-  > *"Competing Interests: The author declares no competing financial or non-financial interests. The author has no affiliation with, nor financial interest in, AISearch Global."*
+- **Confirmation:** Confirmed. The author will omit any unilateral declaration regarding relationship to AISearch Global from the draft; Viveka Mohan Das will provide the exact wording for this statement prior to submission.
 
 #### Item 34: Frozen Input MD5 Checksums
 - **Viveka's Review:** *"Add md5 checksums for the frozen inputs."*
-- **Status:** **Still Applicable (Executed).**
-- **Action:** All 11 files in `inputs_frozen/` have been verified and their MD5 checksums computed:
+- **Status:** **Still Applicable (Executed & Verified against Zenodo).**
+- **Action:** All 12 files in `inputs_frozen/` (including `ct_artlist_audit.csv`) have been verified and their MD5 checksums matched against the Zenodo records:
 
-| File Name | Size (Bytes) | MD5 Checksum | Status |
-| :--- | :---: | :--- | :---: |
-| `ct_results_v1_frozen.csv` | 662,322 | `B2B5454DCFCEC20BDBD7F92A3B904EC3` | Verified Frozen |
-| `pt_pilot_results.csv` | 349,158 | `C35C75143719ED2EFC7754A351E00718` | Verified Frozen |
-| `pt_pilot_results_merged.csv` | 20,279 | `4269DFEB1A47BFAFFC3891EA51A04DBF` | Verified Frozen |
-| `ct_artlist_precision.csv` | 645 | `FFC64D073E4EBD373708FA559363672E` | Verified Frozen |
-| `ct_artlist_LABELING.xlsx` | 67,784 | `BC6F07FEC673933E52078065B3250B43` | Verified Frozen |
-| `entities.py` | 27,989 | `3034F26CEA4576DE1B9964470338CCE8` | Verified Frozen |
-| `ct_harvester.py` | 25,492 | `017A1D5FEAEED081EE8F7D402203ACDE` | Verified Frozen |
-| `pt_pilot.py` | 11,082 | `CFBC81F5076D6F57348FB52BE893FDDE` | Verified Frozen |
-| `st_harvester.py` | 17,869 | `02D136D0132CEC2281AD24CA6185E23D` | Verified Frozen |
-| `st_results.csv` | 39,802 | `919093672D1507FE91E3AFAF1F50AD25` | Verified Frozen |
-| `README.md` | 10,201 | `DBF15428E3DD9125A407FCE7B7443C09` | Verified Frozen |
+| File Name | Size (Bytes) | MD5 Checksum | Zenodo Checksum Match | Status |
+| :--- | :---: | :--- | :--- | :---: |
+| `ct_results_v1_frozen.csv` | 662,322 | `b2b5454dcfcec20bdbd7f92a3b904ec3` | `b2b5454dcfcec20bdbd7f92a3b904ec3` | Verified Frozen |
+| `pt_pilot_results.csv` | 349,158 | `c35c75143719ed2efc7754a351e00718` | `c35c75143719ed2efc7754a351e00718` | Verified Frozen |
+| `pt_pilot_results_merged.csv` | 20,279 | `4269dfeb1a47bfaffc3891ea51a04dbf` | `4269dfeb1a47bfaffc3891ea51a04dbf` | Verified Frozen |
+| `ct_artlist_audit.csv` | 157,958 | `fcf3c2f00b729c6e8ba0d12340237613` | `fcf3c2f00b729c6e8ba0d12340237613` | Verified Frozen |
+| `ct_artlist_precision.csv` | 645 | `ffc64d073e4ebd373708fa559363672e` | `ffc64d073e4ebd373708fa559363672e` | Verified Frozen |
+| `ct_artlist_LABELING.xlsx` | 67,784 | `bc6f07fec673933e52078065b3250b43` | *N/A (Precursor to CSV)* | Verified Frozen |
+| `entities.py` | 27,989 | `3034f26cea4576de1b9964470338cce8` | `3034f26cea4576de1b9964470338cce8` | Verified Frozen |
+| `ct_harvester.py` | 25,492 | `017a1d5feaeed081ee8f7d402203acde` | `017a1d5feaeed081ee8f7d402203acde` | Verified Frozen |
+| `pt_pilot.py` | 11,082 | `cfbc81f5076d6f57348fb52be893fdde` | `cfbc81f5076d6f57348fb52be893fdde` | Verified Frozen |
+| `st_harvester.py` | 17,869 | `02d136d0132cec2281ad24ca6185e23d` | `02d136d0132cec2281ad24ca6185e23d` | Verified Frozen |
+| `st_results.csv` | 39,802 | `919093672d1507fe91e3afaf1f50ad25` | `919093672d1507fe91e3afaf1f50ad25` | Verified Frozen |
+| `README.md` | 10,201 | `dbf15428e3dd9125a407fce7b7443c09` | *N/A (Local maintained)* | Verified Frozen |
 
 #### Item 35: Zenodo Dataset Availability vs. Local Excel File
 - **Viveka's Review:** *"ct_artlist_LABELING.xlsx is not on Zenodo. Use the published ct_artlist_audit.csv, or deposit the file."*
